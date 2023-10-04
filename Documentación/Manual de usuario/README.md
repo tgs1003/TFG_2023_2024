@@ -1,1 +1,2 @@
-Manual de usuario del proyecto.
+# Introducción
+

@@ -44,19 +44,164 @@ Crear un manual de usuario.
 \end{itemize}
 
 
-\section{Especificación de requisitos}
+\section{Casos de uso}
 
-% Caso de Uso 1 -> Consultar Experimentos.
+% Caso de Uso 1 -> Registro de usuarios.
 \begin{table}[p]
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
+		\textbf{CU-1}    & \textbf{Registro de usuarios}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
+		\textbf{Requisitos asociados} & RF-1 \\
+		\textbf{Descripción}          & Un usuario con el rol de administrador podrá crear cuentas de usuario y asignarles un rol. \\
+		\textbf{Precondición}         & El usuario tiene que tener el rol de administrador \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario administrador accede a la interfaz de la aplicación.
+			\item Accede a la opción Crear usuarios
+			\item Introduce los datos del usuarios
+			\item Confirma los cambios.
+		\end{enumerate}\\
+		\textbf{Postcondición}        & La cuenta de usuario no debe existir con antelación \\
+		\textbf{Excepciones}          & 
+		\begin{enumerate}
+			\item El usuario ya existe
+			\item Complejidad de la contraseña no válida
+			\item Datos incorrectos
+		\end{enumerate}\\
+		\textbf{Importancia}          & Alta \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-1 Registro de usuarios.}
+\end{table}
+% Caso de Uso 2 -> Login de usuarios.
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-2}    & \textbf{Login de usuarios}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF-2 \\
+		\textbf{Descripción}          & El usuario accede a la aplicación tendiendo \\
+										acceso a la parte que tengo acceso según su rol. \\
+		\textbf{Precondición}         & Usuario registrado \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Accede a la pantalla de login 
+			\item Introduce nombre y contraseña
+			\item Pulsa en Aceptar
+		\end{enumerate}\\
+		\textbf{Postcondición}        & La contraseña debe coincidir \\
+		\textbf{Excepciones}          & 
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario no existe 
+			\item La contraseña no es válida 
+		\end{enumerate}\\
+		\textbf{Importancia}          & Alta\\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-2 Login de usuarios.}
+\end{table}
+% Caso de Uso 3 -> Información de la aplicación.
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-3}    & \textbf{Información de la aplicación}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF-3 \\
+		\textbf{Descripción}          & Permite al usuario obtener información sobre la configuración de la aplicación \\
+		\textbf{Precondición}         & Usuario logado \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario accede a la opción información.
+		\end{enumerate}\\
+		\textbf{Postcondición}        &  \\
+		\textbf{Excepciones}          &  \\
+		\textbf{Importancia}          & Baja \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-3 Información de la aplicación.}
+\end{table}
+% Caso de Uso 4 -> Cargar reseñas de un archivo.
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-4}    & \textbf{Cargar reseñas de un archivo}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF4.1 \\
+		\textbf{Descripción}          & El usuario puede cargar reseñas de un archivo \\
+		\textbf{Precondición}         & Usuario logado \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Pasos del CU
+			\item Pasos del CU (añadir tantos como sean necesarios)
+		\end{enumerate}\\
+		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
+		\textbf{Excepciones}          & Excepciones \\
+		\textbf{Importancia}          & Alta o Media o Baja... \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-04 Cargar reseñas de un archivo.}
+\end{table}
+% Caso de Uso 5 -> Puntuar los textos.
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-5}    & \textbf{Puntuar los textos}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF4.2 \\
+		\textbf{Descripción}          & La aplicación debe realizar el análisis del texto obtenido
+										 y devolver un valor entero entre 1 y 5 dependiendo del sentimiento del mismo, siendo 1 un sentimiento negativo y 5 un sentimiento positivo. \\
+		\textbf{Precondición}         &  \\
+		\textbf{Acciones}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Pasos del CU
+			\item Pasos del CU (añadir tantos como sean necesarios)
+		\end{enumerate}\\
+		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
+		\textbf{Excepciones}          & Excepciones \\
+		\textbf{Importancia}          & Alta o Media o Baja... \\
+		\bottomrule
+	\end{tabularx}
+	\caption{CU-5 Puntuar los textos.}
+\end{table}
+% Caso de Uso 6 -> Almacenar resultados.
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CU-6}    & \textbf{Alamacenar resultados}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF4.3 \\
+		\textbf{Descripción}          & La aplicación debe almacenar las puntuaciones junto con el texto analizado, fecha en la que se escribió y un identificador. \\
 		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
 		\textbf{Acciones}             &
 		\begin{enumerate}
@@ -70,19 +215,19 @@ Crear un manual de usuario.
 		\textbf{Importancia}          & Alta o Media o Baja... \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
+	\caption{CU-6 Almacenar resultados.}
 \end{table}
-% Caso de Uso 1 -> Consultar Experimentos.
+% Caso de Uso 7 -> Buscar resultados por producto.
 \begin{table}[p]
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
+		\textbf{CU-7}    & \textbf{Buscar resultado por producto}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
+		\textbf{Requisitos asociados} & RF5.1 \\
+		\textbf{Descripción}          & El usuario debe poder introducir el nombre de un producto y mostrar las reseñas del mismo \\
 		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
 		\textbf{Acciones}             &
 		\begin{enumerate}
@@ -96,19 +241,19 @@ Crear un manual de usuario.
 		\textbf{Importancia}          & Alta o Media o Baja... \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
+	\caption{CU-7 Buscar resultados por producto.}
 \end{table}
-% Caso de Uso 1 -> Consultar Experimentos.
+% Caso de Uso 8 -> Buscar por nombre de usuario.
 \begin{table}[p]
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
+		\textbf{CU-8}    & \textbf{Buscar por nombre de usuario}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
+		\textbf{Requisitos asociados} & RF5.2 \\
+		\textbf{Descripción}          & Se debe poder buscar un usuario y mostrar la información de las reseñas que ha creado. \\
 		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
 		\textbf{Acciones}             &
 		\begin{enumerate}
@@ -122,19 +267,19 @@ Crear un manual de usuario.
 		\textbf{Importancia}          & Alta o Media o Baja... \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
+	\caption{CU-8 Buscar nombre de usuario.}
 \end{table}
-% Caso de Uso 1 -> Consultar Experimentos.
+% Caso de Uso 9 -> Buscar por texto.
 \begin{table}[p]
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
+		\textbf{CU-9}    & \textbf{Buscar por texto}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
+		\textbf{Requisitos asociados} & RF5.3 \\
+		\textbf{Descripción}          & El usuario debe poder buscar una palabra para ver los resultados del análisis de los textos en los que está esa palabra. \\
 		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
 		\textbf{Acciones}             &
 		\begin{enumerate}
@@ -148,144 +293,14 @@ Crear un manual de usuario.
 		\textbf{Importancia}          & Alta o Media o Baja... \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
+	\caption{CU-9 Buscar por texto.}
 \end{table}
-% Caso de Uso 1 -> Consultar Experimentos.
+% Caso de Uso 10 -> Matriz de confusión.
 \begin{table}[p]
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
-		\toprule
-		\textbf{Versión}              & 1.0    \\
-		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
-		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
-		\textbf{Acciones}             &
-		\begin{enumerate}
-			\def\labelenumi{\arabic{enumi}.}
-			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
-		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
-		\bottomrule
-	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
-\end{table}
-% Caso de Uso 1 -> Consultar Experimentos.
-\begin{table}[p]
-	\centering
-	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
-		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
-		\toprule
-		\textbf{Versión}              & 1.0    \\
-		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
-		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
-		\textbf{Acciones}             &
-		\begin{enumerate}
-			\def\labelenumi{\arabic{enumi}.}
-			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
-		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
-		\bottomrule
-	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
-\end{table}
-% Caso de Uso 1 -> Consultar Experimentos.
-\begin{table}[p]
-	\centering
-	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
-		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
-		\toprule
-		\textbf{Versión}              & 1.0    \\
-		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
-		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
-		\textbf{Acciones}             &
-		\begin{enumerate}
-			\def\labelenumi{\arabic{enumi}.}
-			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
-		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
-		\bottomrule
-	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
-\end{table}
-% Caso de Uso 1 -> Consultar Experimentos.
-\begin{table}[p]
-	\centering
-	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
-		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
-		\toprule
-		\textbf{Versión}              & 1.0    \\
-		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
-		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
-		\textbf{Acciones}             &
-		\begin{enumerate}
-			\def\labelenumi{\arabic{enumi}.}
-			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
-		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
-		\bottomrule
-	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
-\end{table}
-% Caso de Uso 1 -> Consultar Experimentos.
-\begin{table}[p]
-	\centering
-	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
-		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
-		\toprule
-		\textbf{Versión}              & 1.0    \\
-		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
-		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
-		\textbf{Acciones}             &
-		\begin{enumerate}
-			\def\labelenumi{\arabic{enumi}.}
-			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
-		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
-		\bottomrule
-	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
-\end{table}
-% Caso de Uso 1 -> Consultar Experimentos.
-\begin{table}[p]
-	\centering
-	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
-		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
+		\textbf{CU-8}    & \textbf{Matriz de confusión}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\

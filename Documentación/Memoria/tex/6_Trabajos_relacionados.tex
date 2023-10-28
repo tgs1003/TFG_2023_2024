@@ -1,3 +1,77 @@
 \capitulo{6}{Trabajos relacionados}
 
-Este apartado sería parecido a un estado del arte de una tesis o tesina. En un trabajo final grado no parece obligada su presencia, aunque se puede dejar a juicio del tutor el incluir un pequeño resumen comentado de los trabajos y proyectos ya realizados en el campo del proyecto en curso. 
+\section{BERT}
+
+BERT~\cite{devlin2019bert}, que significa "Bidirectional Encoder Representations from Transformers" (Representaciones de Codificador Bidireccional a partir de Transformadores), es un modelo de lenguaje desarrollado por Google en 2018. BERT es parte de la familia de modelos de lenguaje basados en transformers y es ampliamente conocido por su capacidad para comprender el contexto de las palabras en un texto, lo que lo convierte en una herramienta poderosa en el análisis de sentimiento y muchas otras tareas de procesamiento del lenguaje natural (NLP).
+Lo que hace que BERT sea particularmente efectivo en el análisis de sentimiento es su capacidad para entender la semántica y el significado contextual de las palabras en un texto. A diferencia de los modelos de lenguaje unidireccionales anteriores, BERT es bidireccional, lo que significa que procesa el texto de izquierda a derecha y de derecha a izquierda en dos pasadas separadas. Esto le permite capturar el contexto de una palabra en función de las palabras que la rodean en todas las direcciones, lo que mejora significativamente su comprensión del lenguaje natural.
+En el análisis de sentimiento, BERT se utiliza para evaluar el tono o polaridad del texto, es decir, determinar si el texto tiene un sentimiento positivo, negativo o neutral. Para hacerlo, se entrena a BERT~\cite{BertSentimentModel1} en grandes conjuntos de datos etiquetados con sentimientos, lo que le permite aprender a identificar patrones y contexto asociados con emociones específicas en el lenguaje.
+BERT ha sido un avance significativo en el campo del procesamiento del lenguaje natural y ha mejorado considerablemente el rendimiento en una amplia gama de aplicaciones, incluido el análisis de sentimiento, la traducción automática, la respuesta a preguntas y muchas otras tareas de NLP.
+
+
+\section{Transformers}
+
+Los Transformers son una arquitectura de modelos de lenguaje y procesamiento del lenguaje natural (NLP)
+que se ha convertido en un avance revolucionario en este campo desde su introducción en 2017.
+Fueron desarrollados por Vaswani et al. en el artículo 'Attention Is All You Need'~\cite{vaswani2023attention} 
+y han tenido un gran impacto en tareas de NLP, incluyendo la traducción automática, el análisis de sentimiento, la generación de texto y mucho más.
+La característica principal de los Transformers es su mecanismo de atención, que permite capturar las relaciones entre las palabras en un texto de manera más efectiva que las arquitecturas de modelos de lenguaje anteriores. El mecanismo de atención permite a un modelo dar más peso a ciertas partes del texto cuando procesa una palabra o token en particular, lo que le permite comprender mejor el contexto y las dependencias entre las palabras.
+Algunos de los puntos clave sobre los Transformers son:
+Mecanismo de atención: El mecanismo de atención permite a un modelo 'atender' a diferentes partes del texto en función de la importancia relativa de las palabras para una tarea específica. Esto mejora la capacidad del modelo para capturar relaciones a larga distancia en el texto.
+Capas apiladas: Los modelos Transformer consisten en múltiples capas apiladas de unidades de atención, lo que les permite aprender representaciones jerárquicas de los datos.
+Sin recurrencia ni convoluciones: A diferencia de las arquitecturas de modelos de lenguaje anteriores, los Transformers no utilizan capas recurrentes o convolucionales, lo que los hace altamente paralelizables y eficientes para el entrenamiento en hardware moderno.
+Preentrenamiento y ajuste fino: Los Transformers se entrenan primero en grandes cantidades de texto no etiquetado en una tarea de 'lenguaje previo' y luego se ajustan finamente para tareas específicas, lo que permite una transferencia de conocimiento efectiva.
+Amplia aplicabilidad: Los Transformers se han utilizado en una variedad de aplicaciones de procesamiento del lenguaje natural, como traducción automática, generación de texto, análisis de sentimiento~\cite{UrdanetaTransformers}, respuesta a preguntas, resumen de texto y más.
+Ejemplos de modelos Transformer populares incluyen BERT~\cite{devlin2019bert}, GPT~\cite{chatgpt1} (Generative Pre-trained Transformer), RoBERTa, y muchos otros. Estos modelos han demostrado un rendimiento sobresaliente en diversas tareas de procesamiento del lenguaje natural y han contribuido significativamente al avance en este campo.
+
+
+
+\section{NLTK}
+NLTK~\cite{NLTK1} es una biblioteca de código abierto en el lenguaje de programación Python que proporciona herramientas, recursos y bibliotecas para trabajar con el procesamiento de lenguaje natural (NLP). Fue desarrollada originalmente por Steven Bird y Edward Loper en la Universidad de Pensilvania.
+NLTK es ampliamente utilizado en la comunidad de NLP y es una herramienta esencial para investigadores, estudiantes y desarrolladores que trabajan en tareas relacionadas con el procesamiento del lenguaje natural. Algunas de las características y funcionalidades clave de NLTK incluyen:
+Procesamiento de texto: NLTK proporciona una variedad de herramientas para tokenizar, segmentar, etiquetar y analizar texto.
+Recursos lingüísticos: Incluye una amplia gama de recursos lingüísticos, como corpus (conjuntos de datos de texto etiquetado), léxicos y otros datos que son útiles para la investigación y desarrollo en NLP.
+Procesamiento de lenguaje natural: Ofrece módulos y funciones para llevar a cabo tareas como análisis sintáctico, análisis semántico, desambiguación de sentidos, análisis de sentimiento y más.
+Interfaz con otros recursos y herramientas: NLTK se integra con otras bibliotecas y recursos, lo que facilita la conexión con motores de búsqueda, bases de datos y otras herramientas de procesamiento del lenguaje natural.
+Aprendizaje automático: NLTK también incluye funcionalidades para el aprendizaje automático en NLP, lo que permite a los usuarios desarrollar modelos de lenguaje y clasificadores.
+NLTK es muy útil para quienes deseen aprender sobre procesamiento de lenguaje natural, ya que proporciona una base sólida y muchas herramientas prácticas. Además, es una excelente opción para prototipar y desarrollar soluciones de NLP en Python~\cite{NLTK2}.
+
+
+\section{Scikit-learn}
+Scikit-learn es una biblioteca de aprendizaje automático en Python que se utiliza ampliamente en una variedad de aplicaciones, incluido el análisis de sentimiento. Sin embargo, en el contexto específico del análisis de sentimiento, scikit-learn se utiliza más como una herramienta para la construcción de modelos de clasificación y evaluación de rendimiento que para el procesamiento del lenguaje natural en sí.
+En el análisis de sentimiento, scikit-learn~\cite{scikit-learn-sentiment1} se utiliza para realizar las siguientes tareas:
+Extracción de características: Scikit-learn proporciona herramientas para transformar texto en datos numéricos que pueden ser utilizados por modelos de aprendizaje automático. Esto implica la vectorización del texto, donde se representan las palabras o n-gramas en forma de vectores numéricos.
+Construcción de modelos: Scikit-learn ofrece una variedad de algoritmos de clasificación, como Support Vector Machines (SVM), Naive Bayes, Regresión Logística, y otros, que se pueden utilizar para construir modelos de análisis de sentimiento.
+Evaluación del rendimiento: La biblioteca proporciona herramientas para evaluar el rendimiento de los modelos de análisis de sentimiento. Esto incluye métricas como la precisión, el recall, la F1-score, la matriz de confusión y otras métricas de evaluación de clasificadores.
+
+En resumen, scikit-learn es una herramienta valiosa en el análisis de sentimiento, ya que facilita la construcción y evaluación de modelos de clasificación para determinar el sentimiento en textos. Sin embargo, para tareas de procesamiento del lenguaje natural más complejas, como la comprensión del contexto y la semántica del texto, a menudo se combinan otras bibliotecas y modelos NLP, como spaCy, transformers (como BERT o GPT), y NLTK, con scikit-learn para lograr un rendimiento óptimo en el análisis de sentimiento.
+
+
+\section{Sentinel}
+Sentinel~\cite{Sentinel1} es una aplicación web desarrollada como TFG del grado de ingeniería informática de la Universidad de Burgos que realiza un análisis de sentimientos de textos extraídos de las redes sociales Twitter e Instagram.
+
+La aplicación busca los tweets relacionados con la palabra introducida en el caso de Twitter, o los comentarios que le han escrito a la cuenta de Instagram que se ha buscado.
+
+Después analiza el sentimiento que hay en ellos, los puntúa con valores entre 0 y 1 y se almacenan los resultados.
+
+Estos resultados se muestran al usuario en gráficos y tablas para hacer la experiencia más visual. Además se le ofrece la opción de calcular series temporales a partir de los resultados, y se da una predicción de los valores futuros.
+
+
+\section{NLP}
+NLP~\cite{nlp1}, o Procesamiento del Lenguaje Natural (por sus siglas en inglés, Natural Language Processing), es un campo de la inteligencia artificial y la informática que se enfoca en la interacción entre las computadoras y el lenguaje humano. Su objetivo es permitir que las máquinas comprendan, interpreten y generen texto y lenguaje humano de manera similar a como lo hacen los seres humanos. Aquí tienes algunos puntos clave sobre NLP:
+
+Comunicación entre humanos y máquinas: NLP se centra en facilitar la comunicación efectiva entre humanos y computadoras a través del lenguaje natural. Esto incluye la comprensión del texto escrito y hablado, así como la generación de texto legible y coherente por parte de las máquinas.
+
+Tareas en NLP: NLP abarca una amplia gama de tareas y aplicaciones, que incluyen la traducción automática, el análisis de sentimiento, el análisis de texto, la extracción de información, la respuesta a preguntas, el resumen de texto, el procesamiento de voz, el procesamiento de chatbots y mucho más.
+
+Desafíos en NLP: El procesamiento del lenguaje natural es un campo desafiante debido a la complejidad del lenguaje humano, que incluye ambigüedades, variabilidad, coloquialismos y otros factores. La comprensión del contexto, la semántica y la cultura son aspectos fundamentales.
+
+Herramientas y tecnologías: En NLP, se utilizan una variedad de herramientas y tecnologías, como bibliotecas de código abierto (como NLTK, spaCy y scikit-learn en Python), modelos de lenguaje (como BERT y GPT-3), algoritmos de aprendizaje automático y redes neuronales, para abordar tareas específicas.
+
+Aplicaciones en la vida cotidiana: NLP tiene un impacto significativo en la vida cotidiana, ya que se utiliza en motores de búsqueda, asistentes virtuales (como Siri y Alexa), traducción automática, análisis de redes sociales, detección de spam, corrección ortográfica, entre muchas otras aplicaciones.
+
+Avances recientes: En los últimos años, los modelos de lenguaje basados en transformers, como BERT y GPT-3, han logrado avances significativos en tareas de NLP, mejorando la capacidad de las máquinas para entender y generar texto de manera más precisa y coherente.
+
+El procesamiento del lenguaje natural es un campo en constante evolución con un gran potencial para transformar la forma en que interactuamos con la tecnología y procesamos grandes cantidades de datos de texto. A medida que se desarrollan nuevas técnicas y modelos, el NLP seguirá siendo una área de investigación y desarrollo crucial en la inteligencia artificial.
+
+
+

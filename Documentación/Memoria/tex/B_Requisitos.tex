@@ -118,13 +118,13 @@ Crear un manual de usuario.
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-3}    & \textbf{Información de la aplicación}\\
+		\textbf{CU-3}    & \textbf{Información de la aplicación.}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
 		\textbf{Requisitos asociados} & RF-3 \\
-		\textbf{Descripción}          & Permite al usuario obtener información sobre la configuración de la aplicación \\
-		\textbf{Precondición}         & Usuario logado \\
+		\textbf{Descripción}          & Permite al usuario obtener información sobre la configuración de la aplicación. \\
+		\textbf{Precondición}         & Usuario logado. \\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
@@ -148,18 +148,30 @@ Crear un manual de usuario.
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
 		\textbf{Requisitos asociados} & RF4.1 \\
-		\textbf{Descripción}          & El usuario puede cargar reseñas de un archivo \\
+		\textbf{Descripción}          & Un usuario administrador puede cargar reseñas desde un archivo \\
 		\textbf{Precondición}         & Usuario logado \\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
+			\item Acceder a la sección de administración.
+			\item Seleccionar formato a cargar.
+			\item Seleccionar archivo.
+			\item Pulsar en cargar.
 		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
+		\textbf{Postcondición}        & 
+		\begin{list}
+			\tightlist
+			\item El fichero tiene el formato correcto.
+		\end{list}\\
+		\textbf{Excepciones}          & 
+		\begin{list}
+			\tightlist
+			\item El fichero no tiene el formato correcto.
+			\item El fichero no se puede abrir.
+			\item El fichero no se ha podido cargar. 
+		\end{list}\\
+		\textbf{Importancia}          & Alta \\
 		\bottomrule
 	\end{tabularx}
 	\caption{CU-04 Cargar reseñas de un archivo.}
@@ -176,17 +188,19 @@ Crear un manual de usuario.
 		\textbf{Requisitos asociados} & RF4.2 \\
 		\textbf{Descripción}          & La aplicación debe realizar el análisis del texto obtenido
 										 y devolver un valor entero entre 1 y 5 dependiendo del sentimiento del mismo, siendo 1 un sentimiento negativo y 5 un sentimiento positivo. \\
-		\textbf{Precondición}         &  \\
+		\textbf{Precondición}         & Los textos están cargados \\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
+			\item Se accede a la opción de administración
+			\item Se accede a la opción de procesar
+			\item Se seleccionan los textos a procesar
+			\item Se envían a procesar
 		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
+		\textbf{Postcondición}        & Se recibe una respuesta del servicio de análisis.\\
+		\textbf{Excepciones}          & No hay respuesta \\
+		\textbf{Importancia}          & Alta \\
 		\bottomrule
 	\end{tabularx}
 	\caption{CU-5 Puntuar los textos.}
@@ -196,23 +210,23 @@ Crear un manual de usuario.
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-6}    & \textbf{Alamacenar resultados}\\
+		\textbf{CU-6}    & \textbf{Almacenar resultados}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
 		\textbf{Requisitos asociados} & RF4.3 \\
 		\textbf{Descripción}          & La aplicación debe almacenar las puntuaciones junto con el texto analizado, fecha en la que se escribió y un identificador. \\
-		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
+		\textbf{Precondición}         & Se han procesado las reseñas \\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
+			\item Se procesan los elementos
+			\item El resultado se guarda
 		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
+		\textbf{Postcondición}        & La base de datos tiene que estar disponible.\\
+		\textbf{Excepciones}          & La base de datos no está disponible \\
+		\textbf{Importancia}          & Alta \\
 		\bottomrule
 	\end{tabularx}
 	\caption{CU-6 Almacenar resultados.}
@@ -233,11 +247,21 @@ Crear un manual de usuario.
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
+			\item Abrir la opción de búsqueda
+			\item Seleccionar búsqueda por usuario
+			\item Seleccionar el usuario a buscar
+			\item Pulsar en buscar
 		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
+		\textbf{Postcondición}        & 
+		\begin{enumerate}
+			\item El producto existe
+			\item El producto tiene reseñas 
+		\end{enumerate} \\
+		\textbf{Excepciones}          & 
+		\begin{enumerate}
+			\item El producto no existe
+			\item El producto no tiene ninguna reseña 
+		\end{enumerate} \\
 		\textbf{Importancia}          & Alta o Media o Baja... \\
 		\bottomrule
 	\end{tabularx}
@@ -254,17 +278,23 @@ Crear un manual de usuario.
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
 		\textbf{Requisitos asociados} & RF5.2 \\
 		\textbf{Descripción}          & Se debe poder buscar un usuario y mostrar la información de las reseñas que ha creado. \\
-		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
+		\textbf{Precondición}         & Usuario logado \\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
+			\item Abrir la opción de búsqueda
+			\item Seleccionar búsqueda por usuario
+			\item Seleccionar el usuario a buscar
+			\item Pulsar en buscar
 		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
+		\textbf{Postcondición}        & El usuario debe existir \\
+		\textbf{Excepciones}          & 
+		\begin{enumerate}
+			\item El usuario no existe
+			\item El usuario no tiene ninguna reseña 
+		\end{enumerate}\\
+		\textbf{Importancia}          & Media \\
 		\bottomrule
 	\end{tabularx}
 	\caption{CU-8 Buscar nombre de usuario.}
@@ -280,17 +310,19 @@ Crear un manual de usuario.
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
 		\textbf{Requisitos asociados} & RF5.3 \\
 		\textbf{Descripción}          & El usuario debe poder buscar una palabra para ver los resultados del análisis de los textos en los que está esa palabra. \\
-		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
+		\textbf{Precondición}         & Usuario logado \\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
+			\item Abrir la opción de búsqueda
+			\item Seleccionar búsqueda por texto
+			\item Introducir el texto a buscar
+			\item Pulsar en buscar
 		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
+		\textbf{Postcondición}        & El texto debe existir en las reseñas procesadas.\\
+		\textbf{Excepciones}          & El texto no existe \\
+		\textbf{Importancia}          & Baja \\
 		\bottomrule
 	\end{tabularx}
 	\caption{CU-9 Buscar por texto.}
@@ -300,53 +332,54 @@ Crear un manual de usuario.
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-8}    & \textbf{Matriz de confusión}\\
+		\textbf{CU-10}    & \textbf{Matriz de confusión}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
-		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
+		\textbf{Requisitos asociados} & RF6 \\
+		\textbf{Descripción}          & Debe mostrar la matriz de confusión para los datos seleccionados, comparando los resultados obtenidos y la calificación dada por el usuario.  \\
+		\textbf{Precondición}         & Analisis de sentimiento ejecutado \\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
+			\item Seleccionar la opción de visualización
+			\item Realizar la búsqueda
+			\item Seleccionar mostrar matriz de confusión
 		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
+		\textbf{Postcondición}        &  \\
+		\textbf{Excepciones}          & Datos no generados \\
+		\textbf{Importancia}          & Media \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
+	\caption{CU-10 Matriz de confusión.}
 \end{table}
 
-% Caso de Uso 11 -> Consultar Experimentos.
+% Caso de Uso 11 -> Configurar idioma de la aplicación.
 \begin{table}[p]
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CU-1}    & \textbf{Ejemplo de caso de uso}\\
+		\textbf{CU-11}    & \textbf{Configurar idioma de la aplicación.}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
-		\textbf{Requisitos asociados} & RF-xx, RF-xx \\
-		\textbf{Descripción}          & La descripción del CU \\
-		\textbf{Precondición}         & Precondiciones (podría haber más de una) \\
+		\textbf{Requisitos asociados} & RF7 \\
+		\textbf{Descripción}          & El usuario debe poder cambiar el idioma de la aplicación.  \\
+		\textbf{Precondición}         & El usuario debe de estar logado \\
 		\textbf{Acciones}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item Pasos del CU
-			\item Pasos del CU (añadir tantos como sean necesarios)
+			\item Seleccionar la opción configuración
+			\item Elegir el idioma deseado, según los idiomas disponibles
 		\end{enumerate}\\
-		\textbf{Postcondición}        & Postcondiciones (podría haber más de una) \\
-		\textbf{Excepciones}          & Excepciones \\
-		\textbf{Importancia}          & Alta o Media o Baja... \\
+		\textbf{Postcondición}        &  \\
+		\textbf{Excepciones}          &  \\
+		\textbf{Importancia}          & Media \\
 		\bottomrule
 	\end{tabularx}
-	\caption{CU-1 Nombre del caso de uso.}
+	\caption{CU-11 Configurar el idioma de la aplicación.}
 \end{table}
 
 

@@ -5,3 +5,41 @@ Debe incluir desde la exposición del ciclo de vida utilizado, hasta los detalle
 Se busca que no sea una mera operación de copiar y pegar diagramas y extractos del código fuente, sino que realmente se justifiquen los caminos de solución que se han tomado, especialmente aquellos que no sean triviales.
 Puede ser el lugar más adecuado para documentar los aspectos más interesantes del diseño y de la implementación, con un mayor hincapié en aspectos tales como el tipo de arquitectura elegido, los índices de las tablas de la base de datos, normalización y desnormalización, distribución en ficheros3, reglas de negocio dentro de las bases de datos (EDVHV GH GDWRV DFWLYDV), aspectos de desarrollo relacionados con el WWW...
 Este apartado, debe convertirse en el resumen de la experiencia práctica del proyecto, y por sí mismo justifica que la memoria se convierta en un documento útil, fuente de referencia para los autores, los tutores y futuros alumnos.
+
+\section{Metodologías}
+
+\subsection{Metodología Agile}
+
+\subsection{DevOps}
+DevOps es una cultura, filosofía y conjunto de prácticas que se centran en la colaboración estrecha y la integración continua entre los equipos de desarrollo (Dev) y operaciones (Ops) en el ciclo de vida del desarrollo de software. El objetivo principal de DevOps es acelerar la entrega de software, mejorar la calidad y la confiabilidad, y permitir una respuesta rápida a los cambios y a las necesidades de los usuarios. DevOps promueve la automatización, la comunicación eficaz y la colaboración entre los equipos, lo que permite un flujo de trabajo más eficiente en todo el proceso de desarrollo y entrega de software.
+Algunos de los principios y prácticas clave de DevOps incluyen:
+Automatización: La automatización de tareas repetitivas y procesos manuales acelera la entrega y minimiza los errores. Esto incluye la automatización de pruebas, implementaciones, aprovisionamiento de infraestructura y monitoreo.
+Integración Continua (CI): Los cambios de código se integran regularmente en un repositorio compartido, se prueban automáticamente y se implementan en un entorno de desarrollo o de prueba. Esto asegura que el código esté siempre en un estado funcional.
+Entrega Continua (CD): La entrega continua extiende la integración continua al permitir la entrega automática de cambios a entornos de prueba o producción después de la integración y las pruebas exitosas.
+Monitoreo y Retroalimentación Continua: El monitoreo constante de aplicaciones y sistemas permite detectar problemas en tiempo real y proporciona información valiosa para mejorar la calidad y la eficiencia.
+Colaboración y Comunicación: La comunicación efectiva entre los equipos de desarrollo y operaciones es esencial. La colaboración se fomenta mediante reuniones regulares, herramientas compartidas y un entendimiento mutuo de las metas y responsabilidades.
+Infraestructura como Código (IaC): La infraestructura se administra y despliega como código, lo que facilita la creación y el mantenimiento de entornos de desarrollo y producción consistentes y escalables.
+Cultura de Mejora Continua: DevOps promueve una cultura en la que se aprende de los errores y se busca constantemente la mejora en todos los aspectos del desarrollo y la operación de software.
+Seguridad: La seguridad es un aspecto crítico de DevOps. Los principios de seguridad deben estar integrados en todas las etapas del ciclo de vida del desarrollo de software.
+La implementación exitosa de DevOps puede llevar a una mayor velocidad de entrega, una mayor calidad del software, una mayor eficiencia operativa y una mayor capacidad de respuesta a los cambios del mercado y las necesidades del cliente. Esta metodología se ha vuelto esencial en el desarrollo de software moderno, especialmente en entornos ágiles y de entrega continua.
+
+
+\section{Desarrollo del proyecto}
+
+El principal escollo que me he encontrado para la realización de este proyecto es la elección del modelo
+LLM adecuado. Por un lado tenemos el servicio de OpenAI (referencia). Este servicio es quizá el más estable y que 
+mejores resultados obtiene. Sin embargo este servicio es de pago (aunque propocionan un saldo gratuito al crear una cuenta).
+Además tenemos el tiempo de proceso para cada reseña (unos 3 segundos).
+Existe otros LLMs disponibles como por ejemplo Llama2 (Meta)(referencia), Bard(Google)(referencia).
+Con el modelo de Meta existe la posibilidad de ejecutarlo en un entorno local mediante diferentes librerías (LlamaCpp).
+Otros modelos que se pueden ejecutar en local son GPT4All (referencia).
+Una herramienta muy útil para elegir el modelo adecuado es LM Studio (referencia), permite descargar y probar distintos modelos,
+además ofrece una API compatible con OpenAI. 
+Para la ejecución en local es muy recomendable el uso de una tarjeta gráfica para optimizar la ejecución del modelo.
+
+
+
+Al planificar el segundo sprint incluí una tarea para crear un prototipo en collab, 
+sin embargo esta tarea tenía unas dependencias que hacían imposible su realización.
+Lo primero que tenía que hacer era seleccionar un dataset para poder realizar las pruebas.
+Y además necesitaba seleccionar el modelo LLM idoneo para la realización de este protoripo.

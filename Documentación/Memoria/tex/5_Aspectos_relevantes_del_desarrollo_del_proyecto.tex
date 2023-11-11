@@ -43,3 +43,79 @@ Al planificar el segundo sprint incluí una tarea para crear un prototipo en col
 sin embargo esta tarea tenía unas dependencias que hacían imposible su realización.
 Lo primero que tenía que hacer era seleccionar un dataset para poder realizar las pruebas.
 Y además necesitaba seleccionar el modelo LLM idoneo para la realización de este protoripo.
+
+\section{Elección del conjunto de datos}
+
+Elegir un conjunto de datos adecuado es crucial para el análisis de sentimientos.
+En este proyecto nos insteresa realizar un análisis de sentimientos en reseñas de 
+Amazon por lo que se ha buscado con esa premisa. Esto reduce la búsqueda pero aun así hay que encontrar 
+un conjunto de datos que tenga una serie de características que lo haga ideal para su uso en el proyecto.
+Por un lado, como veremos más adelante, el análisis de sentimiento tiene un coste, ya sea económico (OpenAI), o en tiempo (LlamaCpp).
+Esto implica que tenemos que elegir un dataset de un tamaño adecuado.
+Por un lado, tiene que ser suficientemente grande para que los resultados sean significativos y por otro lado lo suficientemente
+ pequeño como para que el coste sea adecuado al proyecto.
+El conjunto de datos debe contener información suficiente como para poder realizar comparaciones bajo distintas circustancias de estudio, por usuario, por producto, etc.
+También sería interesante que el conjunto de datos sea represativo de la población, para ello lo ideal sería obtener el conjunto de datos de diferentes orígenes.
+En nuestro caso el origen es siempre Amazon pero a la hora de seleccionar los datos intentaremos que estos sean lo más variados posibles.
+Además hay tener en cuenta la disponibilidad, en algunos casos Amazon ha decidido anular la licencia de uso con lo que esos conjuntos de datos no se podrían usar.
+En base a estas premisas se han estudiado datasets de diferentes orígenes:
+
+\subsection{Universidad de California~\cite{jin018}}
+La Universidad de California proporciona un conjunto de datos con reseñas de Amazon. Los más llamativo de este conjunto de datos es su tamaño (230 millones de reseñas) y la cantidad de metadatos incluidos.
+También propocionan ejemplos de uso y de código así como un cuaderno en \href{https://colab.research.google.com/drive/1Zv6MARGQcrBbLHyjPVVMZVnRWsRnVMpV}{Colab}.
+\par
+\href{https://cseweb.ucsd.edu/~jmcauley/datasets/amazon_v2/}{Amazon Reviews Dataset}
+
+\subsection{Kaggle}
+Kaggle es una plataforma en línea que ofrece una variedad de recursos relacionados con la ciencia de datos y el aprendizaje automático. Fue fundada en 2010 y adquirida por Google en 2017. Kaggle proporciona un entorno donde los científicos de datos, los investigadores y los entusiastas del aprendizaje automático pueden colaborar, compartir conocimientos, participar en competiciones de ciencia de datos y acceder a conjuntos de datos.
+Uno de los conjuntos de datos evaluados han sido:
+\begin{itemize}
+   \item \href{https://www.kaggle.com/datasets/bittlingmayer/amazonreviews}{Amazon Reviews for Sentiment Analysis}
+   \par Este conjuntos de datos tiene un tamaño adecuado para nuestro proposito pero le faltan metadatos y no nos permitiría desarrollar toda la funcionalidad esperada en la aplicación.
+   \item \href{https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews}{Amazon Reviews}
+\end{itemize}
+
+
+
+\subsection{Hugging Face}
+Hugging Face es una empresa y plataforma en línea que se centra en la creación y distribución de modelos de lenguaje de inteligencia artificial, así como en herramientas y recursos relacionados con el procesamiento del lenguaje natural (NLP). La compañía es conocida por su biblioteca de modelos preentrenados, así como por su contribución a la comunidad de aprendizaje automático y NLP.
+Existen muchos conjuntos de datos que podemos usar para nuestro proyecto, por ejemplo:
+\begin{itemize}
+   \item \href{https://huggingface.co/datasets/mesmalif/amazon-shoe-reviews}{Amazon Shoe Reviews}
+   \item \href{https://huggingface.co/datasets/LoganKells/amazon_product_reviews_video_games}{Amazon Video Games Review}
+   \item \href{https://huggingface.co/datasets/hugginglearners/amazon-reviews-sentiment-analysis}{Amazon Reviews for Sentiment Analysis}   
+\end{itemize}
+
+
+
+\section{Elección del modelo LLM}
+
+Para la elección del modelo a usar en este trabajo, primero examinamos el modelo más sencillo de utilizar.
+Este es el modelo de OpenAI~\cite{chatgpt1}. En concreto el modelo ChatGpt 3.5 Turbo, este modelo es muy estable, rápido y económico.
+El problema de usar este modelo, a pesar de ser económico, es su coste.
+Para evitar ese problema y poder utilizar un modelo sin limitaciones, he buscado otras alternativas.
+Entre estas se encuentran:
+\begin{itemize}
+   \item \textbf{Microsoft Azure Language Models} Microsoft Azure ofrece varios servicios de procesamiento del lenguaje natural, incluidos modelos de lenguaje como parte de su oferta de servicios cognitivos.
+   \item \textbf{Google Cloud Natural Language API} Google Cloud proporciona una API de procesamiento del lenguaje natural que incluye funciones avanzadas como análisis de sentimientos, extracción de entidades y más.
+   \item \textbf{Hugging Face Transformers} Hugging Face es una plataforma que ofrece acceso a una amplia variedad de modelos de lenguaje preentrenados. Los modelos GPT y otros están disponibles a través de su biblioteca Transformers.
+   \item \textbf{Facebook AI} Facebook AI Research (FAIR) trabaja en el desarrollo de modelos de lenguaje y herramientas relacionadas con la inteligencia artificial. Aunque no tienen un modelo específico comparable a GPT, han contribuido significativamente al campo.
+   \item \textbf{Rasa} Rasa es una plataforma de código abierto para construir asistentes conversacionales. Permite a los desarrolladores crear chatbots personalizados y asistentes virtuales.
+   \item \textbf{Chatbot Frameworks} Hay varios marcos y bibliotecas de código abierto que permiten a los desarrolladores construir sus propios chatbots, como ChatterBot, Botpress, y Microsoft Bot Framework.
+   \item \textbf{Dialogflow} Dialogflow, propiedad de Google, es una plataforma de desarrollo de chatbots y asistentes virtuales que utiliza tecnologías de procesamiento del lenguaje natural.
+\end{itemize}
+
+Investigando sobre las diferentes alternativas nos hemos encontrado con dificultades a la hora de elegir la idonea.
+Por un lado, están los modelos que también son de pago como son Microsoft Azure Language Models y Google Cloud Natural Language API. Ambas soluciones ofrecen periodos de prueba limitados.
+Por otro lado están las plataformas para asistentes conversacionales como Dialogflow, Rasa, etc que no ofrecen un API para poder usarlas.
+Por último nos queda Facebook API, en este caso su modelo \href{https://github.com/facebookresearch/llama}{Llama2} está disponible para todo tipo de usos.
+Existen una colección de modelos que van desde 7b a 70b (7b significa que se han usado 7.000 millones de tokens para su entrenamiento y 70b 70.000 millones)
+Aún así el modelo más pequeño necesita unos recursos muy elevados para su funcionamiento. Aquí es dónde entra en juego la \href{https://es.wikipedia.org/wiki/Cuantificaci%C3%B3n_digital}{cuantificación}.
+Aplicando la cuantificación, los modelos ocupan menos espacio y son más rápidos pero también más imprecisos.
+En la plataforma Hugging Face existen multitud de modelos de diferentes tamaños y tipos de cuantificación.
+En este punto nos quedaba elegir un modelo que se pueda ejecutar de una manera razonable en equipos personales pero manteniendo unos niveles razonables de precisión.
+Así entra en juego el último de los elementos para poder elegir un modelo y es un método sencillo para poder evaluar los modelos.
+Para ello he usado una aplicación llamada \href{https://lmstudio.ai/}{LM Studio}. Es una aplicación gratuita que permite descargar modelos de Hugging Face y probarlos mediante un chat o mediante una API.
+Además permite aprovechar una tarjeta gráfica en el caso de tenerla para poder usar el modelo aprovechando sus capacidades de computación en paralelo.
+
+La elección de un modelo de Lenguaje de Modelado de Máquinas (LLM) depende de varios factores, como la tarea específica que estás abordando, los recursos computacionales disponibles y tus requisitos de rendimiento. Aquí hay algunos pasos que puedes seguir para elegir un modelo LLM:

@@ -3,13 +3,37 @@
 \section{Introducción}
 
 \section{Diseño de datos}
+Para almacenar la información necesaria para la aplicación he diseñado una base de datos 
+que sirva para facilitar el procesado de las reseñas y su posterior análisis 
+por parte de los usuarios de la aplicación:
+
+\imagen{Arquitectura Base de datos}{Arquitectura de la base de datos}
+
+Como vemos almacenamos la información relativa a los conjuntos de datos en la tabla "datasets".
+En esta tabla almacenamos la información necesaria para cargarlo como es el tipo (type) y el payload.
+Según el tipo de conjunto de datos el método para cargarlo será diferente.
+Una vez iniciado el proceso de carga, la información relativa a las reseñas se almacenan en la tabla "Review", "Products" y "ReviewUsers".
+
+Por último, se almacena en la tabla "sentiments" la información relativa al análisis de sentimiento.
+Se incluye la información obtenida del modelo así como el tiempo que ha tardado y el número de tokens procesados.
+Este último campo (tokens) se puede utilizar para calcular el coste en el caso de OpenAI.
+También se indica si la respuesta del modelo se considera errónea por tener un formato incorrecto. 
+En este caso la respuesta del modelo se almacena en el campo "source".
 
 \section{Diseño procedimental}
 
 \section{Diseño arquitectónico}
 
-\begin{figure}
-    \includegraphics[width=\linewidth]{img/Arquitectura de la aplicación.png}
-    \caption{Arquitectura de la aplicación}
-    \label{fig:arq1}
-\end{figure}
+\subsection{Arquitectura de la aplicación}
+
+En el caso de la arquitectura de la aplicación, vemos que está centrada en la base de datos.
+Desde el módulo de administración se pueden gestionar los usuarios y las reseñas.
+Desde el módulo de servicios se cargan las reseñas y se gestionan los diferentes procesos de análisis.
+A través de un servicio web se expone al usuario los diferentes informes de resultados.
+
+\imagen{Arquitectura de la aplicación}{Arquitectura de la aplicación}
+
+\subsection{Interfaz de usuario}
+\imagen{login}{Pantalla de login.}
+\imagen{Inicio}{Pantalla usuario gestor.}
+\imagen{administración}{Pantalla de administación.}

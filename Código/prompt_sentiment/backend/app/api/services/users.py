@@ -1,3 +1,6 @@
+'''
+Servicios para interactuar con los usuarios de base de datos
+'''
 from app import db
 from app.api.models.users import User
 
@@ -11,19 +14,19 @@ def get_user_by_id(user_id):
     '''
     Devuelve el usuario identificado con user_id
     '''
-    return User.query.filter_by(id=user_id).first()
+    return User.query.filter_by(id = user_id).first()
 
 def get_user_by_email(email):
     '''
     Devuelve un usuario que coincida con el correo especificado
     '''
-    return User.query.filter_by(email=email).first()
+    return User.query.filter_by(email = email).first()
 
-def add_user(username, email, password, rol):
+def add_user(name, email, password, rol):
     '''
     Agrega un usuario a la base de datos
     '''
-    user = User(name=username, email=email, password=password, rol = rol)
+    user = User(name = name, email = email, password = password, rol = rol)
     db.session.add(user)
     db.session.commit()
     return user

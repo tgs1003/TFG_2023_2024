@@ -1,3 +1,7 @@
+'''
+Modelo de base de datos para la entidad User
+ @author: Teodoro Ricardo García Sánchez
+'''
 from flask import current_app
 from sqlalchemy.sql import func
 from app import db, bcrypt
@@ -5,7 +9,6 @@ from app import db, bcrypt
 class User(db.Model):
     """
     Modelo de la entidad "User" para la gestión de usuarios de la aplicación.
-    @author: Teodoro Ricardo García Sánchez
     """
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), unique=True)

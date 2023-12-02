@@ -1,0 +1,1 @@
+Backend de la aplicación realizada con Flask-Restx y SQLAlchemy

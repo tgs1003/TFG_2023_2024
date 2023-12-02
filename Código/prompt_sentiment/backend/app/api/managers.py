@@ -38,9 +38,11 @@ class TokenManager:
     def decode_token(self, token):
             payload = jwt.decode(token, self.secret, algorithms={self.algorithm})
             return payload["sub"]
-
-class RolManager:
+    
     def check_token(self, request, namespace):
+        '''
+        Comprueba si el token es válido y si el usuario está dado de alta en el sistema.
+        '''
         access_token = request.headers.get("Authorization")
         if access_token:
             try:
@@ -56,6 +58,9 @@ class RolManager:
             namespace.abort(403,"Hace falta un token.") 
             
     def get_token_user(self, request, namespace):
+        '''
+        Devuelve el usuario que está logado en el sistema (según la información del token)
+        '''
         access_token = request.headers.get("Authorization")
         if access_token:
             try:
@@ -71,8 +76,15 @@ class RolManager:
         else:
             namespace.abort(403,"Hace falta un token.") 
 
+class RolManager:
+    '''
+    Clase que maneja los roles de los usuarios
+    '''
     def user_has_rol(self, request, rol, namespace):
-        user = self.get_token_user(request=request,namespace=namespace)
+        '''
+        Devuelve si el usuario del token tiene un rol determinado.
+        '''
+        user = token_manager.get_token_user(request=request,namespace=namespace)
         return user.rol == rol
 
 rol_manager = RolManager()

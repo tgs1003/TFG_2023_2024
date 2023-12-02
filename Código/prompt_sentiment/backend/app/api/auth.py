@@ -1,6 +1,7 @@
 import jwt
 from flask import request
 from flask_restx import Namespace, Resource, fields
+from managers import token_manager
 from app import bcrypt
 from app.api.models.users import User
 from app.api.services.users import get_user_by_email, get_user_by_id, add_user
@@ -29,31 +30,41 @@ tokens = auth_namespace.inherit(
     "Access and refresh_tokens", refresh, {"access_token": fields.String(required=True)}
 )
 
+'''
+Cabecera para pedir el token de autorización
+'''
 parser = auth_namespace.parser()
 parser.add_argument("Authorization", location="headers")
 
 class Register(Resource):
+    '''
+    Clase para el registro de un usuario
+    '''
     @auth_namespace.marshal_with(user)
     @auth_namespace.expect(full_user, validate=True)
-    @auth_namespace.response(201, "Success")
-    @auth_namespace.response(400, "Sorry. That email already exists.")
+    @auth_namespace.response(201, "Petición procesada correctamente.")
+    @auth_namespace.response(400, "El correo ya existe.")
     def post(self):
         post_data = request.get_json()
-        username = post_data.get("username")
+        name = post_data.get("name")
         email = post_data.get("email")
         password = post_data.get("password")
         user = get_user_by_email(email)
         if user:
-            auth_namespace.abort(400, "Sorry. That email already exists.")
-        user = add_user(username, email, password)
+            auth_namespace.abort(400, "El correo ya existe.")
+        user = add_user(name, email, password)
         return user, 201
 
-
 class Login(Resource):
+    '''
+    Clase para autenticarse en la aplicación
+    Devuelve 2 tokens uno de acceso y otro de refresco.
+    Cuando caduque el de acceso se puede pedir otro usando el de refresco.
+    '''
     @auth_namespace.marshal_with(tokens)
     @auth_namespace.expect(login, validate=True)
-    @auth_namespace.response(200, "Success")
-    @auth_namespace.response(404, "User does not exist")
+    @auth_namespace.response(200, "Petición procesada correctamente.")
+    @auth_namespace.response(404, "El usuario no existe.")
     def post(self):
         post_data = request.get_json()
         email = post_data.get("email")
@@ -62,9 +73,10 @@ class Login(Resource):
         
         user = get_user_by_email(email)
         if not user or not bcrypt.check_password_hash(user.password, password):
-            auth_namespace.abort(404, "User does not exist")
-        access_token = user.encode_token(user.id, "access")
-        refresh_token = user.encode_token(user.id, "refresh")
+            auth_namespace.abort(404, "El usuario no existe.")
+
+        access_token = token_manager.encode_token(user.id, "access")
+        refresh_token = token_manager.encode_token(user.id, "refresh")
 
         response_object = {
             "access_token": access_token,
@@ -72,24 +84,26 @@ class Login(Resource):
         }
         return response_object, 200
 
-
 class Refresh(Resource):
+    '''
+    Devuelve otro token usando el token de refresco.
+    '''
     @auth_namespace.marshal_with(tokens)
     @auth_namespace.expect(refresh, validate=True)
-    @auth_namespace.response(200, "Success")
-    @auth_namespace.response(401, "Invalid token")
+    @auth_namespace.response(200, "Petición procesada correctamente.")
+    @auth_namespace.response(401, "Token no válido.")
     def post(self):
         post_data = request.get_json()
         refresh_token = post_data.get("refresh_token")
         response_object = {}
 
         try:
-            resp = User.decode_token(refresh_token)
+            resp = token_manager.decode_token(refresh_token)
             user = get_user_by_id(resp)
             if not user:
-                auth_namespace.abort(401, "Invalid token")
-            access_token = user.encode_token(user.id, "access")
-            refresh_token = user.encode_token(user.id, "refresh")
+                auth_namespace.abort(401, "Token no válido.")
+            access_token = token_manager.encode_token(user.id, "access")
+            refresh_token = token_manager.encode_token(user.id, "refresh")
 
             response_object = {
                 "access_token": access_token,
@@ -97,34 +111,26 @@ class Refresh(Resource):
             }
             return response_object, 200
         except jwt.ExpiredSignatureError:
-            auth_namespace.abort(401, "Signature expired. Please log in again.")
-            return "Signature expired. Please log in again."
+            auth_namespace.abort(401, "Firma caducada, vuelva a autenticarse.")
+            return "Firma caducada, vuelva a autenticarse."
         except jwt.InvalidTokenError:
-            auth_namespace.abort(401, "Invalid token. Please log in again.")
-
+            auth_namespace.abort(401, "Token no válido, vuelva a autenticarse.")
 
 class Status(Resource):
+    '''
+    Comprueba que el token es correcto y devuelve el usuario logado
+    Se puede usar para comprobar que todo funciona correctamente.
+    '''
     @auth_namespace.marshal_with(user)
-    @auth_namespace.response(200, "Success")
-    @auth_namespace.response(401, "Invalid token")
+    @auth_namespace.response(200, "Petición procesada correctamente.")
+    @auth_namespace.response(401, "Token no válido.")
     @auth_namespace.expect(parser)
     def get(self):
-        access_token = request.headers.get("Authorization")
-        if access_token:
-            try:
-                resp = User.decode_token(access_token)
-                user = get_user_by_id(resp)
-                if not user:
-                    auth_namespace.abort(401, "Invalid token")
-                return user, 200
-            except jwt.ExpiredSignatureError:
-                auth_namespace.abort(401, "Signature expired. Please log in again.")
-                return "Signature expired. Please log in again."
-            except jwt.InvalidTokenError:
-                auth_namespace.abort(401, "Invalid token. Please log in again.")
-        else:
-            auth_namespace.abort(403, "Token required")
+        return token_manager.get_token_user(request=request, namespace=auth_namespace)
 
+'''
+Aquí se registran las urls del servicio
+'''        
 auth_namespace.add_resource(Register, "/register")
 auth_namespace.add_resource(Login, "/login")
 auth_namespace.add_resource(Refresh, "/refresh")

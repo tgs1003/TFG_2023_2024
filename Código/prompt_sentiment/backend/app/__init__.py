@@ -1,13 +1,14 @@
 import os
 from flask import Flask
-from flask_sqlalchemy import SqlAlchemy
-from flask_bcrypt import Bcryt
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 
 # Inicializamos SQLAlchemy
-db = SqlAlchemy()
+db = SQLAlchemy()
 cors = CORS()
-bcrypt  = Bcryt()
+bcrypt  = Bcrypt()
+
 
 def create_app():
     # Creamos una instancia de Flask en el módulo actual
@@ -17,8 +18,11 @@ def create_app():
     app.config.from_object(app_settings)
     # Inicializamos la base de datos
     db.init_app(app)
-
     cors.init_app(app, resources={r"*": {"origins": "*"}})
     bcrypt.init_app(app)
 
+    from app.api import api
+    api.init_app(app)
+
     return app
+

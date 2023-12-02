@@ -8,3 +8,8 @@ class BaseConfig:
 
 class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/psdb_dev")
+
+class TestingConfig(BaseConfig):
+    SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/psdb_test")
+    ACCESS_TOKEN_EXPIRATION = 3
+    REFRESH_TOKEN_EXPIRATION = 3

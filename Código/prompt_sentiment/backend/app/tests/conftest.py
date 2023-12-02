@@ -6,7 +6,7 @@ from app.api.models.users import User
 @pytest.fixture(scope="module")
 def test_app():
     app = create_app()
-    app.config.from_object("project.config.TestingConfig")
+    app.config.from_object("app.config.TestingConfig")
     with app.app_context():
         yield app
 
@@ -14,7 +14,7 @@ def test_app():
 @pytest.fixture(scope="module")
 def test_database():
     db.create_all()
-    yield db  
+    yield db
     db.session.remove()
     db.drop_all()
 

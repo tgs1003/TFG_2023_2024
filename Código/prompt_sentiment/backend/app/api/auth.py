@@ -1,9 +1,8 @@
 import jwt
 from flask import request
 from flask_restx import Namespace, Resource, fields
-from managers import token_manager
 from app import bcrypt
-from app.api.models.users import User
+from app.api.services.tokens import get_token_user, encode_token, decode_token
 from app.api.services.users import get_user_by_email, get_user_by_id, add_user
 
 auth_namespace = Namespace("auth")
@@ -75,8 +74,8 @@ class Login(Resource):
         if not user or not bcrypt.check_password_hash(user.password, password):
             auth_namespace.abort(404, "El usuario no existe.")
 
-        access_token = token_manager.encode_token(user.id, "access")
-        refresh_token = token_manager.encode_token(user.id, "refresh")
+        access_token = encode_token(user.id, "access")
+        refresh_token = encode_token(user.id, "refresh")
 
         response_object = {
             "access_token": access_token,
@@ -98,12 +97,12 @@ class Refresh(Resource):
         response_object = {}
 
         try:
-            resp = token_manager.decode_token(refresh_token)
+            resp = decode_token(refresh_token)
             user = get_user_by_id(resp)
             if not user:
                 auth_namespace.abort(401, "Token no válido.")
-            access_token = token_manager.encode_token(user.id, "access")
-            refresh_token = token_manager.encode_token(user.id, "refresh")
+            access_token = encode_token(user.id, "access")
+            refresh_token = encode_token(user.id, "refresh")
 
             response_object = {
                 "access_token": access_token,
@@ -126,7 +125,7 @@ class Status(Resource):
     @auth_namespace.response(401, "Token no válido.")
     @auth_namespace.expect(parser)
     def get(self):
-        return token_manager.get_token_user(request=request, namespace=auth_namespace)
+        return get_token_user(request=request, namespace=auth_namespace)
 
 '''
 Aquí se registran las urls del servicio

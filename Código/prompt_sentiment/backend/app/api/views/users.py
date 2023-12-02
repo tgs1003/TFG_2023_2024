@@ -1,7 +1,6 @@
 from flask import request
 import logging
 from flask_restx import Resource, fields, Namespace
-from app.api.managers import rol_manager
 from app.api.services.users import (
     get_all_users,
     get_user_by_email,

@@ -1,0 +1,171 @@
+2023-12-02 20:31:37,952 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-12-02 20:31:37,954 [INFO] [33mPress CTRL+C to quit[0m
+2023-12-02 21:25:04,373 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-12-02 21:25:04,374 [INFO] [33mPress CTRL+C to quit[0m
+2023-12-02 21:25:24,831 [INFO] 127.0.0.1 - - [02/Dec/2023 21:25:24] "GET /swagger HTTP/1.1" 200 -
+2023-12-02 21:25:25,099 [INFO] 127.0.0.1 - - [02/Dec/2023 21:25:25] "GET /swaggerui/droid-sans.css HTTP/1.1" 200 -
+2023-12-02 21:25:25,144 [INFO] 127.0.0.1 - - [02/Dec/2023 21:25:25] "GET /swaggerui/swagger-ui-bundle.js HTTP/1.1" 200 -
+2023-12-02 21:25:25,144 [INFO] 127.0.0.1 - - [02/Dec/2023 21:25:25] "GET /swaggerui/swagger-ui.css HTTP/1.1" 200 -
+2023-12-02 21:25:25,146 [INFO] 127.0.0.1 - - [02/Dec/2023 21:25:25] "GET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1" 200 -
+2023-12-02 21:25:25,352 [INFO] 127.0.0.1 - - [02/Dec/2023 21:25:25] "GET /swagger.json HTTP/1.1" 200 -
+2023-12-02 21:25:25,658 [INFO] 127.0.0.1 - - [02/Dec/2023 21:25:25] "GET /swaggerui/favicon-32x32.png HTTP/1.1" 200 -
+2023-12-02 21:25:31,361 [INFO] 127.0.0.1 - - [02/Dec/2023 21:25:31] "GET /ping HTTP/1.1" 200 -
+2023-12-02 21:25:44,317 [ERROR] Exception on /users [GET]
+Traceback (most recent call last):
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\engine\base.py", line 3288, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\base.py", line 452, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\base.py", line 1267, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\base.py", line 716, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\impl.py", line 169, in _do_get
+    with util.safe_reraise():
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\impl.py", line 167, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\base.py", line 393, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\base.py", line 678, in __init__
+    self.__connect()
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\base.py", line 902, in __connect
+    with util.safe_reraise():
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\base.py", line 898, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\engine\create.py", line 637, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\engine\default.py", line 615, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\flask_restx\api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\flask\views.py", line 109, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\flask_restx\resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\flask_restx\marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\Documents\GitHub\TFG_2023_2024\Código\prompt_sentiment\backend\app\api\views\users.py", line 44, in get
+    return get_all_users(), 200
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\Documents\GitHub\TFG_2023_2024\Código\prompt_sentiment\backend\app\api\services\users.py", line 11, in get_all_users
+    return User.query.all()
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\orm\query.py", line 2688, in all
+    return self._iter().all()  # type: ignore
+           ^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\orm\query.py", line 2842, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\orm\session.py", line 2262, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\orm\session.py", line 2134, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\orm\session.py", line 2001, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\orm\session.py", line 1126, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\engine\base.py", line 3264, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\engine\base.py", line 147, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\engine\base.py", line 2426, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\engine\base.py", line 145, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\engine\base.py", line 3288, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\base.py", line 452, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\base.py", line 1267, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\base.py", line 716, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\impl.py", line 169, in _do_get
+    with util.safe_reraise():
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\impl.py", line 167, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\base.py", line 393, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\base.py", line 678, in __init__
+    self.__connect()
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\base.py", line 902, in __connect
+    with util.safe_reraise():
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\pool\base.py", line 898, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\engine\create.py", line 637, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\sqlalchemy\engine\default.py", line 615, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tgs1003\anaconda3\Lib\site-packages\psycopg2\__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2023-12-02 21:25:44,352 [INFO] 127.0.0.1 - - [02/Dec/2023 21:25:44] "[35m[1mGET /users HTTP/1.1[0m" 500 -

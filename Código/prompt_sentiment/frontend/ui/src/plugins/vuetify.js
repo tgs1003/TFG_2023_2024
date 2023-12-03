@@ -1,26 +1,15 @@
-/**
- * plugins/vuetify.js
- *
- * Framework documentation: https://vuetifyjs.com`
- */
+// src/plugins/vuetify.js
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import Vue from 'vue'
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 
-// Styles
-import '@mdi/font/css/materialdesignicons.css'
-import 'vuetify/styles'
+Vue.use(Vuetify)
 
-// Composables
-import { createVuetify } from 'vuetify'
+const opts = {
+    icons:{
+        iconfont:'md'
+    }
+}
 
-// https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
-export default createVuetify({
-  theme: {
-    themes: {
-      light: {
-        colors: {
-          primary: '#1867C0',
-          secondary: '#5CBBF6',
-        },
-      },
-    },
-  },
-})
+export default new Vuetify(opts)

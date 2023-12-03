@@ -1,8 +1,16 @@
 '''
 Servicios para interactuar con los usuarios de base de datos
 '''
+import logging
 from app import db
 from app.api.models.users import User
+
+logging.basicConfig(level=logging.DEBUG,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler("debug.log"),
+        logging.StreamHandler()
+    ])
 
 def get_all_users():
     '''

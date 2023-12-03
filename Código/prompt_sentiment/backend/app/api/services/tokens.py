@@ -13,23 +13,30 @@ logging.basicConfig(level=logging.DEBUG,
     ])
 
 def encode_token(user_id, token_type):
-            if token_type == "access":
-                seconds = current_app.config.get("ACCESS_TOKEN_EXPIRATION")
-            else:
-                seconds = current_app.config.get("REFRESH_TOKEN_EXPIRATION")
+    '''
+    Cifra un token usando una clave secreta (SECRET_KEY)
+    '''
+    if token_type == "access":
+        seconds = current_app.config.get("ACCESS_TOKEN_EXPIRATION")
+    else:
+        seconds = current_app.config.get("REFRESH_TOKEN_EXPIRATION")
 
-            payload = {
-                "exp": datetime.datetime.utcnow() + datetime.timedelta(seconds=seconds),
-                "iat": datetime.datetime.utcnow(),
-                "sub": user_id,
-            }
-            return jwt.encode(
-                payload, current_app.config.get("SECRET_KEY"), algorithm="HS256"
-            )
+    #En el token se incluye la hora de creación, la de caducidad y el usuario para el que se emitido el token.
+    payload = {
+        "exp": datetime.datetime.utcnow() + datetime.timedelta(seconds=seconds),
+        "iat": datetime.datetime.utcnow(),
+        "sub": user_id,
+    }
+    return jwt.encode(
+        payload, current_app.config.get("SECRET_KEY"), algorithm="HS256"
+    )
 
 def decode_token(token):
-        payload = jwt.decode(token, current_app.config.get("SECRET_KEY"), algorithms={"HS256"})
-        return payload["sub"]
+    '''
+    Descifra un token usando una clave secreta (SECRET_KEY)
+    '''
+    payload = jwt.decode(token, current_app.config.get("SECRET_KEY"), algorithms={"HS256"})
+    return payload["sub"]
 
 def check_token(request, namespace):
     '''

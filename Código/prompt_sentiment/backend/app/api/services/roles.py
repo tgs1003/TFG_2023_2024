@@ -13,4 +13,5 @@ def user_has_rol(request, rol, namespace):
     Devuelve si el usuario del token tiene un rol determinado.
     '''
     user = get_token_user(request = request, namespace = namespace)
+    logging.debug(f"user_has_rol, request {request}, rol {rol}, namespace {namespace}")
     return user.rol == rol

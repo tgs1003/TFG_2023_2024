@@ -16,6 +16,10 @@ from app.api.models.users import User
 from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
 
+from dotenv import load_dotenv, find_dotenv
+_ = load_dotenv(find_dotenv(), override=True) # read local .env file
+
+
 app = create_app()
 cli = FlaskGroup(create_app=create_app)
 

@@ -55,8 +55,6 @@
             links: [
                 {icon: 'dashboard', text: 'Dashboard', route: '/'},
                 {icon: 'verified_user', text: 'Register', route: '/register'},
-                {icon: 'account_box', text: 'Administración', route: '/admin-home'},
-                {icon: 'account_box', text: 'Sentiment', route: '/sentiment'}
             ],
         }),
         computed: {

@@ -1,8 +1,8 @@
 import json
 import pytest
-from flask import current_app
 
-def prueba_registro_usuario(test_app, test_database, add_user):
+
+def prueba_registro_usuario(test_app):
     client = test_app.test_client()
     resp = client.post(
         "/auth/register",
@@ -83,7 +83,7 @@ def prueba_usuario_no_registrado(test_app, test_database):
     assert "El usuario no existe." in data["message"]
 
 
-def prueba_token_refresco_valido(test_app, test_database, add_user):
+def test_token_refresco_valido(test_app, test_database, add_user):
     add_user("test4", "test4@test.com", "test")
     client = test_app.test_client()
     # login de usario
@@ -107,9 +107,9 @@ def prueba_token_refresco_valido(test_app, test_database, add_user):
     assert data["refresh_token"]
 
 
-def prueba_token_caducado(test_app, test_database, add_user):
+def test_token_caducado(test_app, test_database, add_user):
     add_user("test5", "test5@test.com", "test")
-    current_app.config["REFRESH_TOKEN_EXPIRATION"] = -1
+    #current_app.config["REFRESH_TOKEN_EXPIRATION"] = -1
     client = test_app.test_client()
     # user login
     resp_login = client.post(
@@ -130,7 +130,7 @@ def prueba_token_caducado(test_app, test_database, add_user):
     assert "Token caducado. Vuelva a identificarse." in data["message"]
 
 
-def prueba_token_refresco_invalido(test_app, test_database):
+def test_token_refresco_invalido(test_app, test_database):
     client = test_app.test_client()
     resp = client.post(
         "/auth/refresh",
@@ -143,7 +143,7 @@ def prueba_token_refresco_invalido(test_app, test_database):
     assert "Token no válido." in data["message"]
 
 
-def prueba_estado_usuario(test_app, test_database, add_user):
+def test_estado_usuario(test_app, test_database, add_user):
     add_user("test6", "test6@test.com", "test")
     client = test_app.test_client()
     resp_login = client.post(
@@ -165,7 +165,7 @@ def prueba_estado_usuario(test_app, test_database, add_user):
     assert "password" not in data
 
 
-def prueba_estado_usuario_invalido(test_app, test_database):
+def test_estado_usuario_invalido(test_app, test_database):
     client = test_app.test_client()
     resp = client.get(
         "/auth/status",

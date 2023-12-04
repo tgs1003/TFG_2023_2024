@@ -8,3 +8,4 @@ flask_restx
 flask-bcrypt>1
 Werkzeug==2.3.3
 psycopg2-binary
+python-dotenv==1.0.0

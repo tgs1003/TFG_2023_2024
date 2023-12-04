@@ -24,4 +24,6 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 -----------------------------
-Only tested and fully functional on Linux
+
+Para la traducción del frontend usamos un plugin de Vue llamado vue-i18n:
+npm install vue-i18n@8

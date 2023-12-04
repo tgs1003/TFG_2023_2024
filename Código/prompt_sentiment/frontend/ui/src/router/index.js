@@ -6,6 +6,7 @@ import Register from "../views/Auth/Register";
 import Dashboard from "../views/Dashboard";
 import AdminHome from "../views/Admin/AdminHome";
 import store from '@/store'
+import api from api
 Vue.use(VueRouter)
 
 const routes = [
@@ -19,7 +20,8 @@ const routes = [
     name: 'AdminHome',
     component: AdminHome,
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      requiresAdmin: true
     }
   },
   {
@@ -64,7 +66,19 @@ router.beforeEach((to, from, next) => {
         params: { redirect: to.fullPath },
       })
     } else {
-      next()
+      if (to.matched.some(record => record.meta.requiresAdmin)) {    
+        user = api.get('/auth/status')
+        if (user.rol != 'Admin')
+        {
+          next({
+            path: '/home',
+            params: { redirect: to.fullPath },
+          })
+        }
+      }
+      else{
+        next()
+      }
     }
   } else {
     next()

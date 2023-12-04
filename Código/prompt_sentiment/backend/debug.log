@@ -172,3 +172,436 @@ connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection re
 2023-12-03 19:10:30,045 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
 2023-12-03 19:10:30,046 [INFO] [33mPress CTRL+C to quit[0m
+2023-12-04 21:00:12,532 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-12-04 21:00:12,536 [INFO] [33mPress CTRL+C to quit[0m
+2023-12-04 21:00:20,950 [INFO] 127.0.0.1 - - [04/Dec/2023 21:00:20] "[31m[1mGET /auth/status HTTP/1.1[0m" 401 -
+2023-12-04 21:00:31,315 [ERROR] Exception on /users [GET]
+Traceback (most recent call last):
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 515, in _resolve_name
+    rval = d[token]
+           ~^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/util/_collections.py", line 346, in __missing__
+    self[key] = val = self.creator(key)
+                      ^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 483, in _access_cls
+    return self.fallback[key]
+           ~~~~~~~~~~~~~^^^^^
+KeyError: 'ReviewUser'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/views.py", line 109, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/Documents/GitHub/TFG_2023_2024/Código/prompt_sentiment/backend/app/api/views/users.py", line 44, in get
+    return get_all_users(), 200
+           ^^^^^^^^^^^^^^^
+  File "/home/tgs1003/Documents/GitHub/TFG_2023_2024/Código/prompt_sentiment/backend/app/api/services/users.py", line 19, in get_all_users
+    return User.query.all()
+           ^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 274, in __init__
+    self._set_entities(entities)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 283, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 284, in <listcomp>
+    coercions.expect(
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/sql/coercions.py", line 406, in expect
+    insp._post_inspect
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 1252, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2707, in _post_inspect
+    self._check_configure()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2386, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4199, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4240, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2403, in _post_configure_properties
+    prop.init()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/interfaces.py", line 579, in init
+    self.do_init()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 1634, in do_init
+    self._setup_entity()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 1851, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 519, in _resolve_name
+    self._raise_for_name(name, err)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 500, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[Review(reviews)], expression 'ReviewUser' failed to locate a name ('ReviewUser'). If this is a class name, consider adding this relationship() to the <class 'app.api.models.reviews.Review'> class after both dependent classes have been defined.
+2023-12-04 21:00:31,341 [INFO] 127.0.0.1 - - [04/Dec/2023 21:00:31] "[35m[1mGET /users HTTP/1.1[0m" 500 -
+2023-12-04 21:02:58,127 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-12-04 21:02:58,128 [INFO] [33mPress CTRL+C to quit[0m
+2023-12-04 21:03:10,214 [ERROR] Exception on /users [GET]
+Traceback (most recent call last):
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 515, in _resolve_name
+    rval = d[token]
+           ~^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/util/_collections.py", line 346, in __missing__
+    self[key] = val = self.creator(key)
+                      ^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 483, in _access_cls
+    return self.fallback[key]
+           ~~~~~~~~~~~~~^^^^^
+KeyError: 'ReviewUser'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/views.py", line 109, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/Documents/GitHub/TFG_2023_2024/Código/prompt_sentiment/backend/app/api/views/users.py", line 44, in get
+    return get_all_users(), 200
+           ^^^^^^^^^^^^^^^
+  File "/home/tgs1003/Documents/GitHub/TFG_2023_2024/Código/prompt_sentiment/backend/app/api/services/users.py", line 19, in get_all_users
+    return User.query.all()
+           ^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 274, in __init__
+    self._set_entities(entities)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 283, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 284, in <listcomp>
+    coercions.expect(
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/sql/coercions.py", line 406, in expect
+    insp._post_inspect
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 1252, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2707, in _post_inspect
+    self._check_configure()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2386, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4199, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4240, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2403, in _post_configure_properties
+    prop.init()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/interfaces.py", line 579, in init
+    self.do_init()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 1634, in do_init
+    self._setup_entity()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 1851, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 519, in _resolve_name
+    self._raise_for_name(name, err)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 500, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[Review(reviews)], expression 'ReviewUser' failed to locate a name ('ReviewUser'). If this is a class name, consider adding this relationship() to the <class 'app.api.models.reviews.Review'> class after both dependent classes have been defined.
+2023-12-04 21:03:10,224 [INFO] 127.0.0.1 - - [04/Dec/2023 21:03:10] "[35m[1mGET /users HTTP/1.1[0m" 500 -
+2023-12-04 21:06:45,777 [ERROR] Exception on /users [GET]
+Traceback (most recent call last):
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/views.py", line 109, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/Documents/GitHub/TFG_2023_2024/Código/prompt_sentiment/backend/app/api/views/users.py", line 44, in get
+    return get_all_users(), 200
+           ^^^^^^^^^^^^^^^
+  File "/home/tgs1003/Documents/GitHub/TFG_2023_2024/Código/prompt_sentiment/backend/app/api/services/users.py", line 19, in get_all_users
+    return User.query.all()
+           ^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 274, in __init__
+    self._set_entities(entities)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 283, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 284, in <listcomp>
+    coercions.expect(
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/sql/coercions.py", line 406, in expect
+    insp._post_inspect
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 1252, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2707, in _post_inspect
+    self._check_configure()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2386, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4199, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4236, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Review(reviews)]'. Original exception was: When initializing mapper Mapper[Review(reviews)], expression 'ReviewUser' failed to locate a name ('ReviewUser'). If this is a class name, consider adding this relationship() to the <class 'app.api.models.reviews.Review'> class after both dependent classes have been defined.
+2023-12-04 21:06:45,780 [INFO] 127.0.0.1 - - [04/Dec/2023 21:06:45] "[35m[1mGET /users HTTP/1.1[0m" 500 -
+2023-12-04 21:07:25,349 [ERROR] Exception on /users [GET]
+Traceback (most recent call last):
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/views.py", line 109, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/Documents/GitHub/TFG_2023_2024/Código/prompt_sentiment/backend/app/api/views/users.py", line 44, in get
+    return get_all_users(), 200
+           ^^^^^^^^^^^^^^^
+  File "/home/tgs1003/Documents/GitHub/TFG_2023_2024/Código/prompt_sentiment/backend/app/api/services/users.py", line 19, in get_all_users
+    return User.query.all()
+           ^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 274, in __init__
+    self._set_entities(entities)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 283, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 284, in <listcomp>
+    coercions.expect(
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/sql/coercions.py", line 406, in expect
+    insp._post_inspect
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 1252, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2707, in _post_inspect
+    self._check_configure()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2386, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4199, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4236, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[Review(reviews)]'. Original exception was: When initializing mapper Mapper[Review(reviews)], expression 'ReviewUser' failed to locate a name ('ReviewUser'). If this is a class name, consider adding this relationship() to the <class 'app.api.models.reviews.Review'> class after both dependent classes have been defined.
+2023-12-04 21:07:25,352 [INFO] 127.0.0.1 - - [04/Dec/2023 21:07:25] "[35m[1mGET /users HTTP/1.1[0m" 500 -
+2023-12-04 21:12:12,785 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-12-04 21:12:12,785 [INFO] [33mPress CTRL+C to quit[0m
+2023-12-04 21:12:19,736 [ERROR] Exception on /users [GET]
+Traceback (most recent call last):
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 515, in _resolve_name
+    rval = d[token]
+           ~^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/util/_collections.py", line 346, in __missing__
+    self[key] = val = self.creator(key)
+                      ^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 483, in _access_cls
+    return self.fallback[key]
+           ~~~~~~~~~~~~~^^^^^
+KeyError: 'ReviewUser'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/views.py", line 109, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/Documents/GitHub/TFG_2023_2024/Código/prompt_sentiment/backend/app/api/views/users.py", line 44, in get
+    return get_all_users(), 200
+           ^^^^^^^^^^^^^^^
+  File "/home/tgs1003/Documents/GitHub/TFG_2023_2024/Código/prompt_sentiment/backend/app/api/services/users.py", line 19, in get_all_users
+    return User.query.all()
+           ^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 274, in __init__
+    self._set_entities(entities)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 283, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 284, in <listcomp>
+    coercions.expect(
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/sql/coercions.py", line 406, in expect
+    insp._post_inspect
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 1252, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2707, in _post_inspect
+    self._check_configure()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2386, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4199, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4240, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2403, in _post_configure_properties
+    prop.init()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/interfaces.py", line 579, in init
+    self.do_init()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 1634, in do_init
+    self._setup_entity()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 1851, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 519, in _resolve_name
+    self._raise_for_name(name, err)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 500, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[Review(reviews)], expression 'ReviewUser' failed to locate a name ('ReviewUser'). If this is a class name, consider adding this relationship() to the <class 'app.api.models.reviews.Review'> class after both dependent classes have been defined.
+2023-12-04 21:12:19,742 [INFO] 127.0.0.1 - - [04/Dec/2023 21:12:19] "[35m[1mGET /users HTTP/1.1[0m" 500 -
+2023-12-04 21:16:17,455 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-12-04 21:16:17,455 [INFO] [33mPress CTRL+C to quit[0m
+2023-12-04 21:16:24,282 [ERROR] Exception on /users [GET]
+Traceback (most recent call last):
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 515, in _resolve_name
+    rval = d[token]
+           ~^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/util/_collections.py", line 346, in __missing__
+    self[key] = val = self.creator(key)
+                      ^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 483, in _access_cls
+    return self.fallback[key]
+           ~~~~~~~~~~~~~^^^^^
+KeyError: 'Product'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/views.py", line 109, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/Documents/GitHub/TFG_2023_2024/Código/prompt_sentiment/backend/app/api/views/users.py", line 44, in get
+    return get_all_users(), 200
+           ^^^^^^^^^^^^^^^
+  File "/home/tgs1003/Documents/GitHub/TFG_2023_2024/Código/prompt_sentiment/backend/app/api/services/users.py", line 19, in get_all_users
+    return User.query.all()
+           ^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_sqlalchemy/model.py", line 22, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 274, in __init__
+    self._set_entities(entities)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 283, in _set_entities
+    self._raw_columns = [
+                        ^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 284, in <listcomp>
+    coercions.expect(
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/sql/coercions.py", line 406, in expect
+    insp._post_inspect
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/util/langhelpers.py", line 1252, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2707, in _post_inspect
+    self._check_configure()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2386, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4199, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 4240, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/mapper.py", line 2403, in _post_configure_properties
+    prop.init()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/interfaces.py", line 579, in init
+    self.do_init()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 1634, in do_init
+    self._setup_entity()
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/relationships.py", line 1851, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 519, in _resolve_name
+    self._raise_for_name(name, err)
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/clsregistry.py", line 500, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[Review(reviews)], expression 'Product' failed to locate a name ('Product'). If this is a class name, consider adding this relationship() to the <class 'app.api.models.reviews.Review'> class after both dependent classes have been defined.
+2023-12-04 21:16:24,287 [INFO] 127.0.0.1 - - [04/Dec/2023 21:16:24] "[35m[1mGET /users HTTP/1.1[0m" 500 -
+2023-12-04 21:17:34,388 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-12-04 21:17:34,389 [INFO] [33mPress CTRL+C to quit[0m
+2023-12-04 21:17:37,829 [INFO] 127.0.0.1 - - [04/Dec/2023 21:17:37] "GET /users HTTP/1.1" 200 -
+2023-12-04 21:18:20,600 [INFO] 127.0.0.1 - - [04/Dec/2023 21:18:20] "POST /auth/login HTTP/1.1" 200 -
+2023-12-04 21:18:39,393 [INFO] 127.0.0.1 - - [04/Dec/2023 21:18:39] "GET /auth/status HTTP/1.1" 200 -

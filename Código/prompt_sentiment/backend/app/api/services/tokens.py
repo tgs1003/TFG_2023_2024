@@ -63,7 +63,7 @@ def get_token_user(request, namespace):
     access_token = request.headers.get("Authorization")
     if access_token:
         try:
-            resp = User.decode_token(access_token)
+            resp = decode_token(access_token)
             user = get_user_by_id(resp)
             if not user:
                 namespace.abort(401, "El usuario no existe.")

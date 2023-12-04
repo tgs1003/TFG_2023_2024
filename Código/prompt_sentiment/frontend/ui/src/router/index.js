@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from "../views/Auth/Login";
 import Register from "../views/Auth/Register";
 import Dashboard from "../views/Dashboard";
+import AdminHome from "../views/Admin/AdminHome";
 import store from '@/store'
 Vue.use(VueRouter)
 
@@ -12,6 +13,14 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/admin-home',
+    name: 'AdminHome',
+    component: AdminHome,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/register',

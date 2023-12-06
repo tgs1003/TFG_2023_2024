@@ -9,7 +9,7 @@ auth_namespace = Namespace("auth")
 
 user = auth_namespace.model(
     "User",
-    {"username": fields.String(required=True), "email": fields.String(required=True), "rol": fields.String},
+    {"name": fields.String(required=True), "email": fields.String(required=True), "rol": fields.String},
 )
 
 full_user = auth_namespace.inherit(

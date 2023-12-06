@@ -23,7 +23,7 @@ user = users_namespace.model(
     "User",
     {
         "id": fields.Integer(readOnly=True),
-        "name": fields.String,
+        "name": fields.String(required=True),
         "email": fields.String(required=True),
         "rol": fields.String,
     },
@@ -77,7 +77,7 @@ class Users(Resource):
         return user, 200
 
     @users_namespace.expect(user, validate=True)
-    @users_namespace.response(200, "El usuario <user_is> se ha actualizado.")
+    @users_namespace.response(200, "El usuario <user_id> se ha actualizado.")
     @users_namespace.response(404, "El usuario <user_id> no existe.")
     def put(self, user_id):
         """Actualiza un usuario."""
@@ -94,7 +94,7 @@ class Users(Resource):
         response_object["message"] = f"{user.id} actualizado."
         return response_object, 200
 
-    @users_namespace.response(200, "<user_is> eliminado")
+    @users_namespace.response(200, "<user_id> eliminado")
     @users_namespace.response(404, "El usuario <user_id> no existe.")
     @users_namespace.expect(parser)
     def delete(self, user_id):

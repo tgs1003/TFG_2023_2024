@@ -1,4 +1,8 @@
 import os
+
+from dotenv import load_dotenv, find_dotenv
+_ = load_dotenv(find_dotenv(), override=True) # read local .env file
+
 class BaseConfig:
     BCRYPT_LOG_ROUNDS=13
     #Esto habría que configurarlo por entorno (¿en el fichero .env?)
@@ -13,3 +17,6 @@ class TestingConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = os.environ.get("TEST_DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/psdb_test")
     ACCESS_TOKEN_EXPIRATION = 3
     REFRESH_TOKEN_EXPIRATION = 3
+    
+class ProductionConfig(BaseConfig):
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/psdb_prod")

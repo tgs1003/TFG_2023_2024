@@ -6,7 +6,7 @@ import Register from "../views/Auth/Register";
 import Dashboard from "../views/Dashboard";
 import AdminHome from "../views/Admin/AdminHome";
 import store from '@/store'
-import api from api
+import api from '../services/api'
 Vue.use(VueRouter)
 
 const routes = [
@@ -67,7 +67,7 @@ router.beforeEach((to, from, next) => {
       })
     } else {
       if (to.matched.some(record => record.meta.requiresAdmin)) {    
-        user = api.get('/auth/status')
+        var user = api.get('/auth/status')
         if (user.rol != 'Admin')
         {
           next({

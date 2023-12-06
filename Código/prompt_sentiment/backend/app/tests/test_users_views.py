@@ -25,7 +25,7 @@ def test_add_user(test_app, test_database):
     )
     data = json.loads(resp.data.decode())
     assert resp.status_code == 201
-    assert "joehoeller@ml-app-name.com was added!" in data["message"]
+    assert "El usuario joehoeller@ml-app-name.com se ha creado" in data["message"]
 
 
 def test_add_user_invalid_json(test_app, test_database):
@@ -74,7 +74,7 @@ def test_add_user_duplicate_email(test_app, test_database):
     )
     data = json.loads(resp.data.decode())
     assert resp.status_code == 400
-    assert "Sorry. That email already exists." in data["message"]
+    assert "El correo ya existe." in data["message"]
 
 
 def test_single_user(test_app, test_database, add_user):
@@ -83,7 +83,7 @@ def test_single_user(test_app, test_database, add_user):
     resp = client.get(f"/users/{user.id}")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 200
-    assert "jeffrey" in data["username"]
+    assert "jeffrey" in data["name"]
     assert "jeffrey@ml-app-name.com" in data["email"]
     assert "password" not in data
 
@@ -93,7 +93,7 @@ def test_single_user_incorrect_id(test_app, test_database):
     resp = client.get("/users/999")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 404
-    assert "User 999 does not exist" in data["message"]
+    assert "El usuario 999 no existe." in data["message"]
 
 
 def test_all_users(test_app, test_database, add_user):
@@ -105,9 +105,9 @@ def test_all_users(test_app, test_database, add_user):
     data = json.loads(resp.data.decode())
     assert resp.status_code == 200
     assert len(data) == 2
-    assert "joehoeller" in data[0]["username"]
+    assert "joehoeller" in data[0]["name"]
     assert "joehoeller@mherman.org" in data[0]["email"]
-    assert "fletcher" in data[1]["username"]
+    assert "fletcher" in data[1]["name"]
     assert "fletcher@notreal.com" in data[1]["email"]
     assert "password" not in data[0]
     assert "password" not in data[1]
@@ -124,7 +124,7 @@ def test_remove_user(test_app, test_database, add_user):
     resp_two = client.delete(f"/users/{user.id}")
     data = json.loads(resp_two.data.decode())
     assert resp_two.status_code == 200
-    assert "remove-me@ml-app-name.com was removed!" in data["message"]
+    assert "remove-me@ml-app-name.com eliminado." in data["message"]
     resp_three = client.get("/users")
     data = json.loads(resp_three.data.decode())
     assert resp_three.status_code == 200
@@ -136,7 +136,7 @@ def test_remove_user_incorrect_id(test_app, test_database):
     resp = client.delete("/users/999")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 404
-    assert "User 999 does not exist" in data["message"]
+    assert "El usuario 999 no existe." in data["message"]
 
 
 def test_update_user(test_app, test_database, add_user):
@@ -144,20 +144,20 @@ def test_update_user(test_app, test_database, add_user):
     client = test_app.test_client()
     resp_one = client.put(
         f"/users/{user.id}",
-        data=json.dumps({"username": "me", "email": "me@ml-app-name.com"}),
+        data=json.dumps({"name": "me", "email": "me@ml-app-name.com"}),
         content_type="application/json",
     )
     data = json.loads(resp_one.data.decode())
     assert resp_one.status_code == 200
-    assert f"{user.id} was updated!" in data["message"]
+    assert f"{user.id} actualizado." in data["message"]
     resp_two = client.get(f"/users/{user.id}")
     data = json.loads(resp_two.data.decode())
     assert resp_two.status_code == 200
-    assert "me" in data["username"]
+    assert "me" in data["name"]
     assert "me@ml-app-name.com" in data["email"]
 
 
-def test_update_user_with_passord(test_app, test_database, add_user):
+def test_update_user_with_password(test_app, test_database, add_user):
     password_one = "greaterthaneight"
     password_two = "somethingdifferent"
 
@@ -168,7 +168,7 @@ def test_update_user_with_passord(test_app, test_database, add_user):
     resp = client.put(
         f"/users/{user.id}",
         data=json.dumps(
-            {"username": "me", "email": "me@ml-app-name.com", "password": password_two}
+            {"name": "me", "email": "me2@ml-app-name.com", "password": password_two}
         ),
         content_type="application/json",
     )
@@ -186,9 +186,9 @@ def test_update_user_with_passord(test_app, test_database, add_user):
         [1, {"email": "me@ml-app-name.com"}, 400, "Input payload validation failed"],
         [
             999,
-            {"username": "me", "email": "me@ml-app-name.com"},
+            {"name": "me", "email": "me@ml-app-name.com"},
             404,
-            "User 999 does not exist",
+            "El usuario 999 no existe",
         ],
     ],
 )

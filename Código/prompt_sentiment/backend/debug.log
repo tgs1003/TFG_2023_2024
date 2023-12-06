@@ -605,3 +605,103 @@ sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[Review(revie
 2023-12-04 21:17:37,829 [INFO] 127.0.0.1 - - [04/Dec/2023 21:17:37] "GET /users HTTP/1.1" 200 -
 2023-12-04 21:18:20,600 [INFO] 127.0.0.1 - - [04/Dec/2023 21:18:20] "POST /auth/login HTTP/1.1" 200 -
 2023-12-04 21:18:39,393 [INFO] 127.0.0.1 - - [04/Dec/2023 21:18:39] "GET /auth/status HTTP/1.1" 200 -
+2023-12-06 13:33:32,077 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-12-06 13:33:32,081 [INFO] [33mPress CTRL+C to quit[0m
+2023-12-06 18:58:04,606 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-12-06 18:58:04,606 [INFO] [33mPress CTRL+C to quit[0m
+2023-12-06 19:05:37,734 [INFO] 127.0.0.1 - - [06/Dec/2023 19:05:37] "OPTIONS /auth/login HTTP/1.1" 200 -
+2023-12-06 19:05:38,004 [ERROR] Exception on /auth/login [POST]
+Traceback (most recent call last):
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedTable: relation "user" does not exist
+LINE 2: FROM "user" 
+             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/api.py", line 404, in wrapper
+    resp = resource(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask/views.py", line 109, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/resource.py", line 46, in dispatch_request
+    resp = meth(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/flask_restx/marshalling.py", line 244, in wrapper
+    resp = f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/Documents/GitHub/TFG_2023_2024/Código/prompt_sentiment/backend/app/api/auth.py", line 73, in post
+    user = get_user_by_email(email)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/Documents/GitHub/TFG_2023_2024/Código/prompt_sentiment/backend/app/api/services/users.py", line 31, in get_user_by_email
+    return User.query.filter_by(email = email).first()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2743, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/query.py", line 2842, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2262, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/session.py", line 2144, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/orm/context.py", line 293, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/sql/elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1635, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1844, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1984, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/engine/base.py", line 1965, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/tgs1003/miniconda3/lib/python3.11/site-packages/sqlalchemy/engine/default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedTable) relation "user" does not exist
+LINE 2: FROM "user" 
+             ^
+
+[SQL: SELECT "user".id AS user_id, "user".email AS user_email, "user".password AS user_password, "user".name AS user_name, "user".rol AS user_rol, "user".date AS user_date 
+FROM "user" 
+WHERE "user".email = %(email_1)s 
+ LIMIT %(param_1)s]
+[parameters: {'email_1': 'admin', 'param_1': 1}]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2023-12-06 19:05:38,145 [INFO] 127.0.0.1 - - [06/Dec/2023 19:05:38] "[35m[1mPOST /auth/login HTTP/1.1[0m" 500 -
+2023-12-06 19:14:38,520 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-12-06 19:14:38,520 [INFO] [33mPress CTRL+C to quit[0m
+2023-12-06 19:14:42,750 [INFO] 127.0.0.1 - - [06/Dec/2023 19:14:42] "OPTIONS /auth/login HTTP/1.1" 200 -
+2023-12-06 19:14:43,337 [INFO] 127.0.0.1 - - [06/Dec/2023 19:14:43] "POST /auth/login HTTP/1.1" 200 -
+2023-12-06 19:15:24,974 [INFO] 127.0.0.1 - - [06/Dec/2023 19:15:24] "OPTIONS /auth/status HTTP/1.1" 200 -
+2023-12-06 19:15:24,990 [INFO] 127.0.0.1 - - [06/Dec/2023 19:15:24] "GET /auth/status HTTP/1.1" 200 -
+2023-12-06 19:15:34,650 [INFO] 127.0.0.1 - - [06/Dec/2023 19:15:34] "OPTIONS /auth/status HTTP/1.1" 200 -
+2023-12-06 19:15:34,680 [INFO] 127.0.0.1 - - [06/Dec/2023 19:15:34] "GET /auth/status HTTP/1.1" 200 -

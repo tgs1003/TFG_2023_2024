@@ -1,6 +1,8 @@
 from flask import request
 import logging
 from flask_restx import Resource, fields, Namespace
+from app.api.services.tokens import check_token
+from app.api.services.roles import user_has_rol
 from app.api.services.users import (
     get_all_users,
     get_user_by_email,
@@ -41,6 +43,8 @@ class UsersList(Resource):
     @users_namespace.expect(parser)
     def get(self):
         """Devuelve todos los usuarios."""
+        if not user_has_rol(request, "Admin", users_namespace):
+            users_namespace.abort(403, "El usuario no es administrador.")
         return get_all_users(), 200
 
     @users_namespace.expect(user_post, validate=True)
@@ -71,6 +75,7 @@ class Users(Resource):
     @users_namespace.expect(parser)
     def get(self, user_id):
         """Devuelve un usuario."""
+        check_token(request, users_namespace)
         user = get_user_by_id(user_id)
         if not user:
             users_namespace.abort(404, f"El usuario {user_id} no existe.")
@@ -81,6 +86,8 @@ class Users(Resource):
     @users_namespace.response(404, "El usuario <user_id> no existe.")
     def put(self, user_id):
         """Actualiza un usuario."""
+        if not user_has_rol(request, "Admin", users_namespace):
+            users_namespace.abort(403, "El usuario no es administrador.")
         post_data = request.get_json()
         username = post_data.get("name")
         email = post_data.get("email")
@@ -98,7 +105,9 @@ class Users(Resource):
     @users_namespace.response(404, "El usuario <user_id> no existe.")
     @users_namespace.expect(parser)
     def delete(self, user_id):
-        """Actualiza un usuario."""
+        """Borra un usuario."""
+        if not user_has_rol(request, "Admin", users_namespace):
+            users_namespace.abort(403, "El usuario no es administrador.")
         response_object = {}
         user = get_user_by_id(user_id)
         if not user:

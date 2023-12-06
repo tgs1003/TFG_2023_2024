@@ -53,8 +53,8 @@
             mode: true,
             drawer: false,
             links: [
-                {icon: 'dashboard', text: 'Dashboard', route: '/'},
-                {icon: 'verified_user', text: 'Register', route: '/register'},
+                {icon: 'dashboard', text: 'Inicio', route: '/'},
+                {icon: 'verified_user', text: 'Administración', route: '/admin-home'},
             ],
         }),
         computed: {

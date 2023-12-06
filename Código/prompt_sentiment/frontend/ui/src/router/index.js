@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import Login from "../views/Auth/Login";
-import Register from "../views/Auth/Register";
-import Dashboard from "../views/Dashboard";
+import Registro from "../views/Auth/Registro";
+import Inicio from "../views/Inicio"
 import AdminHome from "../views/Admin/AdminHome";
 import store from '@/store'
 import api from '../services/api'
@@ -25,30 +24,17 @@ const routes = [
     }
   },
   {
-    path: '/register',
-    name: 'Register',
-    component: Register
+    path: '/registro',
+    name: 'Registro',
+    component: Registro
   },
   {
     path: '/',
-    name: 'Dashboard',
-    component: Dashboard,
+    name: 'Inicio',
+    component: Inicio,
     meta: {
       requiresAuth: true
     }
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   
 ]
@@ -67,21 +53,25 @@ router.beforeEach((to, from, next) => {
       })
     } else {
       if (to.matched.some(record => record.meta.requiresAdmin)) {    
-        var user = api.get('/auth/status')
-        if (user.rol != 'Admin')
+        api.get('/auth/status').then((resp)=>
         {
-          next({
-            path: '/home',
-            params: { redirect: to.fullPath },
-          })
+          var user = resp.data
+          if (user.rol != 'Admin')
+          {
+            next({
+              path: '/',
+              params: { redirect: to.fullPath },
+            })
+          }
+          else {
+            next()
+            }
         }
+        )
       }
-      else{
+      else {
         next()
       }
-    }
-  } else {
-    next()
-  }
-})
+}}})
+
 export default router

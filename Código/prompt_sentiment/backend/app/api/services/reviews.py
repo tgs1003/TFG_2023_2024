@@ -48,7 +48,7 @@ def count_reviews_by_dataset_id(datasetId):
     '''
     Cuenta las reseñas de un dataset
     '''
-    return Review.query.filter_by(datasetId=datasetId).count()
+    return Review.query.filter_by(datasetId = datasetId).count()
 
 def get_review_by_reviewer_and_product(datasetId, reviewer_id, productId):
     '''
@@ -62,17 +62,23 @@ def get_review_by_id(review_id):
     '''
     return Review.query.filter_by(id=review_id).first()
 
+def get_review_by_dataset_id_and_review_id(dataset_id, review_id):
+    '''
+    Busca una reseña por Id
+    '''
+    return Review.query.filter_by(id = review_id, dataset_id = dataset_id).first()
+
 def add_review(datasetId, originalId, productId, reviewText, reviewTime, reviewerId, stars):
     '''
     Agrega una reseña
     '''
-    review = Review(datasetId=datasetId,
-                    originalId=originalId,
-                    productId=productId, 
-                    reviewText=reviewText, 
-                    reviewTime=reviewTime, 
-                    reviewerId=reviewerId,
-                    stars=stars )
+    review = Review(datasetId = datasetId,
+                    originalId = originalId,
+                    productId = productId, 
+                    reviewText = reviewText, 
+                    reviewTime = reviewTime, 
+                    reviewerId = reviewerId,
+                    stars = stars)
     db.session.add(review)
     db.session.commit()
     return review

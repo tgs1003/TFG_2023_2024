@@ -9,3 +9,5 @@ flask-bcrypt>1
 Werkzeug==2.3.3
 psycopg2-binary
 python-dotenv==1.0.0
+openai==0.28.1
+langchain==0.0.319

@@ -37,8 +37,6 @@ Una herramienta muy útil para elegir el modelo adecuado es LM Studio (referenci
 además ofrece una API compatible con OpenAI. 
 Para la ejecución en local es muy recomendable el uso de una tarjeta gráfica para optimizar la ejecución del modelo.
 
-
-
 Al planificar el segundo sprint incluí una tarea para crear un prototipo en collab, 
 sin embargo esta tarea tenía unas dependencias que hacían imposible su realización.
 Lo primero que tenía que hacer era seleccionar un dataset para poder realizar las pruebas.
@@ -91,7 +89,7 @@ Existen muchos conjuntos de datos que podemos usar para nuestro proyecto, por ej
 \section{Elección del modelo LLM}
 
 Para la elección del modelo a usar en este trabajo, primero examinamos el modelo más sencillo de utilizar.
-Este es el modelo de OpenAI~\cite{chatgpt1}. En concreto el modelo ChatGpt 3.5 Turbo, este modelo es muy estable, rápido y económico.
+Este es el modelo de OpenAI~\cite{chatgpt1}. En concreto el modelo \textbf{ChatGpt 3.5 Turbo}, este modelo es muy estable, rápido y económico.
 El problema de usar este modelo, a pesar de ser económico, es su coste.
 Para evitar ese problema y poder utilizar un modelo sin limitaciones, he buscado otras alternativas.
 Entre estas se encuentran:
@@ -108,7 +106,7 @@ Entre estas se encuentran:
 Investigando sobre las diferentes alternativas nos hemos encontrado con dificultades a la hora de elegir la idonea.
 Por un lado, están los modelos que también son de pago como son Microsoft Azure Language Models y Google Cloud Natural Language API. Ambas soluciones ofrecen periodos de prueba limitados.
 Por otro lado están las plataformas para asistentes conversacionales como Dialogflow, Rasa, etc que no ofrecen un API para poder usarlas.
-Por último nos queda Facebook API, en este caso su modelo \href{https://github.com/facebookresearch/llama}{Llama2} está disponible para todo tipo de usos.
+Por último nos queda \textbf{Facebook API}, en este caso su modelo \href{https://github.com/facebookresearch/llama}{Llama2} está disponible para todo tipo de usos.
 Existen una colección de modelos que van desde 7b a 70b (7b significa que se han usado 7.000 millones de tokens para su entrenamiento y 70b 70.000 millones)
 Aún así el modelo más pequeño necesita unos recursos muy elevados para su funcionamiento. Aquí es dónde entra en juego la \href{https://es.wikipedia.org/wiki/Cuantificaci%C3%B3n_digital}{cuantificación}.
 Aplicando la cuantificación, los modelos ocupan menos espacio y son más rápidos pero también más imprecisos.
@@ -118,4 +116,3 @@ Así entra en juego el último de los elementos para poder elegir un modelo y es
 Para ello he usado una aplicación llamada \href{https://lmstudio.ai/}{LM Studio}. Es una aplicación gratuita que permite descargar modelos de Hugging Face y probarlos mediante un chat o mediante una API.
 Además permite aprovechar una tarjeta gráfica en el caso de tenerla para poder usar el modelo aprovechando sus capacidades de computación en paralelo.
 
-La elección de un modelo de Lenguaje de Modelado de Máquinas (LLM) depende de varios factores, como la tarea específica que estás abordando, los recursos computacionales disponibles y tus requisitos de rendimiento. Aquí hay algunos pasos que puedes seguir para elegir un modelo LLM:

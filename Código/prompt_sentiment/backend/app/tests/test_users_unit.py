@@ -1,8 +1,6 @@
 import json
 from datetime import datetime
-
 import pytest
-
 import app.api.views.users
 
 def test_add_user(test_app, monkeypatch):

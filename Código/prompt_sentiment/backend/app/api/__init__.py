@@ -1,6 +1,6 @@
 from flask_restx import Api
-from app.api.auth import auth_namespace
-from app.api.ping import ping_namespace
+from app.api.views.auth import auth_namespace
+from app.api.views.ping import ping_namespace
 from app.api.views.users import users_namespace
 from app.api.views.datasets import datasets_namespace
 

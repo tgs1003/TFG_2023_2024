@@ -100,7 +100,7 @@
                                 </v-card-title>
 
                                 <v-card-text>
-                                    <v-container>
+                                    <v-container fluid>
                                         <v-row>
                                             <v-col cols="12" md="12" sm="12">
                                                 <v-text-field label="Nombre" v-model="editedItem.name"></v-text-field>
@@ -109,13 +109,8 @@
                                                 <v-select label="Tipo" v-model="editedItem.type" :items="types"></v-select>
                                             </v-col>
                                             <v-col cols="12" md="12" sm="12">
-                                                <v-text-field label="Configuración" v-model="editedItem.path"></v-text-field>
+                                                <v-textarea label="Configuración" v-model="editedItem.path"></v-textarea>
                                             </v-col>
-                                            <v-col cols="12" md="12" sm="12">
-                                                <v-slider v-model="editedItem.sample" :min="0" :max="1" label="Tamaño"></v-slider>
-                                                
-                                            </v-col>
-                                            
                                         </v-row>
                                     </v-container>
                                 </v-card-text>
@@ -124,6 +119,36 @@
                                     <v-spacer></v-spacer>
                                     <v-btn @click="close_dataset" color="blue darken-1" text>Cancelar</v-btn>
                                     <v-btn @click="save_dataset" color="blue darken-1" text>Guardar</v-btn>
+                                </v-card-actions>
+                            </v-card>
+                        </v-dialog>
+                        <v-dialog max-width="500px" v-model="dialog_dataset_load">
+                            <v-card>
+                                <v-card-title>
+                                    <span class="headline">{{ formTitle_dataset }}</span>
+                                </v-card-title>
+
+                                <v-card-text>
+                                    <v-container>
+                                        <v-row>
+                                            <v-col cols="12" md="12" sm="12">
+                                                <v-text-field label="Nombre" v-model="selectedDataset.name"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" md="12" sm="12">
+                                                <v-select label="Tipo" v-model="selectedDataset.type" :items="types"></v-select>
+                                            </v-col>
+                                            <v-col cols="12" md="12" sm="12">
+                                                <v-slider v-model="sample" :max="100" :min="10" thumb-label label="Muestra (%): "></v-slider>
+                                            </v-col>
+                                            
+                                        </v-row>
+                                    </v-container>
+                                </v-card-text>
+
+                                <v-card-actions>
+                                    <v-spacer></v-spacer>
+                                    <v-btn @click="close_dataset_load" color="blue darken-1" text>Cancelar</v-btn>
+                                    <v-btn @click="load_dataset" color="blue darken-1" text>Cargar</v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
@@ -175,6 +200,7 @@
         data: () => ({
             dialog: false,
             dialog_dataset: false,
+            dialog_dataset_load: false,
             roles:[
                 "Admin",
                 "Gestor"
@@ -207,6 +233,13 @@
             ],
             users: [],
             datasets:[],
+            sample:10,
+            selectedDataset:{
+                name: '',
+                type: '',
+                sample:''
+                
+            },
             editedIndex: -1,
             editedItem: {
                 username: '',
@@ -232,6 +265,9 @@
         },
 
         watch: {
+            dialog_dataset_load(val) {
+                val || this.close()
+            },
             dialog_dataset(val) {
                 val || this.close()
             },
@@ -294,9 +330,19 @@
                         console.log(err)
                     })
             },
-
+            close_dataset_load(){
+                this.dialog_dataset_load = false
+            },
+            
             loadDataset(item) {
-                api.put('/datasets/' + item.id + '/load')
+                this.selectedDataset = item
+                this.dialog_dataset_load = true
+            },
+            load_dataset() {
+                let datasetData = {
+                    "sample": this.sample
+                }
+                api.put('/datasets/' + this.selectedDataset.id + '/load', datasetData)
                     .then(resp => {
                         console.log(resp.data.message)
                         this.initialize()
@@ -304,6 +350,7 @@
                     .catch(err => {
                         console.log(err)
                     })
+                this.dialog_dataset_load = false
             },
 
             processDataset(item) {

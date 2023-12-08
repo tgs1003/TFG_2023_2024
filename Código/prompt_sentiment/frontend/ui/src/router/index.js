@@ -46,7 +46,7 @@ const router = new VueRouter({
 })
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.state.token || localStorage.getItem('token') === 'null') {
+    if (!store.state.token || localStorage.getItem('user') === 'null') {
       next({
         path: '/login',
         params: { redirect: to.fullPath },
@@ -72,6 +72,10 @@ router.beforeEach((to, from, next) => {
       else {
         next()
       }
-}}})
+}}
+else{
+  next()
+}
+})
 
 export default router

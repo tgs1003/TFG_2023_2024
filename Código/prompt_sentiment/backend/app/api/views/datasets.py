@@ -136,13 +136,14 @@ class DatasetLoad(Resource):
     def put(self, dataset_id):
         """Carga un dataset."""
         check_token(request, datasets_namespace)
-        request_object = {}
+        post_data = request.get_json()
+        sample = post_data.get("sample")
         response_object = {}
         dataset = get_dataset_by_id(dataset_id)
         if not dataset:
             datasets_namespace.abort(404, f"El dataset {dataset_id} no existe.")
             
-        load_dataset(dataset_id, dataset.payload, request_object["sample"])
+        load_dataset(dataset_id, dataset.payload, sample)
         response_object["message"] = f"Dataset {dataset.id} se ha cargado."
         return "Ok", 200
     

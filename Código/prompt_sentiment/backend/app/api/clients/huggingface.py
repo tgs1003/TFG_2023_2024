@@ -1,14 +1,15 @@
 import pandas as pd
+import logging
 import os
+import json
 from huggingface_hub import hf_hub_download
 from datasets import load_dataset
 from datetime import datetime
-import logging
 from app.api.services.datasets import get_dataset_by_id
 from app.api.services.products import get_product_by_id, add_product
 from app.api.services.review_users import get_reviewuser_by_id, add_reviewuser
 from app.api.services.reviews import get_review_by_dataset_id_and_review_id, add_review
-import json
+
 
 logging.basicConfig(level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -22,10 +23,12 @@ def load_dataset(dataset_id, config, sample):
     Carga un dataset en la base de datos para ser procesado.
     '''
     #config["path"]
-    #config["subset"]
-    #config["mapping"]
+    #config["subset"] # train, test
+    #config["mapping"] # review_text, review_headline, stars, product_id, product_title, customer_id, review_id, review_date
+    #config["correct_stars"] = 1 #suma 1
+    #config["date_format"] = '%Y-%m-%d'
     dataset = load_dataset(config)
-    subset = dataset["dataset"].to_iterable_dataset()
+    subset = dataset["train"].to_iterable_dataset()
     df = pd.json_normalize(subset)
     df = df.sample(frac=sample)
     df.reset_index(drop=True, inplace=True)

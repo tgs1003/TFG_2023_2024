@@ -7,6 +7,8 @@ from app.api.services.reviews import count_reviews_by_dataset_id
 from app.api.services.sentiments import count_sentiments_by_datasetId
 from app.api.services.tokens import check_token
 from app.api.services.roles import user_has_rol
+from app.api.clients.huggingface import load_dataset
+
 logging.basicConfig(level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
@@ -33,7 +35,7 @@ datasets = datasets_namespace.model(
         "name": fields.String,
         "type": fields.String,
         "payload": fields.String,
-        "loaded":fields.Boolean,
+        "status":fields.String,
         "date": fields.DateTime
     },
 )
@@ -96,13 +98,12 @@ class Datasets(Resource):
         if not user_has_rol(request, "Admin", datasets_namespace):
             datasets_namespace.abort(403, "El usuario no es administrador.")
         post_data = request.get_json()
-        name = post_data.get("name")
-        type = post_data.get("type")
+        status = post_data.get("status")
         response_object = {}
         dataset = get_dataset_by_id(dataset_id)
         if not dataset:
             datasets_namespace.abort(404, f"El dataset {dataset_id} no existe.")
-        update_dataset(dataset, name, type)
+        update_dataset(dataset, status)
         response_object["message"] = f"Dataset {dataset.id} actualizado."
         return response_object, 200
     
@@ -121,7 +122,32 @@ class Datasets(Resource):
         response_object["message"] = f"El dataset {dataset.id} se ha borrado."
         return response_object, 200
     
+load_dataset_parser = datasets_namespace.parser()
+put_parser.add_argument("Authorization", location="headers")
+put_parser.add_argument("sample", location="json")
+    
+class DatasetLoad(Resource):
+    '''
+    Clase para gestionar la carga de los dataset
+    '''
+    @datasets_namespace.expect(load_dataset_parser, validate=True)
+    @datasets_namespace.response(200, "El dataset <dataset_id> se ha enviado al proceso de carga.")
+    @datasets_namespace.response(404, "El dataset <dataset_id> no existe.")
+    def put(self, dataset_id):
+        """Carga un dataset."""
+        check_token(request, datasets_namespace)
+        request_object = {}
+        response_object = {}
+        dataset = get_dataset_by_id(dataset_id)
+        if not dataset:
+            datasets_namespace.abort(404, f"El dataset {dataset_id} no existe.")
+            
+        load_dataset(dataset_id, dataset.payload, request_object["sample"])
+        response_object["message"] = f"Dataset {dataset.id} se ha cargado."
+        return "Ok", 200
+    
 
 datasets_namespace.add_resource(DatasetList, "")
 datasets_namespace.add_resource(Datasets, "/<int:dataset_id>")
+datasets_namespace.add_resource(DatasetLoad, "/<int:dataset_id>/load")
 

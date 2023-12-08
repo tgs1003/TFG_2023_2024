@@ -9,6 +9,6 @@ def test_create_dataset(add_dataset):
     assert dataset.name == dataset_name
     assert dataset.type == dataset_type
     assert dataset.payload == dataset_payload
-    assert dataset.status == 0
+    assert dataset.status == 'Creado'
     assert dataset.id != 0
     assert dataset.date > datetime.datetime.now()

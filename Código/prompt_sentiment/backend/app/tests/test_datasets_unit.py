@@ -89,7 +89,7 @@ def test_delete_dataset_incorrect_id(test_app, monkeypatch):
         [1, {"name": "dataset3"}, 400, "Input payload validation failed"],
         [
             999,
-            {"status": "1"},
+            {"status": "Cargado"},
             404,
             "El dataset 999 no existe",
         ],

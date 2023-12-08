@@ -23,19 +23,18 @@ def add_dataset(name, type, payload):
     '''
     Agrega un dataset
     '''
-    dataset = Dataset(name=name, type=type, payload=payload, status=0)
+    dataset = Dataset(name=name, type=type, payload=payload, status="Creado")
     db.session.add(dataset)
     db.session.commit()
     return dataset
 
-def update_dataset(review, name, type):
+def update_dataset(dataset, status):
     '''
     Actualiza un dataset
     '''
-    review.name = name
-    review.type = type
+    dataset.status = status
     db.session.commit()
-    return review
+    return dataset
 
 def delete_dataset(dataset):
     '''

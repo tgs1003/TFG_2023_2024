@@ -109,7 +109,11 @@
                                                 <v-select label="Tipo" v-model="editedItem.type" :items="types"></v-select>
                                             </v-col>
                                             <v-col cols="12" md="12" sm="12">
-                                                <v-text-field label="Ruta" v-model="editedItem.path"></v-text-field>
+                                                <v-text-field label="Configuración" v-model="editedItem.path"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" md="12" sm="12">
+                                                <v-slider v-model="editedItem.sample" :min="0" :max="1" label="Tamaño"></v-slider>
+                                                
                                             </v-col>
                                             
                                         </v-row>

@@ -11,3 +11,6 @@ psycopg2-binary
 python-dotenv==1.0.0
 openai==0.28.1
 langchain==0.0.319
+pandas
+huggingface_hub
+datasets

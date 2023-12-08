@@ -112,7 +112,7 @@ def test_update_dataset_correct(test_app):
         [1, {"name": "dataset3"}, 400, "Input payload validation failed"],
         [
             999,
-            {"status": "1"},
+            {"status": "Cargado"},
             404,
             "El dataset 999 no existe",
         ],

@@ -1,13 +1,17 @@
 import logging
 import json
+import time
 from flask import request
 from flask_restx import Resource, fields, Namespace
 from app.api.services.datasets import get_all_datasets, get_dataset_by_payload, get_dataset_by_id, update_dataset, delete_dataset, add_dataset
-from app.api.services.reviews import count_reviews_by_dataset_id
-from app.api.services.sentiments import count_sentiments_by_datasetId
+from app.api.services.reviews import count_reviews_by_dataset_id, get_reviews_by_dataset_id_for_process
+from app.api.services.sentiments import count_sentiments_by_datasetId, add_sentiment
 from app.api.services.tokens import check_token
 from app.api.services.roles import user_has_rol
 from app.api.clients.huggingface import load_dataset
+from app.api.clients.openai import LangchainOpenAISentimentAnalyzer
+
+
 
 logging.basicConfig(level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -147,8 +151,49 @@ class DatasetLoad(Resource):
         response_object["message"] = f"Dataset {dataset.id} se ha cargado."
         return "Ok", 200
     
+class DatasetProcess(Resource):
+    @datasets_namespace.expect(parser, validate=True)
+    @datasets_namespace.response(200, "Dataset <dataset_id> actualizado.")
+    @datasets_namespace.response(404, "El dataset <dataset_id> no existe.")
+    def put(self, dataset_id):
+        """Procesa un dataset."""
+        check_token(request, datasets_namespace)
+        dataset = get_dataset_by_id(dataset_id)
+        if not dataset:
+            datasets_namespace.abort(404, f"El dataset {dataset_id} no existe.")
+        response_object = {}
+        
+        openai = LangchainOpenAISentimentAnalyzer()
+        reviews = get_reviews_by_dataset_id_for_process(dataset_id)
+        for review_data in reviews:
+            time_start = time.perf_counter()
+            result = openai.get_sentiment(review_data["reviewText"])
+            review_id = review_data["reviewId"]
+            stars = result["stars"]
+            sentiment = result["sentiment"]
+            anger = result["anger"]
+            item = result["item"]
+            brand = result["brand"]
+            language = result["language"]
+            model = "OpenAI"
+            correct = True
+            processTime = int(time.perf_counter() - time_start)
+            add_sentiment(reviewId=review_id, 
+                          stars=stars, 
+                          sentiment=sentiment, 
+                          anger=anger, 
+                          item=item, 
+                          brand=brand, 
+                          language=language, 
+                          model=model, 
+                          correct=correct, 
+                          processTime=processTime)
+
+        response_object["message"] = f"Dataset {dataset.id} se ha procesado correctamente."
+        return response_object, 200
 
 datasets_namespace.add_resource(DatasetList, "")
 datasets_namespace.add_resource(Datasets, "/<int:dataset_id>")
 datasets_namespace.add_resource(DatasetLoad, "/<int:dataset_id>/load")
+datasets_namespace.add_resource(DatasetProcess, "/<int:dataset_id>/process")
 

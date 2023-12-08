@@ -138,7 +138,20 @@
                                                 <v-select label="Tipo" v-model="selectedDataset.type" :items="types"></v-select>
                                             </v-col>
                                             <v-col cols="12" md="12" sm="12">
-                                                <v-slider v-model="sample" :max="100" :min="10" thumb-label label="Muestra (%): "></v-slider>
+                                                
+                                                <v-slider 
+                                                    class="align-down"
+                                                    label="Muestra a cargar (%):"
+                                                    :step="10"
+                                                    v-model="sample" 
+                                                    :max="100" 
+                                                    :min="10" 
+                                                    hide-details
+                                                    single-line
+                                                    thumb-label="always" 
+                                                    >
+                                                </v-slider>
+                                                
                                             </v-col>
                                             
                                         </v-row>

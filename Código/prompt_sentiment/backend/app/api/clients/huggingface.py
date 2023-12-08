@@ -30,7 +30,7 @@ def load_dataset(dataset_id, config, sample):
     dataset = load_dataset(config)
     subset = dataset["train"].to_iterable_dataset()
     df = pd.json_normalize(subset)
-    df = df.sample(frac=sample)
+    df = df.sample(frac=(sample/100))
     df.reset_index(drop=True, inplace=True)
     df['review'] = df['review_headline'] + ". " + df['text']
     df['star_rating'] = df['labels'] + 1

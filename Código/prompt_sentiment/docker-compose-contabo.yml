@@ -5,7 +5,7 @@ services:
   backend:
     container_name: 'sentiment_backend'
     build:
-      context: ./servicios/backend
+      context: ./backend
       dockerfile: Dockerfile
     entrypoint: ['/usr/src/app/entrypoint.sh']
     ports:
@@ -36,21 +36,10 @@ services:
     networks:
       - api_bridge
 
-  admin:
-    container_name: 'sentiment_adminer'
-    image: adminer
-    restart: always
-    depends_on: 
-      - db
-    ports:
-      - 8090:8080
-    networks:
-      - api_bridge
-
   frontend:
     container_name: 'sentiment_frontend'
     build:
-      context: ./servicios/frontend
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
       - 3007:8080
@@ -66,11 +55,13 @@ services:
   nginx:
     container_name: 'sentiment_nginx'
     build:
-      context: ./servicios/nginx
+      context: ./nginx
       dockerfile: Dockerfile
     restart: always
     ports:
       - 443:443
+    volumes:
+      - /root/nginx/letsencrypt/live:/etc/nginx/conf.d/ssl
     depends_on:
       - backend
       - frontend

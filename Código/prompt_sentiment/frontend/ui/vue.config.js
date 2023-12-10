@@ -1,10 +1,10 @@
 // vue.config.js
 var webpack = require('webpack');
-const port = process.env.port || process.env.npm_config_port || 4433
+const port = process.env.port || process.env.npm_config_port || 4433 || 443
 module.exports = {
     devServer:
     {
-        allowedHosts: ['*'],
+        allowedHosts: ['promptsentiment.es'],
     },
     publicPath: '/',
     configureWebpack: {

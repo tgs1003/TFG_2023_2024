@@ -44,6 +44,7 @@
                             </v-form>
                         </v-card-text>
                         <v-card-actions>
+                            <v-btn color="primary" @click="register">Registro</v-btn>
                             <v-spacer/>
                             <v-btn color="primary" @click="login">Login</v-btn>
                         </v-card-actions>
@@ -70,6 +71,9 @@
                 this.$store.dispatch('login', {email, password})
                     .then(() => this.$router.push('/'))
                     .catch(err => console.log(err))
+            },
+            register(){
+                this.$router.push('/registro')
             }
         }
     }

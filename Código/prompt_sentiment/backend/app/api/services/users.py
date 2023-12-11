@@ -30,7 +30,7 @@ def get_user_by_email(email):
     '''
     return User.query.filter_by(email = email).first()
 
-def add_user(name, email, password, rol):
+def add_user(name, email, password, rol='Gestor'):
     '''
     Agrega un usuario a la base de datos
     '''

@@ -266,6 +266,7 @@
                 password:'',
                 rol:''
             },
+            
         }),
 
         computed: {
@@ -293,8 +294,11 @@
             this.initialize()
             this.timer = setInterval(this.initialize, 10000);
         },
-
+        beforeDestroy(){
+            clearInterval(this.timer)
+        },
         methods: {
+
             initialize() {
                 api.get('/users').then((resp)=>{
                     this.users = resp.data
@@ -416,15 +420,15 @@
                         "password":this.editedItem.password,
                         "rol":this.editedItem.rol
                     }
-                    axios({ url: process.env.VUE_APP_API_URL + '/users/'+this.editedItem.id, data: userData, method: 'PUT' })
-                        .then(resp => {
+                    api.put('/users/' + this.editedItem.id, userData)
+                    .then(resp => {
                             console.log(resp.data.message)
                             this.initialize()
                         })
                         .catch(err => {
                             console.log(err)
                         })
-
+                    
                 } else {
                     let userData= {
                         "email": this.editedItem.email,

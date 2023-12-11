@@ -7,6 +7,6 @@ while ! nc -z db 5432; do
 done
 
 echo "PostgreSQL started"
-python manage.py create
-python manage.py seed
+python manage.py crear
+python manage.py rellenar
 python manage.py run -h 0.0.0.0

@@ -10,5 +10,7 @@ RUN pip install --upgrade pip
 RUN pip install -r /requirements.txt
 RUN apt update
 RUN apt install netcat-traditional
-COPY . /usr/src/app
+COPY ./app /usr/src/app/app
+COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
+COPY ./manage.py /usr/src/app/manage.py
 RUN chmod 0777 /usr/src/app/entrypoint.sh

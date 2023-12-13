@@ -2,10 +2,90 @@
 
 \section{Introducción}
 
+En este apéndice se va a explicar cómo está organizado el proyecto, el
+manual del programador y los requisitos necesarios para poder ejecutar el
+proyecto.
+
+
 \section{Estructura de directorios}
 
+En el proyecto hay una estructura de directorios que intenta organizar el trabajo de manera lógica:
+Por un lado tenemos el código y por otra la documentación.
+Dentro del código podemos apreciar una carpeta llamada colab con un cuaderno de Jupyter para poder ejecutarlo en Colab.
+Hay otra carpeta con el código del proyecto es sí.
+La estructura de directorios quedaría así:
+
+\begin{itemize}
+	\item Código
+	\begin{itemize}
+		\item colab: Contiene un cuaderno de Jupyter preparado para ejecutar un ejemplo en Colab.
+		\item prompt\_sentiment: Contiene el código del trabajo.
+		\begin{itemize}
+			\item frontend: Contiene el código de la interfaz de usuario. Está hecha con Vue, usando el plugin Vuetify.
+			\item backend: Contiene el código del servicio web de la aplicación. Está hecha en Flask (python) usando Flask-restx y SQLAlchemy para el acceso a las base de datos.
+			\item ngix: En este directorio está la configuración del servidor ngix que se usa en la aplicación como proxy inverso y para gestionar la configuración https.
+		\end{itemize}
+	\end{itemize}
+	\item Documentación
+	\begin{itemize}
+		\item Manual de usuario: El manual de uso de la aplicación
+		\item Memoria: Es la memoria del proyecto
+	\end{itemize}
+\end{itemize}
+
 \section{Manual del programador}
+\subsection {Instalación local}
+Para la instalación local del proyecto tenemos realizar las siguientes instalaciones:
+\subsubsection {Instalación de Python 3}
+Para ejecutar nuestro proyecto es necesario instalar Python, para ello
+podemos descargar la versión aquí: \url{https://www.python.org/downloads/}
+Cuando la descarga haya finalizado ejecutamos e instalamos.
+También se recomienda usar conda para crear un entorno virtual para python. 
+https://docs.conda.io/projects/conda/en/latest/index.html
+\subsubsection {Instalación de node.js}
+Para la parte de angular es necesario instalar Nodejs, por tanto accederemos 
+a la página oficial, \url{https://nodejs.org/es/download/}, 
+y descargaremos la versión que necesitemos y llevaremos a cabo su instalación
+
+\subsubsection {Instalación de PostgreSql}
+Para la instalación de PostgreSql tenemos que bajarnos la versión adecuada a nuestro sistema operativo e instalarla:
+\url{https://www.postgresql.org/download/}
+
+\subsection {Docker}
+Para la instalación de docker sólo hay que instalar Docker-Desktop.
+\subsubsection {Instalación de Docker Desktop}
+\url{https://docs.docker.com/engine/install/}
 
 \section{Compilación, instalación y ejecución del proyecto}
+\subsection {Ejecución local}
+El proyecto tiene 2 partes claramente diferenciadas: Frontend y Backend.
+Para la ejecución del backend tenemos que abrir una consola de comandos, movernos al directorio backend 
+y ejecutar:
+//Instalamos las referencias
+pip install -r requirements.txt
+
+Creamos la base de datos (sólo en el caso de que no exista)
+\begin{verbatim}
+python manage.py crear
+python manage.py rellenar (en caso de que esté vacía)
+python manage.py run
+\end{verbatim}
+
+Para el frontend, nos cambiamos la carpeta Frontend y ejecutamos:
+\begin{verbatim}
+npm install
+npm run serve
+\end{verbatim}
+
+\subsection {Ejecución en docker}
+Para la ejecución en docker sólo hay que ejecutar en el directorio raiz del código:
+\begin{verbatim}
+docker-compose up
+\end{verbatim}
 
 \section{Pruebas del sistema}
+
+Para la ejecución de las pruebas unitarias del backend hay que ejecutar:
+\begin{verbatim}
+pytest
+\end{verbatim}

@@ -210,6 +210,7 @@ def test_update_user(test_app, monkeypatch):
 
     monkeypatch.setattr(app.api.views.users, "get_user_by_id", mock_get_user_by_id)
     monkeypatch.setattr(app.api.views.users, "update_user", mock_update_user)
+    
     client = test_app.test_client()
     resp_one = client.put(
         "/users/1",

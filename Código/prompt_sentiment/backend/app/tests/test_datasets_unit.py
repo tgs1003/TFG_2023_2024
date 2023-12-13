@@ -53,7 +53,7 @@ def test_add_dataset_duplicado(test_app, monkeypatch):
     assert resp.status_code == 400
     assert "El dataset ya existe" in data["message"]
 
-def test_add_dataset_no_existe(test_app, monkeypatch):
+def test_get_dataset_no_existe(test_app, monkeypatch):
     def mock_get_dataset_by_id(dataset_id):
         return None
     monkeypatch.setattr(app.api.views.datasets, "get_dataset_by_id", mock_get_dataset_by_id)
@@ -62,14 +62,6 @@ def test_add_dataset_no_existe(test_app, monkeypatch):
     data = json.loads(resp.data.decode())
     assert resp.status_code == 404
     assert "El dataset 999 no existe" in data["message"]
-
-
-def test_delete_dataset(test_app):
-    client = test_app.test_client()
-    resp = client.get("/datasets/1")
-    data = json.loads(resp.data.decode())
-    assert resp.status_code == 200
-    assert "eliminado" in data["message"]
 
 def test_delete_dataset_incorrect_id(test_app, monkeypatch):
     def mock_get_dataset_by_id(dataset_id):

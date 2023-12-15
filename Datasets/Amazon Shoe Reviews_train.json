@@ -1,18 +1,19 @@
 {
-	"name": "Amazon Shoe Reviews",
+	"name": "Amazon Shoe Reviews (train)",
 	"type": "Hugging face",
 	"path":"mesmalif/amazon-shoe-reviews",
-	"subset": "train/test",
+	"subset": "train",
 	"mapping": {
-	"review_text": "review_text",
+	"review_text": "text",
 	"review_headline": "review_headline",
-	"stars": "stars",
+	"stars": "labels",
 	"product_id": "product_id",
 	"product_title": "product_title",
 	"customer_id": "customer_id",
 	"review_id": "review_id",
-	"review_date": "review_date",
+	"review_date": "review_date"
 	},
-	"correct_stars": 0,
+	"correct_stars": 1,
 	"date_format": "%Y-%m-%d",
+	"number_of_rows": 90000
 }

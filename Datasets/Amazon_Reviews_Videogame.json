@@ -1,0 +1,21 @@
+
+
+{
+	"name": "Amazon Video Game Reviews",
+	"type": "Hugging face",
+	"path":"LoganKells/amazon_product_reviews_video_games",
+	"subset": "train",
+	"mapping": {
+	"review_text": "reviewText",
+	"review_headline": "summary",
+	"stars": "overall",
+	"product_id": "asin",
+	"customer_id": "reviewerId",
+    "customer_name": "reviewerName",
+	"originalReviewId": "review_id",
+	"review_date": "reviewTime"
+	},
+	"correct_stars": 1,
+	"date_format": "%m %d, %Y",
+	"number_of_rows": 10000
+}

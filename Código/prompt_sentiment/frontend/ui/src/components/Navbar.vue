@@ -55,6 +55,7 @@
             links: [
                 {icon: 'dashboard', text: 'Inicio', route: '/'},
                 {icon: 'verified_user', text: 'Administración', route: '/admin-home'},
+                {icon: 'favorite_border', text: 'Sentiment', route: '/sentiment'},
             ],
         }),
         computed: {

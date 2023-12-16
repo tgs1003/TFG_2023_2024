@@ -2,34 +2,24 @@ from datetime import datetime
 from app.api.models.sentiments import Sentiment
 
 def test_create_review(add_review):
-    reviewId = 1
-    stars = 3
-    sentiment = "Positive"
-    anger = False
-    item = "Boots"
-    brand = "Dr.Martens"
-    language = "en"
-    source = ""
-    model = ""
-    creationDate = datetime.now()
-    correct = True
-    processTime = 2
-    tokens = 2000    
-    sentiment = add_sentiment(reviewId, stars, 
-                              sentiment, anger, 
-                              item, brand, 
-                              language, source, 
-                              model, creationDate, 
-                              correct, processTime, tokens)
-    assert sentiment.reviewId == reviewId
-    assert sentiment.stars == stars
-    assert sentiment.sentiment == sentiment
-    assert sentiment.anger == anger
-    assert sentiment.item == item
-    assert sentiment.brand == brand
-    assert sentiment.language == language
-    assert sentiment.source == source
-    assert sentiment.creationDate < datetime.now()
-    assert sentiment.correct == True
-    assert sentiment.processTime == 2
-    assert sentiment.tokens == 2000
+    
+    originalId='or_id1'
+    productId = 'product1'
+    reviewText = 'ReviewText1234'
+    reviewTime = datetime.now()
+    reviewerId = 1
+    originalStars = 5
+
+    review = add_review(originalId=originalId, 
+                        productId=productId, 
+                        reviewText=reviewText,
+                        reviewTime = reviewTime,
+                        reviewerId = reviewerId,
+                        originalStars=originalStars)
+    
+    assert review.originalId == originalId
+    assert review.productId == productId
+    assert review.reviewText == reviewText
+    assert review.reviewTime == reviewTime
+    assert review.reviewerId == reviewerId
+    assert review.originalStars == originalStars

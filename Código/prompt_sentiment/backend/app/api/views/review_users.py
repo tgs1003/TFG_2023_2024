@@ -60,10 +60,10 @@ class ReviewUserList(Resource):
 class ReviewUsersSentiment(Resource):
     @reviewusers_namespace.marshal_with(reviewusers, as_list=True)
     @reviewusers_namespace.expect(parser)
-    def get(self):
+    def get(self, dataset_id):
         """Devuelve todos los usuarios de las reseñas."""
         check_token(request, reviewusers_namespace)
-        return get_reviewusers_with_sentiments(), 200
+        return get_reviewusers_with_sentiments(dataset_id = dataset_id), 200
 
 class ReviewUsers(Resource):
     @reviewusers_namespace.marshal_with(reviewusers)
@@ -111,5 +111,5 @@ class ReviewUsers(Resource):
         return response_object, 200
 
 reviewusers_namespace.add_resource(ReviewUserList, "")
-reviewusers_namespace.add_resource(ReviewUsersSentiment,"/sentiment")
+reviewusers_namespace.add_resource(ReviewUsersSentiment,"/sentiment/<string:dataset_id>")
 reviewusers_namespace.add_resource(ReviewUsers, "/<string:reviewuser_id>")

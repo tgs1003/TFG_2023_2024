@@ -10,18 +10,19 @@ def get_all_reviewusers():
     '''
     return ReviewUser.query.all()
 
-def get_reviewusers_with_sentiments():
+def get_reviewusers_with_sentiments(dataset_id, min_count=8):
     '''
     Devuelve los usuarios que tienen sentimientos
     '''
-    query2 = db.session.query(Review.reviewerId).group_by(Review.reviewerId).having(func.count(Review.id)>8).subquery()
+    query2 = db.session.query(Review.reviewerId).group_by(Review.reviewerId).having(func.count(Review.id)>min_count).subquery()
     query = db.session.query(ReviewUser)
     query = query.join(Review, Review.reviewerId == ReviewUser.id)
     query = query.join(Sentiment, Sentiment.reviewId == Review.id)
     query = query.filter(
         and_(
             Sentiment.correct == True,
-            Review.reviewerId.in_(query2)
+            Review.reviewerId.in_(query2),
+            Review.datasetId == dataset_id
             )
         )
     return query.all()

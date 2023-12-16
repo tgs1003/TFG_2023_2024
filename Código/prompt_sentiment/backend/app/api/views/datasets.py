@@ -167,27 +167,33 @@ class DatasetProcess(Resource):
         reviews = get_reviews_by_dataset_id_for_process(dataset_id)
         for review_data in reviews:
             time_start = time.perf_counter()
-            result = openai.get_sentiment(review_data["reviewText"])
-            review_id = review_data["reviewId"]
-            stars = result["stars"]
-            sentiment = result["sentiment"]
-            anger = result["anger"]
-            item = result["item"]
-            brand = result["brand"]
-            language = result["language"]
-            model = "OpenAI"
-            correct = True
-            processTime = int(time.perf_counter() - time_start)
-            add_sentiment(reviewId=review_id, 
-                          stars=stars, 
-                          sentiment=sentiment, 
-                          anger=anger, 
-                          item=item, 
-                          brand=brand, 
-                          language=language, 
-                          model=model, 
-                          correct=correct, 
-                          processTime=processTime)
+            result = openai.get_sentiment(review_data.reviewText)
+            review_id = review_data.id
+            try:
+                stars = result["Stars"]
+                sentiment = result["Sentiment"]
+                anger = result["Anger"]
+                item = result["Item"]
+                brand = result["Brand"]
+                language = result["Language"]
+                model = "OpenAI"
+                processTime = int(time.perf_counter() - time_start)
+                add_sentiment(reviewId=review_id, 
+                            stars=int(stars), 
+                            sentiment=sentiment, 
+                            anger=bool(anger), 
+                            item=item, 
+                            brand=brand, 
+                            language=language, 
+                            model=model, 
+                            correct=True,
+                            processTime=processTime)
+            except:
+                add_sentiment(reviewId=review_id, 
+                            correct=False,
+                            model=model,
+                            source=json.dumps(result),                            
+                            processTime=processTime)
 
         response_object["message"] = f"Dataset {dataset.id} se ha procesado correctamente."
         return response_object, 200

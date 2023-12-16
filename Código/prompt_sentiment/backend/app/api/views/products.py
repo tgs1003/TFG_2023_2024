@@ -6,6 +6,7 @@ from app.api.services.roles import user_has_rol
 from app.api.services.products import (
     get_all_products,
     get_product_by_id,
+    get_products_with_sentiments,
     add_product,
     update_product,
     delete_product    
@@ -108,6 +109,15 @@ class Products(Resource):
         delete_product(product)
         response_object["message"] = f"El product {product.productId} se ha borrado."
         return response_object, 200
+    
+class ProductsSentiment(Resource):
+    @products_namespace.marshal_with(products, as_list=True)
+    @products_namespace.expect(parser)
+    def get(self, dataset_id):
+        """Devuelve todos los products de las reseñas."""
+        check_token(request, products_namespace)
+        return get_products_with_sentiments(dataset_id), 200
 
 products_namespace.add_resource(ProductList, "")
+products_namespace.add_resource(ProductsSentiment,"/sentiment/<int:dataset_id>")
 products_namespace.add_resource(Products, "/<int:productId>")

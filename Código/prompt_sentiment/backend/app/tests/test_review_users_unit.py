@@ -2,9 +2,6 @@ import json
 import pytest
 import app.api.views.review_users
 
-import json
-import pytest
-
 def test_add_review_user(test_app, monkeypatch):
     
     def mock_get_reviewuser_by_id(productId):

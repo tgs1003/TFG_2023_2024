@@ -1,6 +1,5 @@
 <template>
     <div>
-       
         <div>    
             
         </div>
@@ -9,7 +8,7 @@
             Reseñas
             <v-spacer></v-spacer>
             <v-select 
-                v-model="selectedDataset" 
+                @change="onChangeDataset($event)"
                 label="Dataset: "
                 :items="datasets"
                 item-text="name"
@@ -18,8 +17,7 @@
             </v-select>
             <v-spacer></v-spacer>
             <v-select 
-                @change="onChange($event)"
-                v-model="selectedSearch" 
+                @change="onChangeSearchBy($event)"
                 label="Búsqueda por: "
                 :items="searchby"
                 item-text="name"
@@ -28,9 +26,8 @@
             </v-select>
             <v-spacer></v-spacer>
             <v-select 
-                @change="onChange($event)"
-                v-show="selectedSearch==='Usuario'"
-                v-model="selectedUser" 
+                @change="onChangeUser($event)"
+                v-show="selectedSearch==='Usuario'" 
                 label="Usuario: "
                 :items="users"
                 item-text="name"
@@ -38,13 +35,12 @@
                 >    
             </v-select>
             <v-select 
-                @change="onChange($event)"
+                @change="onChangeProduct($event)"
                 v-show="selectedSearch==='Producto'"
-                v-model="selectedProduct" 
                 label="Producto: "
                 :items="products"
-                item-text="name"
-                item-value="id"
+                item-text="title"
+                item-value="productId"
                 >    
             </v-select>
         </v-card-title>
@@ -97,8 +93,42 @@
         },
 
         methods: {
-            onChange(event){
-
+            onChangeSearchBy(event){
+                //borramos reseñas
+                //reseteamos variables
+                this.selectedSearch=event;
+                if(this.selectedDataset != null)
+                    this.updateData();
+            },
+            onChangeDataset(event){
+                this.selectedDataset=event;
+                if(this.selectedSearch != null)
+                    this.updateData();
+            },
+            updateData(){
+                //leer usuarios y productos
+                if (this.selectedSearch === 'Producto')
+                    api.get('products/sentiment/' +this.selectedDataset).then((resp)=>{
+                        this.products = resp.data
+                    });
+                if (this.selectedSearch === 'Usuario')
+                    api.get('review_users/sentiment/' +this.selectedDataset).then((resp)=>{
+                        this.users = resp.data
+                    });
+            },
+            onChangeUser(event){
+                //actualizamos sentiments
+                this.selectedUser = event;
+                api.get('/sentiments/by_user_and_dataset/' + this.selectedUser + '/'+this.selectedDataset).then((resp)=>{
+                    this.sentiments = resp.data
+                })
+            },
+            onChangeProduct(event){
+                //actualizamos sentiments
+                this.selectedProduct=event;
+                api.get('/sentiments/by_product_and_dataset/' + this.selectedProduct+'/'+this.selectedDataset).then((resp)=>{
+                    this.sentiments = resp.data
+                })
             },
             selectItem(selectedUser){
                 //Devuelve las reseñas de un usuario procesadas y correctas.
@@ -108,9 +138,7 @@
                 
             },
             initialize() {
-                api.get('/review_users/sentiment').then((resp)=>{
-                    this.users = resp.data
-                })
+                
                 api.get('/datasets').then((resp)=>{
                     this.datasets = resp.data
                 })

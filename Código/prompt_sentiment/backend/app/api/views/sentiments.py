@@ -9,8 +9,8 @@ from app.api.services.sentiments import(
     update_sentiment,
     delete_sentiment,
     get_old_sentiment,
-    get_sentiments_by_product_id,
-    get_sentiments_by_reviewuser_id
+    get_sentiments_by_product_id_and_dataset_id,
+    get_sentiments_by_reviewuser_id_and_dataset_id
 )
 
 sentiments_namespace = Namespace("sentiments")
@@ -166,20 +166,23 @@ sentiments_review = sentiments_namespace.model(
 class SentimentListByUser(Resource):
     @sentiments_namespace.marshal_with(sentiments_review, as_list=True)
     @sentiments_namespace.expect(parser)
-    def get(self, review_user_id):
+    def get(self, review_user_id, dataset_id):
         """Devuelve todos los sentimientos de las reseñas."""
         check_token(request, sentiments_namespace)
-        return get_sentiments_by_reviewuser_id(review_user_id=review_user_id), 200
+        return get_sentiments_by_reviewuser_id_and_dataset_id(
+            review_user_id = review_user_id, 
+            dataset_id=dataset_id), 200
     
 class SentimentListByProduct(Resource):
-    @sentiments_namespace.marshal_with(sentiments, as_list=True)
+    @sentiments_namespace.marshal_with(sentiments_review, as_list=True)
     @sentiments_namespace.expect(parser)
-    def get(self, product_id):
+    def get(self, product_id, dataset_id):
         """Devuelve todos los sentimientos de las reseñas."""
         check_token(request, sentiments_namespace)
-        return get_sentiments_by_product_id(product_id=product_id), 200
+        return get_sentiments_by_product_id_and_dataset_id(product_id = product_id,
+                                                            dataset_id = dataset_id), 200
 
 sentiments_namespace.add_resource(SentimentList, "")
-sentiments_namespace.add_resource(SentimentListByUser, "/by_user/<string:review_user_id>")
-sentiments_namespace.add_resource(SentimentListByProduct, "/by_product/<string:product_id>")
+sentiments_namespace.add_resource(SentimentListByUser, "/by_user_and_dataset/<string:review_user_id>/<int:dataset_id>")
+sentiments_namespace.add_resource(SentimentListByProduct, "/by_product_and_dataset/<string:product_id>/<int:dataset_id>")
 sentiments_namespace.add_resource(Sentiments, "/<int:sentiment_id>")

@@ -18,6 +18,19 @@ def get_sentiments_by_datasetId(datasetId):
         exists().where(Sentiment.reviewId==Review.id and Review.datasetId == datasetId)
         ).all()
 
+def get_sentiments_by_reviewuser_id_and_dataset_id(review_user_id, dataset_id):
+    '''
+    Devuelve los sentimientos de un usuario
+    '''
+    query = db.session.query(Sentiment)
+    query = query.join(Review, Review.id == Sentiment.reviewId)
+    query = query.filter(Review.reviewerId == review_user_id, Review.datasetId == dataset_id, Sentiment.correct)
+    query = query.with_entities(Review.datasetId, Review.id, Sentiment.sentiment, 
+                                Review.originalStars, Review.reviewText, 
+                                Sentiment.stars,Sentiment.processTime, 
+                                Sentiment.tokens, Sentiment.model, Review.productId)
+    return query.all()
+
 def get_sentiments_by_reviewuser_id(review_user_id):
     '''
     Devuelve los sentimientos de un usuario
@@ -25,6 +38,19 @@ def get_sentiments_by_reviewuser_id(review_user_id):
     query = db.session.query(Sentiment)
     query = query.join(Review, Review.id == Sentiment.reviewId)
     query = query.filter(Review.reviewerId == review_user_id)
+    query = query.with_entities(Review.datasetId, Review.id, Sentiment.sentiment, 
+                                Review.originalStars, Review.reviewText, 
+                                Sentiment.stars,Sentiment.processTime, 
+                                Sentiment.tokens, Sentiment.model, Review.productId)
+    return query.all()
+
+def get_sentiments_by_product_id_and_dataset_id(product_id, dataset_id):
+    '''
+    Devuelve los sentimientos de un usuario
+    '''
+    query = db.session.query(Sentiment)
+    query = query.join(Review, Review.id == Sentiment.reviewId)
+    query = query.filter(Review.productId == product_id, Review.datasetId == dataset_id, Sentiment.correct)
     query = query.with_entities(Review.datasetId, Review.id, Sentiment.sentiment, 
                                 Review.originalStars, Review.reviewText, 
                                 Sentiment.stars,Sentiment.processTime, 
@@ -64,7 +90,7 @@ def get_old_sentiment(reviewId, model):
     '''
     return Sentiment.query.filter_by(reviewId=reviewId, model=model).first()
 
-def add_sentiment(reviewId, stars, sentiment, anger, item, brand, language, source, model, correct, processTime, tokens):
+def add_sentiment(reviewId, processTime, correct, model, stars=0, sentiment="", anger=False, item="", brand="", language="", source="", tokens=0):
     '''
     Agrega un sentimiento
     '''

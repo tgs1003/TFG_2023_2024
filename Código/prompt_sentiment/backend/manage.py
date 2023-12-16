@@ -12,6 +12,7 @@ from flask.cli import FlaskGroup
 
 from app import create_app, db
 from app.api.models.users import User
+from app.api.models.datasets import Dataset
 
 from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
@@ -52,6 +53,26 @@ def seed_db():
             password='ubu_1234',
             rol='Admin'
         ))
+        # Creamos un dataset de prueba
+        db.session.add(Dataset(name='Amazon Shoe Reviews (test)', type='Huggingface', payload='{ \
+        "name": "Amazon Shoe Reviews", \
+        "type": "Hugging face", \
+        "path":"mesmalif/amazon-shoe-reviews",\
+        "subset": "test",\
+        "mapping": { \
+        "review_text": "text", \
+        "review_headline": "review_headline", \
+        "stars": "labels", \
+        "product_id": "product_id", \
+        "product_title": "product_title", \
+        "customer_id": "customer_id", \
+        "review_id": "review_id", \
+        "review_date": "review_date" \
+            }, \
+        "correct_stars": 0,\
+        "date_format": "%Y-%m-%d"\
+        }', status='Creado'))
+
         db.session.commit()
 
 

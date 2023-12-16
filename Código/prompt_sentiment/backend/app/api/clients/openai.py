@@ -9,14 +9,14 @@ from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv(), override=True)
 
 openai.api_key  = os.getenv('OPENAI_API_KEY')
-openai.api_base = os.getenv('OPENAI_BASE_PATH')
+
 llm_model = "gpt-3.5-turbo"
 sentiment_schema = ResponseSchema(name="Sentiment",description="It's the sentiment of the review (positiva or negative)")
 anger_schema = ResponseSchema(name="Anger", description="Is the reviewer expressing anger? (true or false)")
 item_schema = ResponseSchema(name="Item", description="Item purchaded by the reviewer")
 company_schema = ResponseSchema(name="Brand", description="Company that made the item")
 language_schema = ResponseSchema(name="Language", description="The language of the review")
-stars_schema = ResponseSchema(name="Stars", description="The rating of the review being 1 most negative and 5 the most positive")
+stars_schema = ResponseSchema(name="Stars", description="Is a number between 1 and 5 indicating the rating of the review")
 response_schemas = [sentiment_schema, 
                     anger_schema,
                     item_schema,
@@ -55,7 +55,7 @@ class LangchainOpenAISentimentAnalyzer():
         output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
         format_instructions = output_parser.get_format_instructions()
         prompt = prompt_template.format_messages(
-        text = text)
+        text = text, format_instructions=format_instructions)
         response = chat(prompt)
         
         return output_parser.parse(response.content)

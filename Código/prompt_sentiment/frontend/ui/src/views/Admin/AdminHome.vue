@@ -109,7 +109,7 @@
                                                 <v-select label="Tipo" v-model="editedItem.type" :items="types"></v-select>
                                             </v-col>
                                             <v-col cols="12" md="12" sm="12">
-                                                <v-textarea label="Configuración" v-model="editedItem.path"></v-textarea>
+                                                <v-textarea label="Configuración" v-model="editedItem.payload"></v-textarea>
                                             </v-col>
                                         </v-row>
                                     </v-container>
@@ -125,18 +125,13 @@
                         <v-dialog max-width="500px" v-model="dialog_dataset_load">
                             <v-card>
                                 <v-card-title>
-                                    <span class="headline">{{ formTitle_dataset }}</span>
+                                    <span class="headline">Cargar dataset</span>
                                 </v-card-title>
 
                                 <v-card-text>
                                     <v-container>
                                         <v-row>
-                                            <v-col cols="12" md="12" sm="12">
-                                                <v-text-field label="Nombre" v-model="selectedDataset.name"></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" md="12" sm="12">
-                                                <v-select label="Tipo" v-model="selectedDataset.type" :items="types"></v-select>
-                                            </v-col>
+                                    
                                             <v-col cols="12" md="12" sm="12">
                                                 
                                                 <v-slider 
@@ -329,7 +324,7 @@
                     })
             },
             editDataset(item) {
-                this.editedIndex = this.datatasets.indexOf(item)
+                this.editedIndex = this.datasets.indexOf(item)
                 this.editedItem = Object.assign({}, item)
                 this.dialog_dataset = true
             },
@@ -396,10 +391,11 @@
                 })
             },
             save_dataset(){
+                
                 let datasetData = {
                     "name": this.editedItem.name,
                     "type": this.editedItem.type,
-                    "payload": this.editedItem.path
+                    "payload": this.editedItem.payload
                 }
                 api.post('/datasets', datasetData) .then(resp => {
                             console.log(resp.data.message)
@@ -410,7 +406,8 @@
                         })
                 this.close_dataset()
                 }
-                
+            
+                  
             ,
             save() {
                 if (this.editedIndex > -1) {

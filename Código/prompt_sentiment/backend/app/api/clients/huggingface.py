@@ -3,7 +3,7 @@ import logging
 import os
 import json
 from huggingface_hub import hf_hub_download
-from datasets import load_dataset
+from datasets import load_dataset as ld
 from datetime import datetime
 from app.api.services.datasets import get_dataset_by_id
 from app.api.services.products import get_product_by_id, add_product
@@ -35,7 +35,7 @@ def load_dataset(dataset_id, config, sample):
     review_id_fieldname = mapping['review_id']
     review_date_fieldname = mapping['review_date']
     
-    dataset = load_dataset(path)
+    dataset = ld(path)
     subset = dataset[subset_cfg].to_iterable_dataset()
     df = pd.json_normalize(subset)
     df = df.sample(frac=(sample/100))

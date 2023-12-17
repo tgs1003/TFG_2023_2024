@@ -170,7 +170,7 @@ class DatasetProcess(Resource):
             result = openai.get_sentiment(review_data.reviewText)
             review_id = review_data.id
             try:
-                stars = result["Stars"]
+                stars = self.parse_stars(result["Stars"])
                 sentiment = result["Sentiment"]
                 anger = result["Anger"]
                 item = result["Item"]
@@ -197,6 +197,21 @@ class DatasetProcess(Resource):
 
         response_object["message"] = f"Dataset {dataset.id} se ha procesado correctamente."
         return response_object, 200
+    
+    def parse_stars(self, stars):
+        if type(stars) == int:
+            return stars
+        elif stars == 'Five':
+            return 5
+        elif stars == 'Four':
+            return 4
+        elif stars == 'Three':
+            return 3
+        elif stars == 'Two':
+            return 2
+        elif stars == 'One':
+            return 1
+        return stars
 
 datasets_namespace.add_resource(DatasetList, "")
 datasets_namespace.add_resource(Datasets, "/<int:dataset_id>")

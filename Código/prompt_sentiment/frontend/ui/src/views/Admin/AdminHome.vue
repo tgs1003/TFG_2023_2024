@@ -122,7 +122,7 @@
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
-                        <v-dialog max-width="500px" v-model="dialog_dataset_load">
+                        <v-dialog max-width="800px" v-model="dialog_dataset_load">
                             <v-card>
                                 <v-card-title>
                                     <span class="headline">Cargar dataset</span>
@@ -143,12 +143,11 @@
                                                     :min="10" 
                                                     hide-details
                                                     single-line
-                                                    thumb-label="always" 
+                                                    ticks
+                                                    :tick-labels="percent"
                                                     >
                                                 </v-slider>
-                                                
-                                            </v-col>
-                                            
+                                            </v-col> 
                                         </v-row>
                                     </v-container>
                                 </v-card-text>
@@ -163,14 +162,14 @@
                     </v-toolbar>
                 </template>
                 <template v-slot:item.actions="{ item }">
-                    <v-icon title="Cargar dataset" v-if="item.total == '0'"
+                    <v-icon title="Cargar dataset" v-if="item.total == '0' && item.status != 'Cargando'"
                             @click="loadDataset(item)"
                             class="mr-2"
                             small
                     >
                         mdi-upload
                     </v-icon>
-                    <v-icon title="Procesar dataset" v-if="item.total != '0' && item.processed == '0'"
+                    <v-icon title="Procesar dataset" v-if="item.total != '0' && item.status != 'Procesando'"
                             @click="processDataset(item)"
                             class="mr-2"
                             small
@@ -209,6 +208,7 @@
             dialog: false,
             dialog_dataset: false,
             dialog_dataset_load: false,
+            percent: ["10","20","30","40","50","60","70","80","90","100"],
             roles:[
                 "Admin",
                 "Gestor"

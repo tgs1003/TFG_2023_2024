@@ -4,7 +4,7 @@ from app import db
 class Sentiment(db.Model):
     __tablename__ = 'sentiments'
     id = db.Column(db.Integer, primary_key=True, autoincrement="auto")
-    reviewId = db.Column(db.Integer, db.ForeignKey("reviews.id"), nullable=False)
+    reviewId = db.Column(db.Integer, db.ForeignKey("reviews.id", ondelete='CASCADE'), nullable=False)
     stars = db.Column(db.Integer)
     sentiment = db.Column(db.String)
     anger = db.Column(db.Boolean)

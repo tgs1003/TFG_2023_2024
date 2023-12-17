@@ -28,34 +28,28 @@ response_schemas = [sentiment_schema,
 Plantilla para identificar los sentimientos de una reseña.
 Además intenta identificar otros elementos como el objeto de la reseña, el idioma y el fabricante.
 '''
-template_string ="""Identify the following items from the review text: \
-- Sentiment (positive or negative) \
-- Is the reviewer expressing anger? (true or false) \
-- Item purchased by reviewer \
-- Company that made the item \
-- Language \
-- Stars
-\
-The review is delimited with triple backticks. \
-Format your response as a JSON object with \
-"Sentiment", "Anger", "Item" ,"Brand", "Language" and "Stars" as the keys. \
-If the information isn\'t present, use "unknown" \
-as the value.\
-Make your response as short as possible.\
-Format the Anger value as a boolean.\
-Format the Language value as ISO 639-1.\
-\
-Review text: \'\'\'{text}\'\'\''
+template_string ="""Return a json with the following information extracted from the review below: \
+    {{ \
+        ""Sentiment"": ""(Positive or Negative)"",\
+        ""Stars"": ""Number of stars depending on the sentiment of the Review"",\
+        ""Anger"": ""Is the user angry (True or False)"", \
+        ""Item"": ""The name of the product reviewed"", \
+        ""Brand"": ""The brand name of the product reviewed"", \
+        ""Language"": ""The language of the review in ISO 639-1 format"" \
+    }} \
+Review: ```{review}``` \
+If the information isn't present, use ""unknown"" as the value. \
+Remember to return only the json. 
 """
 chat = ChatOpenAI(temperature=0.0, model=llm_model, verbose=True)
 
 class LangchainOpenAISentimentAnalyzer():
-    def get_sentiment(self, text):
+    def get_sentiment(self, review):
         prompt_template = ChatPromptTemplate.from_template(template_string)
         output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
         format_instructions = output_parser.get_format_instructions()
         prompt = prompt_template.format_messages(
-        text = text, format_instructions=format_instructions)
+        review = review, format_instructions=format_instructions)
         response = chat(prompt)
         
         return output_parser.parse(response.content)

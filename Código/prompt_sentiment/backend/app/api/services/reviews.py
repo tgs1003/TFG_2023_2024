@@ -1,7 +1,8 @@
 import logging
 from app import db
 from app.api.models.reviews import Review
-from sqlalchemy import func, and_, or_
+from app.api.models.sentiments import Sentiment
+from sqlalchemy import func, and_, or_, exists
 
 logging.basicConfig(level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -32,15 +33,16 @@ def get_reviews_by_dataset_id_for_process(datasetId, n_products=13, n_reviewers=
         - y que pertenezcan a determinado dataset
     '''
     logging.debug("Dataset id: " + str(datasetId))
-    query1 = db.session.query(Review.productId).group_by(Review.productId).having(func.count(Review.id)>n_products).subquery()
-    query2 = db.session.query(Review.reviewerId).group_by(Review.reviewerId).having(func.count(Review.id)>n_reviewers).subquery()
+    query1 = db.session.query(Review.productId).filter(Review.datasetId==datasetId).group_by(Review.productId).having(func.count(Review.id)>n_products).subquery()
+    query2 = db.session.query(Review.reviewerId).filter(Review.datasetId==datasetId).group_by(Review.reviewerId).having(func.count(Review.id)>n_reviewers).subquery()
     query = db.session.query(Review).filter(
         and_(
             Review.datasetId==datasetId,
             or_(
             Review.productId.in_(query1),
-            Review.reviewerId.in_(query2)
-            )
+            Review.reviewerId.in_(query2),
+            ),
+            ~exists().where(Sentiment.reviewId == Review.id and Sentiment.correct == True)
         ))
     return query.all()
 

@@ -13,4 +13,5 @@ class Dataset(db.Model):
     payload = db.Column(db.String)
     status = db.Column(db.String, default='Creado', nullable=False) #Creado, Cargado, Procesado
     date = db.Column(db.DateTime, server_default=func.now())
+    reviews = db.relationship("Review", backref='dataset', passive_deletes=True)
 

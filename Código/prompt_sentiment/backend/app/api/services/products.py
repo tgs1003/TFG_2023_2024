@@ -15,7 +15,7 @@ def get_products_with_sentiments(dataset_id, min_count=8):
     '''
     Devuelve los productos que tienen sentimientos
     '''
-    query2 = db.session.query(Review.productId).group_by(Review.productId).having(func.count(Review.id)>min_count).subquery()
+    query2 = db.session.query(Review.productId).filter(Review.datasetId == dataset_id).group_by(Review.productId).having(func.count(Review.id)>min_count).subquery()
     query = db.session.query(Product)
     query = query.join(Review, Review.productId == Product.productId)
     query = query.join(Sentiment, Sentiment.reviewId == Review.id)

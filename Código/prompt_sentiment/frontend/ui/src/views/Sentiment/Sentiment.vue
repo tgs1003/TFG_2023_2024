@@ -48,23 +48,34 @@
             <v-row dense>
             <v-col>
                 <v-data-table
+                    :single-expand=true
+                    :expanded.sync="expanded"
                     :items-per-page="5"
                     :headers="headers_sentiments"
                     :items="sentiments"
                     class="elevation-1"
                     sort-by="name"
                     @click:row="rowClick"
+                    show-expand
                 >
-                
+                <template v-slot:expanded-item="{headers, item}">
+                        <td :colspan="headers.length">
+                            <v-card>
+                                <v-card-text>
+                                    <v-row align="center">
+                                        <v-col
+                                        cols="2"
+                                        ><strong>Reseña:</strong></v-col>
+                                        <v-col cols="10">
+                                            {{item.reviewText}}
+                                        </v-col>
+                                    </v-row>
+                                </v-card-text>
+                            </v-card>
+                            
+                        </td>
+                </template>
                 </v-data-table>
-                <v-card v-if="selectedReview != null">
-                    
-                    <v-card>
-                        <v-card-title>Texto de la reseña</v-card-title>
-                        <v-card-subtitle><strong>Usuario:</strong> {{ selectedReview.reviewerId }}</v-card-subtitle>
-                        <v-card-text>{{selectedReview.reviewText}}</v-card-text>
-                    </v-card>
-                </v-card>
             </v-col>
             <v-col cols="3">
                 <v-card class="mx-auto" max-width="300">
@@ -163,6 +174,7 @@
     export default {
         name: "SentimentList",
         data: () => ({
+            expanded:[],
             currentTab:0,
             selectedItem:null,
             selectedDataset:null,

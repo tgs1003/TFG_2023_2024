@@ -70,7 +70,7 @@ def test_add_review_user_correcto(test_app):
     
 def test_get_review_user_no_existe(test_app):
     client = test_app.test_client()
-    resp = client.get("/review_user/999")
+    resp = client.get("/review_users/999")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 404
     assert "El usuario 999 no existe" in data["message"]
@@ -78,21 +78,21 @@ def test_get_review_user_no_existe(test_app):
 
 def test_delete_review_user(test_app):
     client = test_app.test_client()
-    resp = client.get("/review_user/user1")
+    resp = client.delete("/review_users/user1")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 200
     assert "eliminado" in data["message"]
 
 def test_delete_review_user_incorrect_id(test_app):
     client = test_app.test_client()
-    resp = client.get("/review_user/999")
+    resp = client.delete("/review_users/999")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 404
     assert "El usuario 999 no existe" in data["message"]
 
 def test_update_review_user_correct(test_app):
     client = test_app.test_client()
-    resp = client.put(f"/review_user/user1", data=json.dumps({
+    resp = client.put(f"/review_users/user1", data=json.dumps({
                 "name": "review_user_modified",
             }),content_type="application/json")
 
@@ -115,7 +115,7 @@ def test_update_review_user_correct(test_app):
 
 def test_update_review_user_incorrect_request(test_app, id, payload, status_code, message):
     client = test_app.test_client()
-    resp = client.put(f"/review_user/{id}", data=json.dumps(payload),content_type="application/json")
+    resp = client.put(f"/review_users/{id}", data=json.dumps(payload),content_type="application/json")
 
     data = json.loads(resp.data.decode())
     assert resp.status_code == status_code

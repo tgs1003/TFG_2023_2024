@@ -83,14 +83,14 @@ def test_add_dataset_no_existe(test_app):
 
 def test_delete_dataset(test_app):
     client = test_app.test_client()
-    resp = client.get("/datasets/1")
+    resp = client.delete("/datasets/1")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 200
     assert "eliminado" in data["message"]
 
 def test_delete_dataset_incorrect_id(test_app):
     client = test_app.test_client()
-    resp = client.get("/datasets/999")
+    resp = client.delete("/datasets/999")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 404
     assert "El dataset 999 no existe" in data["message"]

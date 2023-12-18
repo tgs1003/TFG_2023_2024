@@ -93,7 +93,7 @@ def test_delete_product_incorrect_id(test_app, monkeypatch):
     monkeypatch.setattr(app.api.views.products, "get_products_by_id", mock_get_dataset_by_id)
     
     client = test_app.test_client()
-    resp = client.get("/products/999")
+    resp = client.delete("/products/999")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 404
     assert "El producto 999 no existe" in data["message"]

@@ -58,7 +58,12 @@
                 
                 </v-data-table>
                 <v-card v-if="selectedReview != null">
-                    {{selectedReview.reviewText}}
+                    
+                    <v-card>
+                        <v-card-title>Texto de la reseña</v-card-title>
+                        <v-card-subtitle><strong>Usuario:</strong> {{ selectedReview.reviewerId }}</v-card-subtitle>
+                        <v-card-text>{{selectedReview.reviewText}}</v-card-text>
+                    </v-card>
                 </v-card>
             </v-col>
             <v-col cols="3">
@@ -66,70 +71,79 @@
                     <v-list-item two-line>
                         <v-list-item-content>
                             <v-list-item-title class="text-h5">
-                                San Francisco
+                                Resumen del proceso
                             </v-list-item-title>
-                            <v-list-item-subtitle>Mon, 12:30 PM, Mostly sunny</v-list-item-subtitle>
+                            <v-list-item-subtitle></v-list-item-subtitle>
                         </v-list-item-content>
                     </v-list-item>
                     <v-card-text>
                         <v-row align="center">
                             <v-col
-                            class="text-h2"
-                            cols="6"
-                            >23&deg;C</v-col>
-                            <v-col cols="6">
-                                <v-img
-                                    src="https://cdn.vuetifyjs.com/images/cards/sun.png"
-                                    alt="Sunny image"
-                                    width="92"
-                                ></v-img>
+                            cols="4"
+                            ><strong>API:</strong></v-col>
+                            <v-col cols="8">
+                                OpenAI
+                            </v-col>
+                        </v-row>
+                        <v-row align="center">
+                            <v-col
+                            cols="4"
+                            ><strong>Modelo:</strong></v-col>
+                            <v-col cols="8">
+                                ChatGpt 3.5 Turbo
+                            </v-col>
+                        </v-row>
+                        <v-row align="center">
+                            <v-col
+                            cols="4"
+                            ><strong>Fecha:</strong></v-col>
+                            <v-col cols="8">
+                                18 dic. 2023
+                            </v-col>
+                        </v-row>
+                        <v-row align="center">
+                            <v-col
+                            cols="4"
+                            ><strong>Tiempo:</strong></v-col>
+                            <v-col cols="8">
+                                20 minutos
+                            </v-col>
+                        </v-row>
+                        <v-row align="center">
+                            <v-col
+                            cols="4"
+                            ><strong>Coste:</strong></v-col>
+                            <v-col cols="8">
+                                ??
+                            </v-col>
+                        </v-row>
+                        <v-row align="center" v-if="datasetInfo != null">
+                            <v-col
+                            cols="4"
+                            ><strong>Dataset:</strong></v-col>
+                            <v-col cols="8">
+                                {{ datasetInfo.name }}
+                            </v-col>
+                        </v-row>
+                        <v-row align="center" v-show="datasetInfo != null">
+                            <v-col
+                            cols="4"
+                            ><strong>Origen:</strong></v-col>
+                            <v-col cols="8">
+                                {{ datasetInfo != null? datasetInfo.type:"" }}
                             </v-col>
                         </v-row>
                     </v-card-text>
-                    <v-list-item>
-                    <v-list-item-icon>
-                        <v-icon>mdi-send</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-subtitle>23 km/h</v-list-item-subtitle>
-                    </v-list-item>
-
-                    <v-list-item>
-                    <v-list-item-icon>
-                        <v-icon>mdi-cloud-download</v-icon>
-                    </v-list-item-icon>
-                    <v-list-item-subtitle>48%</v-list-item-subtitle>
-                    </v-list-item>
-
-                    <v-slider
-                    v-model="currentTab"
-                    :max="6"
-                    :tick-labels="datasets"
-                    class="mx-4"
-                    ticks
-                    ></v-slider>
-
-                    <v-list class="transparent">
-                    <v-list-item
-                        v-for="item in datasets"
-                        :key="item.day"
-                    >
-                        <v-list-item-title>{{ item.day }}</v-list-item-title>
-
-                        <v-list-item-icon>
-                        <v-icon>{{ item.icon }}</v-icon>
-                        </v-list-item-icon>
-
-                        <v-list-item-subtitle class="text-right">
-                        {{ item.temp }}
-                        </v-list-item-subtitle>
-                    </v-list-item>
-                    </v-list>
+                    
 
                     <v-divider></v-divider>
 
                     <v-card-actions>
                     <v-btn text>
-                        Full Report
+                        Ver Modelo
+                    </v-btn>
+                    <v-btn text>
+                        Ver Dataset
                     </v-btn>
                     </v-card-actions>
                 </v-card>
@@ -156,6 +170,7 @@
             selectedProduct:null,
             selectedReview:null,
             selectedSearch:null,
+            datasetInfo: null,
             dialog: false,
             datasets:[],
             users:[],
@@ -195,6 +210,9 @@
             },
             onChangeDataset(event){
                 this.selectedDataset=event;
+                api.get('datasets/' +this.selectedDataset).then((resp)=>{
+                        this.datasetInfo = resp.data
+                    });
                 if(this.selectedSearch != null)
                     this.updateData();
             },

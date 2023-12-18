@@ -78,14 +78,14 @@ def test_get_product_no_existe(test_app):
 
 def test_delete_product(test_app):
     client = test_app.test_client()
-    resp = client.get("/products/product1")
+    resp = client.delete("/products/product1")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 200
     assert "eliminado" in data["message"]
 
 def test_delete_product_incorrect_id(test_app):
     client = test_app.test_client()
-    resp = client.get("/products/999")
+    resp = client.delete("/products/999")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 404
     assert "El producto 999 no existe" in data["message"]

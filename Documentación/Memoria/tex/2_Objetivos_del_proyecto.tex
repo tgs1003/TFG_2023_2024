@@ -1,36 +1,40 @@
 \capitulo{2}{Objetivos del proyecto}
 
 El objetivo del trabajo propuesto es desarrollar una aplicación 
-basada en inteligencia artificial (IA) utilizando modelos de lenguaje grandes (LLM) 
+basada en inteligencia artificial (IA) utilizando modelos de lenguaje grandes (LLM~\cite{mirchandani2023large}) 
 para el análisis, clasificación y calificación de reseñas de usuarios en portales 
 de recomendación y tiendas de comercio electrónico. 
 Los objetivos específicos son los siguientes:
+\begin{itemize}
+    \item[-] Crear una aplicación que utilice modelos de lenguaje grandes (como ChatGPT~\cite{chatgpt1}, Bard~\cite{googlebard1} o Llama~\cite{metallamaLM}) 
+    de manera efectiva para analizar y comprender las reseñas de usuarios. 
+    \item[-] Diseñar un sistema basado en "prompts", definiendo las tareas, entradas y 
+    salidas de la respuesta a una instrucción, para lograr una solución 
+    ágil sin necesidad de nuevos entrenamientos.
+    \item[-] Identificar y categorizar aspectos específicos del producto o servicio:
+    \begin{description}
+        \item[-] Implementar un sistema que pueda identificar y categorizar 
+    los aspectos específicos mencionados por los usuarios en sus reseñas.
+        \item[-] Extraer información relevante sobre productos o servicios, 
+    identificando características específicas que generan opiniones.
+    \end{description}
+    \item[-] Relacionar opiniones y emociones con calificaciones:
+    \begin{description}
+        \item[-] Desarrollar un mecanismo que pueda relacionar las opiniones expresadas 
+        en las reseñas con las calificaciones otorgadas por los usuarios.
+        \item[-] Analizar las emociones asociadas a las opiniones para comprender 
+        mejor la percepción de los usuarios respecto a productos y servicios.
+    \end{description}
+    \item[-] Implementar técnicas de ``\emph{prompt engineering}'' ~\cite{white2023prompt}:
+    \begin{description}
+        \item[-] Utilizar técnicas de ``\emph{prompt engineering}'' para optimizar la 
+        interacción con el modelo de lenguaje, mejorando la calidad y 
+        relevancia de las respuestas generadas.
+        \item[-] Facilitar un desarrollo e implementación rápida y de bajo código para la solución propuesta. 
+    \end{description}
+        
+\end{itemize}
 
-Desarrollar una "prompt-based" IA:
-
-Crear una aplicación que utilice modelos de lenguaje grandes (como ChatGPT, Bard o Llama) 
-de manera efectiva para analizar y comprender las reseñas de usuarios.
-Diseñar un sistema basado en "prompts", definiendo las tareas, entradas y 
-salidas de la respuesta a una instrucción, para lograr una solución 
-ágil sin necesidad de nuevos entrenamientos.
-Identificar y categorizar aspectos específicos del producto o servicio:
-
-Implementar un sistema que pueda identificar y categorizar 
-los aspectos específicos mencionados por los usuarios en sus reseñas.
-Extraer información relevante sobre productos o servicios, 
-identificando características específicas que generan opiniones.
-Relacionar opiniones y emociones con calificaciones:
-
-Desarrollar un mecanismo que pueda relacionar las opiniones expresadas 
-en las reseñas con las calificaciones otorgadas por los usuarios.
-Analizar las emociones asociadas a las opiniones para comprender 
-mejor la percepción de los usuarios respecto a productos y servicios.
-Implementar técnicas de "prompt engineering":
-
-Utilizar técnicas de "prompt engineering" para optimizar la 
-interacción con el modelo de lenguaje, mejorando la calidad y 
-relevancia de las respuestas generadas.
-Facilitar un desarrollo e implementación rápida y de bajo código para la solución propuesta.
 En resumen, el objetivo general es aprovechar la capacidad de los LLM 
 para comprender el lenguaje natural y aplicarlos de manera efectiva en el 
 análisis de reseñas de usuarios, proporcionando una solución ágil y 

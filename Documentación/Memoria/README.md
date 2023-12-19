@@ -25,4 +25,8 @@ Se ruega a los alumnos y tutores que detecten fallos o que quieran proponer una 
 César Ignacio García Osorio, Álvar Arnaiz Gonzalez, José Francisco Díez Pastor, Carlos Lopez Nozal.
 Álvaro López Cantero, Roberto Izquierdo Amo, David Miguel Lozano, Daniel Puente Ramírez.
 
+# A Fast Guide on Writing LaTeX with LaTeX Workshop in VS Code
+https://mathjiajia.github.io/vscode-and-latex/
+
+
 

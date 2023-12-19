@@ -1,107 +1,110 @@
 \capitulo{3}{Conceptos teóricos}
 
-En aquellos proyectos que necesiten para su comprensión y desarrollo de unos conceptos teóricos de una determinada materia o de un determinado dominio de conocimiento, debe existir un apartado que sintetice dichos conceptos.
-
-Algunos conceptos teóricos de \LaTeX{} \footnote{Créditos a los proyectos de Álvaro López Cantero: Configurador de Presupuestos y Roberto Izquierdo Amo: PLQuiz}.
+Para una mejor compensión del trabajo realizado se recomienda conocer los conceptos teóricos mencionados en esta sección.
 
 \section{Análisis de sentimiento}
-El análisis de sentimiento es un campo de estudio en el procesamiento del lenguaje natural (PLN) que se centra en determinar y extraer la polaridad emocional asociada con un conjunto de datos de texto. El objetivo principal es identificar y evaluar la actitud emocional expresada en un fragmento de texto, ya sea positiva, negativa o neutral.
+El análisis de sentimiento es un campo de estudio en el procesamiento del lenguaje natural (PLN) que se centra en determinar y extraer la polaridad emocional asociada con un conjunto de datos de texto. 
+
+El objetivo principal es identificar y evaluar la actitud emocional expresada en un fragmento de texto, ya sea positiva, negativa o neutral.
+
+
 Formalmente, el análisis de sentimiento implica varios pasos:
-Preprocesamiento del Texto: Antes de realizar el análisis de sentimiento, es necesario realizar una serie de tareas de preprocesamiento del texto, que incluyen la eliminación de palabras irrelevantes (stop words), lematización (reducción de palabras a su forma base), y la normalización del texto.
-Representación del Texto: El texto debe representarse de una manera que pueda ser procesada por algoritmos de aprendizaje automático. Esto a menudo implica convertir el texto en vectores numéricos utilizando técnicas como la bolsa de palabras (bag-of-words) o modelos de incrustación de palabras (word embeddings).
-Modelado: Se utilizan modelos de aprendizaje automático, como máquinas de soporte vectorial (SVM), redes neuronales, o algoritmos de clasificación, para entrenar un modelo sobre los datos de texto anotados con etiquetas de sentimiento. Durante el entrenamiento, el modelo aprende patrones y características asociadas con la polaridad del sentimiento.
-Clasificación: Una vez entrenado, el modelo se utiliza para predecir la polaridad del sentimiento de nuevos textos. El resultado típicamente indica si el texto es positivo, negativo o neutral.
-El análisis de sentimiento se aplica en una variedad de campos, desde la minería de opiniones en redes sociales hasta la evaluación de comentarios de clientes en línea. Puede ser utilizado para comprender la percepción pública de productos, servicios o eventos, así como para tomar decisiones informadas en marketing, atención al cliente y otras áreas empresariales.
+\begin{itemize}
+	\item Preprocesamiento del Texto: Antes de realizar el análisis de sentimiento, es necesario realizar una serie de tareas de preprocesamiento del texto, que incluyen la eliminación de palabras irrelevantes (stop words), lematización (reducción de palabras a su forma base), y la normalización del texto.
+	\item Representación del Texto: El texto debe representarse de una manera que pueda ser procesada por algoritmos de aprendizaje automático. Esto a menudo implica convertir el texto en vectores numéricos utilizando técnicas como la bolsa de palabras (bag-of-words) o modelos de incrustación de palabras (word embeddings).
+	\item Modelado: Se utilizan modelos de aprendizaje automático, como máquinas de soporte vectorial (SVM), redes neuronales, o algoritmos de clasificación, para entrenar un modelo sobre los datos de texto anotados con etiquetas de sentimiento. Durante el entrenamiento, el modelo aprende patrones y características asociadas con la polaridad del sentimiento.
+	\item Clasificación: Una vez entrenado, el modelo se utiliza para predecir la polaridad del sentimiento de nuevos textos. El resultado típicamente indica si el texto es positivo, negativo o neutral.
+\end{itemize}
+
+El análisis de sentimiento se aplica en una variedad de campos, 
+desde la minería de opiniones en redes sociales hasta la 
+evaluación de comentarios de clientes en línea. 
+
+Puede ser utilizado para comprender la percepción pública 
+de productos, servicios o eventos, así como para tomar 
+decisiones informadas en marketing, atención al cliente y 
+otras áreas empresariales.
 
 
 \section{Large Language Model}
-Un "Large Language Model" (LLM) se refiere a un modelo de lenguaje grande en el ámbito de la inteligencia artificial y el procesamiento del lenguaje natural (PLN). Estos modelos están diseñados para entender y generar texto de manera contextualmente coherente y con un alto nivel de complejidad lingüística.
-Uno de los ejemplos más destacados de LLM es GPT-3 (Generative Pre-trained Transformer 3), desarrollado por OpenAI. GPT-3 es un modelo de lenguaje que utiliza la arquitectura de transformer y ha sido entrenado con una enorme cantidad de datos textuales recopilados de diversas fuentes en Internet.
-Lo distintivo de los LLM es que son modelos preentrenados, lo que significa que primero se entrenan en grandes cantidades de datos textuales antes de ser afinados o ajustados para tareas específicas. Estos modelos son capaces de realizar una variedad de tareas relacionadas con el lenguaje, como traducción automática, resumen de texto, generación de texto creativo, respuesta a preguntas y más.
+Un ``\emph{Large Language Model}'' (LLM) se refiere a un modelo de lenguaje grande en el ámbito 
+de la inteligencia artificial y el procesamiento del lenguaje natural (PLN). 
+
+Estos modelos están diseñados para entender y generar texto de manera contextualmente coherente y 
+con un alto nivel de complejidad lingüística.
+
+Uno de los ejemplos más destacados de LLM es GPT-3 
+(Generative Pre-trained Transformer 3), desarrollado por OpenAI~\cite{chatgpt1}. 
+
+GPT-3 es un modelo de lenguaje que utiliza la arquitectura de un transformer~\cite{UrdanetaTransformers} 
+y ha sido entrenado con una enorme cantidad de textos recopilados de diversas fuentes en Internet.
+
+Lo distintivo de los LLM es que son modelos preentrenados, 
+lo que significa que primero se entrenan en grandes cantidades 
+de textos antes de ser ajustados para tareas específicas. 
+
+Estos modelos son capaces de realizar una variedad de tareas relacionadas con el lenguaje, como traducción automática, resumen de texto, generación de texto creativo, respuesta a preguntas y más.
+
 Los LLM han demostrado un rendimiento excepcional en una amplia gama de aplicaciones de procesamiento del lenguaje natural, y su capacidad para comprender contextos y generar texto coherente ha llevado a avances significativos en áreas como chatbots avanzados, asistentes virtuales y generación de contenido textual.
 
 \section{Prompt Engineering}
-El "Prompt Engineering" se refiere a la práctica de diseñar de manera cuidadosa y estratégica los comandos o instrucciones que se proporcionan a modelos de lenguaje, como los Large Language Models (LLM), para obtener resultados específicos. En otras palabras, implica la formulación precisa de las consultas o solicitudes al modelo con el objetivo de influir en la salida de manera deseada.
-Esta técnica es especialmente relevante en el contexto de modelos generativos de lenguaje, como GPT-3, donde la calidad y la relevancia de las respuestas pueden depender en gran medida de cómo se presenta la información al modelo. El Prompt Engineering es utilizado para optimizar la interacción con estos modelos y obtener resultados que sean más útiles o específicos para una tarea particular.
-Algunas estrategias comunes de Prompt Engineering incluyen:
-Ajuste del Contexto Inicial: Proporcionar un contexto inicial específico que oriente al modelo hacia la tarea deseada.
-Modificación de la Formulación: Experimentar con la redacción de las instrucciones para obtener respuestas más precisas o informativas.
-Control de la Temperatura: En modelos de lenguaje como GPT-3, se puede ajustar la "temperatura" para influir en la aleatoriedad de las respuestas generadas.
-Incorporación de Ejemplos: Proporcionar ejemplos específicos dentro de la solicitud para guiar al modelo hacia comportamientos deseados.
-El Prompt Engineering es una parte importante de trabajar con modelos de lenguaje generativos para adaptar su salida a las necesidades específicas de una tarea o aplicación. La investigación continua en esta área busca mejorar la eficacia y la consistencia de la interacción con estos modelos.
+El ``\emph{Prompt Engineering}'' se refiere a la práctica de diseñar de manera
+ estratégica las instrucciones que se proporcionan a modelos de lenguaje, 
+ como los ``\emph{Large Language Models}'', para obtener resultados específicos. 
+
+En otras palabras, implica la formulación precisa de las solicitudes al modelo 
+con el objetivo de influir en la salida de manera deseada.
+
+Esta técnica es especialmente relevante en el contexto de modelos 
+generativos de lenguaje, como GPT-3, donde la calidad y la 
+relevancia de las respuestas pueden depender en gran medida 
+de cómo se presenta la información al modelo. 
+El ``\emph{Prompt Engineering}'' se utiliza para optimizar la interacción 
+con estos modelos y obtener resultados que sean más útiles 
+para una tarea particular.
+
+Algunas estrategias comunes de ``\emph{Prompt Engineering}'' incluyen~\cite{white2023prompt}:
+\begin{itemize}
+	\item \textbf{Ajuste del Contexto Inicial}: Proporcionar un contexto inicial específico que oriente al modelo hacia la tarea deseada.
+	\item \textbf{Modificación de la Formulación}: Experimentar con la redacción de las instrucciones para obtener respuestas más precisas o informativas.
+	\item \textbf{Control de la Temperatura}: En modelos de lenguaje como GPT-3, se puede ajustar la "temperatura" para influir en la aleatoriedad de las respuestas generadas.
+	\item \textbf{Incorporación de Ejemplos}: Proporcionar ejemplos específicos dentro de la solicitud para guiar al modelo hacia comportamientos deseados.
+\end{itemize}
+El ``\emph{Prompt Engineering}'' es una parte importante de trabajar con modelos de lenguaje generativos para adaptar su salida a las necesidades específicas de una tarea o aplicación. 
+La investigación continua en esta área busca mejorar la eficacia y la coherencia de la interacción con estos modelos.
 
 \section{Patrones de diseño}
-Los patrones de diseño en el ámbito del desarrollo de software son soluciones probadas para problemas recurrentes que surgen durante el diseño y la implementación de software. Estos patrones representan las mejores prácticas y experiencias recopiladas por desarrolladores a lo largo del tiempo y proporcionan soluciones estructuradas y reutilizables para situaciones comunes en el desarrollo de software.
-Los patrones de diseño pueden clasificarse en varias categorías, y algunos de los más conocidos son:
-Patrones de Creación:
+Los patrones de diseño en el ámbito del desarrollo de software 
+son soluciones probadas para problemas recurrentes que surgen 
+durante el diseño y la implementación de software. 
+Estos patrones representan las mejores prácticas y experiencias 
+recopiladas por desarrolladores a lo largo del tiempo y 
+proporcionan soluciones estructuradas y reutilizables 
+para situaciones comunes en el desarrollo de software.
+Los patrones de diseño pueden clasificarse en varias categorías, 
+y algunos de los más conocidos son:
+\begin{itemize}
+	\item \textbf{Patrones de Creación}:
+	\begin{itemize}
+		\item \textbf{Singleton}: Garantiza que una clase tenga solo una instancia y proporciona un punto global de acceso a ella.
+		\item \textbf{Factory Method}: Define una interfaz para crear un objeto, pero deja que las subclases alteren el tipo de objetos que se crearán.
+	\end{itemize}
+	\item \textbf{Patrones de Estructura}:
+	\begin{itemize}
+		\item \textbf{Adapter}: Permite que la interfaz de una clase sea utilizada como otra interfaz.
+		\item \textbf{Decorator}: Añade funcionalidades a un objeto dinámicamente.
+	\end{itemize}
+	\item \textbf{Patrones de Comportamiento}:
+	\begin{itemize}
+		\item \textbf{Observer}: Define una dependencia uno a muchos entre objetos para que, cuando un objeto cambie de estado, todos sus dependientes sean notificados y actualizados automáticamente.
+		\item \textbf{Strategy}: Define una familia de algoritmos, encapsula cada uno de ellos y los hace intercambiables.
+	\end{itemize}
+	\item \textbf{Patrones de Arquitectura}:
+	\begin{itemize}
+		\item \textbf{MVC (Modelo-Vista-Controlador)}: Divide una aplicación en tres componentes interconectados, separando la representación de la información, la lógica de negocio y la gestión de la interfaz de usuario.
+		\item \textbf{MVP (Modelo-Vista-Presentador)}: Similar al MVC, pero con una separación más clara entre la lógica de presentación y la lógica de negocio.
+	\end{itemize}
+\end{itemize}
 
-Singleton: Garantiza que una clase tenga solo una instancia y proporciona un punto global de acceso a ella.
-Factory Method: Define una interfaz para crear un objeto, pero deja que las subclases alteren el tipo de objetos que se crearán.
-Patrones de Estructura:
-Adapter: Permite que la interfaz de una clase sea utilizada como otra interfaz.
-Decorator: Añade funcionalidades a un objeto dinámicamente.
-
-Patrones de Comportamiento:
-Observer: Define una dependencia uno a muchos entre objetos para que, cuando un objeto cambie de estado, todos sus dependientes sean notificados y actualizados automáticamente.
-Strategy: Define una familia de algoritmos, encapsula cada uno de ellos y los hace intercambiables.
-
-Patrones de Arquitectura:
-MVC (Modelo-Vista-Controlador): Divide una aplicación en tres componentes interconectados, separando la representación de la información, la lógica de negocio y la gestión de la interfaz de usuario.
-MVP (Modelo-Vista-Presentador): Similar al MVC, pero con una separación más clara entre la lógica de presentación y la lógica de negocio.
 La aplicación de patrones de diseño puede llevar a un código más flexible, mantenible y escalable. Sin embargo, es importante aplicarlos con prudencia y adaptarlos según las necesidades específicas del proyecto, ya que una implementación incorrecta puede llevar a complicaciones innecesarias. Los patrones de diseño son herramientas poderosas, pero no son una solución única para todos los problemas.
 
-\imagen{escudoInfor}{Autómata para una expresión vacía}{.5}
-
-
-
-\section{Listas de items}
-
-Existen tres posibilidades:
-
-\begin{itemize}
-	\item primer item.
-	\item segundo item.
-\end{itemize}
-
-\begin{enumerate}
-	\item primer item.
-	\item segundo item.
-\end{enumerate}
-
-\begin{description}
-	\item[Primer item] más información sobre el primer item.
-	\item[Segundo item] más información sobre el segundo item.
-\end{description}
-	
-\begin{itemize}
-\item 
-\end{itemize}
-
-\section{Tablas}
-
-Igualmente se pueden usar los comandos específicos de \LaTeX o bien usar alguno de los comandos de la plantilla.
-
-\tablaSmall{Herramientas y tecnologías utilizadas en cada parte del proyecto}{l c c c c}{herramientasportipodeuso}
-{ \multicolumn{1}{l}{Herramientas} & App AngularJS & API REST & BD & Memoria \\}{ 
-HTML5 & X & & &\\
-CSS3 & X & & &\\
-BOOTSTRAP & X & & &\\
-JavaScript & X & & &\\
-AngularJS & X & & &\\
-Bower & X & & &\\
-PHP & & X & &\\
-Karma + Jasmine & X & & &\\
-Slim framework & & X & &\\
-Idiorm & & X & &\\
-Composer & & X & &\\
-JSON & X & X & &\\
-PhpStorm & X & X & &\\
-MySQL & & & X &\\
-PhpMyAdmin & & & X &\\
-Git + BitBucket & X & X & X & X\\
-Mik\TeX{} & & & & X\\
-\TeX{}Maker & & & & X\\
-Astah & & & & X\\
-Balsamiq Mockups & X & & &\\
-VersionOne & X & X & X & X\\
-} 

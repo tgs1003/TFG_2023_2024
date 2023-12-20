@@ -6,8 +6,6 @@ from app.api.views.ping import ping_namespace
 from app.api.views.users import users_namespace
 from app.api.views.datasets import datasets_namespace
 from app.api.views.reviews import reviews_namespace
-from app.api.views.products import products_namespace
-from app.api.views.review_users import reviewusers_namespace
 from app.api.views.sentiments import sentiments_namespace
 
 '''
@@ -23,9 +21,6 @@ api.add_namespace(users_namespace, path="/users")
 api.add_namespace(auth_namespace, path="/auth")
 api.add_namespace(datasets_namespace, path="/datasets")
 api.add_namespace(reviews_namespace, path="/reviews")
-api.add_namespace(datasets_namespace, path="/datasets")
-api.add_namespace(products_namespace, path="/products")
-api.add_namespace(reviewusers_namespace, path="/review_users")
 api.add_namespace(sentiments_namespace, path="/sentiments")
 
 @api.errorhandler

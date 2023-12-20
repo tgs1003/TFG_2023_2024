@@ -4,7 +4,6 @@ import Login from "../views/Auth/Login";
 import Registro from "../views/Auth/Registro";
 import Inicio from "../views/Inicio"
 import AdminHome from "../views/Admin/AdminHome";
-import Sentiment from "../views/Sentiment/Sentiment";
 import store from '@/store'
 import api from '../services/api'
 Vue.use(VueRouter)
@@ -36,17 +35,7 @@ const routes = [
     meta: {
       requiresAuth: true
     }
-  },
-  {
-    path: '/sentiment',
-    name: 'Sentiment',
-    component: Sentiment,
-    meta: {
-      requiresAuth: true
-    }
   }
-  
-  
 ]
 
 const router = new VueRouter({

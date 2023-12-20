@@ -67,7 +67,6 @@ class UsersList(Resource):
         response_object["message"] = f"El usuario {email} se ha creado."
         return response_object, 201
 
-
 class Users(Resource):
     @users_namespace.marshal_with(user)
     @users_namespace.response(200, "OK")

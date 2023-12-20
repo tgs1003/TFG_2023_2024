@@ -9,14 +9,12 @@ from app.api.services.sentiments import(
     update_sentiment,
     delete_sentiment,
     get_old_sentiment,
-    get_sentiments_by_product_id_and_dataset_id,
-    get_sentiments_by_reviewuser_id_and_dataset_id
 )
 
 sentiments_namespace = Namespace("sentiments")
 put_parser = sentiments_namespace.parser()
 put_parser.add_argument("Authorization", location="headers")
-put_parser.add_argument("reviewId", location="json")
+put_parser.add_argument("review_id", location="json")
 put_parser.add_argument("stars", location="json")
 put_parser.add_argument("sentiment", location="json")
 put_parser.add_argument("anger", location="json")
@@ -26,7 +24,7 @@ put_parser.add_argument("language", location="json")
 put_parser.add_argument("source", location="json")
 put_parser.add_argument("model", location="json")
 put_parser.add_argument("correct", location="json")
-put_parser.add_argument("processTime", location="json")
+put_parser.add_argument("process_time", location="json")
 put_parser.add_argument("tokens", location="json")
 
 parser = sentiments_namespace.parser()
@@ -35,7 +33,7 @@ parser.add_argument("Authorization", location="headers")
 sentiments = sentiments_namespace.model(
     "Sentiment",
     {
-        "reviewId": fields.Integer(required=True),
+        "review_id": fields.Integer(required=True),
         "stars": fields.Integer,
         "sentiment": fields.String,
         "anger": fields.Boolean,
@@ -45,7 +43,7 @@ sentiments = sentiments_namespace.model(
         "source": fields.String,
         "model": fields.String(required=True),
         "correct": fields.Boolean(required=True),
-        "processTime": fields.Integer,
+        "process_time": fields.Integer,
         "tokens": fields.Integer
     },
 )
@@ -74,31 +72,28 @@ class SentimentList(Resource):
         if not user_has_rol(request, "Admin", sentiments_namespace):
             sentiments_namespace.abort(403, "El usuario no es administrador.")
         post_data = request.get_json()
-        reviewId = post_data.get("reviewId")
+        review_id = post_data.get("review_id")
         stars = post_data.get("stars")
         sentiment = post_data.get("sentiment")
         anger = post_data.get("anger")
-        item = post_data.get("item")
-        brand = post_data.get("brand")
-        language = post_data.get("language")
         source = post_data.get("source")
         model = post_data.get("model")
         correct = post_data.get("correct")
-        processTime = post_data.get("processTime")
+        process_time = post_data.get("process_time")
         tokens = post_data.get("tokens")
         response_object = {}
 
-        sentiment_analysis = get_old_sentiment(reviewId, model)
+        sentiment_analysis = get_old_sentiment(review_id, model)
         if sentiment_analysis:
             response_object["message"] = "El sentimiento ya existe."
             return response_object, 400
         
-        sent = add_sentiment(reviewId=reviewId, stars=stars, 
-                      sentiment=sentiment, anger=anger, item=item,
-                      brand=brand, language=language, source=source, model=model, 
-                      correct=correct, processTime=processTime, tokens=tokens
+        sent = add_sentiment(review_id = review_id, stars = stars, 
+                      sentiment = sentiment, anger = anger,
+                        source=source, model=model, 
+                      correct=correct, process_time = process_time, tokens = tokens
                       )
-        response_object["message"] = f"Se ha añadido el sentimento para la reseña {reviewId}."
+        response_object["message"] = f"Se ha añadido el sentimento para la reseña {review_id}."
         return response_object, 201
 
 class Sentiments(Resource):
@@ -150,39 +145,17 @@ class Sentiments(Resource):
 sentiments_review = sentiments_namespace.model(
     "SentimentReview",
     {
-        "datasetId": fields.Integer,
+        "dataset_id": fields.Integer,
         "id": fields.Integer,
         "stars": fields.Integer,
         "sentiment": fields.String,
-        "originalStars": fields.Integer,
-        "reviewText": fields.String,
+        "original_stars": fields.Integer,
+        "review_text": fields.String,
         "model": fields.String,
-        "processTime": fields.Integer,
+        "process_time": fields.Integer,
         "tokens": fields.Integer,
-        "productId": fields.String,
     },
 )
-#
-class SentimentListByUser(Resource):
-    @sentiments_namespace.marshal_with(sentiments_review, as_list=True)
-    @sentiments_namespace.expect(parser)
-    def get(self, review_user_id, dataset_id):
-        """Devuelve todos los sentimientos de las reseñas."""
-        check_token(request, sentiments_namespace)
-        return get_sentiments_by_reviewuser_id_and_dataset_id(
-            review_user_id = review_user_id, 
-            dataset_id=dataset_id), 200
-    
-class SentimentListByProduct(Resource):
-    @sentiments_namespace.marshal_with(sentiments_review, as_list=True)
-    @sentiments_namespace.expect(parser)
-    def get(self, product_id, dataset_id):
-        """Devuelve todos los sentimientos de las reseñas."""
-        check_token(request, sentiments_namespace)
-        return get_sentiments_by_product_id_and_dataset_id(product_id = product_id,
-                                                            dataset_id = dataset_id), 200
 
 sentiments_namespace.add_resource(SentimentList, "")
-sentiments_namespace.add_resource(SentimentListByUser, "/by_user_and_dataset/<string:review_user_id>/<int:dataset_id>")
-sentiments_namespace.add_resource(SentimentListByProduct, "/by_product_and_dataset/<string:product_id>/<int:dataset_id>")
 sentiments_namespace.add_resource(Sentiments, "/<int:sentiment_id>")

@@ -13,17 +13,17 @@ def get_dataset_by_id(id):
     '''
     return Dataset.query.filter_by(id=id).first()
 
-def get_dataset_by_payload(payload):
+def get_dataset_by_config(config):
     '''
-    Busca un dataset con el mismo payload
+    Busca un dataset con la misma configuración
     '''
-    return Dataset.query.filter_by(payload=payload).first()
+    return Dataset.query.filter_by(config = config).first()
 
-def add_dataset(name, type, payload):
+def add_dataset(name, type, config):
     '''
     Agrega un dataset
     '''
-    dataset = Dataset(name=name, type=type, payload=payload, status="Creado")
+    dataset = Dataset(name=name, type=type, config=config, status="Creado")
     db.session.add(dataset)
     db.session.commit()
     return dataset

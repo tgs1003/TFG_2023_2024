@@ -1,5 +1,5 @@
 <template>
-<p>Inicio</p>
+<p>Análisis de sentimientos.</p>
 </template>
 
 <script>

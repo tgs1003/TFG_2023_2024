@@ -47,14 +47,16 @@ def create_db():
 def seed_db():
     if db.session.query(User.id).count() == 0:
         """Crea al usuario admin inicial"""
-        db.session.add(User(
+        user = User(
             name='Admin',
             email='admin',
             password='ubu_1234',
             rol='Admin'
-        ))
+        )
+        db.session.add(user)
+        db.session.commit()
         # Creamos un dataset de prueba
-        db.session.add(Dataset(name='Amazon Shoe Reviews (test)', type='Huggingface', payload='{ \
+        db.session.add(Dataset(name='Amazon Shoe Reviews (test)', type='Hugging face', config='{ \
         "name": "Amazon Shoe Reviews", \
         "type": "Hugging face", \
         "path":"mesmalif/amazon-shoe-reviews",\
@@ -63,18 +65,14 @@ def seed_db():
         "review_text": "text", \
         "review_headline": "review_headline", \
         "stars": "labels", \
-        "product_id": "product_id", \
-        "product_title": "product_title", \
-        "customer_id": "customer_id", \
         "review_id": "review_id", \
         "review_date": "review_date" \
             }, \
         "correct_stars": 0,\
         "date_format": "%Y-%m-%d"\
-        }', status='Creado'))
+        }', status='Creado', owner = user.id))
 
         db.session.commit()
-
 
 if __name__ == '__main__':
     cli()

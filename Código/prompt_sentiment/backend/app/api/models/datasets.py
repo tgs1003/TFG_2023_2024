@@ -10,8 +10,9 @@ class Dataset(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement="auto")
     name = db.Column(db.String)
     type = db.Column(db.String)
-    payload = db.Column(db.String)
+    config = db.Column(db.String)
     status = db.Column(db.String, default='Creado', nullable=False) #Creado, Cargado, Procesado
     date = db.Column(db.DateTime, server_default=func.now())
+    owner = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False, default=1)
     reviews = db.relationship("Review", backref='dataset', passive_deletes=True)
 

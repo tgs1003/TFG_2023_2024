@@ -3,9 +3,9 @@ import json
 import time
 from flask import request
 from flask_restx import Resource, fields, Namespace
-from app.api.services.datasets import get_all_datasets, get_dataset_by_payload, get_dataset_by_id, update_dataset, delete_dataset, add_dataset
-from app.api.services.reviews import count_reviews_by_dataset_id, get_reviews_by_dataset_id_for_process
-from app.api.services.sentiments import count_sentiments_by_datasetId, add_sentiment
+from app.api.services.datasets import get_all_datasets, get_dataset_by_config, get_dataset_by_id, update_dataset, delete_dataset, add_dataset
+from app.api.services.reviews import count_reviews_by_dataset_id, get_reviews_by_dataset_id
+from app.api.services.sentiments import count_sentiments_by_dataset_id, add_sentiment
 from app.api.services.tokens import check_token
 from app.api.services.roles import user_has_rol
 from app.api.clients.huggingface import load_dataset
@@ -26,7 +26,7 @@ put_parser = datasets_namespace.parser()
 put_parser.add_argument("Authorization", location="headers")
 put_parser.add_argument("name", location="json")
 put_parser.add_argument("type", location="json")
-put_parser.add_argument("payload", location="json")
+put_parser.add_argument("config", location="json")
 put_parser.add_argument("loaded", location="json")
 
 parser = datasets_namespace.parser()
@@ -38,7 +38,7 @@ datasets = datasets_namespace.model(
         "id": fields.Integer(readOnly=True),
         "name": fields.String,
         "type": fields.String,
-        "payload": fields.String,
+        "config": fields.String,
         "status":fields.String,
         "date": fields.DateTime
     },
@@ -54,8 +54,8 @@ class DatasetList(Resource):
         check_token(request, datasets_namespace)
         all_datsets = get_all_datasets()
         for dataset in all_datsets:
-            dataset.total= count_reviews_by_dataset_id(dataset.id)
-            dataset.processed=count_sentiments_by_datasetId(dataset.id)
+            dataset.total = count_reviews_by_dataset_id(dataset.id)
+            dataset.processed = count_sentiments_by_dataset_id(dataset.id)
         return all_datsets, 200
 
     @datasets_namespace.response(201, "El dataset <dataset_name> se ha agregado.")
@@ -68,14 +68,14 @@ class DatasetList(Resource):
         post_data = request.get_json()
         name = post_data.get("name")
         type = post_data.get("type")
-        payload = post_data.get("payload")
+        config = post_data.get("config")
         response_object = {}
         # TODO: Comprobar si ya existe con nombre y tipo
-        dataset = get_dataset_by_payload(payload)
+        dataset = get_dataset_by_config(config)
         if dataset:
             response_object["message"] = "El dataset ya existe."
             return response_object, 400
-        add_dataset(name = name, type = type, payload=payload)
+        add_dataset(name = name, type = type, config = config)
         response_object["message"] = f"Se ha añadido el dataset {name}."
         return response_object, 201
 
@@ -91,7 +91,7 @@ class Datasets(Resource):
         if not dataset:
             datasets_namespace.abort(404, f"El dataset {dataset_id} no existe.")
         dataset.total = count_reviews_by_dataset_id(dataset_id)
-        dataset.processed = count_sentiments_by_datasetId(dataset_id)
+        dataset.processed = count_sentiments_by_dataset_id(dataset_id)
         return dataset, 200
 
     @datasets_namespace.expect(put_parser, validate=True)
@@ -164,7 +164,7 @@ class DatasetProcess(Resource):
         response_object = {}
         
         openai = LangchainOpenAISentimentAnalyzer()
-        reviews = get_reviews_by_dataset_id_for_process(dataset_id)
+        reviews = get_reviews_by_dataset_id(dataset_id)
         for review_data in reviews:
             time_start = time.perf_counter()
             result = openai.get_sentiment(review_data.reviewText)
@@ -173,27 +173,21 @@ class DatasetProcess(Resource):
                 stars = self.parse_stars(result["Stars"])
                 sentiment = result["Sentiment"]
                 anger = result["Anger"]
-                item = result["Item"]
-                brand = result["Brand"]
-                language = result["Language"]
                 model = "OpenAI"
-                processTime = int(time.perf_counter() - time_start)
+                process_time = int(time.perf_counter() - time_start)
                 add_sentiment(reviewId=review_id, 
                             stars=int(stars), 
                             sentiment=sentiment, 
                             anger=bool(anger), 
-                            item=item, 
-                            brand=brand, 
-                            language=language, 
                             model=model, 
                             correct=True,
-                            processTime=processTime)
+                            process_time = process_time)
             except:
                 add_sentiment(reviewId=review_id, 
                             correct=False,
                             model=model,
                             source=json.dumps(result),                            
-                            processTime=processTime)
+                            process_time = process_time)
 
         response_object["message"] = f"Dataset {dataset.id} se ha procesado correctamente."
         return response_object, 200

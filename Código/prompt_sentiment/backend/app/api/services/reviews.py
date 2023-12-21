@@ -15,18 +15,18 @@ def get_all_reviews():
     '''
     return Review.query.all()
 
-def get_reviews_by_dataset_id(datasetId):
+def get_reviews_by_dataset_id(dataset_id):
     '''
     Devuelve las reseñas de un dataset
     '''
-    logging.debug("Dataset id: " + str(datasetId))
-    return Review.query.filter_by(datasetId=datasetId).all()
+    logging.debug("Dataset id: " + str(dataset_id))
+    return Review.query.filter_by(dataset_id=dataset_id).all()
 
-def count_reviews_by_dataset_id(datasetId):
+def count_reviews_by_dataset_id(dataset_id):
     '''
     Cuenta las reseñas de un dataset
     '''
-    return Review.query.filter_by(datasetId = datasetId).count()
+    return Review.query.filter_by(dataset_id = dataset_id).count()
 
 def get_review_by_id(review_id):
     '''

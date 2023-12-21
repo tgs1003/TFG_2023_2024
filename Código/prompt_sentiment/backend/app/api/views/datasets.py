@@ -11,8 +11,6 @@ from app.api.services.roles import user_has_rol
 from app.api.clients.huggingface import load_dataset
 from app.api.clients.openai import LangchainOpenAISentimentAnalyzer
 
-
-
 logging.basicConfig(level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
@@ -63,7 +61,7 @@ class DatasetList(Resource):
     @datasets_namespace.expect(put_parser, validate=True)
     def post(self):
         """Crea un dataset."""
-        #data = put_parser.parse_args()
+        data = put_parser.parse_args()
         if not user_has_rol(request, "Admin", datasets_namespace):
             datasets_namespace.abort(403, "El usuario no es administrador.")
         name = data["name"]
@@ -95,7 +93,7 @@ class Datasets(Resource):
         dataset.processed = count_sentiments_by_dataset_id(dataset_id)
         return dataset, 200
 
-    @datasets_namespace.marshal_with(put_parser)
+    
     @datasets_namespace.expect(put_parser, validate=True)
     @datasets_namespace.response(200, "Dataset <dataset_id> actualizado.")
     @datasets_namespace.response(404, "El dataset <dataset_id> no existe.")

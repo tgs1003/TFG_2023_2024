@@ -19,11 +19,11 @@ def get_dataset_by_config(config):
     '''
     return Dataset.query.filter_by(config = config).first()
 
-def add_dataset(name, type, config):
+def add_dataset(name, type, config, owner):
     '''
     Agrega un dataset
     '''
-    dataset = Dataset(name=name, type=type, config=config, status="Creado")
+    dataset = Dataset(name=name, type=type, config=config, owner = owner, status="Creado")
     db.session.add(dataset)
     db.session.commit()
     return dataset

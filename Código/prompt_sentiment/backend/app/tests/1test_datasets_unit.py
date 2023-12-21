@@ -75,7 +75,7 @@ def test_delete_dataset_incorrect_id(test_app, monkeypatch):
     assert "El dataset 999 no existe" in data["message"]
 
 @pytest.mark.parametrize(
-    "datasetid, payload, status_code, message",
+    "dataset_id, payload, status_code, message",
     [
         [1, {}, 400, "Input payload validation failed"],
         [1, {"name": "dataset3"}, 400, "Input payload validation failed"],

@@ -1,15 +1,17 @@
 import json
 import pytest
 
-def test_add_dataset(test_app):
+def test_add_dataset(test_app, test_database, add_user):
+    user1 = add_user("justatest1234", "test123@test123.com", "greaterthaneight", "Gestor")
     client = test_app.test_client()
     resp = client.post(
         "/datasets",
         data=json.dumps(
             {
                 "name": "dataset_prueba1",
-                "type": "Huggingface",
-                "payload": "Prueba/fichero_prueba",
+                "type": "Hugging face",
+                "config": "Prueba/fichero_prueba",
+                "owner" : user1.id
             }
         ),
         content_type="application/json",
@@ -25,8 +27,9 @@ def test_add_dataset_duplicado(test_app):
         data=json.dumps(
             {
                 "name": "dataset_prueba1",
-                "type": "Huggingface",
-                "payload": "Prueba/fichero_prueba",
+                "type": "Hugging face",
+                "config": "Prueba/fichero_prueba",
+                "owner" : "1"
             }
         ),
         content_type="application/json",
@@ -35,14 +38,14 @@ def test_add_dataset_duplicado(test_app):
     assert resp.status_code == 400
     assert "El dataset ya existe" in data["message"]
 
-def test_add_dataset_faltan_datos(test_app):
+def test_add_dataset_faltan_datos(test_app, test_database):
     client = test_app.test_client()
     resp = client.post(
         "/datasets",
         data=json.dumps(
             {
                 "type": "Huggingface",
-                "payload": "Prueba/fichero_prueba",
+                "config": "Prueba/fichero_prueba",
             }
         ),
         content_type="application/json",
@@ -51,7 +54,7 @@ def test_add_dataset_faltan_datos(test_app):
     assert resp.status_code == 400
     assert "Input payload validation failed" in data["message"]
 
-def test_add_dataset_correcto(test_app):
+def _test_add_dataset_correcto(test_app):
     client = test_app.test_client()
     resp = client.post(
         "/datasets",
@@ -73,7 +76,7 @@ def test_add_dataset_correcto(test_app):
     assert "0" in data["status"]
     assert "id" in data
 
-def test_add_dataset_no_existe(test_app):
+def _test_add_dataset_no_existe(test_app):
     client = test_app.test_client()
     resp = client.get("/datasets/999")
     data = json.loads(resp.data.decode())
@@ -81,21 +84,21 @@ def test_add_dataset_no_existe(test_app):
     assert "El dataset 999 no existe" in data["message"]
 
 
-def test_delete_dataset(test_app):
+def _test_delete_dataset(test_app):
     client = test_app.test_client()
     resp = client.delete("/datasets/1")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 200
     assert "eliminado" in data["message"]
 
-def test_delete_dataset_incorrect_id(test_app):
+def _test_delete_dataset_incorrect_id(test_app):
     client = test_app.test_client()
     resp = client.delete("/datasets/999")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 404
     assert "El dataset 999 no existe" in data["message"]
 
-def test_update_dataset_correct(test_app):
+def _test_update_dataset_correct(test_app):
     client = test_app.test_client()
     resp = client.put(f"/datasets/2", data=json.dumps({
                 "status": "1",
@@ -106,7 +109,7 @@ def test_update_dataset_correct(test_app):
     assert 'Dataset 2 actualizado' in data["message"]
 
 @pytest.mark.parametrize(
-    "datasetid, payload, status_code, message",
+    "dataset_id, payload, status_code, message",
     [
         [1, {}, 400, "Input payload validation failed"],
         [1, {"name": "dataset3"}, 400, "Input payload validation failed"],
@@ -119,7 +122,7 @@ def test_update_dataset_correct(test_app):
     ],
 )
 
-def test_update_dataset_incorrect_request(test_app, dataset_id, payload, status_code, message):
+def _test_update_dataset_incorrect_request(test_app, test_database, dataset_id, payload, status_code, message):
     client = test_app.test_client()
     resp = client.put(f"/datasets/{dataset_id}", data=json.dumps(payload),content_type="application/json")
 

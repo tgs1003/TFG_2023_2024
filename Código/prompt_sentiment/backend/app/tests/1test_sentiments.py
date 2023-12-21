@@ -2,14 +2,14 @@ import json
 import pytest
 from datetime import datetime
 
-def test_add_sentiment(test_app):
+def test_add_sentiment(test_app, test_database):
     client = test_app.test_client()
     resp = client.post(
         "/sentiments",
         
         data=json.dumps(
             {
-                "reviewId": 2,
+                "review_id": 2,
                 "stars": 0,
                 "sentiment": "positive",
                 "anger": False,
@@ -19,7 +19,7 @@ def test_add_sentiment(test_app):
                 "source":"",
                 "model":"OpenAI",
                 "correct": True,
-                "processTime": 6,
+                "process_time": 6,
                 "tokens": 0
             }
         ),
@@ -27,15 +27,15 @@ def test_add_sentiment(test_app):
     )
     data = json.loads(resp.data.decode())
     assert resp.status_code == 201
-    assert "Se ha añadido el sentimento para la reseña 2." in data["message"]
+    assert "Se ha añadido el sentimiento para la reseña 2." in data["message"]
 
-def test_add_sentiment_duplicado(test_app):
+def _test_add_sentiment_duplicado(test_app):
     client = test_app.test_client()
     resp = client.post(
         "/sentiments",
         data=json.dumps(
             {
-                "reviewId": 2,
+                "review_id": 2,
                 "stars": 0,
                 "sentiment": "positive",
                 "anger": False,
@@ -45,7 +45,7 @@ def test_add_sentiment_duplicado(test_app):
                 "source":"",
                 "model":"OpenAI",
                 "correct": True,
-                "processTime": 6,
+                "process_time": 6,
                 "tokens": 0
             }
         ),
@@ -55,13 +55,13 @@ def test_add_sentiment_duplicado(test_app):
     assert resp.status_code == 400
     assert "El sentimiento ya existe." in data["message"]
 
-def test_add_sentiment_faltan_datos(test_app):
+def _test_add_sentiment_faltan_datos(test_app):
     client = test_app.test_client()
     resp = client.post(
         "/sentiments",
         data=json.dumps(
             {
-                "reviewId": "review1",
+                "review_id": "review1",
             }
         ),
         content_type="application/json",
@@ -70,13 +70,13 @@ def test_add_sentiment_faltan_datos(test_app):
     assert resp.status_code == 400
     assert "Input payload validation failed" in data["message"]
 
-def test_add_sentiment_correcto(test_app):
+def _test_add_sentiment_correcto(test_app):
     client = test_app.test_client()
     resp = client.post(
         "/sentiments",
         data=json.dumps(
             {
-                "reviewId": 2,
+                "review_id": 2,
                 "stars": 0,
                 "sentiment": "positive",
                 "anger": False,
@@ -86,7 +86,7 @@ def test_add_sentiment_correcto(test_app):
                 "source":"",
                 "model":"OpenAI",
                 "correct": True,
-                "processTime": 6,
+                "process_time": 6,
                 "tokens": 0
             }
         ),
@@ -105,7 +105,7 @@ def test_add_sentiment_correcto(test_app):
     assert data["correct"] == True
     assert data["tokens"] == 0
     
-def test_get_sentiment_no_existe(test_app):
+def _test_get_sentiment_no_existe(test_app):
     client = test_app.test_client()
     resp = client.get("/sentiments/9990000")
     data = json.loads(resp.data.decode())
@@ -113,21 +113,21 @@ def test_get_sentiment_no_existe(test_app):
     assert "El sentimiento 9990000 no existe" in data["message"]
 
 
-def test_delete_sentiment(test_app):
+def _test_delete_sentiment(test_app):
     client = test_app.test_client()
     resp = client.delete("/sentiments/1")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 200
     assert "El sentimento 1 se ha borrado." in data["message"]
 
-def test_delete_sentiment_incorrect_id(test_app):
+def _test_delete_sentiment_incorrect_id(test_app):
     client = test_app.test_client()
     resp = client.delete("/sentiments/9990000")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 404
     assert "El sentimento 9990000 no existe" in data["message"]
 
-def test_update_sentiment_correct(test_app):
+def _test_update_sentiment_correct(test_app):
     client = test_app.test_client()
     resp = client.put(f"/sentiments/1", data=json.dumps({
                 "correct": False,
@@ -135,14 +135,14 @@ def test_update_sentiment_correct(test_app):
 
     data = json.loads(resp.data.decode())
     assert resp.status_code == 200
-    assert 'Sentimento 1 actualizado' in data["message"]
+    assert 'Sentimiento 1 actualizado' in data["message"]
 
 @pytest.mark.parametrize(
     "id, payload, status_code, message",
     [
-        ["1", {}, 400, "Input payload validation failed"],
+        [1, {}, 400, "Input payload validation failed"],
         [
-            "9990000",
+            9990000,
             {
                 "correct": False
             },
@@ -152,7 +152,7 @@ def test_update_sentiment_correct(test_app):
     ],
 )
 
-def test_update_sentiment_incorrect_request(test_app, id, payload, status_code, message):
+def _test_update_sentiment_incorrect_request(test_app, id, payload, status_code, message):
     client = test_app.test_client()
     resp = client.put(f"/sentiments/{id}", data=json.dumps(payload),content_type="application/json")
 

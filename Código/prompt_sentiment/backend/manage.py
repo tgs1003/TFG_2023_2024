@@ -14,12 +14,19 @@ from app import create_app, db
 from app.api.models.users import User
 from app.api.models.datasets import Dataset
 
+import logging
 from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
 
+logging.basicConfig(level=logging.DEBUG,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler("debug.log"),
+        logging.StreamHandler()
+    ])
+
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv(), override=True) # read local .env file
-
 
 app = create_app()
 cli = FlaskGroup(create_app=create_app)
@@ -27,13 +34,23 @@ cli = FlaskGroup(create_app=create_app)
 @cli.command('crear')
 def create_db():
     engine = create_engine(os.environ.get('DATABASE_URL'))
+    logging.debug(os.environ.get('DATABASE_URL'))
+    if not database_exists(engine.url):
+        create_database(engine.url)
+        db.create_all()
+        db.session.commit()
+
+@cli.command('crear_test')
+def create_test_db():
+    engine = create_engine(os.environ.get('DATABASE_URL'))
+    logging.debug(os.environ.get('DATABASE_URL'))
     if not database_exists(engine.url):
         create_database(engine.url)
         db.create_all()
         db.session.commit()
 
 @cli.command('recrear')
-def create_db():
+def recreate_db():
     '''Borra la base de datos y vuelve a empezar'''
     engine = create_engine(os.environ.get('DATABASE_URL'))
     if database_exists(engine.url):

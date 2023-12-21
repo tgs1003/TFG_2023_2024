@@ -42,6 +42,8 @@ def check_token(request, namespace):
     '''
     Comprueba si el token es válido y si el usuario está dado de alta en el sistema.
     '''
+    if not current_app.config.get("USE_AUTHORIZATION"):
+         return
     access_token = request.headers.get("Authorization")
     if access_token:
         try:

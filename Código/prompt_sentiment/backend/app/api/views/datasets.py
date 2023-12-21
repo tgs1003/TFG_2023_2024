@@ -24,7 +24,7 @@ datasets_namespace = Namespace("datasets")
 
 put_parser = datasets_namespace.parser()
 put_parser.add_argument("Authorization", location="headers")
-put_parser.add_argument("name", location="json")
+put_parser.add_argument("name", location="json", required=True)
 put_parser.add_argument("type", location="json")
 put_parser.add_argument("config", location="json")
 put_parser.add_argument("loaded", location="json")
@@ -60,22 +60,23 @@ class DatasetList(Resource):
 
     @datasets_namespace.response(201, "El dataset <dataset_name> se ha agregado.")
     @datasets_namespace.response(400, "El dataset ya existe.")
-    @datasets_namespace.expect(put_parser)
+    @datasets_namespace.expect(put_parser, validate=True)
     def post(self):
         """Crea un dataset."""
+        #data = put_parser.parse_args()
         if not user_has_rol(request, "Admin", datasets_namespace):
             datasets_namespace.abort(403, "El usuario no es administrador.")
-        post_data = request.get_json()
-        name = post_data.get("name")
-        type = post_data.get("type")
-        config = post_data.get("config")
+        name = data["name"]
+        type = data["type"]
+        config = data["config"]
+        owner = data["owner"]
         response_object = {}
         # TODO: Comprobar si ya existe con nombre y tipo
         dataset = get_dataset_by_config(config)
         if dataset:
             response_object["message"] = "El dataset ya existe."
             return response_object, 400
-        add_dataset(name = name, type = type, config = config)
+        add_dataset(name = name, type = type, config = config, owner = owner)
         response_object["message"] = f"Se ha añadido el dataset {name}."
         return response_object, 201
 
@@ -94,6 +95,7 @@ class Datasets(Resource):
         dataset.processed = count_sentiments_by_dataset_id(dataset_id)
         return dataset, 200
 
+    @datasets_namespace.marshal_with(put_parser)
     @datasets_namespace.expect(put_parser, validate=True)
     @datasets_namespace.response(200, "Dataset <dataset_id> actualizado.")
     @datasets_namespace.response(404, "El dataset <dataset_id> no existe.")

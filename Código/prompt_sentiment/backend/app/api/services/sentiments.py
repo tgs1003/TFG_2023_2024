@@ -45,7 +45,8 @@ def add_sentiment(review_id, process_time, correct, model, stars = 0, sentiment=
     '''
     Agrega un sentimiento
     '''
-    sentiment = Sentiment(reviewId=review_id, stars=stars, sentiment=sentiment, 
+    sentiment = Sentiment(review_id=review_id, stars=stars, 
+                          sentiment=sentiment, 
                         anger=anger, source=source, 
                         model=model, correct=correct, 
                         process_time = process_time, tokens=tokens)

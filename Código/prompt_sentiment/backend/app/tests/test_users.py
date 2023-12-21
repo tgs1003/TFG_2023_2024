@@ -7,6 +7,7 @@ import pytest
 
 from app import bcrypt
 from app.api.models.users import User
+from app.api.models.datasets import Dataset
 from app.api.services.users import get_user_by_id
 
 
@@ -19,6 +20,7 @@ def test_add_user(test_app, test_database):
                 "username": "joehoeller",
                 "email": "joehoeller@ml-app-name.com",
                 "password": "greaterthaneight",
+                "rol": "Gestor"
             }
         ),
         content_type="application/json",
@@ -97,6 +99,8 @@ def test_single_user_incorrect_id(test_app, test_database):
 
 
 def test_all_users(test_app, test_database, add_user):
+    test_database.session.query(Dataset).delete()
+    test_database.session.commit()
     test_database.session.query(User).delete()
     add_user("joehoeller", "joehoeller@mherman.org", "greaterthaneight")
     add_user("fletcher", "fletcher@notreal.com", "greaterthaneight")

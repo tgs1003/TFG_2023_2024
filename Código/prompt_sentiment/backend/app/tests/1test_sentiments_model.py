@@ -2,7 +2,7 @@ from datetime import datetime
 from app.api.models.sentiments import Sentiment
 
 def test_create_sentiment(add_sentiment):
-    reviewId = 1
+    review_id = 1
     stars = 3
     sentiment = "Positive"
     anger = False
@@ -11,17 +11,17 @@ def test_create_sentiment(add_sentiment):
     language = "en"
     source = ""
     model = ""
-    creationDate = datetime.now()
+    creation_date = datetime.now()
     correct = True
-    processTime = 2
+    process_time = 2
     tokens = 2000    
-    sentiment = add_sentiment(reviewId, stars, 
+    sentiment = add_sentiment(review_id, stars, 
                               sentiment, anger, 
                               item, brand, 
                               language, source, 
-                              model, creationDate, 
-                              correct, processTime, tokens)
-    assert sentiment.reviewId == reviewId
+                              model, creation_date, 
+                              correct, process_time, tokens)
+    assert sentiment.review_id == review_id
     assert sentiment.stars == stars
     assert sentiment.sentiment == sentiment
     assert sentiment.anger == anger
@@ -29,7 +29,7 @@ def test_create_sentiment(add_sentiment):
     assert sentiment.brand == brand
     assert sentiment.language == language
     assert sentiment.source == source
-    assert sentiment.creationDate < datetime.now()
+    assert sentiment.creation_date < datetime.now()
     assert sentiment.correct == True
-    assert sentiment.processTime == 2
+    assert sentiment.process_time == 2
     assert sentiment.tokens == 2000

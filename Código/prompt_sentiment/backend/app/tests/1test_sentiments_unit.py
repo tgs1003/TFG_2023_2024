@@ -79,7 +79,7 @@ def test_add_sentiment_faltan_datos(test_app, monkeypatch):
     def mock_add_sentiment(reviewId, stars, sentiment, anger, item, brand, language, source, model, correct, processTime, tokens):
         return True
     
-    monkeypatch.setattr(app.api.views.sentiments, "get_get_old_sentiment", mock_get_old_sentiment)
+    monkeypatch.setattr(app.api.views.sentiments, "get_old_sentiment", mock_get_old_sentiment)
     monkeypatch.setattr(app.api.views.sentiments, "add_sentiment", mock_add_sentiment)
     
     client = test_app.test_client()
@@ -87,7 +87,7 @@ def test_add_sentiment_faltan_datos(test_app, monkeypatch):
         "/sentiments",
         data=json.dumps(
             {
-                "reviewId": "review1",
+                "review_id": "review1",
             }
         ),
         content_type="application/json",
@@ -118,11 +118,28 @@ def test_delete_sentiment_incorrect_id(test_app, monkeypatch):
     resp = client.delete("/sentiments/9990000")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 404
-    assert "El sentimento 9990000 no existe" in data["message"]
+    assert "El sentimiento 9990000 no existe" in data["message"]
 
 def test_update_sentiment_correct(test_app, monkeypatch):
+    class AttrDict(dict):
+        def __init__(self, *args, **kwargs):
+            super(AttrDict, self).__init__(*args, **kwargs)
+            self.__dict__ = self
+
     def mock_get_sentiment_by_id(sentiment_id):
-        return True
+        d = AttrDict()
+        d.update({"id": 1, "review_id": 1,
+                  "stars": 5,
+                  "sentiment": "positivo",
+                  "anger": True,
+                  "source": "",
+                  "model": "",
+                  "creation_date": datetime.now(),
+                  "correct": True,
+                  "process_time": 2,
+                  "tokens": 0
+                  })
+        return d
     
     def mock_update_sentiment(sentiment, correct):
         return True
@@ -137,5 +154,5 @@ def test_update_sentiment_correct(test_app, monkeypatch):
 
     data = json.loads(resp.data.decode())
     assert resp.status_code == 200
-    assert 'Sentimento 1 actualizado' in data["message"]
+    assert 'Sentimiento 1 actualizado.' in data["message"]
 

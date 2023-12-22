@@ -12,20 +12,23 @@ from app.api.services.sentiments import(
 )
 
 sentiments_namespace = Namespace("sentiments")
+
 put_parser = sentiments_namespace.parser()
 put_parser.add_argument("Authorization", location="headers")
-put_parser.add_argument("review_id", location="json")
-put_parser.add_argument("stars", location="json")
-put_parser.add_argument("sentiment", location="json")
-put_parser.add_argument("anger", location="json")
-put_parser.add_argument("item", location="json")
-put_parser.add_argument("brand", location="json")
-put_parser.add_argument("language", location="json")
-put_parser.add_argument("source", location="json")
-put_parser.add_argument("model", location="json")
-put_parser.add_argument("correct", location="json")
-put_parser.add_argument("process_time", location="json")
-put_parser.add_argument("tokens", location="json")
+put_parser.add_argument("correct", location="json", type=bool ,required=True)
+
+
+post_parser = sentiments_namespace.parser()
+post_parser.add_argument("Authorization", location="headers")
+post_parser.add_argument("review_id", location="json", required=True)
+post_parser.add_argument("stars", location="json")
+post_parser.add_argument("sentiment", location="json")
+post_parser.add_argument("anger", location="json", type=bool)
+post_parser.add_argument("source", location="json")
+post_parser.add_argument("model", location="json")
+post_parser.add_argument("correct", location="json", type=bool, required=True)
+post_parser.add_argument("process_time", location="json")
+post_parser.add_argument("tokens", location="json")
 
 parser = sentiments_namespace.parser()
 parser.add_argument("Authorization", location="headers")
@@ -37,9 +40,6 @@ sentiments = sentiments_namespace.model(
         "stars": fields.Integer,
         "sentiment": fields.String,
         "anger": fields.Boolean,
-        "item": fields.String,
-        "brand": fields.String,
-        "language": fields.String,
         "source": fields.String,
         "model": fields.String(required=True),
         "correct": fields.Boolean(required=True),
@@ -63,24 +63,24 @@ class SentimentList(Resource):
         check_token(request, sentiments_namespace)
         return get_all_sentiments(), 200
         
-    @sentiments_namespace.marshal_with(sentiments)
     @sentiments_namespace.response(201, "El sentimiento para la reseña <reviewId> se ha agregado.")
     @sentiments_namespace.response(400, "El sentimiento ya existe.")
-    @sentiments_namespace.expect(parser)
+    @sentiments_namespace.expect(post_parser)
     def post(self):
         """Crea un sentimiento."""
+        data = post_parser.parse_args(request)
         if not user_has_rol(request, "Admin", sentiments_namespace):
             sentiments_namespace.abort(403, "El usuario no es administrador.")
-        post_data = request.get_json()
-        review_id = post_data.get("review_id")
-        stars = post_data.get("stars")
-        sentiment = post_data.get("sentiment")
-        anger = post_data.get("anger")
-        source = post_data.get("source")
-        model = post_data.get("model")
-        correct = post_data.get("correct")
-        process_time = post_data.get("process_time")
-        tokens = post_data.get("tokens")
+        
+        review_id = data["review_id"]
+        stars = data["stars"]
+        sentiment = data["sentiment"]
+        anger = data["anger"]
+        source = data["source"]
+        model = data["model"]
+        correct = data["correct"]
+        process_time = data["process_time"]
+        tokens = data["tokens"]
         response_object = {}
 
         sentiment_analysis = get_old_sentiment(review_id, model)
@@ -93,7 +93,7 @@ class SentimentList(Resource):
                         source=source, model=model, 
                       correct=correct, process_time = process_time, tokens = tokens
                       )
-        response_object["message"] = f"Se ha añadido el sentimento para la reseña {review_id}."
+        response_object["message"] = f"Se ha añadido el sentimiento para la reseña {review_id}."
         return response_object, 201
 
 class Sentiments(Resource):
@@ -114,10 +114,11 @@ class Sentiments(Resource):
     @sentiments_namespace.response(404, "El sentimiento <sentiment_id> no existe.")
     def put(self, sentiment_id):
         """Actualiza un sentimiento."""
+        data = put_parser.parse_args(request)
         if not user_has_rol(request, "Admin", sentiments_namespace):
             sentiments_namespace.abort(403, "El usuario no es administrador.")
-        post_data = request.get_json()
-        correct = post_data.get("correct")
+        
+        correct = data["correct"]
         response_object = {}
         sentiment = get_sentiment_by_id(sentiment_id)
         if not sentiment:

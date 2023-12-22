@@ -69,12 +69,11 @@ def add_sentiment():
     def _add_sentiment(review_id, stars, 
                        sentiment, anger, 
                        source, model, 
-                       creation_date, correct, 
+                        correct, 
                        process_time, tokens):
         sentiment = Sentiment(review_id, stars, 
                               sentiment, anger, 
-                              source, model, 
-                              creation_date, correct, 
+                              source, model, correct, 
                               process_time, tokens)
         db.session.add(sentiment)
         db.session.commit()

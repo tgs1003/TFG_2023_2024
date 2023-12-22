@@ -4,12 +4,12 @@ from datetime import datetime
 import app.api.views.sentiments
 
 def test_add_sentiment(test_app, monkeypatch):
-    def mock_get_old_sentiment(reviewId, model):
+    def mock_get_old_sentiment(review_id, model):
         return None
-    def mock_add_sentiment(reviewId, stars, sentiment, anger, item, brand, language, source, model, correct, processTime, tokens):
+    def mock_add_sentiment(review_id, stars, sentiment, anger, source, model, correct, process_time, tokens):
         return True
     
-    monkeypatch.setattr(app.api.views.sentiments, "get_get_old_sentiment", mock_get_old_sentiment)
+    monkeypatch.setattr(app.api.views.sentiments, "get_old_sentiment", mock_get_old_sentiment)
     monkeypatch.setattr(app.api.views.sentiments, "add_sentiment", mock_add_sentiment)
     client = test_app.test_client()
     resp = client.post(
@@ -17,17 +17,14 @@ def test_add_sentiment(test_app, monkeypatch):
         
         data=json.dumps(
             {
-                "reviewId": 2,
+                "review_id": 2,
                 "stars": 0,
                 "sentiment": "positive",
                 "anger": False,
-                "item": "unknown",
-                "brand": "unknown",
-                "language": "en",
                 "source":"",
                 "model":"OpenAI",
                 "correct": True,
-                "processTime": 6,
+                "process_time": 6,
                 "tokens": 0
             }
         ),
@@ -35,16 +32,16 @@ def test_add_sentiment(test_app, monkeypatch):
     )
     data = json.loads(resp.data.decode())
     assert resp.status_code == 201
-    assert "Se ha añadido el sentimento para la reseña 2." in data["message"]
+    assert "Se ha añadido el sentimiento para la reseña 2." in data["message"]
 
 def test_add_sentiment_duplicado(test_app, monkeypatch):
 
-    def mock_get_old_sentiment(reviewId, model):
+    def mock_get_old_sentiment(review_id, model):
         return True
-    def mock_add_sentiment(reviewId, stars, sentiment, anger, item, brand, language, source, model, correct, processTime, tokens):
+    def mock_add_sentiment(review_id, stars, sentiment, anger, source, model, correct, process_time, tokens):
         return True
     
-    monkeypatch.setattr(app.api.views.sentiments, "get_get_old_sentiment", mock_get_old_sentiment)
+    monkeypatch.setattr(app.api.views.sentiments, "get_old_sentiment", mock_get_old_sentiment)
     monkeypatch.setattr(app.api.views.sentiments, "add_sentiment", mock_add_sentiment)
     
 
@@ -53,17 +50,14 @@ def test_add_sentiment_duplicado(test_app, monkeypatch):
         "/sentiments",
         data=json.dumps(
             {
-                "reviewId": 2,
+                "review_id": 2,
                 "stars": 0,
                 "sentiment": "positive",
                 "anger": False,
-                "item": "unknown",
-                "brand": "unknown",
-                "language": "en",
                 "source":"",
                 "model":"OpenAI",
                 "correct": True,
-                "processTime": 6,
+                "process_time": 6,
                 "tokens": 0
             }
         ),

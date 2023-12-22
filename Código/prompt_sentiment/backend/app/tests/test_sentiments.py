@@ -2,20 +2,25 @@ import json
 import pytest
 from datetime import datetime
 
-def test_add_sentiment(test_app, test_database):
+def test_add_sentiment(test_app, test_database, add_dataset, add_user, add_review):
+    user1 = add_user("justatest1234", "test_sentiment1@test123.com", "greaterthaneight", "Gestor")
+    dataset1 = add_dataset(name = "dataset_name", type = "dataset_type", 
+                          config = "dataset_config1", owner = user1.id)
+    review1 = add_review(dataset_id = dataset1.id,  
+                        review_text="review_text",
+                        review_time = datetime.now().isoformat(),
+                        original_stars=0)
+    
     client = test_app.test_client()
     resp = client.post(
         "/sentiments",
         
         data=json.dumps(
             {
-                "review_id": 2,
+                "review_id": review1.id,
                 "stars": 0,
                 "sentiment": "positive",
                 "anger": False,
-                "item": "unknown",
-                "brand": "unknown",
-                "language": "en",
                 "source":"",
                 "model":"OpenAI",
                 "correct": True,
@@ -25,11 +30,20 @@ def test_add_sentiment(test_app, test_database):
         ),
         content_type="application/json",
     )
-    data = json.loads(resp.data.decode())
+    data1 = json.loads(resp.data.decode())
     assert resp.status_code == 201
-    assert "Se ha añadido el sentimiento para la reseña 2." in data["message"]
+    print(data1)
+    assert "Se ha añadido el sentimiento para la reseña 1." in data1["message"]
 
-def _test_add_sentiment_duplicado(test_app):
+def test_add_sentiment_duplicado(test_app, test_database, add_dataset, add_user, add_review):
+    user1 = add_user("justatest1234", "test_sentiment21@test123.com", "greaterthaneight", "Gestor")
+    dataset1 = add_dataset(name = "dataset_name", type = "dataset_type", 
+                          config = "dataset_config2", owner = user1.id)
+    review1 = add_review(dataset_id = dataset1.id,  
+                        review_text="review_text",
+                        review_time = datetime.now().isoformat(),
+                        original_stars=0)
+    
     client = test_app.test_client()
     resp = client.post(
         "/sentiments",
@@ -39,9 +53,6 @@ def _test_add_sentiment_duplicado(test_app):
                 "stars": 0,
                 "sentiment": "positive",
                 "anger": False,
-                "item": "unknown",
-                "brand": "unknown",
-                "language": "en",
                 "source":"",
                 "model":"OpenAI",
                 "correct": True,
@@ -51,11 +62,28 @@ def _test_add_sentiment_duplicado(test_app):
         ),
         content_type="application/json",
     )
-    data = json.loads(resp.data.decode())
+    resp = client.post(
+        "/sentiments",
+        data=json.dumps(
+            {
+                "review_id": 2,
+                "stars": 0,
+                "sentiment": "positive",
+                "anger": False,
+                "source":"",
+                "model":"OpenAI",
+                "correct": True,
+                "process_time": 6,
+                "tokens": 0
+            }
+        ),
+        content_type="application/json",
+    )
+    data1 = json.loads(resp.data.decode())
     assert resp.status_code == 400
-    assert "El sentimiento ya existe." in data["message"]
+    assert "El sentimiento ya existe." in data1["message"]
 
-def _test_add_sentiment_faltan_datos(test_app):
+def test_add_sentiment_faltan_datos(test_app, test_database):
     client = test_app.test_client()
     resp = client.post(
         "/sentiments",
@@ -70,19 +98,24 @@ def _test_add_sentiment_faltan_datos(test_app):
     assert resp.status_code == 400
     assert "Input payload validation failed" in data["message"]
 
-def _test_add_sentiment_correcto(test_app):
+def test_add_sentiment_correcto(test_app, test_database, add_dataset, add_user, add_review):
+    user1 = add_user("justatest1234", "test_sentiment3@test123.com", "greaterthaneight", "Gestor")
+    dataset1 = add_dataset(name = "dataset_name", type = "dataset_type", 
+                          config = "dataset_config2", owner = user1.id)
+    review1 = add_review(dataset_id = dataset1.id,  
+                        review_text="review_text",
+                        review_time = datetime.now().isoformat(),
+                        original_stars=0)
+    
     client = test_app.test_client()
     resp = client.post(
         "/sentiments",
         data=json.dumps(
             {
-                "review_id": 2,
+                "review_id": review1.id,
                 "stars": 0,
                 "sentiment": "positive",
                 "anger": False,
-                "item": "unknown",
-                "brand": "unknown",
-                "language": "en",
                 "source":"",
                 "model":"OpenAI",
                 "correct": True,
@@ -94,18 +127,10 @@ def _test_add_sentiment_correcto(test_app):
     )
     data = json.loads(resp.data.decode())
     assert resp.status_code == 201
-    assert "Se ha añadido el sentimiento para la reseña 2." in data["message"]
-    assert data["stars"] == 0
-    assert "positive" in data["sentiment"]
-    assert data["anger"] == False
-    assert "unknown" in data["item"]
-    assert "unknown" in data["brand"]
-    assert "en" in data["language"]
-    assert "OpenAI" in data["model"]
-    assert data["correct"] == True
-    assert data["tokens"] == 0
+    assert "Se ha añadido el sentimiento para la reseña " + str(review1.id) in data["message"]
     
-def _test_get_sentiment_no_existe(test_app):
+    
+def test_get_sentiment_no_existe(test_app, test_database):
     client = test_app.test_client()
     resp = client.get("/sentiments/9990000")
     data = json.loads(resp.data.decode())
@@ -113,29 +138,29 @@ def _test_get_sentiment_no_existe(test_app):
     assert "El sentimiento 9990000 no existe" in data["message"]
 
 
-def _test_delete_sentiment(test_app):
+def test_delete_sentiment(test_app, test_database):
     client = test_app.test_client()
     resp = client.delete("/sentiments/1")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 200
-    assert "El sentimento 1 se ha borrado." in data["message"]
+    assert "El sentimiento 1 se ha borrado." in data["message"]
 
-def _test_delete_sentiment_incorrect_id(test_app):
+def test_delete_sentiment_incorrect_id(test_app, test_database):
     client = test_app.test_client()
     resp = client.delete("/sentiments/9990000")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 404
-    assert "El sentimento 9990000 no existe" in data["message"]
+    assert "El sentimiento 9990000 no existe" in data["message"]
 
-def _test_update_sentiment_correct(test_app):
+def test_update_sentiment_correct(test_app, test_database):
     client = test_app.test_client()
-    resp = client.put(f"/sentiments/1", data=json.dumps({
+    resp = client.put(f"/sentiments/2", data=json.dumps({
                 "correct": False,
             }),content_type="application/json")
 
     data = json.loads(resp.data.decode())
     assert resp.status_code == 200
-    assert 'Sentimiento 1 actualizado' in data["message"]
+    assert 'Sentimiento 2 actualizado' in data["message"]
 
 @pytest.mark.parametrize(
     "id, payload, status_code, message",
@@ -147,12 +172,12 @@ def _test_update_sentiment_correct(test_app):
                 "correct": False
             },
             404,
-            "La reseña 9990000 no existe",
+            "El sentimiento 9990000 no existe",
         ],
     ],
 )
 
-def _test_update_sentiment_incorrect_request(test_app, id, payload, status_code, message):
+def test_update_sentiment_incorrect_request(test_app, test_database, id, payload, status_code, message):
     client = test_app.test_client()
     resp = client.put(f"/sentiments/{id}", data=json.dumps(payload),content_type="application/json")
 

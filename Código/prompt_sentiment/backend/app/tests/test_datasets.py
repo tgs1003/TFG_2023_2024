@@ -2,7 +2,7 @@ import json
 import pytest
 
 def test_add_dataset(test_app, test_database, add_user):
-    user1 = add_user("justatest1234", "test123@test123.com", "greaterthaneight", "Gestor")
+    user1 = add_user("justatest12343", "test123@test1233.com", "greaterthaneight", "Gestor")
     client = test_app.test_client()
     resp = client.post(
         "/datasets",
@@ -20,7 +20,8 @@ def test_add_dataset(test_app, test_database, add_user):
     assert resp.status_code == 201
     assert "Se ha añadido el dataset dataset_prueba1" in data["message"]
 
-def test_add_dataset_duplicado(test_app):
+def test_add_dataset_duplicado(test_app, test_database, add_user):
+    user1 = add_user("justatest12344", "test123@test1234.com", "greaterthaneight", "Gestor")
     client = test_app.test_client()
     resp = client.post(
         "/datasets",
@@ -54,7 +55,8 @@ def test_add_dataset_faltan_datos(test_app, test_database):
     assert resp.status_code == 400
     assert "Input payload validation failed" in data["message"]
 
-def _test_add_dataset_correcto(test_app):
+def test_add_dataset_correcto(test_app, test_database, add_user):
+    user1 = add_user("justatest12345", "test123@test12345.com", "greaterthaneight", "Gestor")
     client = test_app.test_client()
     resp = client.post(
         "/datasets",
@@ -62,7 +64,8 @@ def _test_add_dataset_correcto(test_app):
             {
                 "name": "dataset_prueba2",
                 "type": "Huggingface",
-                "payload": "Prueba/fichero_prueba2",
+                "config": "Prueba/fichero_prueba2",
+                "owner" : user1.id
             }
         ),
         content_type="application/json",
@@ -70,13 +73,9 @@ def _test_add_dataset_correcto(test_app):
     data = json.loads(resp.data.decode())
     assert resp.status_code == 201
     assert "Se ha añadido el dataset dataset_prueba2" in data["message"]
-    assert "dataset_prueba2" in data["name"]
-    assert "Huggingface" in data["type"]
-    assert "Prueba/fichero_prueba2" in data["payload"]
-    assert "0" in data["status"]
-    assert "id" in data
+    
 
-def _test_add_dataset_no_existe(test_app):
+def test_add_dataset_no_existe(test_app):
     client = test_app.test_client()
     resp = client.get("/datasets/999")
     data = json.loads(resp.data.decode())
@@ -84,21 +83,21 @@ def _test_add_dataset_no_existe(test_app):
     assert "El dataset 999 no existe" in data["message"]
 
 
-def _test_delete_dataset(test_app):
+def test_delete_dataset(test_app):
     client = test_app.test_client()
     resp = client.delete("/datasets/1")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 200
-    assert "eliminado" in data["message"]
+    assert "borrado" in data["message"]
 
-def _test_delete_dataset_incorrect_id(test_app):
+def test_delete_dataset_incorrect_id(test_app):
     client = test_app.test_client()
     resp = client.delete("/datasets/999")
     data = json.loads(resp.data.decode())
     assert resp.status_code == 404
     assert "El dataset 999 no existe" in data["message"]
 
-def _test_update_dataset_correct(test_app):
+def test_update_dataset_correct(test_app):
     client = test_app.test_client()
     resp = client.put(f"/datasets/2", data=json.dumps({
                 "status": "1",
@@ -122,7 +121,7 @@ def _test_update_dataset_correct(test_app):
     ],
 )
 
-def _test_update_dataset_incorrect_request(test_app, test_database, dataset_id, payload, status_code, message):
+def test_update_dataset_incorrect_request(test_app, test_database, dataset_id, payload, status_code, message):
     client = test_app.test_client()
     resp = client.put(f"/datasets/{dataset_id}", data=json.dumps(payload),content_type="application/json")
 

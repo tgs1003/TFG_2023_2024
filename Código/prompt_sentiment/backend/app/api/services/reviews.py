@@ -34,20 +34,26 @@ def get_review_by_id(review_id):
     '''
     return Review.query.filter_by(id = review_id).first()
 
+def get_review_by_dataset_id_and_review_text(dataset_id, review_text):
+    '''
+    Busca una reseña por Id
+    '''
+    return Review.query.filter_by(review_text = review_text, dataset_id = dataset_id).first()
+
 def get_review_by_dataset_id_and_review_id(dataset_id, review_id):
     '''
     Busca una reseña por Id
     '''
     return Review.query.filter_by(original_id = review_id, dataset_id = dataset_id).first()
 
-def add_review(dataset_id, review_text, review_time, stars):
+def add_review(dataset_id, review_text, review_time, original_stars):
     '''
     Agrega una reseña
     '''
     review = Review(dataset_id = dataset_id,
                     review_text = review_text, 
                     review_time = review_time, 
-                    original_stars = stars)
+                    original_stars = original_stars)
     db.session.add(review)
     db.session.commit()
     return review

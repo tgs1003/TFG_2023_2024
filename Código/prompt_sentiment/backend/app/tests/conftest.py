@@ -39,12 +39,12 @@ def add_user():
 
 @pytest.fixture(scope="module")
 def add_dataset():
-    def _add_dataset(dataset_name, dataset_type, 
-                     dataset_config, dataset_owner):
-        dataset = Dataset(name=dataset_name, 
-                          type=dataset_type, 
-                          config=dataset_config,
-                          owner=dataset_owner,
+    def _add_dataset(name, type, 
+                     config, owner):
+        dataset = Dataset(name=name, 
+                          type=type, 
+                          config=config,
+                          owner=owner,
                           status="Creado")
         db.session.add(dataset)
         db.session.commit()
@@ -54,9 +54,8 @@ def add_dataset():
 
 @pytest.fixture(scope="module")
 def add_review():
-    def _add_review(dataset_id, original_id, review_text, review_time, original_stars):
+    def _add_review(dataset_id, review_text, review_time, original_stars):
         review = Review(dataset_id = dataset_id, 
-                        original_id = original_id, 
                         review_text = review_text, 
                         review_time = review_time, 
                         original_stars=original_stars)

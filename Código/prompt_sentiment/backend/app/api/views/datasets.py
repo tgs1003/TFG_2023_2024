@@ -20,12 +20,16 @@ logging.basicConfig(level=logging.DEBUG,
 
 datasets_namespace = Namespace("datasets")
 
+post_parser = datasets_namespace.parser()
+post_parser.add_argument("Authorization", location="headers")
+post_parser.add_argument("name", location="json", required=True)
+post_parser.add_argument("type", location="json")
+post_parser.add_argument("config", location="json")
+post_parser.add_argument("owner", location="json")
+
 put_parser = datasets_namespace.parser()
 put_parser.add_argument("Authorization", location="headers")
-put_parser.add_argument("name", location="json", required=True)
-put_parser.add_argument("type", location="json")
-put_parser.add_argument("config", location="json")
-put_parser.add_argument("loaded", location="json")
+put_parser.add_argument("status", location="json", required=True)
 
 parser = datasets_namespace.parser()
 parser.add_argument("Authorization", location="headers")
@@ -58,10 +62,10 @@ class DatasetList(Resource):
 
     @datasets_namespace.response(201, "El dataset <dataset_name> se ha agregado.")
     @datasets_namespace.response(400, "El dataset ya existe.")
-    @datasets_namespace.expect(put_parser, validate=True)
+    @datasets_namespace.expect(post_parser, validate=True)
     def post(self):
         """Crea un dataset."""
-        data = put_parser.parse_args()
+        data = post_parser.parse_args(request)
         if not user_has_rol(request, "Admin", datasets_namespace):
             datasets_namespace.abort(403, "El usuario no es administrador.")
         name = data["name"]
@@ -99,10 +103,11 @@ class Datasets(Resource):
     @datasets_namespace.response(404, "El dataset <dataset_id> no existe.")
     def put(self, dataset_id):
         """Actualiza un dataset."""
+        data = put_parser.parse_args(request)
         if not user_has_rol(request, "Admin", datasets_namespace):
             datasets_namespace.abort(403, "El usuario no es administrador.")
-        post_data = request.get_json()
-        status = post_data.get("status")
+
+        status = data["status"]
         response_object = {}
         dataset = get_dataset_by_id(dataset_id)
         if not dataset:

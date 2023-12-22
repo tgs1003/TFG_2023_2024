@@ -8,7 +8,8 @@ from app.api.services.reviews import (
     add_review,
     update_review,
     delete_review,
-    get_reviews_by_dataset_id
+    get_reviews_by_dataset_id,
+    get_review_by_dataset_id_and_review_text
 )
 
 reviews_namespace = Namespace("reviews")
@@ -25,7 +26,15 @@ reviews = reviews_namespace.model(
 put_parser = reviews_namespace.parser()
 put_parser.add_argument("Authorization", location="headers")
 put_parser.add_argument("dataset_id", location="json")
-put_parser.add_argument("review_text", location="json")
+put_parser.add_argument("review_text", location="json", required=True)
+
+post_parser = reviews_namespace.parser()
+post_parser.add_argument("Authorization", location="headers")
+post_parser.add_argument("dataset_id", location="json", required=True)
+post_parser.add_argument("review_text", location="json", required=True)
+post_parser.add_argument("review_time", location="json")
+post_parser.add_argument("stars", location="json")
+
 
 parser = reviews_namespace.parser()
 parser.add_argument("Authorization", location="headers")
@@ -38,28 +47,27 @@ class ReviewsList(Resource):
         check_token(request=request, namespace=reviews_namespace)
         return get_all_reviews(), 200
 
-    @reviews_namespace.marshal_with(reviews)
+    
     @reviews_namespace.response(201, "<review_id> was added!")
     @reviews_namespace.response(400, "La reseña está duplicada.")
-    @reviews_namespace.expect(parser)
+    @reviews_namespace.expect(post_parser)
     def post(self):
         """Crea una reseña."""
+        data = post_parser.parse_args(request)
         if not user_has_rol(request, "Admin", reviews_namespace):
             reviews_namespace.abort(403, "El usuario no es administrador.")
-        post_data = request.get_json()
-        original_id = post_data.get("original_id")
-        dataset_id = post_data.get("dataset_id")
-        review_text = post_data.get("review_text")
+        dataset_id = data["dataset_id"]
+        review_text = data["review_text"]
         #TODO: formato de fecha
-        review_time = post_data.get("review_time")
-        stars = post_data.get("stars")
+        review_time = data["review_time"]
+        stars = data["stars"]
         response_object = {}
         #TODO: comprobar si ya existe
-        review = get_review_by_id(review_id = original_id)
+        review = get_review_by_dataset_id_and_review_text(dataset_id = dataset_id, review_text = review_text)
         if review:
             response_object["message"] = "La reseña está duplicada."
             return response_object, 400
-        review = add_review(dataset_id, original_id, review_text, review_time, original_stars=stars)
+        review = add_review(dataset_id, review_text, review_time, original_stars=stars)
         response_object["message"] = f"La reseña {review.id} se ha añadido."
         return response_object, 201
 
@@ -81,10 +89,10 @@ class Reviews(Resource):
     @reviews_namespace.response(404, "La reseña <review_id> no existe.")
     def put(self, review_id):
         """Actualiza la reseña."""
+        data = put_parser.parse_args(request)
         if not user_has_rol(request, "Admin", reviews_namespace):
             reviews_namespace.abort(403, "El usuario no es administrador.")
-        post_data = request.get_json()
-        review_text = post_data.get("review_text")
+        review_text = data["review_text"]
         response_object = {}
 
         review = get_review_by_id(review_id)

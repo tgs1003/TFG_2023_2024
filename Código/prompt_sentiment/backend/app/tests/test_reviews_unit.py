@@ -4,13 +4,19 @@ from datetime import datetime
 import app.api.views.reviews
 
 def test_add_review(test_app, monkeypatch):
+    class AttrDict(dict):
+        def __init__(self, *args, **kwargs):
+            super(AttrDict, self).__init__(*args, **kwargs)
+            self.__dict__ = self
 
-    def mock_get_review_by_reviewer_and_product(datasetId, reviewer_id, productId):
+    def mock_get_review_by_dataset_id_and_review_text(dataset_id, review_text):
         return None
-    def mock_add_review(datasetId, originalId, productId, reviewtext, reviewtime, reviewerid, stars):
-        return True
+    def mock_add_review(dataset_id, review_text, review_time, original_stars):
+        d = AttrDict()
+        d.update({"id": 1})
+        return d
     
-    monkeypatch.setattr(app.api.views.reviews, "get_review_by_reviewer_and_product", mock_get_review_by_reviewer_and_product)
+    monkeypatch.setattr(app.api.views.reviews, "get_review_by_dataset_id_and_review_text", mock_get_review_by_dataset_id_and_review_text)
     monkeypatch.setattr(app.api.views.reviews, "add_review", mock_add_review)
    
     client = test_app.test_client()
@@ -19,27 +25,25 @@ def test_add_review(test_app, monkeypatch):
         
         data=json.dumps(
             {
-                "originalId": "review1",
-                "productId": "product1",
-                "reviewText": "Review Text",
-                "reviewTime": datetime.now(),
-                "reviewerId": "Reviewer id",
-                "originalStars": 0
+                "dataset_id": 1,
+                "review_text": "Review Text",
+                "review_time": datetime.now().isoformat(),                
+                "stars": 0
             }
         ),
         content_type="application/json",
     )
     data = json.loads(resp.data.decode())
     assert resp.status_code == 201
-    assert "La reseña del producto product1 se ha añadido." in data["message"]
+    assert "La reseña 1 se ha añadido." in data["message"]
 
 def test_add_review_duplicada(test_app, monkeypatch):
-    def mock_get_review_by_reviewer_and_product(datasetId, reviewer_id, productId):
+    def mock_get_review_by_dataset_id_and_review_text(dataset_id, review_text):
         return True
-    def mock_add_review(datasetId, originalId, productId, reviewtext, reviewtime, reviewerid, stars):
+    def mock_add_review(dataset_id, review_text, review_time, original_stars):
         return True
     
-    monkeypatch.setattr(app.api.views.reviews, "get_review_by_reviewer_and_product", mock_get_review_by_reviewer_and_product)
+    monkeypatch.setattr(app.api.views.reviews, "get_review_by_dataset_id_and_review_text", mock_get_review_by_dataset_id_and_review_text)
     monkeypatch.setattr(app.api.views.reviews, "add_review", mock_add_review)
 
     client = test_app.test_client()
@@ -47,12 +51,10 @@ def test_add_review_duplicada(test_app, monkeypatch):
         "/reviews",
         data=json.dumps(
             {
-                "originalId": "review1",
-                "productId": "product1",
-                "reviewText": "Review Text",
-                "reviewTime": datetime.now(),
-                "reviewerId": "Reviewer id",
-                "originalStars": 0
+                "dataset_id": 1,
+                "review_text": "Review Text",
+                "review_time": datetime.now().isoformat(),                
+                "stars": 0
             }
         ),
         content_type="application/json",
@@ -63,12 +65,12 @@ def test_add_review_duplicada(test_app, monkeypatch):
 
 def test_add_reviewfaltan_datos(test_app, monkeypatch):
 
-    def mock_get_review_by_reviewer_and_product(datasetId, reviewer_id, productId):
+    def mock_get_review_by_dataset_id_and_review_text(dataset_id, review_text):
         return True
-    def mock_add_review(datasetId, originalId, productId, reviewtext, reviewtime, reviewerid, stars):
+    def mock_add_review(dataset_id, review_text, review_time, original_stars):
         return True
     
-    monkeypatch.setattr(app.api.views.reviews, "get_review_by_reviewer_and_product", mock_get_review_by_reviewer_and_product)
+    monkeypatch.setattr(app.api.views.reviews, "get_review_by_dataset_id_and_review_text", mock_get_review_by_dataset_id_and_review_text)
     monkeypatch.setattr(app.api.views.reviews, "add_review", mock_add_review)
   
     client = test_app.test_client()
@@ -76,7 +78,7 @@ def test_add_reviewfaltan_datos(test_app, monkeypatch):
         "/reviews",
         data=json.dumps(
             {
-                "originalId": "review1",
+                "dataset_id": 1,
                 
             }
         ),
@@ -101,9 +103,12 @@ def test_get_review_no_existe(test_app, monkeypatch):
 
 
 def test_delete_review_incorrect_id(test_app, monkeypatch):
-    def mock_delete_review(reviewId):
+    def mock_get_review_by_id(review_id):
+        return None
+    def mock_delete_review(review_id):
         return None
 
+    monkeypatch.setattr(app.api.views.reviews, "get_review_by_id", mock_get_review_by_id)
     monkeypatch.setattr(app.api.views.reviews, "delete_review", mock_delete_review)
   
     client = test_app.test_client()
@@ -113,9 +118,16 @@ def test_delete_review_incorrect_id(test_app, monkeypatch):
     assert "La reseña 9990000 no existe" in data["message"]
 
 def test_update_review_correct(test_app, monkeypatch):
+    class AttrDict(dict):
+        def __init__(self, *args, **kwargs):
+            super(AttrDict, self).__init__(*args, **kwargs)
+            self.__dict__ = self
+
     def mock_get_review_by_id(review_id):
-        return True
-    def mock_update_review(review, reviewText):
+        d = AttrDict()
+        d.update({"id": 1})
+        return d
+    def mock_update_review(review, review_text):
         return True
     
     monkeypatch.setattr(app.api.views.reviews, "get_review_by_id", mock_get_review_by_id)
@@ -123,10 +135,9 @@ def test_update_review_correct(test_app, monkeypatch):
     
     client = test_app.test_client()
     resp = client.put(f"/reviews/1", data=json.dumps({
-                "datasetId": "4",
-                "productId": "4updated",
-                "reviewText": " Review text updated",
-                "reviewerId": "4",
+                "dataset_id": "4",
+                "review_text": " Review text updated",
+                
                 
             }),content_type="application/json")
 

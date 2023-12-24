@@ -8,12 +8,12 @@ El análisis de sentimiento es un campo de estudio en el procesamiento del lengu
 El objetivo principal es identificar y evaluar la actitud emocional expresada en un fragmento de texto, ya sea positiva, negativa o neutral.
 
 
-Formalmente, el análisis de sentimiento implica varios pasos:
+El análisis de sentimiento implica varios pasos:
 \begin{itemize}
-	\item Preprocesamiento del Texto: Antes de realizar el análisis de sentimiento, es necesario realizar una serie de tareas de preprocesamiento del texto, que incluyen la eliminación de palabras irrelevantes (stop words), lematización (reducción de palabras a su forma base), y la normalización del texto.
-	\item Representación del Texto: El texto debe representarse de una manera que pueda ser procesada por algoritmos de aprendizaje automático. Esto a menudo implica convertir el texto en vectores numéricos utilizando técnicas como la bolsa de palabras (bag-of-words) o modelos de incrustación de palabras (word embeddings).
-	\item Modelado: Se utilizan modelos de aprendizaje automático, como máquinas de soporte vectorial (SVM), redes neuronales, o algoritmos de clasificación, para entrenar un modelo sobre los datos de texto anotados con etiquetas de sentimiento. Durante el entrenamiento, el modelo aprende patrones y características asociadas con la polaridad del sentimiento.
-	\item Clasificación: Una vez entrenado, el modelo se utiliza para predecir la polaridad del sentimiento de nuevos textos. El resultado típicamente indica si el texto es positivo, negativo o neutral.
+	\item \textbf{Preprocesamiento del Texto}: Antes de realizar el análisis de sentimiento, es necesario realizar una serie de tareas de preprocesamiento del texto, que incluyen la eliminación de palabras irrelevantes (stop words), lematización (reducción de palabras a su forma base), y la normalización del texto.
+	\item \textbf{Representación del Texto}: El texto debe representarse de una manera que pueda ser procesada por algoritmos de aprendizaje automático. Esto a menudo implica convertir el texto en vectores numéricos utilizando técnicas como la bolsa de palabras (bag-of-words) o modelos de incrustación de palabras (word embeddings).
+	\item \textbf{Modelado}: Se utilizan modelos de aprendizaje automático, como máquinas de soporte vectorial (SVM), redes neuronales, o algoritmos de clasificación, para entrenar un modelo sobre los datos de texto anotados con etiquetas de sentimiento. Durante el entrenamiento, el modelo aprende patrones y características asociadas con la polaridad del sentimiento.
+	\item \textbf{Clasificación}: Una vez entrenado, el modelo se utiliza para predecir la polaridad del sentimiento de nuevos textos. El resultado típicamente indica si el texto es positivo, negativo o neutral.
 \end{itemize}
 
 El análisis de sentimiento se aplica en una variedad de campos, 
@@ -25,27 +25,57 @@ de productos, servicios o eventos, así como para tomar
 decisiones informadas en marketing, atención al cliente y 
 otras áreas empresariales.
 
+\section{Procesamiento del Lenguaje natural}
+Es una rama de la inteligencia artificial que se ocupa de la interacción 
+entre las computadoras y el lenguaje humano. \\
+El objetivo principal del PLN es permitir que las máquinas comprendan, 
+interpreten y generen texto de manera similar a como lo haría un ser humano.\\
+Dentro del procesamiento del lenguaje natural hay una serie de conceptos que es importante conocer:
+\begin{itemize}
+	\item \textbf{Tokenización}: Es el proceso de dividir un texto en unidades más 
+	pequeñas llamadas "tokens". Un token puede ser una palabra, 
+	una frase o incluso un carácter, dependiendo de la granularidad deseada.
+	
+	\item \textbf{Análisis morfológico}: Implica comprender la estructura y la forma 
+	de las palabras en un texto.\\ Esto puede incluir la descomposición 
+	de las palabras en raíces y afijos para comprender su significado.
 
-\section{Large Language Model}
-Un ``\emph{Large Language Model}'' (LLM) se refiere a un modelo de lenguaje grande en el ámbito 
-de la inteligencia artificial y el procesamiento del lenguaje natural (PLN). 
+	\item \textbf{Análisis sintáctico}: Se refiere a analizar la estructura 
+	gramatical de las oraciones para comprender la relación entre las palabras.\\ 
+	Esto implica identificar partes del discurso, como sustantivos, verbos, 
+	adjetivos, etc., y cómo se combinan para formar oraciones 
+	gramaticalmente correctas.
+	
+	\item \textbf{Análisis semántico}: Busca comprender el significado de las palabras y 
+	cómo se combinan para formar significados más complejos. \\
+	Involucra la interpretación del contexto y la comprensión 
+	de las relaciones entre las palabras.
+	
+	\item \textbf{Análisis pragmático}: Considera el uso del lenguaje en situaciones 
+	específicas y comprende el significado más allá de las palabras. \\
+	Incluye la interpretación de intenciones, tono y contexto cultural.
+	
+	\item \textbf{Reconocimiento de entidades}: Consiste en identificar y clasificar 
+	entidades como nombres de personas, organizaciones, fechas, ubicaciones, etc., 
+	dentro de un texto.
+	
+	\item \textbf{Desambiguación}: Aborda la resolución de ambigüedades en el lenguaje.\\
+	Por ejemplo, entender a qué se refiere un pronombre o resolver el significado 
+	de una palabra con múltiples interpretaciones.
+	
+	\item \textbf{Generación de lenguaje}: Implica la creación de texto humano legible por parte 
+	de las máquinas.\\ 
+	Puede ser tan simple como completar una oración o tan complejo 
+	como la creación de contenido original.
+		 
+\end{itemize}
 
-Estos modelos están diseñados para entender y generar texto de manera contextualmente coherente y 
-con un alto nivel de complejidad lingüística.
 
-Uno de los ejemplos más destacados de LLM es GPT-3 
-(Generative Pre-trained Transformer 3), desarrollado por OpenAI~\cite{chatgpt1}. 
+El procesamiento del lenguaje natural se utiliza en una variedad de 
+aplicaciones, como motores de búsqueda, traducción automática, chatbots, 
+resumen automático de textos, análisis de sentimientos y 
+muchas otras áreas donde se requiere comprensión y generación de texto.\\
 
-GPT-3 es un modelo de lenguaje que utiliza la arquitectura de un transformer~\cite{UrdanetaTransformers} 
-y ha sido entrenado con una enorme cantidad de textos recopilados de diversas fuentes en Internet.
-
-Lo distintivo de los LLM es que son modelos preentrenados, 
-lo que significa que primero se entrenan en grandes cantidades 
-de textos antes de ser ajustados para tareas específicas. 
-
-Estos modelos son capaces de realizar una variedad de tareas relacionadas con el lenguaje, como traducción automática, resumen de texto, generación de texto creativo, respuesta a preguntas y más.
-
-Los LLM han demostrado un rendimiento excepcional en una amplia gama de aplicaciones de procesamiento del lenguaje natural, y su capacidad para comprender contextos y generar texto coherente ha llevado a avances significativos en áreas como chatbots avanzados, asistentes virtuales y generación de contenido textual.
 
 \section{Prompt Engineering}
 El ``\emph{Prompt Engineering}'' se refiere a la práctica de diseñar de manera
@@ -58,7 +88,7 @@ con el objetivo de influir en la salida de manera deseada.
 Esta técnica es especialmente relevante en el contexto de modelos 
 generativos de lenguaje, como GPT-3, donde la calidad y la 
 relevancia de las respuestas pueden depender en gran medida 
-de cómo se presenta la información al modelo. 
+de cómo se presenta la información al modelo.\\
 El ``\emph{Prompt Engineering}'' se utiliza para optimizar la interacción 
 con estos modelos y obtener resultados que sean más útiles 
 para una tarea particular.

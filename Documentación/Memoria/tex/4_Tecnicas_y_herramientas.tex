@@ -1,114 +1,202 @@
 \capitulo{4}{Técnicas y herramientas}
 
-Esta parte de la memoria tiene como objetivo presentar las técnicas metodológicas y las herramientas de desarrollo que se han utilizado para llevar a cabo el proyecto. Si se han estudiado diferentes alternativas de metodologías, herramientas, bibliotecas se puede hacer un resumen de los aspectos más destacados de cada alternativa, incluyendo comparativas entre las distintas opciones y una justificación de las elecciones realizadas. 
-No se pretende que este apartado se convierta en un capítulo de un 
-libro dedicado a cada una de las alternativas, sino comentar los aspectos 
-más destacados de cada opción, con un repaso somero a los fundamentos 
-esenciales y referencias bibliográficas para que el lector pueda ampliar 
-su conocimiento sobre el tema.
+En esta parte de la memoria voy a presentar algunas de las técnicas de desarrollo 
+que he utilizado para el desarrollo del proyecto, así como la información relevante 
+de cada una de ellas.
 
 \section{Técnicas}
 
-\subsection{ORM}~\cite{fowler2012patterns}
-Un ORM (Object-Relational Mapping) es una técnica de programación que se utiliza en el desarrollo de software para conectar objetos en un programa con tablas en una base de datos relacional. Su propósito principal es permitir a los desarrolladores trabajar con datos de una base de datos relacional utilizando objetos y clases en lugar de escribir consultas SQL directamente. Un ORM mapea las estructuras de datos en una base de datos a objetos en un lenguaje de programación, lo que facilita la interacción con la base de datos y el manejo de datos de una manera más orientada a objetos.
-Las ventajas clave de usar un ORM incluyen:
+\subsection{ORM~\cite{fowler2012patterns}}
+\label{ORM}
+Un ORM (Object-Relational Mapping) es una técnica de programación que se 
+utiliza en el desarrollo de software para conectar objetos en un programa 
+con tablas en una base de datos relacional. \\
+Su propósito principal es permitir a los desarrolladores trabajar con datos de una base de datos relacional utilizando objetos y clases en lugar de escribir consultas SQL directamente. Un ORM mapea las estructuras de datos en una base de datos a objetos en un lenguaje de programación, lo que facilita la interacción con la base de datos y el manejo de datos de una manera más orientada a objetos.
+Las ventajas clave de usar un ``\emph{ORM}'' incluyen:
 \begin{itemize}
-    \item \textbf{Abstracción de la base de datos}: Un ORM oculta los detalles de la base de datos subyacente, permitiendo a los desarrolladores interactuar con los datos en términos de objetos y clases en lugar de preocuparse por la sintaxis SQL específica de la base de datos.
-    \item \textbf{Productividad}: Reduce la cantidad de código SQL que los desarrolladores deben escribir, lo que ahorra tiempo y esfuerzo en el desarrollo de aplicaciones.
-    \item \textbf{Portabilidad}: Un ORM puede ser diseñado para ser independiente de la base de datos, lo que facilita la migración de una base de datos a otra sin cambiar el código de la aplicación.
-    \item \textbf{Mantenibilidad}: Al trabajar con objetos y clases en lugar de consultas SQL directas, el código puede ser más fácil de mantener y entender.
-    \item \textbf{Seguridad}: Los ORM suelen ofrecer características de seguridad integradas, como la prevención de inyecciones SQL, lo que reduce la vulnerabilidad de las aplicaciones a ataques. 
+    \item \textbf{Abstracción de la base de datos}: Oºculta los detalles de la base de datos subyacente, 
+    permitiendo a los desarrolladores interactuar con los datos en términos de objetos y clases en lugar de preocuparse por la sintaxis SQL específica de la base de datos.
+    \item \textbf{Productividad}: Reduce la cantidad de código SQL que los desarrolladores deben escribir, 
+    lo que ahorra tiempo y esfuerzo en el desarrollo de aplicaciones.
+    \item \textbf{Portabilidad}: Puede ser diseñado para ser independiente de la base de datos, 
+    lo que facilita la migración de una base de datos a otra sin cambiar el código de la aplicación.
+    \item \textbf{Mantenibilidad}: Al trabajar con objetos y clases en lugar de consultas SQL directas, 
+    el código puede ser más fácil de mantener y entender.
+    \item \textbf{Seguridad}: Suelen ofrecer características de seguridad integradas, 
+    como la prevención de inyecciones SQL, lo que reduce la vulnerabilidad de las aplicaciones a ataques. 
 \end{itemize}
 Ejemplos de ORMs populares incluyen Hibernate para Java, Entity Framework para .NET, 
-SQLAlchemy para Python, Sequelize para Node.js y Django ORM para aplicaciones web Django en Python. Cada uno de estos ORMs proporciona una forma de mapear objetos a tablas de base de datos y facilita la manipulación de datos en aplicaciones de software de manera más eficiente y mantenible.
+SQLAlchemy para Python, Sequelize para Node.js y Django ORM para aplicaciones web Django en Python. \\
+Cada uno de estos ORMs proporciona una forma de mapear objetos a tablas de base de datos y facilita 
+la manipulación de datos en aplicaciones de software de manera más eficiente y mantenible.
 
-\subsection{MVC}~\cite{fowler2012patterns}
-MVC es un patrón arquitectónico comúnmente utilizado en el desarrollo de aplicaciones de software, especialmente en aplicaciones web. La sigla "MVC" representa Model-View-Controller, y se divide en tres componentes principales que desempeñan roles específicos en la organización y estructura de una aplicación. Estos son:
-Model (Modelo): El modelo representa la lógica empresarial y los datos subyacentes de la aplicación. En otras palabras, el modelo se encarga de manejar la manipulación y el acceso a los datos, así como de realizar cálculos y procesos necesarios. El modelo no tiene conocimiento de la interfaz de usuario y no se preocupa por cómo se muestran los datos. Es independiente de la vista y el controlador.
-View (Vista): La vista se encarga de la presentación y la interfaz de usuario. Su función principal es mostrar los datos al usuario de una manera comprensible y atractiva. La vista no realiza operaciones comerciales o de lógica, sino que simplemente muestra la información proporcionada por el modelo. En sistemas web, esto a menudo se traduce en la generación de páginas HTML o interfaces de usuario dinámicas.
-Controller (Controlador): El controlador actúa como un intermediario entre el modelo y la vista. Recibe las solicitudes del usuario a través de la vista, procesa esas solicitudes, realiza las operaciones necesarias en el modelo y luego actualiza la vista para mostrar los resultados. El controlador maneja la lógica de interacción y toma decisiones sobre qué acción realizar en función de la entrada del usuario.
+\subsection{MVC~\cite{fowler2012patterns}}
+MVC es un patrón arquitectónico comúnmente utilizado en el desarrollo de aplicaciones de software, 
+especialmente en aplicaciones web. \\
+Las siglas ``\emph{MVC}'' representa ``\emph{Model-View-Controller}'', y se divide en tres componentes principales 
+que desempeñan roles específicos en la organización y estructura de una aplicación. 
+Estos son:
+\begin{itemize}
+    \item \textbf{Model (Modelo)}: El modelo representa la lógica empresarial y los datos subyacentes 
+    de la aplicación.\\ En otras palabras, el modelo se encarga de manejar la manipulación y 
+    el acceso a los datos, así como de realizar cálculos y procesos necesarios.\\ 
+    El modelo no tiene conocimiento de la interfaz de usuario y no se preocupa por cómo se muestran 
+    los datos.\\ Es independiente de la vista y el controlador.
+    \item \textbf{View (Vista)}: La vista se encarga de la presentación y la interfaz de usuario. \\
+    Su función principal es mostrar los datos al usuario de una manera comprensible y atractiva. \\
+    La vista no realiza operaciones comerciales o de lógica, sino que simplemente muestra la 
+    información proporcionada por el modelo. \\
+    En sistemas web, esto a menudo se traduce en la generación de páginas HTML o 
+    interfaces de usuario dinámicas.
+    item \textbf{Controller (Controlador)}: El controlador actúa como un intermediario entre el modelo y la vista. 
+\end{itemize}
+
+Recibe las solicitudes del usuario a través de la vista, procesa esas solicitudes, 
+realiza las operaciones necesarias en el modelo y luego actualiza la vista para mostrar los resultados.\\
+El controlador maneja la lógica de interacción y toma decisiones sobre qué acción realizar 
+en función de la entrada del usuario.\\
 La arquitectura MVC promueve una clara separación de preocupaciones, lo que facilita la modularidad y la escalabilidad de las aplicaciones. Esto permite a los desarrolladores trabajar de manera más eficiente, ya que pueden centrarse en una capa (modelo, vista o controlador) sin preocuparse demasiado por las otras capas. Además, el MVC es ampliamente utilizado en marcos de desarrollo web como Ruby on Rails, Django (Python), Laravel (PHP), y ASP.NET MVC (CSharp), entre otros.
 En resumen, el patrón MVC es una forma efectiva de organizar y estructurar aplicaciones de software, lo que resulta en un código más claro, mantenible y flexible.
 
-\subsection{LLM}~\cite{mirchandani2023large}
-Un Large Language Model (Modelo de Lenguaje Grande) se refiere a un tipo de modelo de inteligencia artificial diseñado para procesar y generar texto en lenguaje natural a gran escala. Estos modelos están entrenados en enormes cantidades de datos de texto y están diseñados para comprender y generar texto en varios idiomas, lo que les permite llevar a cabo tareas de procesamiento de lenguaje natural de manera efectiva. Algunos ejemplos de Large Language Models incluyen GPT-3, GPT-4 y BERT.
-Características clave de los Large Language Models:
-Tamaño y complejidad: Los modelos de lenguaje grandes contienen miles de millones o incluso decenas de miles de millones de parámetros, lo que les permite capturar una gran cantidad de conocimiento lingüístico y patrones de lenguaje.
-Pre-entrenamiento y afinación: Estos modelos se entrenan primero en grandes corpus de texto, lo que les permite aprender el lenguaje natural y su estructura. Luego, se pueden afinar o ajustar para tareas específicas, como traducción automática, resumen de texto, generación de texto creativo, entre otros.
-Generación de texto: Los Large Language Models son capaces de generar texto coherente y contextualmente relevante. Pueden responder preguntas, completar oraciones, generar contenido original y realizar tareas de procesamiento de lenguaje natural.
-Amplia aplicabilidad: Estos modelos se utilizan en una amplia gama de aplicaciones, que van desde asistentes virtuales y chatbots hasta motores de búsqueda mejorados, análisis de sentimientos, resumen automático de texto, traducción automática y más.
-Desafíos éticos y de seguridad: Los Large Language Models también plantean desafíos éticos y de seguridad, ya que su capacidad para generar texto implica la necesidad de prevenir el uso indebido, la desinformación y el sesgo en el contenido generado.
-Estos modelos han sido desarrollados y perfeccionados por empresas de tecnología y organizaciones de investigación en inteligencia artificial, y han demostrado un gran potencial en una variedad de aplicaciones. A medida que los Large Language Models continúan evolucionando, su influencia en la forma en que interactuamos con la tecnología y generamos contenido en línea también está en constante crecimiento.
+\subsection{LLM~\cite{mirchandani2023large}}
+\label{LLM}
+Un LLM (Modelo de Lenguaje Grande) es un tipo de modelo de inteligencia artificial
+ diseñado para procesar y generar texto en lenguaje natural a gran escala.\\
+Estos modelos están entrenados en enormes cantidades de datos de texto 
+y están diseñados para comprender y generar texto en varios idiomas, 
+lo que les permite llevar a cabo tareas de procesamiento de lenguaje natural de manera efectiva. \\
+Algunos ejemplos son GPT-3, GPT-4 y BERT~\cite{BertSentimentModel1}.\\
+Características clave:
+\begin{itemize}
+    \item \textbf{Tamaño y complejidad}: Los modelos de lenguaje grandes contienen miles de millones o 
+    incluso decenas de miles de millones de parámetros, lo que les permite capturar una 
+    gran cantidad de conocimiento lingüístico y patrones de lenguaje.
+    \item \textbf{Pre-entrenamiento y afinación}: Estos modelos se entrenan primero en grandes corpus de texto, lo que les permite aprender el lenguaje natural y su estructura. Luego, se pueden afinar o ajustar para tareas específicas, como traducción automática, resumen de texto, generación de texto creativo, entre otros.
+    \item \textbf{Generación de texto}: Son capaces de generar texto coherente y contextualmente relevante.\\
+    Pueden responder preguntas, completar oraciones, generar contenido original 
+    y realizar tareas de procesamiento de lenguaje natural.
+    \item \textbf{Amplia aplicabilidad}: Estos modelos se utilizan en una amplia gama de aplicaciones, 
+    que van desde asistentes virtuales y chatbots hasta motores de búsqueda mejorados, 
+    análisis de sentimientos, resumen automático de texto, traducción automática y más.
+\end{itemize}
+ 
+Plantean desafíos éticos y de seguridad, ya que su 
+capacidad para generar texto implica la necesidad de prevenir el uso indebido, 
+la desinformación y el sesgo en el contenido generado.\\
+Estos modelos han sido desarrollados y perfeccionados por empresas de tecnología y 
+organizaciones de investigación en inteligencia artificial, y han demostrado 
+un gran potencial en una variedad de aplicaciones. \\
+A medida que continúan evolucionando, su influencia 
+en la forma en que interactuamos con la tecnología y generamos contenido 
+en línea también está en constante crecimiento.
 
 
 \section{Herramientas}
 
-\subsection{Python} ~\cite{lutz2001programming}
-Python es un lenguaje de programación de alto nivel, interpretado y generalmente considerado como fácil de aprender y de utilizar. Fue creado por Guido van Rossum y lanzado por primera vez en 1991. Algunas de sus características clave incluyen:
-Sintaxis clara y legible: Python se destaca por su sintaxis clara y fácil de entender, lo que lo convierte en un lenguaje ideal tanto para principiantes como para programadores experimentados.
-Multiplataforma: Python es compatible con una amplia gama de sistemas operativos, lo que lo hace altamente portátil.
-Interpretado: Python es un lenguaje interpretado, lo que significa que el código se ejecuta línea por línea por un intérprete, en lugar de compilarse previamente en código de máquina. Esto hace que sea fácil escribir y depurar código.
-Amplia biblioteca estándar: Python ofrece una extensa biblioteca estándar que cubre una variedad de tareas, desde manipulación de archivos y redes hasta desarrollo web y matemáticas, lo que acelera el desarrollo de aplicaciones.
-Comunidad activa: Python cuenta con una comunidad de desarrollo muy activa y una gran cantidad de bibliotecas y marcos de trabajo de código abierto disponibles, lo que facilita la creación de aplicaciones complejas.
-Orientado a objetos: Python es un lenguaje de programación orientado a objetos, lo que significa que se enfoca en la creación de objetos que pueden contener datos y funciones.
-Uso diverso: Python se utiliza en una amplia variedad de campos, como desarrollo web, análisis de datos, inteligencia artificial, automatización de tareas, desarrollo de juegos y más.
+\subsection{Python~\cite{lutz2001programming}}
+Es un lenguaje de programación de alto nivel, interpretado y generalmente 
+considerado como fácil de aprender y de utilizar. \\
+Python destaca por su sintaxis clara y fácil de entender, 
+lo que lo convierte en un lenguaje ideal tanto para principiantes 
+como para programadores experimentados.\\
+Es compatible con una amplia gama de sistemas operativos, 
+lo que lo hace muy portable.\\
 
-\subsection{Flask}~\cite{dwyer2017flask}
-Flask es un framework de desarrollo web en Python que se utiliza para crear aplicaciones web de manera sencilla y rápida. Fue creado por Armin Ronacher y es conocido por su simplicidad y facilidad de uso. Flask se encuentra en el espectro más ligero de los frameworks web, lo que significa que proporciona las herramientas necesarias para crear aplicaciones web, pero no impone estructuras rígidas ni componentes innecesarios.
-Algunas características clave de Flask incluyen:
-Microframework: Flask se autodenomina un "microframework" debido a su enfoque minimalista. Proporciona las funcionalidades esenciales para el desarrollo web, pero permite a los desarrolladores elegir y agregar las extensiones y bibliotecas que necesiten según sus requerimientos.
-Extensibilidad: Flask es altamente extensible, lo que significa que puedes incorporar fácilmente extensiones para agregar características específicas, como autenticación, manejo de formularios, manejo de bases de datos y más.
-Sistema de rutas: Flask utiliza un sistema de rutas simple que permite definir cómo debe responder la aplicación a las solicitudes HTTP en función de las URL solicitadas.
-Jinja2: Flask integra el motor de plantillas Jinja2, que facilita la creación de vistas web dinámicas mediante la mezcla de HTML estático con contenido dinámico.
-Ligero y minimalista: Flask es conocido por su pequeño tamaño y su falta de dependencias complejas, lo que lo hace ideal para proyectos pequeños y medianos.
-Amplia comunidad: A pesar de su simplicidad, Flask tiene una comunidad activa y una gran cantidad de extensiones y recursos disponibles.
-Flask es una excelente elección para desarrolladores que desean construir aplicaciones web simples y rápidas sin tener que lidiar con una curva de aprendizaje empinada. También es ampliamente utilizado para la creación de API RESTful debido a su facilidad de uso y flexibilidad.
+Ofrece una extensa biblioteca estándar que cubre una variedad de tareas, 
+desde manipulación de archivos y redes hasta desarrollo web y 
+matemáticas, lo que acelera el desarrollo de aplicaciones.\\
+Cuenta con una comunidad de desarrollo muy activa y 
+una gran cantidad de bibliotecas y marcos de trabajo de código abierto disponibles, 
+lo que facilita la creación de aplicaciones complejas.\\
+Es orientado a objetos, lo que significa que se enfoca en la creación de objetos 
+que pueden contener datos y funciones.
 
-\subsection{SqlAlchemy}~\cite{bayer2012sqlalchemy}
-SQLAlchemy es una biblioteca de Python que proporciona un conjunto de herramientas y una ORM (Object-Relational Mapping) que permite a los desarrolladores interactuar con bases de datos relacionales de una manera más sencilla y orientada a objetos. Fue creada por Michael Bayer y es ampliamente utilizada en aplicaciones web y proyectos que requieren acceso a bases de datos.
-Algunas de las características y conceptos clave de SQLAlchemy incluyen:
-Mapeo Objeto-Relacional (ORM): SQLAlchemy permite a los desarrolladores trabajar con bases de datos relacionales utilizando objetos Python en lugar de escribir directamente sentencias SQL. Los objetos Python se mapean a tablas de bases de datos, y las operaciones se realizan a través de métodos y atributos en lugar de sentencias SQL.
-Abstracción de la Base de Datos: SQLAlchemy proporciona una capa de abstracción sobre la base de datos, lo que significa que puedes trabajar con múltiples sistemas de gestión de bases de datos (como PostgreSQL, MySQL, SQLite, etc.) sin tener que preocuparte por las diferencias en la sintaxis SQL. SQLAlchemy se encarga de generar SQL específico para la base de datos que estás utilizando.
-Consultas flexibles: Ofrece una amplia gama de métodos y operadores para realizar consultas en la base de datos, lo que facilita la construcción de consultas complejas de manera programática.
-Control de Transacciones: SQLAlchemy gestiona las transacciones de manera transparente, lo que asegura la integridad de los datos al realizar operaciones de lectura y escritura.
-Relaciones y Asociaciones: Puedes definir relaciones entre objetos y tablas de base de datos de manera sencilla, lo que simplifica la representación de datos relacionados.
-Migraciones de Bases de Datos: SQLAlchemy proporciona herramientas para realizar migraciones de bases de datos, lo que facilita la actualización de la estructura de la base de datos a medida que evoluciona la aplicación.
-Extensibilidad: Es altamente extensible y permite la creación de extensiones y complementos personalizados para adaptarse a necesidades específicas.
-SQLAlchemy es ampliamente utilizado en aplicaciones web, especialmente en el desarrollo de aplicaciones basadas en frameworks como Flask y Django. Permite a los desarrolladores trabajar con bases de datos de manera más eficiente y mantener un código más limpio y legible al proporcionar una capa de abstracción entre la aplicación y la base de datos subyacente. Esto también facilita la portabilidad de la aplicación entre diferentes sistemas de gestión de bases de datos.
+Se utiliza en una amplia variedad de campos, como desarrollo web, 
+análisis de datos, inteligencia artificial, automatización de tareas, desarrollo de juegos y más.
 
-\subsection{LlamaCpp}~\cite{metallamaLM}
-La división de inteligencia artificial de Meta, llamada Meta AI, presentó LLaMA, un LLM (Large Language Model) de 
+\subsection{Flask~\cite{dwyer2017flask}}
+Flask es un framework de desarrollo web en Python que se utiliza 
+para crear aplicaciones web de manera sencilla y rápida. \\
+Está dentro de lo que se denomina ``microframework'' por su enfoque minimalista, proporciona 
+las funcionalidades esenciales pero permite agregar las bibliotecas necesarias según los requisitos.\\
+No impone estructuras rígidas ni componentes innecesarios pero incorpora funcionalidades 
+(como el motor de plantillas Jinja2 o el sistema de rutas) que hacen 
+más sencillo el desarrollo de aplicaciones. \\
+En este proyecto lo utilizamos para realizar un \href{https://aws.amazon.com/es/what-is/restful-api}{API RESTful}, que es un uso bastante común de este framework.
+
+
+\subsection{SqlAlchemy~\cite{bayer2012sqlalchemy}}
+SQLAlchemy es una biblioteca de Python que proporciona un conjunto de herramientas y
+ un ORM(\ref{ORM}) que permite a los desarrolladores interactuar 
+con bases de datos relacionales de una manera más sencilla y orientada a objetos.\\
+
+Ofrece una amplia gama de métodos y operadores para realizar consultas en la base de datos, 
+lo que facilita la construcción de consultas complejas de manera programática.
+
+Gestiona las transacciones de manera transparente, lo que asegura la integridad 
+de los datos al realizar operaciones de lectura y escritura.\\
+Se pueden definir relaciones entre objetos y tablas de base de datos de manera sencilla,
+ lo que simplifica la representación de datos relacionados.\\
+Proporciona herramientas para realizar migraciones de bases de datos, 
+lo que facilita la actualización de la estructura de la base de datos a medida 
+que evoluciona la aplicación.\\
+Permite la creación de extensiones y complementos personalizados 
+para adaptarse a necesidades específicas.\\
+Se utiliza principalmente en aplicaciones web, 
+especialmente en el desarrollo de aplicaciones basadas en frameworks como Flask y Django. \\
+Permite a los desarrolladores trabajar con bases de datos de manera más eficiente y 
+mantener un código más limpio y legible al proporcionar una capa de abstracción entre la 
+aplicación y la base de datos subyacente.\\ 
+Esto también facilita la portabilidad de la aplicación entre diferentes sistemas de 
+gestión de bases de datos.\\
+
+\subsection{LlamaCpp~\cite{metallamaLM}}
+La división de inteligencia artificial de Meta, llamada Meta AI, presentó LLaMA, un LLM (\ref{LLM}) de 
 65.000 millones de parámetros que permite disfrutar de un motor de 
-IA conversacional muy parecido a ChatGPT. 
+IA conversacional muy parecido a ChatGPT.\\
 Este modelo estaba inicialmente disponible para desarrolladores e investigadores 
-que justificaran su uso.
+que justificaran su uso.\\
 Grigori Gerganov publicó en Github~\cite{gerganovllamaCpp} un pequeño desarrollo llamado llama.cpp,
-un proyecto que permite poder usar el modelo LLaMA en un portátil 
-o un PC convencional. Eso se logra gracias a la llamada "cuantización" 
-que reduce el tamaño de los modelos de Facebook para hacerlos "manejables" 
-por equipos más modestos a nivel de hardware.
+un proyecto que permite poder usar el modelo LLaMA en un portátil o un PC convencional.\\ 
+Eso se logra gracias a la llamada "cuantización" que reduce el tamaño de los modelos de 
+Facebook para hacerlos "manejables" por equipos más modestos a nivel de hardware.
 
-\subsection{PostgreSql}~\cite{juba2015learning}
-PostgreSQL, a menudo abreviado como Postgres, es un sistema de gestión de bases de datos relacional de código abierto. Es un poderoso sistema de gestión de bases de datos que se ha ganado una sólida reputación en la comunidad de desarrollo de software debido a su confiabilidad, escalabilidad y capacidades avanzadas.
-Algunas características importantes de PostgreSQL incluyen:
-Gestión avanzada de datos: PostgreSQL es capaz de manejar una variedad de tipos de datos, incluidos tipos de datos personalizados. También admite consultas complejas y funciones almacenadas.
-Integridad de datos: Proporciona mecanismos para garantizar la integridad de los datos almacenados, como restricciones de clave primaria y foránea, así como comprobaciones de restricciones.
-Escalabilidad: PostgreSQL es escalable y se puede utilizar en aplicaciones de todos los tamaños, desde aplicaciones pequeñas hasta sistemas empresariales de alto rendimiento.
-Extensibilidad: Los usuarios pueden agregar nuevas funciones y tipos de datos personalizados mediante la creación de extensiones.
-Alta disponibilidad y replicación: PostgreSQL admite la replicación y puede configurarse para lograr alta disponibilidad mediante la implementación de réplicas y clústeres.
-Seguridad: Ofrece características de seguridad sólidas, como autenticación, autorización y cifrado de datos.
-Soporte de transacciones: PostgreSQL es compatible con transacciones ACID (Atomicidad, Consistencia, Aislamiento y Durabilidad), lo que garantiza la integridad de los datos en entornos transaccionales.
-Lenguaje de programación PL/pgSQL: PostgreSQL permite la creación de funciones almacenadas utilizando PL/pgSQL, un lenguaje de programación específico de la base de datos.
-Soporte de índices avanzados: PostgreSQL proporciona una variedad de tipos de índices para optimizar consultas, incluidos índices B-tree, hash, GIN, GiST, SP-GiST y otros.
-PostgreSQL es una opción popular tanto en la comunidad de código abierto como en empresas que buscan una base de datos de alto rendimiento y confiabilidad para sus aplicaciones. Su licencia de código abierto permite su uso y distribución sin costos de licencia, lo que lo convierte en una opción atractiva para una amplia variedad de proyectos.
+\subsection{PostgreSql~\cite{juba2015learning}}
+PostgreSQL es un sistema de gestión de bases de datos relacional de código abierto. 
+Admite consultas complejas y procedimientos almacenados.\\
+Proporciona mecanismos para garantizar la integridad de los datos almacenados, 
+como restricciones de clave primaria y foránea, así como comprobaciones de restricciones.\\
+Es escalable y se puede utilizar en aplicaciones de todos los tamaños, 
+desde aplicaciones pequeñas hasta sistemas empresariales de alto rendimiento.\\
+Admite la replicación y puede configurarse para lograr alta disponibilidad mediante 
+la implementación de réplicas y clústeres.
+Soporta autenticación, autorización y cifrado de datos.\\
+PostgreSQL es una opción popular tanto en la comunidad de código abierto como 
+en empresas que buscan una base de datos de alto rendimiento y confiabilidad para sus aplicaciones.\\
+Su licencia de código abierto permite su uso y distribución sin costos de licencia, 
+lo que lo convierte en una opción atractiva para una amplia variedad de proyectos.
 
-\subsection{OpenAI}~\cite{chatgpt1}
-OpenAI es una organización de investigación en inteligencia artificial (IA) con sede en San Francisco, California. Fundada en diciembre de 2015, OpenAI se ha convertido en una de las instituciones líderes en la investigación y desarrollo de IA. Su misión es avanzar en la inteligencia artificial de manera que beneficie a toda la humanidad.
-Las principales actividades y enfoques de OpenAI incluyen:
-Investigación en IA: OpenAI lleva a cabo investigaciones de vanguardia en el campo de la IA y contribuye al conocimiento y avance en áreas como el aprendizaje profundo, el procesamiento de lenguaje natural y la visión por computadora. La organización publica gran parte de su investigación en conferencias y revistas científicas para compartir conocimientos con la comunidad global de IA.
-Desarrollo de modelos de lenguaje: OpenAI es conocida por desarrollar modelos de lenguaje avanzados, como GPT (Generative Pre-trained Transformer), que son capaces de generar texto y comprender el lenguaje humano de manera sorprendente.
-Ética y seguridad en IA: OpenAI se compromete a garantizar que el desarrollo de la IA sea seguro y beneficioso para la sociedad. La organización trabaja en investigar y mitigar riesgos potenciales relacionados con la IA, así como en promover prácticas éticas y responsables.
-Divulgación de recursos y herramientas: OpenAI proporciona acceso a modelos y herramientas de IA para la comunidad de investigación y desarrollo. También ha desarrollado APIs (interfaces de programación de aplicaciones) que permiten a los desarrolladores utilizar sus modelos en una variedad de aplicaciones.
-Colaboración con la comunidad: OpenAI colabora con otras organizaciones de investigación en IA y se esfuerza por fomentar la colaboración global para abordar los desafíos y oportunidades que presenta la IA.
-OpenAI es conocida por su compromiso con la transparencia, la ética y la seguridad en la IA, y ha publicado varios documentos y directrices que reflejan estos valores. La organización ha realizado importantes contribuciones al campo de la IA y ha participado en proyectos de vanguardia, como el desarrollo de modelos de lenguaje de gran escala que tienen aplicaciones en una amplia gama de campos, desde asistentes virtuales hasta traducción automática y generación de texto.
+\subsection{Docker~\cite{garzas2105docker}}
+Docker es una plataforma que permite empaquetar una aplicación y 
+todas sus dependencias en un contenedor.\\
+Este contenedor es como una unidad autónoma que puede ejecutarse de manera 
+consistente en cualquier entorno que admita Docker. 
+Además, Docker facilita la gestión y la implementación de estas aplicaciones empaquetadas.
+Al utilizar Docker, los desarrolladores pueden estar seguros de que la aplicación 
+se ejecutará de la misma manera en todas partes, desde el entorno de desarrollo hasta el de producción. 
+Esto elimina problemas relacionados con las diferencias entre configuraciones y facilita las pruebas.
+Se pueden iniciar y detener rápidamente, lo que permite una implementación más rápida de 
+nuevas versiones o características. \\
+Esto es crucial en el \emph{desarrollo ágil}, donde la velocidad de respuesta a los cambios es esencial.
 
+Además encapsula todas las dependencias de la aplicación en el contenedor, 
+evitando conflictos con otras aplicaciones o componentes del sistema. 
+Esto simplifica la gestión de dependencias y reduce los posibles problemas de compatibilidad. \\
+También facilita la escalabilidad horizontal, lo que significa que puedes 
+ejecutar múltiples instancias de contenedores de la misma aplicación para 
+gestionar cargas de trabajo más pesadas de manera eficiente.
+
+Los contenedores Docker pueden compartirse fácilmente, lo que facilita la colaboración 
+entre equipos de desarrollo y operaciones. 
+Todos trabajan con la misma configuración, lo que reduce la posibilidad de errores 
+causados por diferencias en los entornos.

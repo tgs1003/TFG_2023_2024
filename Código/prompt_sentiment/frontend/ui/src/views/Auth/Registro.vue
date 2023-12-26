@@ -26,24 +26,37 @@
                         <v-card-text>
                             <v-form>
                                 <v-text-field
-                                        v-model="nombre"
+                                        v-model="name"
                                         label="Nombre"
                                         name="name"
+                                        autocomplete="off"
+                                        required
+                                        :error-messages="nameErrors"
                                         prepend-icon="person"
                                         type="text"
+                                        value=""
+                                        
                                 />
                                 <v-text-field
                                         v-model="email"
                                         label="Email"
-                                        name="login"
+                                        name="email"
+                                        autocomplete="off"
+                                        required
+                                        :error-messages="emailErrors"
                                         prepend-icon="mail_outline"
                                         type="text"
+                                        value=""
+                                        
                                 />
 
                                 <v-text-field
                                         v-model="password"
                                         id="password"
                                         label="Password"
+                                        autocomplete="new-password"
+                                        required
+                                        :error-messages="passwordErrors"
                                         name="password"
                                         prepend-icon="lock"
                                         type="password"
@@ -63,20 +76,59 @@
 </template>
 
 <script>
+    import { validationMixin } from 'vuelidate'
+    import { required, email } from 'vuelidate/lib/validators'
     export default {
-        name: "Register",
+        
+        mixins: [validationMixin],
+        validations: {
+        name: {required},
+        email: { required, email },
+        password: { required },
+        
+        },
         data() {
             return {
                 email: "",
                 password: "",
-                nombre: ""
+                name: "",
+                fieldTypes: { // add this for change input type
+                    name:"text",
+                    email:"text",
+                    password: 'text',
+                }
             };
+        },
+        computed:{
+            emailErrors () {
+                const errors = []
+                if (!this.$v.email.$dirty) return errors
+                !this.$v.email.email && errors.push('Must be valid e-mail')
+                !this.$v.email.required && errors.push('E-mail is required')
+                return errors
+            },
+            nameErrors(){
+                const errors = []
+                if (!this.$v.name.$dirty) return errors
+                !this.$v.name.required && errors.push('Name is required')
+                return errors
+            },
+            passwordErrors(){
+                const errors = []
+                if (!this.$v.password.$dirty) return errors
+                !this.$v.password.required && errors.push('Password is required')
+                return errors
+            
+            }
         },
         methods:{
             register(){
+                this.$v.$touch()
+                if (this.$v.$dirty)
+                    return
                 let email = this.email
                 let password = this.password
-                let name = this.nombre
+                let name = this.name
                 this.$store.dispatch('register', {name, email, password})
                     .then(() => this.$router.push('/'))
                     .catch(err => console.log(err))

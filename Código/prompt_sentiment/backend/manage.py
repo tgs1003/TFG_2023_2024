@@ -66,7 +66,7 @@ def seed_db():
         """Crea al usuario admin inicial"""
         user = User(
             name='Admin',
-            email='admin',
+            email='admin@promptsentiment.es',
             password='ubu_1234',
             rol='Admin'
         )

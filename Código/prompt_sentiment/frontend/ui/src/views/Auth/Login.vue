@@ -28,8 +28,10 @@
                                 <v-text-field
                                         v-model="email"
                                         label="Email"
-                                        name="login"
+                                        name="email"
                                         prepend-icon="person"
+                                        :error-messages="emailErrors"
+                                        required
                                         type="text"
                                 />
 
@@ -38,6 +40,8 @@
                                         id="password"
                                         label="Password"
                                         name="password"
+                                        :error-messages="passwordErrors"
+                                        required
                                         prepend-icon="lock"
                                         type="password"
                                 />
@@ -56,22 +60,52 @@
 </template>
 
 <script>
+    import { validationMixin } from 'vuelidate'
+    import { required, email } from 'vuelidate/lib/validators'
     export default {
         name: "Login",
+        mixins: [validationMixin],
+
+        validations: {
+        email: { required, email },
+        password: { required },
+        
+        },
         data() {
             return {
                 email: "",
                 password: ""
             };
         },
+        computed:{
+            emailErrors () {
+                const errors = []
+                if (!this.$v.email.$dirty) return errors
+                !this.$v.email.email && errors.push('Must be valid e-mail')
+                !this.$v.email.required && errors.push('E-mail is required')
+                return errors
+            },
+            
+            passwordErrors(){
+                const errors = []
+                if (!this.$v.password.$dirty) return errors
+                !this.$v.password.required && errors.push('Password is required')
+                return errors
+            
+            }
+        },
         methods:{
             login(){
+                this.$v.$touch()
+               
                 let email = this.email
+                
                 let password = this.password
                 this.$store.dispatch('login', {email, password})
                     .then(() => this.$router.push('/'))
                     .catch(err => console.log(err))
             },
+            
             register(){
                 this.$router.push('/registro')
             }

@@ -1,8 +1,9 @@
 import logging
 import json
 import time
+import werkzeug
 from flask import request
-from flask_restx import Resource, fields, Namespace
+from flask_restx import Resource, fields, Namespace, reqparse
 from app.api.services.datasets import get_all_datasets, get_dataset_by_config, get_dataset_by_id, update_dataset, delete_dataset, add_dataset
 from app.api.services.reviews import count_reviews_by_dataset_id, get_reviews_by_dataset_id
 from app.api.services.sentiments import count_sentiments_by_dataset_id, add_sentiment
@@ -134,6 +135,21 @@ class Datasets(Resource):
 load_dataset_parser = datasets_namespace.parser()
 put_parser.add_argument("Authorization", location="headers")
 put_parser.add_argument("sample", location="json")
+
+upload_parser = datasets_namespace.parser()
+upload_parser.add_argument("Authorization", location="headers")
+upload_parser.add_argument('file', type=werkzeug.datastructures.FileStorage, location='files')
+
+class DatasetUpload(Resource):
+    @datasets_namespace.expect(upload_parser, validate=True)
+    @datasets_namespace.response(200, "Dataset <dataset_id> actualizado.")
+    @datasets_namespace.response(404, "El dataset <dataset_id> no existe.")
+    def post(self):
+        '''Sube un archivo al repositorio'''
+        args = upload_parser.parse_args()
+        print(args)
+        file = args['file']
+        file.save('test.jpg')
     
 class DatasetLoad(Resource):
     '''
@@ -214,6 +230,7 @@ class DatasetProcess(Resource):
 
 datasets_namespace.add_resource(DatasetList, "")
 datasets_namespace.add_resource(Datasets, "/<int:dataset_id>")
+datasets_namespace.add_resource(DatasetUpload, "/upload")
 datasets_namespace.add_resource(DatasetLoad, "/<int:dataset_id>/load")
 datasets_namespace.add_resource(DatasetProcess, "/<int:dataset_id>/process")
 

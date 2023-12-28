@@ -9,6 +9,7 @@ from app.api.services.reviews import count_reviews_by_dataset_id, get_reviews_by
 from app.api.services.sentiments import count_sentiments_by_dataset_id, add_sentiment
 from app.api.services.tokens import check_token
 from app.api.services.roles import user_has_rol
+from app.api.services.files import store_file, get_file
 from app.api.clients.huggingface import load_dataset
 from app.api.clients.openai import LangchainOpenAISentimentAnalyzer
 
@@ -146,10 +147,14 @@ class DatasetUpload(Resource):
     @datasets_namespace.response(404, "El dataset <dataset_id> no existe.")
     def post(self):
         '''Sube un archivo al repositorio'''
+        check_token(request, datasets_namespace)
         args = upload_parser.parse_args()
-        print(args)
+        response_object = {}
         file = args['file']
-        file.save('test.jpg')
+        file_info = store_file(file)
+        response_object["file_info"] = file_info
+        response_object["message"] = f"El fichero se ha cargado."
+        return response_object, 200
     
 class DatasetLoad(Resource):
     '''
@@ -170,7 +175,7 @@ class DatasetLoad(Resource):
             
         load_dataset(dataset_id, dataset.payload, sample)
         response_object["message"] = f"Dataset {dataset.id} se ha cargado."
-        return "Ok", 200
+        return response_object, 200
     
 class DatasetProcess(Resource):
     @datasets_namespace.expect(parser, validate=True)

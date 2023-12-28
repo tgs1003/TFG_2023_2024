@@ -43,10 +43,27 @@
 
     <v-stepper-content step="2">
       <v-card
-        color="grey lighten-1"
         class="mb-12"
         height="200px"
-      ></v-card>
+      >
+      <v-container v-if="file_info != null">
+        <v-row>
+          <span><strong>Nombre del fichero: </strong>{{ file_info.file_name }}</span>
+        </v-row>
+        <v-row>
+          <span><strong>Formato: </strong>{{ file_info.file_format }}</span>
+        </v-row>
+        <v-row>
+          <v-select 
+                v-model="selectedColumn"
+                v-show="file_info != null" 
+                label="Campo que contiene las reseñas: "
+                :items="file_info.header"
+                >    
+          </v-select>
+        </v-row>
+      </v-container>
+      </v-card>
       <v-btn
         color="primary"
         @click="e6 = 3"
@@ -87,7 +104,6 @@
     </v-stepper-step>
     <v-stepper-content step="4">
       <v-card
-        color="grey lighten-1"
         class="mb-12"
         height="200px"
       ></v-card>
@@ -113,6 +129,8 @@
       return {
         file:null,
         e6: 1,
+        file_info: null,
+        selectedColumn: null
       }
     },
     methods:
@@ -126,13 +144,18 @@
             api
                 .post("/datasets/upload", formData)
                 .then(response => {
+                    this.file_info = response.data['file_info']
+                    if (this.file_info.header.length == 1)
+                      this.selectedColumn = this.file_info.header[0]
+                    if (this.file_info.file_format != "unknown")
+                      this.e6=2
                     console.log("Success!");
                     console.log({ response });
                 })
                 .catch(error => {
                     console.log({ error });
                 });
-                this.e6=2
+                
         } else {
             console.log("there are no files.");
         }

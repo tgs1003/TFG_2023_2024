@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-12-28T18:30:24.551Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="6D6j5qo7M22aEkgB3B0q" version="22.1.2" type="device">
+<mxfile host="Electron" modified="2023-12-28T18:58:53.085Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="fVvhGgTwOOG7xq1teBub" version="22.1.2" type="device">
   <diagram name="Page-1" id="03018318-947c-dd8e-b7a3-06fadd420f32">
     <mxGraphModel dx="1176" dy="638" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
       <root>
@@ -20,24 +20,28 @@
           <mxGeometry x="67" y="35" width="256" height="100" as="geometry" />
         </mxCell>
         <mxCell id="bZYFK8MIfJOzmSP0UrmF-8" value="" style="html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeColor=#000000;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12;fontColor=#000000;align=center;comic=1;whiteSpace=wrap;" parent="1" vertex="1">
-          <mxGeometry x="240" y="190" width="590" height="390" as="geometry" />
+          <mxGeometry x="170" y="190" width="730" height="470" as="geometry" />
         </mxCell>
-        <mxCell id="fdMI3XE83CVMyNeIwHP3-3" value="Seleccione un fichero" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=#CED4DA;html=1;whiteSpace=wrap;fillColor=#FFFFFF;fontColor=#7D868C;align=left;spacingLeft=0;spacing=15;fontSize=14;" vertex="1" parent="1">
-          <mxGeometry x="280" y="380" width="520" height="30" as="geometry" />
+        <mxCell id="fdMI3XE83CVMyNeIwHP3-5" value="&lt;h1&gt;Análisis de reseñas&lt;/h1&gt;&lt;p&gt;Resultados del análisis&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="280" y="240" width="310" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="fdMI3XE83CVMyNeIwHP3-4" value="Buscar" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rightButton;strokeColor=inherit;gradientColor=inherit;fontColor=inherit;fillColor=#E9ECEF;rSize=5;perimeter=none;whiteSpace=wrap;resizeHeight=1;fontSize=14;" vertex="1" parent="fdMI3XE83CVMyNeIwHP3-3">
-          <mxGeometry x="1" width="70" height="30" relative="1" as="geometry">
-            <mxPoint x="-70" as="offset" />
-          </mxGeometry>
+        <mxCell id="fdMI3XE83CVMyNeIwHP3-7" value="Reiniciar" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#6C767D;fontColor=#FFFFFF;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="1">
+          <mxGeometry x="780" y="600" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="fdMI3XE83CVMyNeIwHP3-5" value="&lt;h1&gt;Análisis de reseñas&lt;/h1&gt;&lt;p&gt;Seleccione el fichero de reseñas que desea analizar.&amp;nbsp;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="280" y="240" width="240" height="120" as="geometry" />
+        <mxCell id="fdMI3XE83CVMyNeIwHP3-22" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.graphics.columnChart;strokeColor=none;strokeColor2=none;strokeColor3=#666666;fillColor2=#008cff;fillColor3=#dddddd;" vertex="1" parent="1">
+          <mxGeometry x="323" y="330" width="400" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="fdMI3XE83CVMyNeIwHP3-6" value="Siguiente" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#0085FC;fontColor=#FFFFFF;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="1">
-          <mxGeometry x="710" y="520" width="80" height="40" as="geometry" />
+        <mxCell id="fdMI3XE83CVMyNeIwHP3-23" value="Media: 4.5" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="283" y="552" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="fdMI3XE83CVMyNeIwHP3-7" value="Cancelar" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;strokeWidth=1;fillColor=#6C767D;fontColor=#FFFFFF;whiteSpace=wrap;align=center;verticalAlign=middle;spacingLeft=0;fontStyle=0;fontSize=16;spacing=5;" vertex="1" parent="1">
-          <mxGeometry x="580" y="520" width="100" height="40" as="geometry" />
+        <mxCell id="fdMI3XE83CVMyNeIwHP3-24" value="Moda: 4" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="278" y="577" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fdMI3XE83CVMyNeIwHP3-25" value="Mediana:" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="460" y="552" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fdMI3XE83CVMyNeIwHP3-26" value="Varianza:" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="460" y="577" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

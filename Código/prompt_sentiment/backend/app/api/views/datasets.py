@@ -1,16 +1,15 @@
-import logging
-import json
-import time
-import werkzeug
+import logging, json, time, werkzeug, statistics
 from flask import request
 from flask_restx import Resource, fields, Namespace, reqparse
-from app.api.services.datasets import get_all_datasets, get_dataset_by_config, get_dataset_by_id, update_dataset, delete_dataset, add_dataset
+import pandas as pd
+from app.api.services.datasets import get_all_datasets, get_dataset_by_config, \
+get_dataset_by_id, update_dataset, delete_dataset, add_dataset
 from app.api.services.reviews import count_reviews_by_dataset_id, get_reviews_by_dataset_id
-from app.api.services.sentiments import count_sentiments_by_dataset_id, add_sentiment
-from app.api.services.tokens import check_token
+from app.api.services.sentiments import count_sentiments_by_dataset_id, add_sentiment, get_sentiments_by_dataset_id
+from app.api.services.tokens import check_token, get_token_user
 from app.api.services.roles import user_has_rol
 from app.api.services.files import store_file, get_file
-from app.api.clients.huggingface import load_dataset
+from app.api.clients.localfile import load_dataset
 from app.api.clients.openai import LangchainOpenAISentimentAnalyzer
 
 logging.basicConfig(level=logging.DEBUG,
@@ -26,7 +25,7 @@ post_parser = datasets_namespace.parser()
 post_parser.add_argument("Authorization", location="headers")
 post_parser.add_argument("name", location="json", required=True)
 post_parser.add_argument("type", location="json")
-post_parser.add_argument("config", location="json")
+post_parser.add_argument("config", type=str, location="json")
 post_parser.add_argument("owner", location="json")
 
 put_parser = datasets_namespace.parser()
@@ -68,20 +67,18 @@ class DatasetList(Resource):
     def post(self):
         """Crea un dataset."""
         data = post_parser.parse_args(request)
-        if not user_has_rol(request, "Admin", datasets_namespace):
-            datasets_namespace.abort(403, "El usuario no es administrador.")
+        # Obtiene usuario identificado en el token.
+        user = get_token_user(request, datasets_namespace)
         name = data["name"]
         type = data["type"]
         config = data["config"]
-        owner = data["owner"]
+        owner = user.id
+        
         response_object = {}
-        # TODO: Comprobar si ya existe con nombre y tipo
-        dataset = get_dataset_by_config(config)
-        if dataset:
-            response_object["message"] = "El dataset ya existe."
-            return response_object, 400
-        add_dataset(name = name, type = type, config = config, owner = owner)
+        
+        dataset1 = add_dataset(name = name, type = type, config = config, owner = owner)
         response_object["message"] = f"Se ha añadido el dataset {name}."
+        response_object["datasetId"] = dataset1.id
         return response_object, 201
 
 class Datasets(Resource):
@@ -173,7 +170,7 @@ class DatasetLoad(Resource):
         if not dataset:
             datasets_namespace.abort(404, f"El dataset {dataset_id} no existe.")
             
-        load_dataset(dataset_id, dataset.payload, sample)
+        load_dataset(dataset_id, dataset.config, sample)
         response_object["message"] = f"Dataset {dataset.id} se ha cargado."
         return response_object, 200
     
@@ -188,12 +185,11 @@ class DatasetProcess(Resource):
         if not dataset:
             datasets_namespace.abort(404, f"El dataset {dataset_id} no existe.")
         response_object = {}
-        
         openai = LangchainOpenAISentimentAnalyzer()
         reviews = get_reviews_by_dataset_id(dataset_id)
         for review_data in reviews:
             time_start = time.perf_counter()
-            result = openai.get_sentiment(review_data.reviewText)
+            result = openai.get_sentiment(review_data.review_text)
             review_id = review_data.id
             try:
                 stars = self.parse_stars(result["Stars"])
@@ -201,7 +197,7 @@ class DatasetProcess(Resource):
                 anger = result["Anger"]
                 model = "OpenAI"
                 process_time = int(time.perf_counter() - time_start)
-                add_sentiment(reviewId=review_id, 
+                add_sentiment(review_id=review_id, 
                             stars=int(stars), 
                             sentiment=sentiment, 
                             anger=bool(anger), 
@@ -209,7 +205,7 @@ class DatasetProcess(Resource):
                             correct=True,
                             process_time = process_time)
             except:
-                add_sentiment(reviewId=review_id, 
+                add_sentiment(review_id=review_id, 
                             correct=False,
                             model=model,
                             source=json.dumps(result),                            
@@ -233,9 +229,44 @@ class DatasetProcess(Resource):
             return 1
         return stars
 
+class DatasetStats(Resource):
+    @datasets_namespace.expect(parser, validate=True)
+    @datasets_namespace.response(200, "Dataset <dataset_id> actualizado.")
+    @datasets_namespace.response(404, "El dataset <dataset_id> no existe.")
+    def get(self, dataset_id):
+        """Devuelve la información estadística de un dataset."""
+        check_token(request, datasets_namespace)
+        dataset = get_dataset_by_id(dataset_id)
+        if not dataset:
+            datasets_namespace.abort(404, f"El dataset {dataset_id} no existe.")
+        response_object = {}
+        sentiments = get_sentiments_by_dataset_id(dataset_id)
+        dataset_values = []
+        for sentiment in sentiments:
+            if sentiment.correct:
+                dataset_values.append(sentiment.stars)
+        ocurrences = []
+        #Contamos la ocurrencia de cada puntucación
+        for i in range(5):
+            ocurrences.append(dataset_values.count(i+1))
+        mean = statistics.mean(dataset_values)
+        median = statistics.median(dataset_values)
+        mode = statistics.mode(dataset_values)
+        variance = statistics.variance(dataset_values)
+
+        response_object["mean"] = round(mean, 2)
+        response_object["median"] = round(median, 2)
+        response_object["mode"] = mode
+        response_object["variance"] = round(variance, 2)
+        response_object["ocurrences"] = ocurrences
+        response_object["values"] = dataset_values
+        response_object["message"] = f"Estadísticas calculadas correctamente para el dataset {dataset.id}."
+        return response_object, 200
+
 datasets_namespace.add_resource(DatasetList, "")
 datasets_namespace.add_resource(Datasets, "/<int:dataset_id>")
 datasets_namespace.add_resource(DatasetUpload, "/upload")
 datasets_namespace.add_resource(DatasetLoad, "/<int:dataset_id>/load")
 datasets_namespace.add_resource(DatasetProcess, "/<int:dataset_id>/process")
+datasets_namespace.add_resource(DatasetStats, "/<int:dataset_id>/stats")
 

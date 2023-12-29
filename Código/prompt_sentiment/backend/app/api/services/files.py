@@ -1,11 +1,13 @@
 import magic, json
 import pandas as pd
 import numpy as np
-import uuid
+import uuid, os
 from flask import current_app
 
 def store_file(file):
     storage_folder = current_app.config.get("STORAGE_FOLDER")
+    if  not os.path.isdir(storage_folder):
+        os.mkdir(storage_folder)
     file_name = file.filename
     file_id = str(uuid.uuid4())
     file_path = storage_folder + file_id + ".bin" 

@@ -1,4 +1,5 @@
 import logging
+from datetime import datetime
 from app import db
 from app.api.models.reviews import Review
 
@@ -46,7 +47,7 @@ def get_review_by_dataset_id_and_review_id(dataset_id, review_id):
     '''
     return Review.query.filter_by(original_id = review_id, dataset_id = dataset_id).first()
 
-def add_review(dataset_id, review_text, review_time, original_stars):
+def add_review(dataset_id, review_text, review_time=datetime.now(), original_stars=0):
     '''
     Agrega una reseña
     '''

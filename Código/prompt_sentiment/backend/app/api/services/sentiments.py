@@ -14,10 +14,11 @@ def get_sentiments_by_dataset_id(dataset_id):
     '''
     Devuelve los sentimientos de un dataset
     '''
-    return db.session.query(Sentiment).filter(
-        exists().where(Sentiment.review_id==Review.id and Review.dataset_id == dataset_id)
-        ).all()
-
+    query = db.session.query(Sentiment)
+    query = query.join(Review, Review.id == Sentiment.review_id)
+    query = query.filter(Review.dataset_id == dataset_id)
+    return query.all()
+    
 def count_sentiments_by_dataset_id(dataset_id):
     '''
     Cuenta el número de sentimientos de un dataset

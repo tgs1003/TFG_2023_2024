@@ -14,4 +14,4 @@ langchain==0.0.319
 pandas
 huggingface_hub
 datasets
-python-pytest
+pytest

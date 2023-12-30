@@ -2,14 +2,15 @@ import logging, json, time, werkzeug, statistics
 from flask import request
 from flask_restx import Resource, fields, Namespace, reqparse
 import pandas as pd
-from app.api.services.datasets import get_all_datasets, get_dataset_by_config, \
+from app.api.services.datasets import get_all_datasets, \
 get_dataset_by_id, update_dataset, delete_dataset, add_dataset
 from app.api.services.reviews import count_reviews_by_dataset_id, get_reviews_by_dataset_id
 from app.api.services.sentiments import count_sentiments_by_dataset_id, add_sentiment, get_sentiments_by_dataset_id
 from app.api.services.tokens import check_token, get_token_user
 from app.api.services.roles import user_has_rol
-from app.api.services.files import store_file, get_file
-from app.api.clients.localfile import load_dataset
+from app.api.services.files import store_file
+from app.api.clients.localfile import load_dataset as load_dataset_local
+from app.api.clients.huggingface import load_dataset as load_dataset_hf
 from app.api.clients.openai import LangchainOpenAISentimentAnalyzer
 
 logging.basicConfig(level=logging.DEBUG,
@@ -169,8 +170,12 @@ class DatasetLoad(Resource):
         dataset = get_dataset_by_id(dataset_id)
         if not dataset:
             datasets_namespace.abort(404, f"El dataset {dataset_id} no existe.")
-            
-        load_dataset(dataset_id, dataset.config, sample)
+        
+        if dataset.type == "Hugging face":
+            load_dataset_hf(dataset_id, dataset.config, sample)
+        else:    
+            load_dataset_local(dataset_id, dataset.config, sample)
+
         response_object["message"] = f"Dataset {dataset.id} se ha cargado."
         return response_object, 200
     
@@ -246,13 +251,16 @@ class DatasetStats(Resource):
             if sentiment.correct:
                 dataset_values.append(sentiment.stars)
         ocurrences = []
-        #Contamos la ocurrencia de cada puntucación
+        #Contamos la ocurrencia de cada puntuación
         for i in range(5):
             ocurrences.append(dataset_values.count(i+1))
         mean = statistics.mean(dataset_values)
         median = statistics.median(dataset_values)
         mode = statistics.mode(dataset_values)
-        variance = statistics.variance(dataset_values)
+        if len(dataset_values) > 1:
+            variance = statistics.variance(dataset_values)
+        else:
+            variance = 0
 
         response_object["mean"] = round(mean, 2)
         response_object["median"] = round(median, 2)

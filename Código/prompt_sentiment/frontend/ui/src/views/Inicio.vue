@@ -6,7 +6,7 @@
       variant="outlined"
     >
       <template v-slot:title>
-        Outlined Alert
+        Error
       </template>
       {{ errorMessage }}
       </v-alert>
@@ -32,7 +32,7 @@
           v-model="datasetName"
           :error-messages="nameErrors"
           name="datasetName"
-          label="Nombre"
+          label="Nombre del producto"
           required>
 
           </v-text-field></v-col>
@@ -41,7 +41,7 @@
             :error-messages="fileErrors"
             name="datasetFile"
             accept=".json,.txt,.csv"
-            label="Fichero de reseñas de usuarios:" v-model="datasetFile">
+            label="Fichero de reseñas de usuarios" v-model="datasetFile">
           </v-file-input>
           </v-col>
         </v-row>
@@ -50,10 +50,12 @@
         color="primary"
         @click="submitFiles"
       >
-        Continuar
+        Siguiente paso
       </v-btn>
-      <v-btn text>
-        Cancelar
+      <v-btn text
+      @click="restart"
+      >
+        Reiniciar
       </v-btn>
     </v-stepper-content>
 
@@ -97,9 +99,21 @@
       >
         Procesar
       </v-btn>
-      <v-btn text>
-        Cancelar
+      <v-btn text
+      @click="restart"
+      >
+        Reiniciar
       </v-btn>
+      <v-overlay :value="overlay">
+        <v-row><v-label>{{ status }}</v-label></v-row>
+        <v-row>
+        <v-progress-circular
+          indeterminate
+          color="primary"
+          >
+          </v-progress-circular>
+        </v-row>
+        </v-overlay>
     </v-stepper-content>
     <v-stepper-step step="3">
       Resultados
@@ -108,15 +122,22 @@
       <v-card
         class="mb-12"
         height="200px"
-      ></v-card>
+      >
+      <div id="print_results">
+        Resultados
+        <BarChart :values = "processResults"/>
+      </div>
+      </v-card>
       <v-btn
         color="primary"
-        @click="e6 = 1"
+        @click="print"
       >
         Guardar informe
       </v-btn>
-      <v-btn text>
-        Cancelar
+      <v-btn text
+      @click="restart"
+      >
+        Reiniciar
       </v-btn>
     </v-stepper-content>
   </v-stepper>
@@ -127,7 +148,7 @@
   import api from '../services/api'
   import { validationMixin } from 'vuelidate'
   import { required} from 'vuelidate/lib/validators'
-  
+  import BarChart from '../components/BarChart.vue'
   export default {
     name: "Inicio",
     mixins: [validationMixin],
@@ -137,15 +158,18 @@
     },
     data () {
       return {
-       
+        labels:["Una estrella","Dos estrellas", "Tres estrellas", "Cuatro estrellas", "Cinco estrellas"],
+        processResults: {},
         datasetFile:null,
         e6: 1,
         file_info: null,
         selectedColumn: null,
         datasetName: null,
         datasetId: null,
-        errorMessage: '',
-        sample: 100
+        errorMessage: "",
+        sample: 100,
+        overlay: false,
+        status: ""
       }
     },
     computed:{
@@ -162,8 +186,27 @@
             return errors
         },
     },
+    components:{
+      BarChart
+    },
     methods:
     {
+      print(){
+        window.print()
+      },
+      restart(){
+        this.processResults = {}
+        this.datasetFile = null
+        this.e6 = 1
+        this.file_info = null
+        this.selectedColumn = null
+        this.datasetName = null
+        this.datasetId = null
+        this.errorMessage = ""
+        this.sample = 100
+        this.overlay = false
+        this.status = ""
+      },
       processFile(){
         //Guardamos el dataset
         api.post("/datasets", {"name": this.datasetName, 
@@ -178,27 +221,56 @@
               let datasetData = {
                     "sample": this.sample
                 }
+              this.status = "Cargando fichero..."
+              this.overlay = true
               api.put("/datasets/" + this.datasetId +"/load", datasetData)
               .then(response => {
+                    this.status = "Procesando fichero..."
                     if (response.status == 200)
                       api.put("/datasets/" + this.datasetId +"/process")
                       .then(response =>{
-                        this.processResults = response.data
-                        this.e6=3
+                        if (response.status == 200)
+                        {
+                          this.status = "Calculando estadísticas..."
+                          api.get("/datasets/" + this.datasetId +"/stats")
+                          .then(response =>{
+                            this.processResults = {datasets: [{label: 'Número de reseñas',
+                                                   backgroundColor: '#f87979',
+                                                   data:response.data['ocurrences']}]
+                                                   , labels: this.labels}
+                            this.overlay = false
+                            this.e6=3
+                          })
+                          .catch(error => {
+                            this.errorMessage=error;
+                            console.log({ error });
+                          });
+                        }
+                        else
+                        {
+                          this.errorMessage = response
+                        }
                       })
                       .catch(error => {
+                          this.errorMessage = error;
                           console.log({ error });
                       });
                     else
+                    {
                       console.log(response)
+                    }
+                      
               })
               .catch(error => {
-                    console.log({ error });
+                  this.errorMessage = error
+                  console.log({ error });
               });
         })
         .catch(error =>{
+            this.errorMessage = error
             console.log({ error });
         });
+        this.overlay = false
       },
       submitFiles() {
         this.errorMessage = ''

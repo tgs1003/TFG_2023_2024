@@ -1,5 +1,14 @@
 <template>
     <v-main>
+        <v-alert v-if="errorMessage != ''"
+            color="yellow"
+            variant="outlined"
+            >
+            <template v-slot:title>
+                Error
+            </template>
+            {{ errorMessage }}
+        </v-alert>
         <v-container
                 class="fill-height"
                 fluid
@@ -74,7 +83,8 @@
         data() {
             return {
                 email: "",
-                password: ""
+                password: "",
+                errorMessage: ""
             };
         },
         computed:{
@@ -97,13 +107,20 @@
         methods:{
             login(){
                 this.$v.$touch()
-               
+                this.errorMessage = ""
                 let email = this.email
-                
                 let password = this.password
                 this.$store.dispatch('login', {email, password})
-                    .then(() => this.$router.push('/'))
-                    .catch(err => console.log(err))
+                    .then(response=>{
+                        if(response.status == 200)
+                            this.$router.push('/')
+                        this.errorMessage = "Usuario o contraseña incorrectos. (" + response + ")"
+                        }
+                    )
+                    .catch(err => {
+                        this.errorMessage = err;
+                        console.log(err);
+                    })
             },
             
             register(){

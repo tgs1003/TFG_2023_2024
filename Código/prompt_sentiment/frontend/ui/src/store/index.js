@@ -44,6 +44,7 @@ export default new Vuex.Store({
                 
                 TokenService.removeUser()
                 console.info(err)
+                return err
             });
         },
         register({commit},user)
@@ -59,6 +60,7 @@ export default new Vuex.Store({
                 
                 TokenService.removeUser()
                 console.info(err)
+                return err
             });
 
         },

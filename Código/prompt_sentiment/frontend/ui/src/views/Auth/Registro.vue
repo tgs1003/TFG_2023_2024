@@ -1,5 +1,14 @@
 <template>
     <v-main>
+        <v-alert v-if="errorMessage != ''"
+            color="yellow"
+            variant="outlined"
+            >
+            <template v-slot:title>
+                Error
+            </template>
+            {{ errorMessage }}
+        </v-alert>
         <v-container
                 class="fill-height"
                 fluid
@@ -95,8 +104,9 @@
                 fieldTypes: { // add this for change input type
                     name:"text",
                     email:"text",
-                    password: 'text',
-                }
+                    password: "text",
+                },
+                errorMessage: ""
             };
         },
         computed:{
@@ -123,15 +133,17 @@
         },
         methods:{
             register(){
+                this.errorMessage=""
                 this.$v.$touch()
-                if (this.$v.$dirty)
-                    return
                 let email = this.email
                 let password = this.password
                 let name = this.name
                 this.$store.dispatch('register', {name, email, password})
-                    .then(() => this.$router.push('/'))
-                    .catch(err => console.log(err))
+                .then(response=>{
+                    if(response.status == 201)
+                        this.$router.push('/')
+                    this.errorMessage = "El usuario ya existe. (" + response + ")"
+                })    
             },
             
             cancel(){

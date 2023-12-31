@@ -54,27 +54,14 @@ def load_dataset(dataset_id, config, sample):
     if 'stars' in mapping.keys():
         df['star_rating'] = df[mapping['stars']] + correct_stars
 
-    df['prediction'] = None
-
     for i in range(df.shape[0]):
-        review_id = ''
-        if 'review_id' in mapping.keys():
-            review_id = df.at[i,mapping['review_id']]
-        
         review_date = str(datetime.now())
         if 'review_date' in mapping.keys():
             review_date = str(datetime.strptime(df.at[i,mapping['review_date']], date_format))
-
-        review1 = get_review_by_dataset_id_and_review_id(dataset_id = dataset_id, review_id = review_id)
-        
-        if review1 is None:
-            add_review(datasetId=dataset_id, 
-                    originalId=review_id,  
+        add_review(datasetId=dataset_id,   
                     reviewText=df.at[i, 'review'], 
                     reviewTime=review_date, 
                     stars=str(df.at[i,'star_rating']))
-        else:
-            logging.error(f"Reseña duplicada: DatasetId: {dataset_id} ReviewId: {review_id}")
         
 def download_model(repo_id, filename):
     hf_hub_download(repo_id, filename)

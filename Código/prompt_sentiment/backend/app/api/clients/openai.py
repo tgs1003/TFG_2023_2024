@@ -13,15 +13,9 @@ openai.api_key  = os.getenv('OPENAI_API_KEY')
 llm_model = "gpt-3.5-turbo"
 sentiment_schema = ResponseSchema(name="Sentiment",description="It's the sentiment of the review (positiva or negative)")
 anger_schema = ResponseSchema(name="Anger", description="Is the reviewer expressing anger? (true or false)")
-item_schema = ResponseSchema(name="Item", description="Item purchaded by the reviewer")
-company_schema = ResponseSchema(name="Brand", description="Company that made the item")
-language_schema = ResponseSchema(name="Language", description="The language of the review")
 stars_schema = ResponseSchema(name="Stars", description="Is a number between 1 and 5 indicating the rating of the review")
 response_schemas = [sentiment_schema, 
                     anger_schema,
-                    item_schema,
-                    company_schema,
-                    language_schema,
                     stars_schema
                     ]
 '''
@@ -33,9 +27,6 @@ template_string ="""Return a json with the following information extracted from 
         ""Sentiment"": ""(Positive or Negative)"",\
         ""Stars"": ""Number of stars depending on the sentiment of the Review"",\
         ""Anger"": ""Is the user angry (True or False)"", \
-        ""Item"": ""The name of the product reviewed"", \
-        ""Brand"": ""The brand name of the product reviewed"", \
-        ""Language"": ""The language of the review in ISO 639-1 format"" \
     }} \
 Review: ```{review}``` \
 If the information isn't present, use ""unknown"" as the value. \

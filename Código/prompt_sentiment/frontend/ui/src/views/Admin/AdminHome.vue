@@ -169,8 +169,15 @@
                     >
                         mdi-upload
                     </v-icon>
-                    <v-icon title="Procesar dataset" v-if="item.total != '0' && item.status != 'Procesando'"
+                    <v-icon title="Procesar dataset" v-if="item.total != '0' && item.processed == '0'"
                             @click="processDataset(item)"
+                            class="mr-2"
+                            small
+                    >
+                        mdi-lightbulb-outline
+                    </v-icon>
+                    <v-icon title="Ver resultados" v-if="item.processed != '0'"
+                            @click="viewResults(item)"
                             class="mr-2"
                             small
                     >
@@ -302,6 +309,10 @@
                     this.datasets = resp.data
                 })
                 
+            },
+            viewResults(item) {
+                this.editedIndex = this.datasets.indexOf(item)
+                this.editedItem = Object.assign({}, item)
             },
 
             editItem(item) {

@@ -11,7 +11,7 @@ _ = load_dotenv(find_dotenv(), override=True)
 openai.api_key  = os.getenv('OPENAI_API_KEY')
 
 llm_model = "gpt-3.5-turbo"
-sentiment_schema = ResponseSchema(name="Sentiment",description="It's the sentiment of the review (positiva or negative)")
+sentiment_schema = ResponseSchema(name="Sentiment",description="It's the sentiment of the review (positive or negative)")
 anger_schema = ResponseSchema(name="Anger", description="Is the reviewer expressing anger? (true or false)")
 stars_schema = ResponseSchema(name="Stars", description="Is a number between 1 and 5 indicating the rating of the review")
 response_schemas = [sentiment_schema, 
@@ -24,9 +24,9 @@ Además intenta identificar otros elementos como el objeto de la reseña, el idi
 '''
 template_string ="""Return a json with the following information extracted from the review below: \
     {{ \
-        ""Sentiment"": ""(Positive or Negative)"",\
+        ""Sentiment"": ""(positive or negative)"",\
         ""Stars"": ""Number of stars depending on the sentiment of the Review"",\
-        ""Anger"": ""Is the user angry (True or False)"", \
+        ""Anger"": ""Is the user angry? (true or false)"", \
     }} \
 Review: ```{review}``` \
 If the information isn't present, use ""unknown"" as the value. \

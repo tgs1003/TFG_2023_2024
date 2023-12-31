@@ -195,11 +195,13 @@ class DatasetProcess(Resource):
         for review_data in reviews:
             time_start = time.perf_counter()
             result = openai.get_sentiment(review_data.review_text)
+            logging.debug(review_data)
+            logging.debug(result)
             review_id = review_data.id
             try:
                 stars = self.parse_stars(result["Stars"])
                 sentiment = result["Sentiment"]
-                anger = result["Anger"]
+                anger = result["Anger"].lower() == "true"
                 model = "OpenAI"
                 process_time = int(time.perf_counter() - time_start)
                 add_sentiment(review_id=review_id, 
@@ -247,9 +249,18 @@ class DatasetStats(Resource):
         response_object = {}
         sentiments = get_sentiments_by_dataset_id(dataset_id)
         dataset_values = []
+        positive = 0
+        total = 0
+        anger = 0 
         for sentiment in sentiments:
             if sentiment.correct:
+                total = total + 1
                 dataset_values.append(sentiment.stars)
+                if sentiment.sentiment.lower() == "positive":
+                    positive = positive + 1
+                if sentiment.anger:
+                    anger = anger + 1
+                
         ocurrences = []
         #Contamos la ocurrencia de cada puntuación
         for i in range(5):
@@ -261,7 +272,9 @@ class DatasetStats(Resource):
             variance = statistics.variance(dataset_values)
         else:
             variance = 0
-
+        response_object["total"] = total
+        response_object["anger"] = anger
+        response_object["positive"] = positive
         response_object["mean"] = round(mean, 2)
         response_object["median"] = round(median, 2)
         response_object["mode"] = mode

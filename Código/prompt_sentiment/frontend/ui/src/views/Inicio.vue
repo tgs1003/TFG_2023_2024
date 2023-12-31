@@ -94,26 +94,40 @@
       </v-container>
       </v-card>
       <v-btn
+        :disabled="overlay"
+        :loading="overlay"
         color="primary"
         @click="processFile"
       >
         Procesar
       </v-btn>
       <v-btn text
+      :disabled="overlay"
       @click="restart"
       >
         Reiniciar
       </v-btn>
-      <v-overlay :value="overlay">
-        <v-row><v-label>{{ status }}</v-label></v-row>
-        <v-row>
-        <v-progress-circular
-          indeterminate
+        <v-dialog
+        v-model="overlay"
+        hide-overlay
+        persistent
+        width="300"
+      >
+        <v-card
           color="primary"
-          >
-          </v-progress-circular>
-        </v-row>
-        </v-overlay>
+          dark
+        >
+          <v-card-text>
+            Procesando...
+            Por favor, espere.
+            <v-progress-linear
+              indeterminate
+              color="white"
+              class="mb-0"
+            ></v-progress-linear>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
     </v-stepper-content>
     <v-stepper-step step="3">
       Resultados
@@ -124,8 +138,8 @@
         height="200px"
       >
       <div id="print_results">
-        Resultados
         <BarChart :values = "processResults"/>
+        {{ stats }}
       </div>
       </v-card>
       <v-btn
@@ -169,7 +183,8 @@
         errorMessage: "",
         sample: 100,
         overlay: false,
-        status: ""
+        status: "",
+        stats: null
       }
     },
     computed:{
@@ -206,6 +221,7 @@
         this.sample = 100
         this.overlay = false
         this.status = ""
+        this.stats = null
       },
       processFile(){
         //Guardamos el dataset
@@ -238,6 +254,7 @@
                                                    backgroundColor: '#f87979',
                                                    data:response.data['ocurrences']}]
                                                    , labels: this.labels}
+                            this.stats = response.data
                             this.overlay = false
                             this.e6=3
                           })

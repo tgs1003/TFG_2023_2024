@@ -58,9 +58,9 @@ def load_dataset(dataset_id, config, sample):
         review_date = str(datetime.now())
         if 'review_date' in mapping.keys():
             review_date = str(datetime.strptime(df.at[i,mapping['review_date']], date_format))
-        add_review(datasetId=dataset_id,   
-                    reviewText=df.at[i, 'review'], 
-                    reviewTime=review_date, 
+        add_review(dataset_id=dataset_id,   
+                    review_text=df.at[i, 'review'], 
+                    review_time=review_date, 
                     stars=str(df.at[i,'star_rating']))
         
 def download_model(repo_id, filename):

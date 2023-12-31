@@ -109,7 +109,7 @@
                                                 <v-select label="Tipo" v-model="editedItem.type" :items="types"></v-select>
                                             </v-col>
                                             <v-col cols="12" md="12" sm="12">
-                                                <v-textarea label="Configuración" v-model="editedItem.payload"></v-textarea>
+                                                <v-textarea label="Configuración" v-model="editedItem.config"></v-textarea>
                                             </v-col>
                                         </v-row>
                                     </v-container>

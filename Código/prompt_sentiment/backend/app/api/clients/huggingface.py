@@ -61,7 +61,7 @@ def load_dataset(dataset_id, config, sample):
         add_review(dataset_id=dataset_id,   
                     review_text=df.at[i, 'review'], 
                     review_time=review_date, 
-                    stars=str(df.at[i,'star_rating']))
+                    original_stars=str(df.at[i,'star_rating']))
         
 def download_model(repo_id, filename):
     hf_hub_download(repo_id, filename)

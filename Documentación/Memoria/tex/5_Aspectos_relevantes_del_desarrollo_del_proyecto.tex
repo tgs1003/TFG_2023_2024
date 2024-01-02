@@ -1,41 +1,123 @@
 \capitulo{5}{Aspectos relevantes del desarrollo del proyecto}
 
 Este apartado pretende recoger los aspectos más interesantes del desarrollo del proyecto, comentados por los autores del mismo.
-Debe incluir desde la exposición del ciclo de vida utilizado, hasta los detalles de mayor relevancia de las fases de análisis, diseño e implementación.
-Se busca que no sea una mera operación de copiar y pegar diagramas y extractos del código fuente, sino que realmente se justifiquen los caminos de solución que se han tomado, especialmente aquellos que no sean triviales.
-Puede ser el lugar más adecuado para documentar los aspectos más interesantes del diseño y de la implementación, con un mayor hincapié en aspectos tales como el tipo de arquitectura elegido, los índices de las tablas de la base de datos, normalización y desnormalización, distribución en ficheros3, reglas de negocio dentro de las bases de datos (EDVHV GH GDWRV DFWLYDV), aspectos de desarrollo relacionados con el WWW...
-Este apartado, debe convertirse en el resumen de la experiencia práctica del proyecto, y por sí mismo justifica que la memoria se convierta en un documento útil, fuente de referencia para los autores, los tutores y futuros alumnos.
+Debe incluir desde la exposición del ciclo de vida utilizado, 
+hasta los detalles de mayor relevancia de las fases de análisis, diseño e implementación.
+Se busca que no sea una mera operación de copiar y pegar diagramas y extractos del código fuente, 
+sino que realmente se justifiquen los caminos de solución que se han tomado, 
+especialmente aquellos que no sean triviales.
+Puede ser el lugar más adecuado para documentar los aspectos más interesantes del diseño y 
+de la implementación, con un mayor hincapié en aspectos tales como el tipo de arquitectura elegido, 
+los índices de las tablas de la base de datos, normalización y desnormalización, 
+distribución en ficheros3, reglas de negocio dentro de las bases de datos (EDVHV GH GDWRV DFWLYDV), 
+aspectos de desarrollo relacionados con el WWW...
+Este apartado, debe convertirse en el resumen de la experiencia práctica del proyecto, y 
+por sí mismo justifica que la memoria se convierta en un documento útil, 
+fuente de referencia para los autores, los tutores y futuros alumnos.
 
 \section{Metodologías}
 
-\subsection{Metodologías ágiles(SCRUM)}
+\subsection{Metodologías ágiles(\href{https://www.scrum.org/}{SCRUM})}
+Scrum es un marco de trabajo ágil utilizado comúnmente en el desarrollo de software, 
+aunque se ha extendido a otras áreas. \\
+Proporciona un enfoque estructurado para la gestión de proyectos que se centra en la entrega 
+iterativa y incremental de productos. \\
+Scrum se basa en los principios del manifiesto ágil y busca mejorar la eficiencia, 
+la flexibilidad y la colaboración en equipos de desarrollo.
+
+\subsubsection{Roles}
+
+\begin{itemize}
+   \item \textbf{Scrum Master}: Facilita el proceso Scrum, elimina obstáculos y ayuda al equipo a alcanzar sus objetivos.
+   \item \textbf{Product Owner}: Representa las necesidades del cliente y define las características del producto.
+   \item \textbf{Equipo de Desarrollo}: Profesionales que trabajan en la entrega del producto.
+\end{itemize}
+
+\subsubsection{Eventos}
+
+\begin{itemize}
+   \item \textbf{Sprint}: Un periodo de tiempo fijo (generalmente de 2 a 4 semanas) en el que se entrega un incremento de producto.
+   \item \textbf{Reunión de Planificación del Sprint}: Al inicio de cada sprint, el equipo planifica el trabajo que se realizará durante ese periodo.
+   \item \textbf{Revisión del Sprint}: Al final de cada sprint, el equipo presenta el trabajo completado al Product Owner y a otras partes interesadas.
+   \item \textbf{Retrospectiva del Sprint}: Una sesión al final de cada sprint donde el equipo revisa su desempeño y busca formas de mejorar.
+\end{itemize}
+
+\subsubsection{Artefactos}
+
+\begin{itemize}
+\item \textbf{Product Backlog}: Una lista priorizada de todas las funcionalidades, cambios y mejoras propuestas para el producto.
+\item \textbf{Sprint Backlog}: La lista de tareas que el equipo se compromete a completar durante un sprint.
+\item \textbf{Incremento}: El producto funcional y potencialmente entregable al final de cada sprint.
+\end{itemize}
+
+Scrum promueve la transparencia, la inspección y la adaptación, lo que significa que los equipos pueden ajustar su enfoque y estrategia en función de los cambios en los requisitos del cliente o en las circunstancias del proyecto. Este marco de trabajo es especialmente útil en entornos donde los requisitos pueden cambiar con frecuencia y se valora la capacidad de respuesta y flexibilidad del equipo de desarrollo.
+
+Para este proyecto se ha seguido la metodología \textbf{SCRUM} configurando los sprints con una duración de 2 semanas,
+para la planificación se ha utilizado la herramienta \href{https://zube.io/tgs1003/tfg_2023_2024}{Zube}.
+Se puede encontrar más detalles sobre el proceso seguido en los anexos de este documento.
 
 \subsection{DevOps}
-DevOps es una cultura, filosofía y conjunto de prácticas que se centran en la colaboración estrecha y la integración continua entre los equipos de desarrollo (Dev) y operaciones (Ops) en el ciclo de vida del desarrollo de software. El objetivo principal de DevOps es acelerar la entrega de software, mejorar la calidad y la confiabilidad, y permitir una respuesta rápida a los cambios y a las necesidades de los usuarios. DevOps promueve la automatización, la comunicación eficaz y la colaboración entre los equipos, lo que permite un flujo de trabajo más eficiente en todo el proceso de desarrollo y entrega de software.
-Algunos de los principios y prácticas clave de DevOps incluyen:
-Automatización: La automatización de tareas repetitivas y procesos manuales acelera la entrega y minimiza los errores. Esto incluye la automatización de pruebas, implementaciones, aprovisionamiento de infraestructura y monitoreo.
-Integración Continua (CI): Los cambios de código se integran regularmente en un repositorio compartido, se prueban automáticamente y se implementan en un entorno de desarrollo o de prueba. Esto asegura que el código esté siempre en un estado funcional.
-Entrega Continua (CD): La entrega continua extiende la integración continua al permitir la entrega automática de cambios a entornos de prueba o producción después de la integración y las pruebas exitosas.
-Monitoreo y Retroalimentación Continua: El monitoreo constante de aplicaciones y sistemas permite detectar problemas en tiempo real y proporciona información valiosa para mejorar la calidad y la eficiencia.
-Colaboración y Comunicación: La comunicación efectiva entre los equipos de desarrollo y operaciones es esencial. La colaboración se fomenta mediante reuniones regulares, herramientas compartidas y un entendimiento mutuo de las metas y responsabilidades.
-Infraestructura como Código (IaC): La infraestructura se administra y despliega como código, lo que facilita la creación y el mantenimiento de entornos de desarrollo y producción consistentes y escalables.
-Cultura de Mejora Continua: DevOps promueve una cultura en la que se aprende de los errores y se busca constantemente la mejora en todos los aspectos del desarrollo y la operación de software.
-Seguridad: La seguridad es un aspecto crítico de DevOps. Los principios de seguridad deben estar integrados en todas las etapas del ciclo de vida del desarrollo de software.
-La implementación exitosa de DevOps puede llevar a una mayor velocidad de entrega, una mayor calidad del software, una mayor eficiencia operativa y una mayor capacidad de respuesta a los cambios del mercado y las necesidades del cliente. Esta metodología se ha vuelto esencial en el desarrollo de software moderno, especialmente en entornos ágiles y de entrega continua.
+\textbf{DevOps} es una cultura, filosofía y conjunto de prácticas que se centran en la colaboración 
+estrecha y la integración continua entre los equipos de desarrollo (Dev) y operaciones (Ops) 
+en el ciclo de vida del desarrollo de software. \\
+El objetivo principal de \textbf{DevOps} es acelerar la entrega de software, 
+mejorar la calidad y la confiabilidad, y permitir una respuesta rápida a los 
+cambios y a las necesidades de los usuarios. \\DevOps promueve la automatización, 
+la comunicación eficaz y la colaboración entre los equipos, lo que permite un flujo 
+de trabajo más eficiente en todo el proceso de desarrollo y entrega de software.\\
+Algunos de los principios y prácticas clave de \textbf{DevOps} incluyen:
+\begin{itemize}
+   \item \textbf{Automatización}: La automatización de tareas repetitivas y procesos manuales acelera la entrega y minimiza los errores. Esto incluye la automatización de pruebas, implementaciones, aprovisionamiento de infraestructura y monitoreo.
+   \item \textbf{Integración Continua (CI)}: Los cambios de código se integran regularmente en un repositorio compartido, 
+se prueban automáticamente y se implementan en un entorno de desarrollo o de prueba. 
+Esto asegura que el código esté siempre en un estado funcional.
+\item \textbf{Entrega Continua (CD)}: La entrega continua extiende la integración continua al permitir 
+la entrega automática de cambios a entornos de prueba o producción después de la integración y 
+las pruebas exitosas.
+\item \textbf{Monitoreo y Retroalimentación Continua}: El monitoreo constante de aplicaciones y sistemas 
+permite detectar problemas en tiempo real y proporciona información valiosa para 
+mejorar la calidad y la eficiencia.
+\item \textbf{Colaboración y Comunicación}: La comunicación efectiva entre los equipos de desarrollo y 
+operaciones es esencial. La colaboración se fomenta mediante reuniones regulares, 
+herramientas compartidas y un entendimiento mutuo de las metas y responsabilidades.
+\item \textbf{Infraestructura como Código (IaC)}: La infraestructura se administra y despliega como código, 
+lo que facilita la creación y el mantenimiento de entornos de desarrollo y producción 
+consistentes y escalables.
+\item \textbf{Cultura de Mejora Continua}: DevOps promueve una cultura en la que se aprende 
+de los errores y se busca constantemente la mejora en todos los aspectos del desarrollo y 
+la operación de software.
+\item \textbf{Seguridad}: La seguridad es un aspecto crítico de \textbf{DevOps}. 
+Los principios de seguridad deben estar integrados en todas las etapas 
+del ciclo de vida del desarrollo de software.
+\end{itemize}
+La implementación exitosa de \textbf{DevOps} puede llevar a una mayor velocidad de entrega, 
+una mayor calidad del software, una mayor eficiencia operativa y 
+una mayor capacidad de respuesta a los cambios del mercado y las necesidades del cliente. 
+Esta metodología se ha vuelto esencial en el desarrollo de software moderno, 
+especialmente en entornos ágiles y de entrega continua.
+
+Para el publicar del código de este trabajo se ha utilizado \href{https://www.docker.com/}{Docker} junto con \href{https://www.portainer.io/}{Portainer} para el 
+despliegue continuo.
 
 
 \section{Desarrollo del proyecto}
 
 El principal escollo que me he encontrado para la realización de este proyecto es la elección del modelo
-LLM adecuado. Por un lado tenemos el servicio de OpenAI (referencia). Este servicio es quizá el más estable y que 
-mejores resultados obtiene. Sin embargo este servicio es de pago (aunque propocionan un saldo gratuito al crear una cuenta).
+LLM adecuado. \\
+Por un lado tenemos el servicio de \href{https://openai.com}{OpenAI}. Este servicio es quizá el más estable y que 
+mejores resultados obtiene.\\ 
+Sin embargo este servicio es de pago (aunque propocionan un saldo gratuito al crear una cuenta, 
+no permite realizar más de 3 llamadas al minuto).
 Además tenemos el tiempo de proceso para cada reseña (unos 3 segundos).
-Existe otros LLMs disponibles como por ejemplo Llama2 (Meta)(referencia), Bard(Google)(referencia).
-Con el modelo de Meta existe la posibilidad de ejecutarlo en un entorno local mediante diferentes librerías (LlamaCpp).
-Otros modelos que se pueden ejecutar en local son GPT4All (referencia).
-Una herramienta muy útil para elegir el modelo adecuado es LM Studio (referencia), permite descargar y probar distintos modelos,
-además ofrece una API compatible con OpenAI. 
-Para la ejecución en local es muy recomendable el uso de una tarjeta gráfica para optimizar la ejecución del modelo.
+Existe otros LLMs disponibles como por ejemplo \href{https://ai.meta.com/}{Llama2 (Meta)}, 
+\href{https://bard.google.com/chat}{Bard(Google)}.\\
+Con el modelo de Meta existe la posibilidad de ejecutarlo en un entorno local mediante 
+diferentes librerías (LlamaCpp).\\
+Otros modelos que se pueden ejecutar en local son \href{https://gpt4all.io/index.html}{GPT4All}.
+Una herramienta muy útil para elegir el modelo adecuado es \href{https://lmstudio.ai/}{LM Studio}, permite descargar y probar distintos modelos,
+además ofrece una API compatible con OpenAI.\\
+Para la ejecución en local es muy recomendable el uso de una tarjeta gráfica 
+para optimizar la ejecución del modelo.
 
 Al planificar el segundo sprint incluí una tarea para crear un prototipo en collab, 
 sin embargo esta tarea tenía unas dependencias que hacían imposible su realización.
@@ -46,16 +128,22 @@ Y además necesitaba seleccionar el modelo LLM idoneo para la realización de es
 
 Elegir un conjunto de datos adecuado es crucial para el análisis de sentimientos.
 En este proyecto nos insteresa realizar un análisis de sentimientos en reseñas de 
-Amazon por lo que se ha buscado con esa premisa. Esto reduce la búsqueda pero aun así hay que encontrar 
-un conjunto de datos que tenga una serie de características que lo haga ideal para su uso en el proyecto.
-Por un lado, como veremos más adelante, el análisis de sentimiento tiene un coste, ya sea económico (OpenAI), o en tiempo (LlamaCpp).
+Amazon por lo que se ha buscado con esa premisa. \\
+Esto reduce la búsqueda pero aun así hay que encontrar 
+un conjunto de datos que tenga una serie de características que lo haga ideal para su uso en el proyecto.\\
+Por un lado, como veremos más adelante, el análisis de sentimiento tiene un coste, 
+ya sea económico (OpenAI), o en tiempo (LlamaCpp).
 Esto implica que tenemos que elegir un dataset de un tamaño adecuado.
-Por un lado, tiene que ser suficientemente grande para que los resultados sean significativos y por otro lado lo suficientemente
- pequeño como para que el coste sea adecuado al proyecto.
-El conjunto de datos debe contener información suficiente como para poder realizar comparaciones bajo distintas circustancias de estudio, por usuario, por producto, etc.
-También sería interesante que el conjunto de datos sea represativo de la población, para ello lo ideal sería obtener el conjunto de datos de diferentes orígenes.
-En nuestro caso el origen es siempre Amazon pero a la hora de seleccionar los datos intentaremos que estos sean lo más variados posibles.
-Además hay tener en cuenta la disponibilidad, en algunos casos Amazon ha decidido anular la licencia de uso con lo que esos conjuntos de datos no se podrían usar.
+Por un lado, tiene que ser suficientemente grande para que los resultados sean significativos y 
+por otro lado lo suficientemente pequeño como para que el coste sea adecuado al proyecto.
+El conjunto de datos debe contener información suficiente como para poder realizar 
+comparaciones bajo distintas circustancias de estudio, por usuario, por producto, etc.\\
+También sería interesante que el conjunto de datos sea represativo de la población, 
+para ello lo ideal sería obtener el conjunto de datos de diferentes orígenes.\\
+En nuestro caso el origen es siempre Amazon pero a la hora de seleccionar los datos 
+intentaremos que estos sean lo más variados posibles.\\
+Además hay tener en cuenta la disponibilidad, en algunos casos Amazon ha decidido anular 
+la licencia de uso con lo que esos conjuntos de datos no se podrían usar.\\
 En base a estas premisas se han estudiado datasets de diferentes orígenes:
 
 \subsection{Universidad de California~\cite{jin018}}
@@ -103,16 +191,27 @@ Entre estas se encuentran:
    \item \textbf{Dialogflow} Dialogflow, propiedad de Google, es una plataforma de desarrollo de chatbots y asistentes virtuales que utiliza tecnologías de procesamiento del lenguaje natural.
 \end{itemize}
 
-Investigando sobre las diferentes alternativas nos hemos encontrado con dificultades a la hora de elegir la idonea.
-Por un lado, están los modelos que también son de pago como son Microsoft Azure Language Models y Google Cloud Natural Language API. Ambas soluciones ofrecen periodos de prueba limitados.
-Por otro lado están las plataformas para asistentes conversacionales como Dialogflow, Rasa, etc que no ofrecen un API para poder usarlas.
-Por último nos queda \textbf{Facebook API}, en este caso su modelo \href{https://github.com/facebookresearch/llama}{Llama2} está disponible para todo tipo de usos.
-Existen una colección de modelos que van desde 7b a 70b (7b significa que se han usado 7.000 millones de tokens para su entrenamiento y 70b 70.000 millones)
-Aún así el modelo más pequeño necesita unos recursos muy elevados para su funcionamiento. Aquí es dónde entra en juego la \href{https://es.wikipedia.org/wiki/Cuantificaci%C3%B3n_digital}{cuantificación}.
+Investigando sobre las diferentes alternativas nos hemos encontrado con 
+dificultades a la hora de elegir la idónea.
+Por un lado, están los modelos que también son de pago como son ``Microsoft Azure Language Models'' 
+y Google Cloud Natural Language API. Ambas soluciones ofrecen periodos de prueba limitados.
+Por otro lado están las plataformas para asistentes conversacionales como Dialogflow, Rasa, etc 
+que no ofrecen un API para poder usarlas en un programa.
+Por último nos queda \textbf{Facebook API}, en este caso su modelo 
+\href{https://github.com/facebookresearch/llama}{Llama2} está disponible para todo tipo de usos.
+Existen una colección de modelos que van desde 7b a 70b (7b significa que se han usado 
+7.000 millones de tokens para su entrenamiento y 70b 70.000 millones).\\
+Aún así el modelo más pequeño necesita unos recursos muy elevados para su funcionamiento. 
+Aquí es dónde entra en juego la \href{https://es.wikipedia.org/wiki/Cuantificaci%C3%B3n_digital}{cuantificación}.\\
 Aplicando la cuantificación, los modelos ocupan menos espacio y son más rápidos pero también más imprecisos.
 En la plataforma Hugging Face existen multitud de modelos de diferentes tamaños y tipos de cuantificación.
-En este punto nos quedaba elegir un modelo que se pueda ejecutar de una manera razonable en equipos personales pero manteniendo unos niveles razonables de precisión.
-Así entra en juego el último de los elementos para poder elegir un modelo y es un método sencillo para poder evaluar los modelos.
-Para ello he usado una aplicación llamada \href{https://lmstudio.ai/}{LM Studio}. Es una aplicación gratuita que permite descargar modelos de Hugging Face y probarlos mediante un chat o mediante una API.
-Además permite aprovechar una tarjeta gráfica en el caso de tenerla para poder usar el modelo aprovechando sus capacidades de computación en paralelo.
+En este punto nos quedaba elegir un modelo que se pueda ejecutar de una manera razonable 
+en equipos personales pero manteniendo unos niveles razonables de precisión.\\
+Así entra en juego el último de los elementos para poder elegir un modelo y 
+es un método sencillo para poder evaluar los modelos.\\
+Para ello he usado una aplicación llamada \href{https://lmstudio.ai/}{LM Studio}.\\ 
+Es una aplicación gratuita que permite descargar modelos de Hugging Face y 
+probarlos mediante un chat o mediante una API.\\
+Además permite aprovechar una tarjeta gráfica en el caso de tenerla 
+para poder usar el modelo aprovechando sus capacidades de computación en paralelo.
 

@@ -181,7 +181,7 @@
                             class="mr-2"
                             small
                     >
-                        mdi-lightbulb-outline
+                        mdi-chartbox-outline
                     </v-icon>
                     
                     <v-icon

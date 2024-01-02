@@ -4,6 +4,8 @@ import Login from "../views/Auth/Login";
 import Registro from "../views/Auth/Registro";
 import Inicio from "../views/Inicio"
 import AdminHome from "../views/Admin/AdminHome";
+import History from "../views/Sentiment/History"
+import Analysis from "../views/Sentiment/Analysis.vue"
 import store from '@/store'
 import api from '../services/api'
 Vue.use(VueRouter)
@@ -21,6 +23,22 @@ const routes = [
     meta: {
       requiresAuth: true,
       requiresAdmin: true
+    }
+  },
+  {
+    path: '/history',
+    name: 'History',
+    component: History,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/analysis',
+    name: 'Analysis',
+    component: Analysis,
+    meta: {
+      requiresAuth: true
     }
   },
   {

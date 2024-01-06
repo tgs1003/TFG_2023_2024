@@ -135,11 +135,31 @@
         <v-stepper-content step="3">
           <v-card
             class="mb-12"
-            height="200px"
+            height="350px"
+            
           >
-          <div id="print_results">
-            <BarChart :values = "processResults"/>
-            {{ stats }}
+          <div id="print_results" v-if="stats != null">
+            <v-row>
+             
+              <v-col>
+                <v-card
+                  class="mx-auto"
+                  outlined
+                >
+                  <v-card-text>
+                    <p><strong>Reseñas totales</strong>: {{ stats.total }}</p>
+                    <p><strong>Positivas</strong>: {{stats.positive}}</p>
+                    <p><strong>Usuarios enojados</strong>: {{stats.anger}}</p>
+                    <p><strong>Puntuación media</strong>: {{ stats.mean }}</p>
+                    <p><strong>Mediana</strong>: {{ stats.median }}</p>
+                    <p><strong>Moda</strong>: {{ stats.mode }}</p>
+                    <p><strong>Varianza</strong>: {{ stats.variance }}</p>
+                  </v-card-text>
+                </v-card>
+              </v-col>
+              <v-col><BarChart :values = "processResults" />
+              </v-col>
+            </v-row>
           </div>
           </v-card>
           <v-btn
@@ -159,12 +179,13 @@
     </template>
     
     <script>
-      import api from '../services/api'
+      import api from '../../services/api'
       import { validationMixin } from 'vuelidate'
       import { required} from 'vuelidate/lib/validators'
-      import BarChart from '../components/BarChart.vue'
+      import BarChart from '../../components/BarChart.vue'
+      
       export default {
-        name: "Inicio",
+        name: "Analysis",
         mixins: [validationMixin],
         validations: {
         datasetName: {required},
@@ -172,7 +193,7 @@
         },
         data () {
           return {
-            labels:["Una estrella","Dos estrellas", "Tres estrellas", "Cuatro estrellas", "Cinco estrellas"],
+            labels:["Una","Dos", "Tres", "Cuatro", "Cinco"],
             processResults: {},
             datasetFile:null,
             e6: 1,
@@ -202,7 +223,8 @@
             },
         },
         components:{
-          BarChart
+          BarChart,
+          
         },
         methods:
         {

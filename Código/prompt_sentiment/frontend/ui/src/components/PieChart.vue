@@ -1,7 +1,7 @@
 <template>
-    <Bar
+    <Pie
       :chart-options="chartOptions"
-      :chart-data="values"
+      :chart-data="chartData"
       :chart-id="chartId"
       :dataset-id-key="datasetIdKey"
       :plugins="plugins"
@@ -13,29 +13,28 @@
   </template>
   
   <script>
-  import { Bar } from 'vue-chartjs'
+  import { Pie } from 'vue-chartjs'
   
   import {
     Chart as ChartJS,
     Title,
     Tooltip,
     Legend,
-    BarElement,
-    CategoryScale,
-    LinearScale
+    ArcElement,
+    CategoryScale
   } from 'chart.js'
   
-  ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+  ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
   
   export default {
-    name: 'BarChart',
+    name: 'PieChart',
     components: {
-      Bar
+      Pie
     },
     props: {
       chartId: {
         type: String,
-        default: 'bar-chart'
+        default: 'pie-chart'
       },
       datasetIdKey: {
         type: String,
@@ -43,11 +42,11 @@
       },
       width: {
         type: Number,
-        default: 300
+        default: 400
       },
       height: {
         type: Number,
-        default: 500
+        default: 400
       },
       cssClasses: {
         default: '',
@@ -61,33 +60,19 @@
         type: Array,
         default: () => []
       },
-      values:{
+      data:{
         type: Object,
-        default: () => []
+        default: () => {}
       }
     },
     data() {
       return {
         chartData: {
-          labels: [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December'
-          ],
+          labels: ['VueJs', 'EmberJs', 'ReactJs', 'AngularJs'],
           datasets: [
             {
-              label: 'Data One',
-              backgroundColor: '#f87979',
-              data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+              backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+              data: [40, 20, 80, 10]
             }
           ]
         },
@@ -98,5 +83,3 @@
       }
     }
   }
-  </script>
-  

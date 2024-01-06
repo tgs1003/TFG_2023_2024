@@ -2,7 +2,7 @@ import logging, json, time, werkzeug, statistics
 from flask import request
 from flask_restx import Resource, fields, Namespace, reqparse
 import pandas as pd
-from app.api.services.datasets import get_all_datasets, \
+from app.api.services.datasets import get_all_datasets, get_all_user_datasets,\
 get_dataset_by_id, update_dataset, delete_dataset, add_dataset
 from app.api.services.reviews import count_reviews_by_dataset_id, get_reviews_by_dataset_id
 from app.api.services.sentiments import count_sentiments_by_dataset_id, add_sentiment, get_sentiments_by_dataset_id
@@ -50,6 +50,21 @@ datasets = datasets_namespace.model(
 datasets_get = datasets_namespace.inherit(
     "Datasets get", datasets, {"total": fields.Integer, "processed": fields.Integer}
 )
+
+class UserDatasetList(Resource):
+    @datasets_namespace.marshal_with(datasets_get, as_list=True)
+    @datasets_namespace.expect(parser)
+    def get(self):
+        """Devuelve todos los datasets de un usuario."""
+        user = get_token_user(request=request, namespace=datasets_namespace)
+        all_datsets = get_all_user_datasets(user.id)
+        for dataset in all_datsets:
+            dataset.total = count_reviews_by_dataset_id(dataset.id)
+            dataset.processed = count_sentiments_by_dataset_id(dataset.id)
+        return all_datsets, 200
+
+
+
 class DatasetList(Resource):
     @datasets_namespace.marshal_with(datasets_get, as_list=True)
     @datasets_namespace.expect(parser)
@@ -265,9 +280,16 @@ class DatasetStats(Resource):
         #Contamos la ocurrencia de cada puntuación
         for i in range(5):
             ocurrences.append(dataset_values.count(i+1))
-        mean = statistics.mean(dataset_values)
-        median = statistics.median(dataset_values)
-        mode = statistics.mode(dataset_values)
+            
+        if len(dataset_values) > 0:
+            mean = statistics.mean(dataset_values)
+            median = statistics.median(dataset_values)
+            mode = statistics.mode(dataset_values)
+        else:
+            mean = 0
+            median = 0
+            mode = 0
+
         if len(dataset_values) > 1:
             variance = statistics.variance(dataset_values)
         else:
@@ -290,4 +312,4 @@ datasets_namespace.add_resource(DatasetUpload, "/upload")
 datasets_namespace.add_resource(DatasetLoad, "/<int:dataset_id>/load")
 datasets_namespace.add_resource(DatasetProcess, "/<int:dataset_id>/process")
 datasets_namespace.add_resource(DatasetStats, "/<int:dataset_id>/stats")
-
+datasets_namespace.add_resource(UserDatasetList, "/user")

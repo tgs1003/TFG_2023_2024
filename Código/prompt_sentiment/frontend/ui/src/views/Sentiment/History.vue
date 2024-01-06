@@ -1,39 +1,37 @@
 <template>
-    <v-carousel v-model="dataset">
+    <v-carousel v-model="dataset"  height="600">
       <v-carousel-item
-        v-for="(dataset, i) in datasets"
-        :key="dataset"
+        v-for="(dataset) in datasets"
+        :key="dataset.id"
       >
-        <v-sheet
-          :color="dataset"
-          height="100%"
-          tile
-        >
-          <v-row
-            class="fill-height"
-            align="center"
-            justify="center"
-          >
-            <div class="text-h2">
-              Slide {{ i + 1 }}
-            </div>
-          </v-row>
-        </v-sheet>
+        <Stats :datasetId="dataset.id"></Stats>
       </v-carousel-item>
     </v-carousel>
   </template>
 
 <script>
+import Stats from '../../components/Stats.vue'
+import api from '../../services/api'
+
 export default {
   data: () => ({
     dataset: 0,
     datasets: [
-      1,
-      2,
-      3,
-      4,
-      5,
+      
     ],
   }),
+  components:{
+    Stats,
+  },
+  created() {
+    this.initialize()
+  },
+  methods: {
+    initialize(){
+    api.get('/datasets/user').then((resp)=>{
+                  this.datasets = resp.data
+              })
+    }
+  }
 }
 </script>

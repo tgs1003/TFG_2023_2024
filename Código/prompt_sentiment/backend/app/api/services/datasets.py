@@ -7,6 +7,12 @@ def get_all_datasets():
     '''
     return Dataset.query.all()
 
+def get_all_user_datasets(user_id):
+    '''
+    Devuelve todos los datasets
+    '''
+    return Dataset.query.filter_by(owner=user_id).all()
+
 def get_dataset_by_id(id):
     '''
     Devuelve un dataset

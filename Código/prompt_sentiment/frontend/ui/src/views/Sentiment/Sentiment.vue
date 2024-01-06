@@ -1,171 +1,168 @@
 <template>
     <div>
-        <div>    
-            
-        </div>
-        <v-card>
-        <v-card-title>
-            Análisis de reseñas
-            <v-spacer></v-spacer>
-            <v-select 
-                @change="onChangeDataset($event)"
-                label="Dataset: "
-                :items="datasets"
-                item-text="name"
-                item-value="id"
-                >    
-            </v-select>
-            <v-spacer></v-spacer>
-            <v-select 
-                @change="onChangeSearchBy($event)"
-                label="Búsqueda por: "
-                :items="searchby"
-                item-text="name"
-                item-value="id"
-                >    
-            </v-select>
-            <v-spacer></v-spacer>
-            <v-select 
-                @change="onChangeUser($event)"
-                v-show="selectedSearch==='Usuario'" 
-                label="Usuario: "
-                :items="users"
-                item-text="name"
-                item-value="id"
-                >    
-            </v-select>
-            <v-select 
-                @change="onChangeProduct($event)"
-                v-show="selectedSearch==='Producto'"
-                label="Producto: "
-                :items="products"
-                item-text="title"
-                item-value="productId"
-                >    
-            </v-select>
-        </v-card-title>
-        <v-container fluid>
-            <v-row dense>
-            <v-col>
-                <v-data-table
-                    :single-expand=true
-                    :expanded.sync="expanded"
-                    :items-per-page="5"
-                    :headers="headers_sentiments"
-                    :items="sentiments"
-                    class="elevation-1"
-                    sort-by="name"
-                    @click:row="rowClick"
-                    show-expand
-                >
-                <template v-slot:expanded-item="{headers, item}">
-                        <td :colspan="headers.length">
-                            <v-card>
-                                <v-card-text>
-                                    <v-row align="center">
-                                        <v-col
-                                        cols="2"
-                                        ><strong>Reseña:</strong></v-col>
-                                        <v-col cols="10">
-                                            {{item.reviewText}}
-                                        </v-col>
-                                    </v-row>
-                                </v-card-text>
-                            </v-card>
-                            
-                        </td>
-                </template>
-                </v-data-table>
-            </v-col>
-            <v-col cols="3">
-                <v-card class="mx-auto" max-width="300">
-                    <v-list-item two-line>
-                        <v-list-item-content>
-                            <v-list-item-title class="text-h5">
-                                Resumen del proceso
-                            </v-list-item-title>
-                            <v-list-item-subtitle></v-list-item-subtitle>
-                        </v-list-item-content>
-                    </v-list-item>
-                    <v-card-text>
-                        <v-row align="center">
-                            <v-col
-                            cols="4"
-                            ><strong>API:</strong></v-col>
-                            <v-col cols="8">
-                                OpenAI
-                            </v-col>
-                        </v-row>
-                        <v-row align="center">
-                            <v-col
-                            cols="4"
-                            ><strong>Modelo:</strong></v-col>
-                            <v-col cols="8">
-                                ChatGpt 3.5 Turbo
-                            </v-col>
-                        </v-row>
-                        <v-row align="center">
-                            <v-col
-                            cols="4"
-                            ><strong>Fecha:</strong></v-col>
-                            <v-col cols="8">
-                                18 dic. 2023
-                            </v-col>
-                        </v-row>
-                        <v-row align="center">
-                            <v-col
-                            cols="4"
-                            ><strong>Tiempo:</strong></v-col>
-                            <v-col cols="8">
-                                20 minutos
-                            </v-col>
-                        </v-row>
-                        <v-row align="center">
-                            <v-col
-                            cols="4"
-                            ><strong>Coste:</strong></v-col>
-                            <v-col cols="8">
-                                ??
-                            </v-col>
-                        </v-row>
-                        <v-row align="center" v-if="datasetInfo != null">
-                            <v-col
-                            cols="4"
-                            ><strong>Dataset:</strong></v-col>
-                            <v-col cols="8">
-                                {{ datasetInfo.name }}
-                            </v-col>
-                        </v-row>
-                        <v-row align="center" v-show="datasetInfo != null">
-                            <v-col
-                            cols="4"
-                            ><strong>Origen:</strong></v-col>
-                            <v-col cols="8">
-                                {{ datasetInfo != null? datasetInfo.type:"" }}
-                            </v-col>
-                        </v-row>
-                    </v-card-text>
-                    
-
-                    <v-divider></v-divider>
-
-                    <v-card-actions>
-                    <v-btn text>
-                        Ver Modelo
-                    </v-btn>
-                    <v-btn text>
-                        Ver Dataset
-                    </v-btn>
-                    </v-card-actions>
-                </v-card>
+    <v-card>
+    <v-card-title>
+        Análisis de reseñas
+        <v-spacer></v-spacer>
+        <v-select 
+            @change="onChangeDataset($event)"
+            label="Dataset: "
+            :items="datasets"
+            item-text="name"
+            item-value="id"
+            >    
+        </v-select>
+        <v-spacer></v-spacer>
+        <v-select 
+            @change="onChangeSearchBy($event)"
+            label="Búsqueda por: "
+            :items="searchby"
+            item-text="name"
+            item-value="id"
+            >    
+        </v-select>
+        <v-spacer></v-spacer>
+        <v-select 
+            @change="onChangeUser($event)"
+            v-show="selectedSearch==='Usuario'" 
+            label="Usuario: "
+            :items="users"
+            item-text="name"
+            item-value="id"
+            >    
+        </v-select>
+        <v-select 
+            @change="onChangeProduct($event)"
+            v-show="selectedSearch==='Producto'"
+            label="Producto: "
+            :items="products"
+            item-text="title"
+            item-value="productId"
+            >    
+        </v-select>
+    </v-card-title>
+    <v-container fluid>
+        <v-row dense>
+        <v-col>
+            <v-data-table
+                :single-expand=true
+                :expanded.sync="expanded"
+                :items-per-page="5"
+                :headers="headers_sentiments"
+                :items="sentiments"
+                class="elevation-1"
+                sort-by="name"
+                @click:row="rowClick"
+                show-expand
+            >
+            <template v-slot:expanded-item="{headers, item}">
+                    <td :colspan="headers.length">
+                        <v-card>
+                            <v-card-text>
+                                <v-row align="center">
+                                    <v-col
+                                    cols="2"
+                                    ><strong>Reseña:</strong></v-col>
+                                    <v-col cols="10">
+                                        {{item.reviewText}}
+                                    </v-col>
+                                </v-row>
+                            </v-card-text>
+                        </v-card>
+                        
+                    </td>
+            </template>
+            </v-data-table>
+        </v-col>
+        <v-col cols="3">
+            <v-card class="mx-auto" max-width="300">
+                <v-list-item two-line>
+                    <v-list-item-content>
+                        <v-list-item-title class="text-h5">
+                            Resumen del proceso
+                        </v-list-item-title>
+                        <v-list-item-subtitle></v-list-item-subtitle>
+                    </v-list-item-content>
+                </v-list-item>
+                <v-card-text>
+                    <v-row align="center">
+                        <v-col
+                        cols="4"
+                        ><strong>API:</strong></v-col>
+                        <v-col cols="8">
+                            OpenAI
+                        </v-col>
+                    </v-row>
+                    <v-row align="center">
+                        <v-col
+                        cols="4"
+                        ><strong>Modelo:</strong></v-col>
+                        <v-col cols="8">
+                            ChatGpt 3.5 Turbo
+                        </v-col>
+                    </v-row>
+                    <v-row align="center">
+                        <v-col
+                        cols="4"
+                        ><strong>Fecha:</strong></v-col>
+                        <v-col cols="8">
+                            18 dic. 2023
+                        </v-col>
+                    </v-row>
+                    <v-row align="center">
+                        <v-col
+                        cols="4"
+                        ><strong>Tiempo:</strong></v-col>
+                        <v-col cols="8">
+                            20 minutos
+                        </v-col>
+                    </v-row>
+                    <v-row align="center">
+                        <v-col
+                        cols="4"
+                        ><strong>Coste:</strong></v-col>
+                        <v-col cols="8">
+                            ??
+                        </v-col>
+                    </v-row>
+                    <v-row align="center" v-if="datasetInfo != null">
+                        <v-col
+                        cols="4"
+                        ><strong>Dataset:</strong></v-col>
+                        <v-col cols="8">
+                            {{ datasetInfo.name }}
+                        </v-col>
+                    </v-row>
+                    <v-row align="center" v-show="datasetInfo != null">
+                        <v-col
+                        cols="4"
+                        ><strong>Origen:</strong></v-col>
+                        <v-col cols="8">
+                            {{ datasetInfo != null? datasetInfo.type:"" }}
+                        </v-col>
+                    </v-row>
+                </v-card-text>
                 
-            </v-col>
-        </v-row>
+
+                <v-divider></v-divider>
+
+                <v-card-actions>
+                <v-btn text>
+                    Ver Modelo
+                </v-btn>
+                <v-btn text>
+                    Ver Dataset
+                </v-btn>
+                </v-card-actions>
+            </v-card>
+            
+        </v-col>
+    </v-row>
+    
+    </v-container>
+    </v-card>
         
-        </v-container>
-        </v-card>
-        
-    </div>
+</div>
     
 </template>
 
@@ -206,7 +203,6 @@
         created() {
             this.initialize()
         },
-
         methods: {
             rowClick(item){
                 api.get('reviews/' +item.id).then((resp)=>{

@@ -6,6 +6,8 @@ import vuetify from '@/plugins/vuetify' // path to vuetify export
 import Vuex from 'vuex'
 import setupInterceptors from './services/setupInterceptors'
 import Vuelidate from 'vuelidate'
+import i18n from './i18n';
+
 
 Vue.use(Vuelidate)
 
@@ -15,6 +17,7 @@ setupInterceptors(store);
 
 
 new Vue({
+  i18n,
   vuetify,
   router,
   store,

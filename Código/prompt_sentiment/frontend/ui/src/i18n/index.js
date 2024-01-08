@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import {I18n} from 'translated';
 import VueTranslated from 'vue-translated';
+import TokenService from '../services/token.service'
 
 Vue.use(VueTranslated);
 
-const locale = 'en-US'; // replace this with `process.env.LOCALE` or similar
+const locale = TokenService.getlocale(); // replace this with `process.env.LOCALE` or similar
 const messages = require(`./messages/${locale}`).default;
 const formats = require(`./formats/${locale}`).default;
 

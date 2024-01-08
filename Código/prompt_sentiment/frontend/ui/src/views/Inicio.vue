@@ -11,14 +11,14 @@
             
           >
             <v-card-title class="text-h5">
-              Análisis de reseñas
+              {{ $formatMessage('home.analysis.title') }}
             </v-card-title>
 
-            <v-card-subtitle>Para analizar un fichero de reseñas, haga clic aquí.</v-card-subtitle>
+            <v-card-subtitle>{{ $formatMessage('home.analysis.desc') }}</v-card-subtitle>
 
             <v-card-actions>
-              <v-btn text>
-                Analizar reseñas
+              <v-btn text @click="analysis" color="primary">
+                {{ $formatMessage('home.analysis.btn') }}
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -29,14 +29,14 @@
             
           >
             <v-card-title class="text-h5">
-              {{ $formatMessage('home.history') }}
+              {{ $formatMessage('home.history.title') }}
             </v-card-title>
 
-            <v-card-subtitle>Para ver el histórico de análisis de reseñas haga clic aquí.</v-card-subtitle>
+            <v-card-subtitle>{{ $formatMessage('home.history.desc') }}</v-card-subtitle>
 
             <v-card-actions>
-              <v-btn text>
-                Ver histórico
+              <v-btn text @click="history" color="secondary">
+                {{ $formatMessage('home.history.btn') }}
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -51,5 +51,13 @@ export default {
 data: () => ({
  
 }),
+methods:{
+  history(){
+    this.$router.push('/history')
+  },
+  analysis(){
+    this.$router.push('/analysis')
+  },
+}
 }
 </script>

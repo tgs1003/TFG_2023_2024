@@ -1,6 +1,6 @@
 <template>
     <div>
-    <p>Análisis de sentimientos.</p>
+    <p>{{ $formatMessage('analysis.title') }}</p>
     <v-alert v-if="errorMessage != ''"
           color="yellow"
           variant="outlined"
@@ -18,8 +18,8 @@
           :complete="e6 > 1"
           step="1"
         >
-          Seleccione fichero de reseñas
-          <small>Seleccione el fichero que contiene las reseñas que quiere analizar.</small>
+        {{ $formatMessage('analysis.select.title') }}
+          <small>{{ $formatMessage('analysis.select.desc') }}</small>
         </v-stepper-step>
     
         <v-stepper-content step="1">
@@ -32,7 +32,7 @@
               v-model="datasetName"
               :error-messages="nameErrors"
               name="datasetName"
-              label="Nombre del producto"
+              :label="$formatMessage('analysis.dataset.productname')"
               required>
     
               </v-text-field></v-col>
@@ -41,7 +41,7 @@
                 :error-messages="fileErrors"
                 name="datasetFile"
                 accept=".json,.txt,.csv"
-                label="Fichero de reseñas de usuarios" v-model="datasetFile">
+                :label="$formatMessage('analysis.dataset.filename')" v-model="datasetFile">
               </v-file-input>
               </v-col>
             </v-row>
@@ -50,12 +50,12 @@
             color="primary"
             @click="submitFiles"
           >
-            Siguiente paso
+          {{ $formatMessage('analysis.dataset.nextstep') }}
           </v-btn>
           <v-btn text
           @click="restart"
           >
-            Reiniciar
+          {{ $formatMessage('analysis.dataset.restart') }}
           </v-btn>
         </v-stepper-content>
     
@@ -63,7 +63,7 @@
           :complete="e6 > 2"
           step="2"
         >
-          Configuración del fichero
+        {{ $formatMessage('analysis.file.config.title') }}
         </v-stepper-step>
     
         <v-stepper-content step="2">
@@ -73,18 +73,18 @@
           >
           <v-container v-if="file_info != null">
             <v-row>
-              <v-col><span><strong>Nombre del fichero: </strong>{{ file_info.file_name }}</span></v-col>
-              <v-col><span><strong>Número de reseñas: </strong>{{ file_info.row_count }} </span></v-col>
+              <v-col><span><strong>{{ $formatMessage('analysis.file.config.filename') }}</strong>{{ file_info.file_name }}</span></v-col>
+              <v-col><span><strong>{{ $formatMessage('analysis.file.config.review_number') }}</strong>{{ file_info.row_count }} </span></v-col>
             </v-row>
             <v-row>
-              <v-col><span><strong>Formato: </strong>{{ file_info.file_format }}</span></v-col><v-col></v-col>
+              <v-col><span><strong>{{ $formatMessage('analysis.file.config.format') }}</strong>{{ file_info.file_format }}</span></v-col><v-col></v-col>
             </v-row>
             <v-row>
               <v-col>
               <v-select 
                     v-model="selectedColumn"
                     v-show="file_info != null" 
-                    label="Campo que contiene las reseñas: "
+                    :label="$formatMessage('analysis.file.config.field')"
                     :items="file_info.header"
                     >    
               </v-select>
@@ -105,7 +105,7 @@
           :disabled="overlay"
           @click="restart"
           >
-            Reiniciar
+          {{ $formatMessage('analysis.dataset.restart') }}
           </v-btn>
             <v-dialog
             v-model="overlay"
@@ -118,8 +118,7 @@
               dark
             >
               <v-card-text>
-                Procesando...
-                Por favor, espere.
+                {{ $formatMessage('analysis.process.wait') }}
                 <v-progress-linear
                   indeterminate
                   color="white"
@@ -130,7 +129,7 @@
           </v-dialog>
         </v-stepper-content>
         <v-stepper-step step="3">
-          Resultados
+          {{ $formatMessage('analysis.process_result.title') }}
         </v-stepper-step>
         <v-stepper-content step="3">
           <v-card
@@ -147,13 +146,13 @@
                   outlined
                 >
                   <v-card-text>
-                    <p><strong>Reseñas totales</strong>: {{ stats.total }}</p>
-                    <p><strong>Positivas</strong>: {{stats.positive}}</p>
-                    <p><strong>Usuarios enojados</strong>: {{stats.anger}}</p>
-                    <p><strong>Puntuación media</strong>: {{ stats.mean }}</p>
-                    <p><strong>Mediana</strong>: {{ stats.median }}</p>
-                    <p><strong>Moda</strong>: {{ stats.mode }}</p>
-                    <p><strong>Varianza</strong>: {{ stats.variance }}</p>
+                    <p><strong>{{ $formatMessage('analysis.process_result.total') }}Reseñas totales</strong>: {{ stats.total }}</p>
+                    <p><strong>{{ $formatMessage('analysis.process_result.positive') }}Positivas</strong>: {{stats.positive}}</p>
+                    <p><strong>{{ $formatMessage('analysis.process_result.anger') }}Usuarios enojados</strong>: {{stats.anger}}</p>
+                    <p><strong>{{ $formatMessage('analysis.process_result.mean') }}Puntuación media</strong>: {{ stats.mean }}</p>
+                    <p><strong>{{ $formatMessage('analysis.process_result.median') }}Mediana</strong>: {{ stats.median }}</p>
+                    <p><strong>{{ $formatMessage('analysis.process_result.mode') }}Moda</strong>: {{ stats.mode }}</p>
+                    <p><strong>{{ $formatMessage('analysis.process_result.variance') }}Varianza</strong>: {{ stats.variance }}</p>
                   </v-card-text>
                 </v-card>
               </v-col>
@@ -166,12 +165,12 @@
             color="primary"
             @click="print"
           >
-            Guardar informe
+          {{ $formatMessage('analysis.process_result.save') }}
           </v-btn>
           <v-btn text
           @click="restart"
           >
-            Reiniciar
+          {{ $formatMessage('analysis.dataset.restart') }}
           </v-btn>
         </v-stepper-content>
       </v-stepper>
@@ -212,13 +211,13 @@
             nameErrors () {
                 const errors = []
                 if (!this.$v.datasetName.$dirty) return errors
-                !this.$v.datasetName.required && errors.push('El nombre del dataset es obligatorio.')
+                !this.$v.datasetName.required && errors.push(this.$formatMessage("analysis.dataset.name_required"))
                 return errors
             },
             fileErrors(){
               const errors = []
                 if (!this.$v.datasetFile.$dirty) return errors
-                !this.$v.datasetFile.required && errors.push('Falta el fichero a analizar.')
+                !this.$v.datasetFile.required && errors.push(this.$formatMessage("analysis.dataset.file_required"))
                 return errors
             },
         },
@@ -259,20 +258,20 @@
                   let datasetData = {
                         "sample": this.sample
                     }
-                  this.status = "Cargando fichero..."
+                  this.status = this.$formatMessage('analysis.loading.wait')
                   this.overlay = true
                   api.put("/datasets/" + this.datasetId +"/load", datasetData)
                   .then(response => {
-                        this.status = "Procesando fichero..."
+                        this.status = this.$formatMessage('analysis.process.wait')
                         if (response.status == 200)
                           api.put("/datasets/" + this.datasetId +"/process")
                           .then(response =>{
                             if (response.status == 200)
                             {
-                              this.status = "Calculando estadísticas..."
+                              this.status = this.$formatMessage('analysis.process.stats')
                               api.get("/datasets/" + this.datasetId +"/stats")
                               .then(response =>{
-                                this.processResults = {datasets: [{label: 'Número de reseñas',
+                                this.processResults = {datasets: [{label: this.$formatMessage('analysis.process_result.reviews_number'),
                                                        backgroundColor: '#f87979',
                                                        data:response.data['ocurrences']}]
                                                        , labels: this.labels}
@@ -332,7 +331,7 @@
                         }
                         else
                         {
-                          this.errorMessage = "El fichero tiene un formato desconocido"
+                          this.errorMessage = this.$formatMessage('analysis.file.unknown.format')
                         }
                     })
                     .catch(error => {
@@ -341,7 +340,7 @@
                     });
                     
             } else {
-                this.errorMessage = "No hay ficheros."
+                this.errorMessage = this.$formatMessage('analysis.file.none')
                 console.log("there are no files.");
             }
           }

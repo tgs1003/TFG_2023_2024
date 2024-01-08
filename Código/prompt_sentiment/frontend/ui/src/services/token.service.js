@@ -9,6 +9,16 @@ class TokenService{
         return user?.access_token;
     }
 
+    getlocale()
+    {
+        if(localStorage.getItem('locale') == null)
+            localStorage.setItem('locale', 'en')
+        return localStorage.getItem('locale')
+    }
+    setlocale(locale)
+    {
+        localStorage.setItem('locale', locale)
+    }
 
     updateLocalAccessToken(token){
         let user = JSON.parse(localStorage.getItem('user'));

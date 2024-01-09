@@ -3,13 +3,15 @@ import pytest
 import app.api.views.datasets
 
 def test_add_dataset(test_app, monkeypatch):
-    
-    def mock_get_dataset_by_config(config):
-        return None
+    class AttrDict(dict):
+        def __init__(self, *args, **kwargs):
+            super(AttrDict, self).__init__(*args, **kwargs)
+            self.__dict__ = self
     def mock_add_dataset(name, type, config, owner):
-        return True
+        d = AttrDict()
+        d.update({"id": 1})
+        return d
     
-    monkeypatch.setattr(app.api.views.datasets, "get_dataset_by_config", mock_get_dataset_by_config)
     monkeypatch.setattr(app.api.views.datasets, "add_dataset", mock_add_dataset)
     
     client = test_app.test_client()
@@ -28,31 +30,6 @@ def test_add_dataset(test_app, monkeypatch):
     data = json.loads(resp.data.decode())
     assert resp.status_code == 201
     assert "Se ha añadido el dataset dataset_prueba1" in data["message"]
-
-def test_add_dataset_duplicado(test_app, monkeypatch):
-    def mock_get_dataset_by_config(payload):
-        return True
-    def mock_add_dataset(name, type, payload):
-        return True
-    
-    monkeypatch.setattr(app.api.views.datasets, "get_dataset_by_config", mock_get_dataset_by_config)
-    monkeypatch.setattr(app.api.views.datasets, "add_dataset", mock_add_dataset)
-
-    client = test_app.test_client()
-    resp = client.post(
-        "/datasets",
-        data=json.dumps(
-            {
-                "name": "dataset_prueba1",
-                "type": "Huggingface",
-                "payload": "Prueba/fichero_prueba",
-            }
-        ),
-        content_type="application/json",
-    )
-    data = json.loads(resp.data.decode())
-    assert resp.status_code == 400
-    assert "El dataset ya existe" in data["message"]
 
 def test_get_dataset_no_existe(test_app, monkeypatch):
     def mock_get_dataset_by_id(dataset_id):

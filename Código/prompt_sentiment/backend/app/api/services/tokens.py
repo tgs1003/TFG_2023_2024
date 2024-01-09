@@ -58,7 +58,7 @@ def check_token(request, namespace):
     else:
         namespace.abort(403,"Hace falta un token.") 
         
-def get_token_user(request, namespace):
+def get_token_user(request, namespace, default=None):
     '''
     Devuelve el usuario que está logado en el sistema (según la información del token)
     '''
@@ -75,4 +75,6 @@ def get_token_user(request, namespace):
         except jwt.InvalidTokenError:
                 namespace.abort(401,"Token no válido")
     else:
+        if not current_app.config.get("USE_AUTHORIZATION"):
+         return default
         namespace.abort(403,"Hace falta un token.")

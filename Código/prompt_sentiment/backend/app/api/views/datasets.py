@@ -88,13 +88,13 @@ class DatasetList(Resource):
         name = data["name"]
         type = data["type"]
         config = data["config"]
-        owner = user.id
-        
+        owner = data["owner"]
+                
         response_object = {}
         
         dataset1 = add_dataset(name = name, type = type, config = config, owner = owner)
         response_object["message"] = f"Se ha añadido el dataset {name}."
-        response_object["datasetId"] = dataset1.id
+        response_object["dataset_id"] = dataset1.id
         return response_object, 201
 
 class Datasets(Resource):

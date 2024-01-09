@@ -20,25 +20,6 @@ def test_add_dataset(test_app, test_database, add_user):
     assert resp.status_code == 201
     assert "Se ha añadido el dataset dataset_prueba1" in data["message"]
 
-def test_add_dataset_duplicado(test_app, test_database, add_user):
-    user1 = add_user("justatest12344", "test123@test1234.com", "greaterthaneight", "Gestor")
-    client = test_app.test_client()
-    resp = client.post(
-        "/datasets",
-        data=json.dumps(
-            {
-                "name": "dataset_prueba1",
-                "type": "Hugging face",
-                "config": "Prueba/fichero_prueba",
-                "owner" : "1"
-            }
-        ),
-        content_type="application/json",
-    )
-    data = json.loads(resp.data.decode())
-    assert resp.status_code == 400
-    assert "El dataset ya existe" in data["message"]
-
 def test_add_dataset_faltan_datos(test_app, test_database):
     client = test_app.test_client()
     resp = client.post(

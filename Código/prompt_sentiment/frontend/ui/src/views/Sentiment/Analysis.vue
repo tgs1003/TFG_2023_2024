@@ -254,7 +254,7 @@
                                              "separator": this.file_info.separator
                                 }})
             .then(response => {
-                  this.datasetId = response.data["datasetId"]
+                  this.datasetId = response.data["dataset_id"]
                   let datasetData = {
                         "sample": this.sample
                     }

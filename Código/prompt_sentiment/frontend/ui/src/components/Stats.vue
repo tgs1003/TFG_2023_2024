@@ -6,18 +6,18 @@
           class="mx-auto"
           outlined
         >
-        <v-card-title>Nombre ({{ stats.total }} reseñas)</v-card-title>
+        <v-card-title> {{ stats.name }} ({{ stats.total }} {{ $formatMessage('stats.reviews') }})</v-card-title>
           <v-card-text>
-            <p><strong>Positivas</strong>: {{stats.positive}}, <strong>Usuarios enojados</strong>: {{stats.anger}}</p>
-            <p><strong>Puntuación media</strong>: {{ stats.mean }}, <strong>Varianza</strong>: {{ stats.variance }}</p>
-            <p><strong>Mediana</strong>: {{ stats.median }}, <strong>Moda</strong>: {{ stats.mode }}</p>
+            <p><strong>{{ $formatMessage('stats.positives') }}</strong>: {{stats.positive}}, <strong>{{ $formatMessage('stats.anger') }}</strong>: {{stats.anger}}</p>
+            <p><strong>{{ $formatMessage('stats.mean') }}</strong>: {{ stats.mean }}, <strong>{{ $formatMessage('stats.variance') }}</strong>: {{ stats.variance }}</p>
+            <p><strong>{{ $formatMessage('stats.median') }}</strong>: {{ stats.median }}, <strong>{{ $formatMessage('stats.mode') }}</strong>: {{ stats.mode }}</p>
           </v-card-text>
         </v-card>
         <v-card
           class="mx-auto"
           outlined
         >
-        <v-card-title>Reseñas por puntuación</v-card-title>
+        <v-card-title>{{ $formatMessage('stats.review_by_punc') }}</v-card-title>
           <v-card-text>
             <Bar :chart-options="chartOptions"
             :chart-data="processResults"/>
@@ -28,7 +28,7 @@
           class="mx-auto"
           outlined
         >
-        <v-card-title>Reseñas positivas vs negativas</v-card-title>
+        <v-card-title>{{ $formatMessage('stats.positive_vs_negative') }}</v-card-title>
           <v-card-text>
             <Pie :chart-options="chartOptions"
           :chart-data="chartData"></Pie>
@@ -58,7 +58,7 @@ export default {
     name: "Stats",
     data: () => ({
       processResults:{},
-      labels:["Una estrella","Dos estrellas", "Tres estrellas", "Cuatro estrellas", "Cinco estrellas"],    
+      labels:[],    
       chartData: {
           labels: ['Positivas', 'Negativas'],
           datasets: [
@@ -93,18 +93,24 @@ export default {
     methods: {
       initialize(){
       api.get('/datasets/' + this.datasetId + "/stats").then((resp)=>{
-              this.processResults = {datasets: [{label: 'Número de reseñas',
+              this.processResults = {datasets: [{label: this.$formatMessage('stats.review_number'),
                                                  backgroundColor: 'green',
                                                  data:resp.data['ocurrences']}]
                                                 ,labels: this.labels}
               this.stats = resp.data
-              this.chartData = {datasets: [{label: 'Número de reseñas',
+              this.chartData = {datasets: [{label: this.$formatMessage('stats.review_number'),
                                                  backgroundColor: ['green', 'red'],
                                                  data:[this.stats["positive"],
                                                        this.stats["total"]-this.stats["positive"]]}]
-                                                ,labels: ['Positivas', 'Negativas']}
+                                                ,labels: [this.$formatMessage('stats.positives'), this.$formatMessage('stats.negatives')]}
               
               })
+              this.labels.push(1 + " " + this.$formatMessage('stats.star'))
+              let i = 0
+              for(i=2;i<=5;i++)
+              {
+                this.labels.push(i + " " + this.$formatMessage('stats.stars'))
+              }
       }
     }
 }

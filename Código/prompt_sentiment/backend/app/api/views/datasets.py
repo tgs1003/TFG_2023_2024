@@ -294,6 +294,7 @@ class DatasetStats(Resource):
             variance = statistics.variance(dataset_values)
         else:
             variance = 0
+        response_object["name"] = dataset.name
         response_object["total"] = total
         response_object["anger"] = anger
         response_object["positive"] = positive

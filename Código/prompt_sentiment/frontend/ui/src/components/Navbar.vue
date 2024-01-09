@@ -20,7 +20,7 @@
                 </template>
                 <v-list flat>
                     <v-list-item :key="link.text" :to="link.route" active-class="border" router v-for="link in links">
-                        <v-list-item-title>{{ this.$formatMessage(link.text) }}</v-list-item-title>
+                        <v-list-item-title>{{link.text}}</v-list-item-title>
                     </v-list-item>
                 </v-list>
             </v-menu>
@@ -41,12 +41,17 @@
                         <v-list-item-title>{{link.text}}</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
+                <v-divider></v-divider>
                 <v-list-item>
-                    <v-select @change="selectLang($event)" v-model="selectedLang" :items="langs">
-                        
-                    </v-select>
+                    
                 </v-list-item>
             </v-list>
+            <template v-slot:append>
+          <div class="pa-2">
+            <v-select :label="$formatMessage('navbar.language')" @change="selectLang($event)" v-model="selectedLang" :items="langs">
+            </v-select>
+          </div>
+        </template>
         </v-navigation-drawer>
     </nav>
 </template>
@@ -55,17 +60,18 @@
     import TokenService from '../services/token.service'
     export default {
         name: "Navbar",
-        data: () => ({
+        data() {
+            return{
             selectedLang: null,
             langs: ['English','Español'],
             mode: true,
             drawer: false,
+            menuHome: this.$formatMessage('navbar.menu.home'),
+            menuAdmin: this.$formatMessage('navbar.menu.admin'),
             links: [
-                {icon: 'dashboard', text: 'navbar.menu.home', route: '/'},
-                {icon: 'verified_user', text: 'navbar.menu.admin', route: '/admin-home'},
-                
             ],
-        }),
+            };
+        },
         computed: {
             isLoggedIn: function () {
                 return this.$store.getters.isLoggedIn
@@ -76,6 +82,9 @@
                 this.selectedLang = 'English'
             else
                 this.selectedLang = 'Español'
+            this.links.push({"icon": "dashboard", "text": this.$formatMessage('navbar.menu.home'), "route": "/"})
+            this.links.push({"icon": "verified_user", "text": this.$formatMessage('navbar.menu.admin'), "route": "/admin-home"})
+
         },
         methods: {
             selectLang(event){

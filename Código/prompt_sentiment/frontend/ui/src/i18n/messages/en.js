@@ -1,5 +1,4 @@
 export default {
-    'home.text': 'Hello {name}!',
     'home.analysis.title': 'Review analysis.',
     'home.analysis.desc': 'Select this option to analyse a review file.',
     'home.analysis.btn': 'Analyze reviews',
@@ -39,7 +38,23 @@ export default {
     'navbar.darkmode' : 'Dark mode',
     'navbar.menu' : 'Menu',
     'navbar.menu.home' : 'Home',
-    'navbar.menu.admin' : 'Admin'
+    'navbar.menu.admin' : 'Admin',
+    'navbar.language' : 'Language:',
+    'stats.reviews' : 'reviews',
+    'stats.positives' : 'Positives',
+    'stats.negatives' : 'Negatives',
+    'stats.anger': 'Anger',
+    'stats.mean' : 'Mean',
+    'stats.variance' : 'Variance',
+    'stats.median' : 'Median',
+    'stats.mode' : 'Mode',
+    'stats.review_by_punc': 'Review by puntuation',
+    'stats.positive_vs_negative': 'Positive vs. Negative',
+    'stats.review_number': 'Review number',
+    'stats.star': 'star',
+    'stats.stars': 'stars'
+
+
 
 
     

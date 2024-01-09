@@ -6,7 +6,6 @@ En este apéndice se va a explicar cómo está organizado el proyecto, el
 manual del programador y los requisitos necesarios para poder ejecutar el
 proyecto.
 
-
 \section{Estructura de directorios}
 
 En el proyecto hay una estructura de directorios que intenta organizar el trabajo de manera lógica:
@@ -61,7 +60,7 @@ Para la instalación de docker sólo hay que instalar Docker-Desktop.
 
 \section{Compilación, instalación y ejecución del proyecto}
 \subsection {Ejecución local}
-El proyecto tiene 2 partes claramente diferenciadas: Frontend y Backend.
+El proyecto tiene 2 partes claramente diferenciadas: frontend y backend.
 Para la ejecución del backend tenemos que abrir una consola de comandos, movernos al directorio backend 
 y ejecutar:
 //Instalamos las referencias
@@ -87,8 +86,10 @@ docker-compose up
 \end{verbatim}
 
 \section{Pruebas del sistema}
-
+Para las pruebas del backend se ha utilizado la libreria pytest. 
 Para la ejecución de las pruebas unitarias del backend hay que ejecutar:
 \begin{verbatim}
 pytest
 \end{verbatim}
+
+\imagen{resultado_pytest}{Resultado pytest}

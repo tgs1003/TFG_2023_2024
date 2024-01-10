@@ -1,7 +1,8 @@
 <template>
     <v-main>
+        
         <v-alert v-if="errorMessage != ''"
-            color="yellow"
+            color="#f5b7b1"
             variant="outlined"
             >
             <template v-slot:title>
@@ -13,6 +14,24 @@
                 class="fill-height"
                 fluid
         >
+        <v-row
+                    align="center"
+                    justify="center"
+                >
+                <v-col
+                        cols="12"
+                        md="4"
+                        sm="8"
+                >
+                <v-card>
+                    <v-card-text>
+                        <h1>Bienvenidos a PromptSentiment</h1>
+                        <p>Una aplicación para análisis de sentimiento.</p>
+                        Creada como trabajo de fin de grado del Grado de Ingeniería Informática de la Universidad de Burgos.
+                    </v-card-text>
+                </v-card>
+                </v-col>
+            </v-row>
             <v-row
                     align="center"
                     justify="center"
@@ -28,7 +47,7 @@
                                 dark
                                 flat
                         >
-                            <v-toolbar-title>Login form</v-toolbar-title>
+                            <v-toolbar-title>Login</v-toolbar-title>
                             <v-spacer/>
 
                         </v-toolbar>
@@ -64,6 +83,7 @@
                     </v-card>
                 </v-col>
             </v-row>
+            
         </v-container>
     </v-main>
 </template>
@@ -114,7 +134,7 @@
                     .then(response=>{
                         if(response.status == 200)
                             this.$router.push('/')
-                        this.errorMessage = "Usuario o contraseña incorrectos. (" + response + ")"
+                        this.errorMessage = "Usuario o contraseña incorrectos."
                         }
                     )
                     .catch(err => {

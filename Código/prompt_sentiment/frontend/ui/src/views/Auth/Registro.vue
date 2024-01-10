@@ -1,7 +1,7 @@
 <template>
     <v-main>
         <v-alert v-if="errorMessage != ''"
-            color="yellow"
+            color="#f5b7b1"
             variant="outlined"
             >
             <template v-slot:title>
@@ -86,14 +86,14 @@
 
 <script>
     import { validationMixin } from 'vuelidate'
-    import { required, email } from 'vuelidate/lib/validators'
+    import { required, email, minLength } from 'vuelidate/lib/validators'
     export default {
         
         mixins: [validationMixin],
         validations: {
         name: {required},
         email: { required, email },
-        password: { required },
+        password: { required, minLength: minLength(6) },
         
         },
         data() {
@@ -126,7 +126,7 @@
             passwordErrors(){
                 const errors = []
                 if (!this.$v.password.$dirty) return errors
-                !this.$v.password.required && errors.push('Password is required')
+                !this.$v.password.required && errors.push('La contraseña es obligatoria')
                 return errors
             
             }
@@ -142,7 +142,7 @@
                 .then(response=>{
                     if(response.status == 201)
                         this.$router.push('/')
-                    this.errorMessage = "El usuario ya existe. (" + response + ")"
+                    this.errorMessage = "El usuario ya existe."
                 })    
             },
             

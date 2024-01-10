@@ -88,7 +88,11 @@ class DatasetList(Resource):
         name = data["name"]
         type = data["type"]
         config = data["config"]
-        owner = data["owner"]
+        
+        if user:
+            owner = user.id
+        else:
+            owner = data["owner"]
                 
         response_object = {}
         

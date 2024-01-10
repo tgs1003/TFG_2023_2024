@@ -146,13 +146,13 @@
                   outlined
                 >
                   <v-card-text>
-                    <p><strong>{{ $formatMessage('analysis.process_result.total') }}Reseñas totales</strong>: {{ stats.total }}</p>
-                    <p><strong>{{ $formatMessage('analysis.process_result.positive') }}Positivas</strong>: {{stats.positive}}</p>
-                    <p><strong>{{ $formatMessage('analysis.process_result.anger') }}Usuarios enojados</strong>: {{stats.anger}}</p>
-                    <p><strong>{{ $formatMessage('analysis.process_result.mean') }}Puntuación media</strong>: {{ stats.mean }}</p>
-                    <p><strong>{{ $formatMessage('analysis.process_result.median') }}Mediana</strong>: {{ stats.median }}</p>
-                    <p><strong>{{ $formatMessage('analysis.process_result.mode') }}Moda</strong>: {{ stats.mode }}</p>
-                    <p><strong>{{ $formatMessage('analysis.process_result.variance') }}Varianza</strong>: {{ stats.variance }}</p>
+                    <p><strong>{{ $formatMessage('analysis.process_result.total') }}</strong>: {{ stats.total }}</p>
+                    <p><strong>{{ $formatMessage('analysis.process_result.positive') }}</strong>: {{stats.positive}}</p>
+                    <p><strong>{{ $formatMessage('analysis.process_result.anger') }}</strong>: {{stats.anger}}</p>
+                    <p><strong>{{ $formatMessage('analysis.process_result.mean') }}</strong>: {{ stats.mean }}</p>
+                    <p><strong>{{ $formatMessage('analysis.process_result.median') }}</strong>: {{ stats.median }}</p>
+                    <p><strong>{{ $formatMessage('analysis.process_result.mode') }}</strong>: {{ stats.mode }}</p>
+                    <p><strong>{{ $formatMessage('analysis.process_result.variance') }}</strong>: {{ stats.variance }}</p>
                   </v-card-text>
                 </v-card>
               </v-col>

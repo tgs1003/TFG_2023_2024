@@ -3,17 +3,16 @@
 Para una mejor compensión del trabajo realizado se recomienda conocer los conceptos teóricos mencionados en esta sección.
 
 \section{Análisis de sentimiento}
-El análisis de sentimiento es un campo de estudio en el procesamiento del lenguaje natural (PLN) que se centra en determinar y extraer la polaridad emocional asociada con un conjunto de datos de texto. 
+El análisis de sentimiento es un campo de estudio en el procesamiento del lenguaje natural (PLN) que se centra en determinar y extraer la polaridad emocional asociada con un conjunto de datos de texto~\cite{Bedrava2022}. 
 
 El objetivo principal es identificar y evaluar la actitud emocional expresada en un fragmento de texto, ya sea positiva, negativa o neutral.
 
-
 El análisis de sentimiento implica varios pasos:
 \begin{itemize}
-	\item \textbf{Preprocesamiento del Texto}: Antes de realizar el análisis de sentimiento, es necesario realizar una serie de tareas de preprocesamiento del texto, que incluyen la eliminación de palabras irrelevantes (stop words), lematización (reducción de palabras a su forma base), y la normalización del texto.
-	\item \textbf{Representación del Texto}: El texto debe representarse de una manera que pueda ser procesada por algoritmos de aprendizaje automático. Esto a menudo implica convertir el texto en vectores numéricos utilizando técnicas como la bolsa de palabras (bag-of-words) o modelos de incrustación de palabras (word embeddings).
-	\item \textbf{Modelado}: Se utilizan modelos de aprendizaje automático, como máquinas de soporte vectorial (SVM), redes neuronales, o algoritmos de clasificación, para entrenar un modelo sobre los datos de texto anotados con etiquetas de sentimiento. Durante el entrenamiento, el modelo aprende patrones y características asociadas con la polaridad del sentimiento.
-	\item \textbf{Clasificación}: Una vez entrenado, el modelo se utiliza para predecir la polaridad del sentimiento de nuevos textos. El resultado típicamente indica si el texto es positivo, negativo o neutral.
+	\item \textbf{Preprocesamiento del Texto}: antes de realizar el análisis de sentimiento, es necesario realizar una serie de tareas de preprocesamiento del texto, que incluyen la eliminación de palabras irrelevantes (stop words), lematización (reducción de palabras a su forma base), y la normalización del texto.
+	\item \textbf{Representación del Texto}: el texto debe representarse de una manera que pueda ser procesada por algoritmos de aprendizaje automático. Esto a menudo implica convertir el texto en vectores numéricos utilizando técnicas como la bolsa de palabras (bag-of-words) o modelos de incrustación de palabras (word embeddings).
+	\item \textbf{Modelado}: se utilizan modelos de aprendizaje automático, como máquinas de soporte vectorial (SVM), redes neuronales, o algoritmos de clasificación, para entrenar un modelo sobre los datos de texto anotados con etiquetas de sentimiento. Durante el entrenamiento, el modelo aprende patrones y características asociadas con la polaridad del sentimiento.
+	\item \textbf{Clasificación}: una vez entrenado, el modelo se utiliza para predecir la polaridad del sentimiento de nuevos textos. El resultado típicamente indica si el texto es positivo, negativo o neutral.
 \end{itemize}
 
 El análisis de sentimiento se aplica en una variedad de campos, 
@@ -29,41 +28,41 @@ otras áreas empresariales.
 Es una rama de la inteligencia artificial que se ocupa de la interacción 
 entre las computadoras y el lenguaje humano. \\
 El objetivo principal del PLN es permitir que las máquinas comprendan, 
-interpreten y generen texto de manera similar a como lo haría un ser humano.\\
+interpreten y generen texto de manera similar a como lo haría un ser humano~\cite{Moreno2018}.\\
 Dentro del procesamiento del lenguaje natural hay una serie de conceptos que es importante conocer:
 \begin{itemize}
-	\item \textbf{Tokenización}: Es el proceso de dividir un texto en unidades más 
+	\item \textbf{Tokenización}: es el proceso de dividir un texto en unidades más 
 	pequeñas llamadas "tokens". Un token puede ser una palabra, 
 	una frase o incluso un carácter, dependiendo de la granularidad deseada.
 	
-	\item \textbf{Análisis morfológico}: Implica comprender la estructura y la forma 
+	\item \textbf{Análisis morfológico}: implica comprender la estructura y la forma 
 	de las palabras en un texto.\\ Esto puede incluir la descomposición 
 	de las palabras en raíces y afijos para comprender su significado.
 
-	\item \textbf{Análisis sintáctico}: Se refiere a analizar la estructura 
+	\item \textbf{Análisis sintáctico}: se refiere a analizar la estructura 
 	gramatical de las oraciones para comprender la relación entre las palabras.\\ 
 	Esto implica identificar partes del discurso, como sustantivos, verbos, 
 	adjetivos, etc., y cómo se combinan para formar oraciones 
 	gramaticalmente correctas.
 	
-	\item \textbf{Análisis semántico}: Busca comprender el significado de las palabras y 
+	\item \textbf{Análisis semántico}: busca comprender el significado de las palabras y 
 	cómo se combinan para formar significados más complejos. \\
 	Involucra la interpretación del contexto y la comprensión 
 	de las relaciones entre las palabras.
 	
-	\item \textbf{Análisis pragmático}: Considera el uso del lenguaje en situaciones 
+	\item \textbf{Análisis pragmático}: considera el uso del lenguaje en situaciones 
 	específicas y comprende el significado más allá de las palabras. \\
 	Incluye la interpretación de intenciones, tono y contexto cultural.
 	
-	\item \textbf{Reconocimiento de entidades}: Consiste en identificar y clasificar 
+	\item \textbf{Reconocimiento de entidades}: consiste en identificar y clasificar 
 	entidades como nombres de personas, organizaciones, fechas, ubicaciones, etc., 
 	dentro de un texto.
 	
-	\item \textbf{Desambiguación}: Aborda la resolución de ambigüedades en el lenguaje.\\
+	\item \textbf{Desambiguación}: aborda la resolución de ambigüedades en el lenguaje.\\
 	Por ejemplo, entender a qué se refiere un pronombre o resolver el significado 
 	de una palabra con múltiples interpretaciones.
 	
-	\item \textbf{Generación de lenguaje}: Implica la creación de texto humano legible por parte 
+	\item \textbf{Generación de lenguaje}: implica la creación de texto humano legible por parte 
 	de las máquinas.\\ 
 	Puede ser tan simple como completar una oración o tan complejo 
 	como la creación de contenido original.
@@ -83,7 +82,7 @@ El ``\emph{Prompt Engineering}'' se refiere a la práctica de diseñar de manera
  como los ``\emph{Large Language Models}'', para obtener resultados específicos. 
 
 En otras palabras, implica la formulación precisa de las solicitudes al modelo 
-con el objetivo de influir en la salida de manera deseada.
+con el objetivo de influir en la salida de manera deseada~\cite{Solano2023}.
 
 Esta técnica es especialmente relevante en el contexto de modelos 
 generativos de lenguaje, como GPT-3, donde la calidad y la 
@@ -95,10 +94,10 @@ para una tarea particular.
 
 Algunas estrategias comunes de ``\emph{Prompt Engineering}'' incluyen~\cite{white2023prompt}:
 \begin{itemize}
-	\item \textbf{Ajuste del Contexto Inicial}: Proporcionar un contexto inicial específico que oriente al modelo hacia la tarea deseada.
-	\item \textbf{Modificación de la Formulación}: Experimentar con la redacción de las instrucciones para obtener respuestas más precisas o informativas.
-	\item \textbf{Control de la Temperatura}: En modelos de lenguaje como GPT-3, se puede ajustar la "temperatura" para influir en la aleatoriedad de las respuestas generadas.
-	\item \textbf{Incorporación de Ejemplos}: Proporcionar ejemplos específicos dentro de la solicitud para guiar al modelo hacia comportamientos deseados.
+	\item \textbf{Ajuste del Contexto Inicial}: proporcionar un contexto inicial específico que oriente al modelo hacia la tarea deseada.
+	\item \textbf{Modificación de la Formulación}: experimentar con la redacción de las instrucciones para obtener respuestas más precisas o informativas.
+	\item \textbf{Control de la Temperatura}: en modelos de lenguaje como GPT-3, se puede ajustar la "temperatura" para influir en la aleatoriedad de las respuestas generadas.
+	\item \textbf{Incorporación de Ejemplos}: proporcionar ejemplos específicos dentro de la solicitud para guiar al modelo hacia comportamientos deseados.
 \end{itemize}
 El ``\emph{Prompt Engineering}'' es una parte importante de trabajar con modelos de lenguaje generativos para adaptar su salida a las necesidades específicas de una tarea o aplicación. 
 La investigación continua en esta área busca mejorar la eficacia y la coherencia de la interacción con estos modelos.
@@ -106,33 +105,33 @@ La investigación continua en esta área busca mejorar la eficacia y la coherenc
 \section{Patrones de diseño}
 Los patrones de diseño en el ámbito del desarrollo de software 
 son soluciones probadas para problemas recurrentes que surgen 
-durante el diseño y la implementación de software. 
+durante el diseño y la implementación de software.\\ 
 Estos patrones representan las mejores prácticas y experiencias 
 recopiladas por desarrolladores a lo largo del tiempo y 
 proporcionan soluciones estructuradas y reutilizables 
-para situaciones comunes en el desarrollo de software.
+para situaciones comunes en el desarrollo de software~\cite{fowler2012patterns}.\\
 Los patrones de diseño pueden clasificarse en varias categorías, 
 y algunos de los más conocidos son:
 \begin{itemize}
 	\item \textbf{Patrones de Creación}:
 	\begin{itemize}
-		\item \textbf{Singleton}: Garantiza que una clase tenga solo una instancia y proporciona un punto global de acceso a ella.
-		\item \textbf{Factory Method}: Define una interfaz para crear un objeto, pero deja que las subclases alteren el tipo de objetos que se crearán.
+		\item \textbf{Singleton}: garantiza que una clase tenga solo una instancia y proporciona un punto global de acceso a ella.
+		\item \textbf{Factory Method}: define una interfaz para crear un objeto, pero deja que las subclases alteren el tipo de objetos que se crearán.
 	\end{itemize}
 	\item \textbf{Patrones de Estructura}:
 	\begin{itemize}
-		\item \textbf{Adapter}: Permite que la interfaz de una clase sea utilizada como otra interfaz.
-		\item \textbf{Decorator}: Añade funcionalidades a un objeto dinámicamente.
+		\item \textbf{Adapter}: permite que la interfaz de una clase sea utilizada como otra interfaz.
+		\item \textbf{Decorator}: añade funcionalidades a un objeto dinámicamente.
 	\end{itemize}
 	\item \textbf{Patrones de Comportamiento}:
 	\begin{itemize}
-		\item \textbf{Observer}: Define una dependencia uno a muchos entre objetos para que, cuando un objeto cambie de estado, todos sus dependientes sean notificados y actualizados automáticamente.
-		\item \textbf{Strategy}: Define una familia de algoritmos, encapsula cada uno de ellos y los hace intercambiables.
+		\item \textbf{Observer}: define una dependencia uno a muchos entre objetos para que, cuando un objeto cambie de estado, todos sus dependientes sean notificados y actualizados automáticamente.
+		\item \textbf{Strategy}: define una familia de algoritmos, encapsula cada uno de ellos y los hace intercambiables.
 	\end{itemize}
 	\item \textbf{Patrones de Arquitectura}:
 	\begin{itemize}
-		\item \textbf{MVC (Modelo-Vista-Controlador)}: Divide una aplicación en tres componentes interconectados, separando la representación de la información, la lógica de negocio y la gestión de la interfaz de usuario.
-		\item \textbf{MVP (Modelo-Vista-Presentador)}: Similar al MVC, pero con una separación más clara entre la lógica de presentación y la lógica de negocio.
+		\item \textbf{MVC (Modelo-Vista-Controlador)}: divide una aplicación en tres componentes interconectados, separando la representación de la información, la lógica de negocio y la gestión de la interfaz de usuario.
+		\item \textbf{MVP (Modelo-Vista-Presentador)}: similar al MVC, pero con una separación más clara entre la lógica de presentación y la lógica de negocio.
 	\end{itemize}
 \end{itemize}
 

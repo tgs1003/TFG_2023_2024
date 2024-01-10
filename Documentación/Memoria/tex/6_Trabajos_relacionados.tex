@@ -29,32 +29,6 @@ del lenguaje natural y ha mejorado considerablemente el rendimiento
 en una amplia gama de aplicaciones, incluido el análisis de sentimiento,
 la traducción automática, la respuesta a preguntas y muchas otras tareas de NLP.
 
-\section{Transformers}
-
-Los ´´\emph{Transformers}'' son una arquitectura de modelos de lenguaje y procesamiento del lenguaje natural (NLP)
-que se ha convertido en un avance revolucionario en este campo desde su introducción en 2017.\\
-Fueron desarrollados por Vaswani et al. en el artículo ´´\emph{Attention Is All You Need}''~\cite{vaswani2023attention}
-y han tenido un gran impacto en tareas de NLP, incluyendo la traducción automática,
-el análisis de sentimiento, la generación de texto, etc.\\
-La característica principal de los ´´\emph{Transformers}'' es su mecanismo de atención,
-que permite capturar las relaciones entre las palabras en un texto
-de manera más efectiva que las arquitecturas de modelos de lenguaje anteriores.\\
-El mecanismo de atención permite a un modelo dar más peso a ciertas partes del texto
-cuando procesa una palabra o token en particular, lo que le permite comprender
-mejor el contexto y las dependencias entre las palabras.\\
-Consisten en múltiples capas apiladas de unidades de atención, 
-lo que les permite aprender representaciones jerárquicas de los datos.\\
-A diferencia de otros de modelos de lenguaje, no utilizan capas convolucionales, 
-lo que los hace altamente paralelizables y eficientes para el entrenamiento.\\
-Se utilizan en muchas aplicaciones de procesamiento del lenguaje natural, como traducción automática, 
-generación de texto, análisis de sentimiento~\cite{UrdanetaTransformers}, 
-respuesta a preguntas, resumen de texto, etc.
-Ejemplos de modelos Transformer populares incluyen BERT~\cite{devlin2019bert}, 
-GPT~\cite{chatgpt1} (Generative Pre-trained Transformer), RoBERTa~\cite{liu2019roberta}, y muchos otros.\\ 
-Estos modelos han demostrado un rendimiento sobresaliente en diversas 
-tareas de procesamiento del lenguaje natural y han contribuido significativamente 
-al avance en este campo.
-
 \section{NLTK}
 NLTK~\cite{NLTK1} es una biblioteca de código abierto en el lenguaje de programación 
 Python que proporciona herramientas, recursos y bibliotecas para trabajar 
@@ -113,26 +87,77 @@ Además se le ofrece la opción de calcular series temporales a partir de los re
 y se da una predicción de los valores futuros.
 
 
-\section{NLP}
-NLP~\cite{nlp1}, o Procesamiento del Lenguaje Natural (por sus siglas en inglés, Natural Language Processing),
-es un campo de la inteligencia artificial y la informática que se enfoca en la interacción
-entre las computadoras y el lenguaje humano.\\
-Su objetivo es permitir que las máquinas comprendan, interpreten y generen texto
-y lenguaje humano de manera similar a como lo hacen los seres humanos.\\
-Algunos puntos clave sobre NLP son:
-\begin{description}
-    \item[Comunicación entre humanos y máquinas:] NLP se centra en facilitar la comunicación efectiva entre humanos y computadoras a través del lenguaje natural. Esto incluye la comprensión del texto escrito y hablado, así como la generación de texto legible y coherente por parte de las máquinas.
-    \item[Tareas en NLP:] NLP abarca una amplia gama de tareas y aplicaciones, que incluyen la traducción automática, el análisis de sentimiento, el análisis de texto, la extracción de información, la respuesta a preguntas, el resumen de texto, el procesamiento de voz, el procesamiento de chatbots y mucho más.
-    \item[Desafíos en NLP:] El procesamiento del lenguaje natural es un campo desafiante debido a la complejidad del lenguaje humano, que incluye ambigüedades, variabilidad, coloquialismos y otros factores. La comprensión del contexto, la semántica y la cultura son aspectos fundamentales.
-    \item[Herramientas y tecnologías:] En NLP, se utilizan una variedad de herramientas y tecnologías, como bibliotecas de código abierto (como NLTK, spaCy y scikit-learn en Python), modelos de lenguaje (como BERT y GPT-3), algoritmos de aprendizaje automático y redes neuronales, para abordar tareas específicas.
-    \item[Aplicaciones en la vida cotidiana:] NLP tiene un impacto significativo en la vida cotidiana, ya que se utiliza en motores de búsqueda, asistentes virtuales (como Siri y Alexa), traducción automática, análisis de redes sociales, detección de spam, corrección ortográfica, entre muchas otras aplicaciones.
-    \item[Avances recientes:] En los últimos años, los modelos de lenguaje basados en transformers, como BERT y GPT-3, han logrado avances significativos en tareas de NLP, mejorando la capacidad de las máquinas para entender y generar texto de manera más precisa y coherente.
-\end{description}
-El procesamiento del lenguaje natural es un campo en constante evolución 
-con un gran potencial para transformar la forma en que interactuamos 
-con la tecnología y procesamos grandes cantidades de datos de texto.\\
-A medida que se desarrollan nuevas técnicas y modelos, 
-el NLP seguirá siendo una área de investigación y desarrollo crucial en la inteligencia artificial.
+\section{Lingmotif~\cite{lingmotif}}
+Lingmotif es una aplicación multi-plataforma de sobremesa que analiza textos desde la perspectiva 
+del Análisis de Sentimiento. \\Básicamente, es capaz de determinar la orientación semántica 
+(si es positivo o negativo y en qué grado) de un texto o conjunto de textos, mediante \textbf{la detección 
+de expresiones lingüísticas} que indican una determinada polaridad.
 
+A diferencia de la mayoría del software existente, Lingmotif no es un sólo un clasificador, 
+ya que no se limita a clasificar un texto como positivo o negativo, sino que además ofrece una
+ serie de datos cuantitativos, una visualización del ``perfil de sentimiento'' del texto o textos 
+ (incluyendo series temporales), y un detallado análisis cualitativo del texto en sí, en el que 
+ se muestran los segmentos textuales identificados. \\Estas funcionalidades lo convierten en un herramienta 
+ única, y sus aplicaciones van más allá de las que normalmente ofrece este tipo de software. 
+ Lingmotif ofrece los resultados de sus análisis en archivos con formato HTML, con la versatilidad y 
+ fácil manejo que esto supone.
 
+Actualmente Lingmotif analiza textos en español e inglés. Se está trabajando en nuevas versiones 
+para alemán e italiano.
 
+\section{\href{https://www.danielsoper.com/sentimentanalysis/default.aspx}{Free Sentiment Analysis}}
+Es una herramienta gratuita que permite realizar un analisis de sentimiento de cualquier 
+texto escrito en Inglés. La herramienta califica el sentimiento con un número entre -100 y 100 
+dependiendo del sentimiento detectado en el texto.
+Sólo hay que pegar el texto en el cuadro de texto y pulsar el botón ``Analyze text''
+
+Para su funcionamiento utiliza algoritmos de linguística computacional y minería de texto.
+El modelo se ha entrenado usando el ``American National Corpus'' con lo que sólo funciona con 
+textos en inglés americano y escritos después de 1990. 
+No se conoce su funcionamiento interno pero por la descripción parece que ha usado un 
+corpus anotado y usa las coincidencias de palabras para dar una nota al texto dependiendo 
+de las palabras encontradas.
+
+\section{\href{https://www.lexalytics.com/}{Lexalytics}}
+Lexalytics es una empresa que se especializa en tecnologías de análisis de texto y 
+procesamiento del lenguaje natural (PLN). 
+Ofrece soluciones para extraer información valiosa de datos de texto no estructurados, 
+como contenido de redes sociales, comentarios de clientes, reseñas y más. 
+Los productos de Lexalytics están diseñados para ayudar a las empresas a analizar 
+y comprender el sentimiento, los temas y las tendencias dentro de grandes volúmenes de información textual.
+Uno de sus productos destacados es la Plataforma de Inteligencia Lexalytics, 
+que incluye varias herramientas y funciones para el análisis de texto. 
+Algunos de los componentes clave de su plataforma incluyen:
+Salience: Este es el motor central de análisis de texto de Lexalytics, utilizado 
+para el análisis de sentimientos, el reconocimiento de entidades y la extracción de temas clave de texto.
+Semantria: Es la API de análisis de texto y sentimiento basada en la nube de Lexalytics, 
+que brinda a los desarrolladores acceso a potentes capacidades de PLN.
+Servicios de Extracción de Datos (DES): DES está diseñado para extraer automáticamente 
+información e ideas de varios tipos de documentos, como contratos, correos electrónicos y 
+otro contenido relacionado con negocios.
+Soporte para Múltiples Idiomas: Las soluciones de Lexalytics admiten varios idiomas, 
+lo que las hace adecuadas para empresas con presencia global.
+Estas herramientas y servicios pueden ser valiosos para las organizaciones que 
+buscan dar sentido a la gran cantidad de datos de texto no estructurados que generan o 
+encuentran en el curso de sus operaciones. Se pueden aplicar en áreas como la gestión 
+de la experiencia del cliente, el monitoreo de redes sociales, la investigación de mercado 
+y otros campos donde comprender la información textual es crucial. 
+
+\section{IBM Watson}
+IBM Watson es una plataforma de inteligencia artificial (IA) desarrollada por IBM que proporciona servicios y herramientas avanzadas para el procesamiento del lenguaje natural, el aprendizaje automático, la analítica de datos y otras capacidades cognitivas. Se llama Watson en honor al fundador de IBM, Thomas J. Watson. La plataforma Watson se ha utilizado en una variedad de aplicaciones y sectores, desde la atención médica y la educación hasta el comercio y los servicios financieros.
+Algunas de las capacidades clave de IBM Watson incluyen:
+Procesamiento del Lenguaje Natural (NLP): Watson puede comprender y analizar el lenguaje humano, 
+permitiendo la interpretación de preguntas y la generación de respuestas significativas.
+Aprendizaje Automático y Analítica Predictiva: Watson utiliza técnicas de aprendizaje automático 
+para extraer patrones a partir de grandes conjuntos de datos y realizar análisis predictivos.
+Visión por Computadora: Capacidades para analizar y comprender imágenes y videos, lo que puede 
+ser útil en aplicaciones como el reconocimiento facial y la interpretación de contenido visual.
+Asesoramiento de Expertos: Watson ha sido utilizado en aplicaciones como juegos de preguntas y 
+respuestas, demostrando su capacidad para competir y ganar contra humanos en contextos complejos.
+Automatización de Procesos Empresariales: Watson puede ser utilizado para automatizar tareas y 
+procesos empresariales, mejorando la eficiencia operativa.
+Análisis de Datos en Tiempo Real: Watson puede analizar datos en tiempo real para proporcionar 
+información instantánea y tomar decisiones basadas en datos.
+IBM Watson ha sido aplicado en diversos campos, como la atención médica, donde se ha utilizado 
+para ayudar en el diagnóstico de enfermedades, en el ámbito financiero para el análisis de riesgos, 
+en la educación para personalizar la enseñanza, y en muchos otros sectores.

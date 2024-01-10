@@ -58,6 +58,7 @@
 
 <script>
     import TokenService from '../services/token.service'
+    import api from '../services/api'
     export default {
         name: "Navbar",
         data() {

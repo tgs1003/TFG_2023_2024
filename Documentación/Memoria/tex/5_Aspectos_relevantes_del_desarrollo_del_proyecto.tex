@@ -56,7 +56,7 @@ Para este proyecto se ha seguido la metodología \textbf{SCRUM} configurando los
 para la planificación se ha utilizado la herramienta \href{https://zube.io/tgs1003/tfg_2023_2024}{Zube}.
 Se puede encontrar más detalles sobre el proceso seguido en los anexos de este documento.
 
-\subsection{DevOps}
+\subsection{DevOps~\cite{devops}}
 \textbf{DevOps} es una cultura, filosofía y conjunto de prácticas que se centran en la colaboración 
 estrecha y la integración continua entre los equipos de desarrollo (Dev) y operaciones (Ops) 
 en el ciclo de vida del desarrollo de software. \\
@@ -65,28 +65,28 @@ mejorar la calidad y la confiabilidad, y permitir una respuesta rápida a los
 cambios y a las necesidades de los usuarios. \\DevOps promueve la automatización, 
 la comunicación eficaz y la colaboración entre los equipos, lo que permite un flujo 
 de trabajo más eficiente en todo el proceso de desarrollo y entrega de software.\\
-Algunos de los principios y prácticas clave de \textbf{DevOps} incluyen:
+Algunos de los principios y prácticas clave de \textbf{DevOps} son:
 \begin{itemize}
-   \item \textbf{Automatización}: La automatización de tareas repetitivas y procesos manuales acelera la entrega y minimiza los errores. Esto incluye la automatización de pruebas, implementaciones, aprovisionamiento de infraestructura y monitoreo.
-   \item \textbf{Integración Continua (CI)}: Los cambios de código se integran regularmente en un repositorio compartido, 
+   \item \textbf{Automatización}: la automatización de tareas repetitivas y procesos manuales acelera la entrega y minimiza los errores. Esto incluye la automatización de pruebas, implementaciones, aprovisionamiento de infraestructura y monitoreo.
+   \item \textbf{Integración Continua (CI)}: los cambios de código se integran regularmente en un repositorio compartido, 
 se prueban automáticamente y se implementan en un entorno de desarrollo o de prueba. 
 Esto asegura que el código esté siempre en un estado funcional.
-\item \textbf{Entrega Continua (CD)}: La entrega continua extiende la integración continua al permitir 
+\item \textbf{Entrega Continua (CD)}: la entrega continua extiende la integración continua al permitir 
 la entrega automática de cambios a entornos de prueba o producción después de la integración y 
 las pruebas exitosas.
-\item \textbf{Monitoreo y Retroalimentación Continua}: El monitoreo constante de aplicaciones y sistemas 
+\item \textbf{Monitoreo y Retroalimentación Continua}: el monitoreo constante de aplicaciones y sistemas 
 permite detectar problemas en tiempo real y proporciona información valiosa para 
 mejorar la calidad y la eficiencia.
-\item \textbf{Colaboración y Comunicación}: La comunicación efectiva entre los equipos de desarrollo y 
+\item \textbf{Colaboración y Comunicación}: la comunicación efectiva entre los equipos de desarrollo y 
 operaciones es esencial. La colaboración se fomenta mediante reuniones regulares, 
 herramientas compartidas y un entendimiento mutuo de las metas y responsabilidades.
-\item \textbf{Infraestructura como Código (IaC)}: La infraestructura se administra y despliega como código, 
+\item \textbf{Infraestructura como Código (IaC)}: la infraestructura se administra y despliega como código, 
 lo que facilita la creación y el mantenimiento de entornos de desarrollo y producción 
 consistentes y escalables.
 \item \textbf{Cultura de Mejora Continua}: DevOps promueve una cultura en la que se aprende 
 de los errores y se busca constantemente la mejora en todos los aspectos del desarrollo y 
 la operación de software.
-\item \textbf{Seguridad}: La seguridad es un aspecto crítico de \textbf{DevOps}. 
+\item \textbf{Seguridad}: la seguridad es un aspecto crítico de \textbf{DevOps}. 
 Los principios de seguridad deben estar integrados en todas las etapas 
 del ciclo de vida del desarrollo de software.
 \end{itemize}
@@ -96,7 +96,8 @@ una mayor capacidad de respuesta a los cambios del mercado y las necesidades del
 Esta metodología se ha vuelto esencial en el desarrollo de software moderno, 
 especialmente en entornos ágiles y de entrega continua.
 
-Para el publicar del código de este trabajo se ha utilizado \href{https://www.docker.com/}{Docker} junto con \href{https://www.portainer.io/}{Portainer} para el 
+Para el publicar del código de este trabajo se ha utilizado \href{https://www.docker.com/}{Docker} 
+junto con \href{https://www.portainer.io/}{Portainer}  y \href{https:\\www.github.com}{Github} para el 
 despliegue continuo.
 
 
@@ -122,7 +123,12 @@ para optimizar la ejecución del modelo.
 Al planificar el segundo sprint incluí una tarea para crear un prototipo en collab, 
 sin embargo esta tarea tenía unas dependencias que hacían imposible su realización.
 Lo primero que tenía que hacer era seleccionar un dataset para poder realizar las pruebas.
-Y además necesitaba seleccionar el modelo LLM idoneo para la realización de este protoripo.
+Y además necesitaba seleccionar el modelo LLM idóneo para la realización de este protoripo.
+Una vez replanificadas las tareas en el orden adecuado, seleccioné un conjunto de datos de huggingface y 
+un modelo LLM basado en LlamaCpp para usarlo en el notebook de collab.
+Al usar un modelo basado en LlamaCpp la ejecución resulta más lenta (unos 30 segundos por reseña) 
+pero no se infiere en costes de proceso.
+
 
 \section{Elección del conjunto de datos}
 
@@ -172,7 +178,11 @@ Existen muchos conjuntos de datos que podemos usar para nuestro proyecto, por ej
    \item \href{https://huggingface.co/datasets/hugginglearners/amazon-reviews-sentiment-analysis}{Amazon Reviews for Sentiment Analysis}   
 \end{itemize}
 
-
+Finalmente se ha utilizado un conjunto de datos de huggingface, ya que contiente más metadatos que han resultado útiles
+para la organización de las pruebas (Amazon Shoe Reviews).
+Por otro lado se han preparado una serie de ficheros con reseñas para poder hacer la demostración.
+Tanto el fichero python para preparar esos fichero como los ficheros en sí, se pueden encontrar en la 
+carpeta datasets del repositorio de código.
 
 \section{Elección del modelo LLM}
 
@@ -214,4 +224,15 @@ Es una aplicación gratuita que permite descargar modelos de Hugging Face y
 probarlos mediante un chat o mediante una API.\\
 Además permite aprovechar una tarjeta gráfica en el caso de tenerla 
 para poder usar el modelo aprovechando sus capacidades de computación en paralelo.
+
+Después de evaluar los diferentes modelos LLM y en vista de los tiempos de respuesta se ha decidido usar el modelo 
+de OpenAI para la aplicación final. Aunque se puede usar un modelo basado en LlamaCpp de forma opcional.
+
+\section{Diseño del prompt}
+
+
+\section{Validación del sistema}
+
+
+\section{Despliegue de la aplicación}
 

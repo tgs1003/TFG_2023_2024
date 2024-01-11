@@ -1,23 +1,27 @@
 \capitulo{7}{Conclusiones y Líneas de trabajo futuras}
 
-Todo proyecto debe incluir las conclusiones que se derivan de su desarrollo. 
-Éstas pueden ser de diferente índole, dependiendo de la tipología del proyecto, 
-pero normalmente van a estar presentes un conjunto de conclusiones relacionadas 
-con los resultados del proyecto y un conjunto de conclusiones técnicas. 
-Además, resulta muy útil realizar un informe crítico indicando cómo se puede 
-mejorar el proyecto, o cómo se puede continuar trabajando en la línea 
-del proyecto realizado. 
 \section{Conclusiones}
 
 
 \section{Líneas de trabajo futuras}
 
 \subsection{Nuevos modelos}
+Actualmente la aplicación soporta el uso de OpenAI y Hugging face debido a las limitaciones de ambas,
+sería adecuado ampliar las opciones. Una de las posible opciones sería instalar un modelo en local 
+pero se descartó debido al pobre rendimiento y la excesiva cantidad de recursos necesarios.
+La opción más viable sería incluir un gestor de colas de mensajes (tipo RabbitMQ) para procesar las distintas tareas.
+De esta forma se podría distribuir el trabajo en diferentes ordenadores con mejores prestaciones 
+(incluyendo tarjetas gráficas).
 
 \subsection{Nuevas fuentes de datos}
-Web service
+La aplicación en el momento de presentación al tribunal sólo permite procesar reseñas desde un fichero (ya sea Csv o Json).
+Sería interesante agregar nuevas fuentes de datos como servicios web o similares.
 
 \subsection{Más opciones de análisis}
-Configuración del prompt
+Sería muy interesante darle a usuario la posibilidad de modificar el prompt para permitir 
+extraer más información útil de las reseñas.
 
 \subsection{GridFS}
+Ahora mismo al importar un fichero de reseñas éste se almacena en directorio temporal en el contenedor docker.\\
+Podría ser interesante utilizar una solución más robusta como puede ser \href{https://www.mongodb.com/docs/manual/core/gridfs/}{GridFS}. 
+Aunque una de las ventajas de usarlo en un directorio temporal es que estos ficheros desaparecen al reiniciar.

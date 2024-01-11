@@ -1,19 +1,7 @@
 \capitulo{5}{Aspectos relevantes del desarrollo del proyecto}
 
-Este apartado pretende recoger los aspectos más interesantes del desarrollo del proyecto, comentados por los autores del mismo.
-Debe incluir desde la exposición del ciclo de vida utilizado, 
-hasta los detalles de mayor relevancia de las fases de análisis, diseño e implementación.
-Se busca que no sea una mera operación de copiar y pegar diagramas y extractos del código fuente, 
-sino que realmente se justifiquen los caminos de solución que se han tomado, 
-especialmente aquellos que no sean triviales.
-Puede ser el lugar más adecuado para documentar los aspectos más interesantes del diseño y 
-de la implementación, con un mayor hincapié en aspectos tales como el tipo de arquitectura elegido, 
-los índices de las tablas de la base de datos, normalización y desnormalización, 
-distribución en ficheros3, reglas de negocio dentro de las bases de datos (EDVHV GH GDWRV DFWLYDV), 
-aspectos de desarrollo relacionados con el WWW...
-Este apartado, debe convertirse en el resumen de la experiencia práctica del proyecto, y 
-por sí mismo justifica que la memoria se convierta en un documento útil, 
-fuente de referencia para los autores, los tutores y futuros alumnos.
+Este apartado recoge los aspectos más interesantes del desarrollo del trabajo.
+
 
 \section{Metodologías}
 
@@ -28,26 +16,26 @@ la flexibilidad y la colaboración en equipos de desarrollo.
 \subsubsection{Roles}
 
 \begin{itemize}
-   \item \textbf{Scrum Master}: Facilita el proceso Scrum, elimina obstáculos y ayuda al equipo a alcanzar sus objetivos.
-   \item \textbf{Product Owner}: Representa las necesidades del cliente y define las características del producto.
-   \item \textbf{Equipo de Desarrollo}: Profesionales que trabajan en la entrega del producto.
+   \item \textbf{Scrum Master}: facilita el proceso Scrum, elimina obstáculos y ayuda al equipo a alcanzar sus objetivos.
+   \item \textbf{Product Owner}: representa las necesidades del cliente y define las características del producto.
+   \item \textbf{Equipo de Desarrollo}: profesionales que trabajan en la entrega del producto.
 \end{itemize}
 
 \subsubsection{Eventos}
 
 \begin{itemize}
-   \item \textbf{Sprint}: Un periodo de tiempo fijo (generalmente de 2 a 4 semanas) en el que se entrega un incremento de producto.
-   \item \textbf{Reunión de Planificación del Sprint}: Al inicio de cada sprint, el equipo planifica el trabajo que se realizará durante ese periodo.
-   \item \textbf{Revisión del Sprint}: Al final de cada sprint, el equipo presenta el trabajo completado al Product Owner y a otras partes interesadas.
-   \item \textbf{Retrospectiva del Sprint}: Una sesión al final de cada sprint donde el equipo revisa su desempeño y busca formas de mejorar.
+   \item \textbf{Sprint}: un periodo de tiempo fijo (generalmente de 2 a 4 semanas) en el que se entrega un incremento de producto.
+   \item \textbf{Reunión de Planificación del Sprint}: al inicio de cada sprint, el equipo planifica el trabajo que se realizará durante ese periodo.
+   \item \textbf{Revisión del Sprint}: al final de cada sprint, el equipo presenta el trabajo completado al Product Owner y a otras partes interesadas.
+   \item \textbf{Retrospectiva del Sprint}: una sesión al final de cada sprint donde el equipo revisa su desempeño y busca formas de mejorar.
 \end{itemize}
 
 \subsubsection{Artefactos}
 
 \begin{itemize}
-\item \textbf{Product Backlog}: Una lista priorizada de todas las funcionalidades, cambios y mejoras propuestas para el producto.
-\item \textbf{Sprint Backlog}: La lista de tareas que el equipo se compromete a completar durante un sprint.
-\item \textbf{Incremento}: El producto funcional y potencialmente entregable al final de cada sprint.
+\item \textbf{Product Backlog}: una lista priorizada de todas las funcionalidades, cambios y mejoras propuestas para el producto.
+\item \textbf{Sprint Backlog}: la lista de tareas que el equipo se compromete a completar durante un sprint.
+\item \textbf{Incremento}: el producto funcional y potencialmente entregable al final de cada sprint.
 \end{itemize}
 
 Scrum promueve la transparencia, la inspección y la adaptación, lo que significa que los equipos pueden ajustar su enfoque y estrategia en función de los cambios en los requisitos del cliente o en las circunstancias del proyecto. Este marco de trabajo es especialmente útil en entornos donde los requisitos pueden cambiar con frecuencia y se valora la capacidad de respuesta y flexibilidad del equipo de desarrollo.
@@ -90,7 +78,7 @@ la operación de software.
 Los principios de seguridad deben estar integrados en todas las etapas 
 del ciclo de vida del desarrollo de software.
 \end{itemize}
-La implementación exitosa de \textbf{DevOps} puede llevar a una mayor velocidad de entrega, 
+La implementación de \textbf{DevOps} puede llevar a una mayor velocidad de entrega, 
 una mayor calidad del software, una mayor eficiencia operativa y 
 una mayor capacidad de respuesta a los cambios del mercado y las necesidades del cliente. 
 Esta metodología se ha vuelto esencial en el desarrollo de software moderno, 
@@ -167,8 +155,6 @@ Uno de los conjuntos de datos evaluados han sido:
    \item \href{https://www.kaggle.com/datasets/kritanjalijain/amazon-reviews}{Amazon Reviews}
 \end{itemize}
 
-
-
 \subsection{Hugging Face}
 Hugging Face es una empresa y plataforma en línea que se centra en la creación y distribución de modelos de lenguaje de inteligencia artificial, así como en herramientas y recursos relacionados con el procesamiento del lenguaje natural (NLP). La compañía es conocida por su biblioteca de modelos preentrenados, así como por su contribución a la comunidad de aprendizaje automático y NLP.
 Existen muchos conjuntos de datos que podemos usar para nuestro proyecto, por ejemplo:
@@ -192,13 +178,13 @@ El problema de usar este modelo, a pesar de ser económico, es su coste.
 Para evitar ese problema y poder utilizar un modelo sin limitaciones, he buscado otras alternativas.
 Entre estas se encuentran:
 \begin{itemize}
-   \item \textbf{Microsoft Azure Language Models} Microsoft Azure ofrece varios servicios de procesamiento del lenguaje natural, incluidos modelos de lenguaje como parte de su oferta de servicios cognitivos.
-   \item \textbf{Google Cloud Natural Language API} Google Cloud proporciona una API de procesamiento del lenguaje natural que incluye funciones avanzadas como análisis de sentimientos, extracción de entidades y más.
-   \item \textbf{Hugging Face Transformers} Hugging Face es una plataforma que ofrece acceso a una amplia variedad de modelos de lenguaje preentrenados. Los modelos GPT y otros están disponibles a través de su biblioteca Transformers.
-   \item \textbf{Facebook AI} Facebook AI Research (FAIR) trabaja en el desarrollo de modelos de lenguaje y herramientas relacionadas con la inteligencia artificial. Aunque no tienen un modelo específico comparable a GPT, han contribuido significativamente al campo.
-   \item \textbf{Rasa} Rasa es una plataforma de código abierto para construir asistentes conversacionales. Permite a los desarrolladores crear chatbots personalizados y asistentes virtuales.
-   \item \textbf{Chatbot Frameworks} Hay varios marcos y bibliotecas de código abierto que permiten a los desarrolladores construir sus propios chatbots, como ChatterBot, Botpress, y Microsoft Bot Framework.
-   \item \textbf{Dialogflow} Dialogflow, propiedad de Google, es una plataforma de desarrollo de chatbots y asistentes virtuales que utiliza tecnologías de procesamiento del lenguaje natural.
+   \item \textbf{Microsoft Azure Language Models}: Microsoft Azure ofrece varios servicios de procesamiento del lenguaje natural, incluidos modelos de lenguaje como parte de su oferta de servicios cognitivos.
+   \item \textbf{Google Cloud Natural Language API}: Google Cloud proporciona una API de procesamiento del lenguaje natural que incluye funciones avanzadas como análisis de sentimientos, extracción de entidades y más.
+   \item \textbf{Hugging Face Transformers}: Hugging Face es una plataforma que ofrece acceso a una amplia variedad de modelos de lenguaje preentrenados. Los modelos GPT y otros están disponibles a través de su biblioteca Transformers.
+   \item \textbf{Facebook AI}: Facebook AI Research (FAIR) trabaja en el desarrollo de modelos de lenguaje y herramientas relacionadas con la inteligencia artificial. Aunque no tienen un modelo específico comparable a GPT, han contribuido significativamente al campo.
+   \item \textbf{Rasa}: Rasa es una plataforma de código abierto para construir asistentes conversacionales. Permite a los desarrolladores crear chatbots personalizados y asistentes virtuales.
+   \item \textbf{Chatbot Frameworks} hºay varios marcos y bibliotecas de código abierto que permiten a los desarrolladores construir sus propios chatbots, como ChatterBot, Botpress, y Microsoft Bot Framework.
+   \item \textbf{Dialogflow}: Dialogflow, propiedad de Google, es una plataforma de desarrollo de chatbots y asistentes virtuales que utiliza tecnologías de procesamiento del lenguaje natural.
 \end{itemize}
 
 Investigando sobre las diferentes alternativas nos hemos encontrado con 
@@ -213,7 +199,7 @@ Existen una colección de modelos que van desde 7b a 70b (7b significa que se ha
 7.000 millones de tokens para su entrenamiento y 70b 70.000 millones).\\
 Aún así el modelo más pequeño necesita unos recursos muy elevados para su funcionamiento. 
 Aquí es dónde entra en juego la \href{https://es.wikipedia.org/wiki/Cuantificaci%C3%B3n_digital}{cuantificación}.\\
-Aplicando la cuantificación, los modelos ocupan menos espacio y son más rápidos pero también más imprecisos.
+Aplicando la ``cuantificación'', los modelos ocupan menos espacio y son más rápidos pero también más imprecisos.
 En la plataforma Hugging Face existen multitud de modelos de diferentes tamaños y tipos de cuantificación.
 En este punto nos quedaba elegir un modelo que se pueda ejecutar de una manera razonable 
 en equipos personales pero manteniendo unos niveles razonables de precisión.\\
@@ -233,6 +219,4 @@ de OpenAI para la aplicación final. Aunque se puede usar un modelo basado en Ll
 
 \section{Validación del sistema}
 
-
-\section{Despliegue de la aplicación}
 

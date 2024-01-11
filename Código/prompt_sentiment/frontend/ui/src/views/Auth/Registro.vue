@@ -135,6 +135,8 @@
             register(){
                 this.errorMessage=""
                 this.$v.$touch()
+                if (this.$v.$invalid)
+                    return
                 let email = this.email
                 let password = this.password
                 let name = this.name

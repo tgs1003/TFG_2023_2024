@@ -127,6 +127,8 @@
         methods:{
             login(){
                 this.$v.$touch()
+                if (this.$v.$invalid)
+                    return
                 this.errorMessage = ""
                 let email = this.email
                 let password = this.password

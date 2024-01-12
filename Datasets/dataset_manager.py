@@ -1,9 +1,6 @@
 import pandas as pd
-
 from datasets import load_dataset
 import logging
-
-
 
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv(), override=True) # read local .env file
@@ -27,6 +24,7 @@ def split_dataset(path, folder):
         product_id = products.at[i, 'product_id']
         product_df = df[df['product_id'] == product_id].filter(items=['text'])
         product_df[df['product_id'] == product_id].to_json(folder + product_id + '.json', orient='records')
+
 
 if __name__ == "__main__":
     split_dataset('mesmalif/amazon-shoe-reviews', '/tmp/promptsentiment/json/')

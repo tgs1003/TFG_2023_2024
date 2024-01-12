@@ -1,1 +1,0 @@
-Material de referencia usado para el desarrollo del proyecto.

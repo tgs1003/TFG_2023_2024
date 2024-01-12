@@ -1,10 +1,9 @@
 import pandas as pd
 import os
 from datasets import load_dataset
-from datetime import datetime
 import logging
 import requests
-import json
+
 
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv(), override=True) # read local .env file

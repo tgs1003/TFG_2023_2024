@@ -1,7 +1,6 @@
 import logging, json, time, werkzeug, statistics
 from flask import request
-from flask_restx import Resource, fields, Namespace, reqparse
-import pandas as pd
+from flask_restx import Resource, fields, Namespace
 from app.api.services.datasets import get_all_datasets, get_all_user_datasets,\
 get_dataset_by_id, update_dataset, delete_dataset, add_dataset
 from app.api.services.reviews import count_reviews_by_dataset_id, get_reviews_by_dataset_id
@@ -86,9 +85,9 @@ class DatasetList(Resource):
         # Obtiene usuario identificado en el token.
         user = get_token_user(request, datasets_namespace)
         name = data["name"]
-        type = data["type"]
+        dataset_type = data["type"]
         config = data["config"]
-        
+
         if user:
             owner = user.id
         else:
@@ -96,7 +95,7 @@ class DatasetList(Resource):
                 
         response_object = {}
         
-        dataset1 = add_dataset(name = name, type = type, config = config, owner = owner)
+        dataset1 = add_dataset(name = name, type = dataset_type, config = config, owner = owner)
         response_object["message"] = f"Se ha añadido el dataset {name}."
         response_object["dataset_id"] = dataset1.id
         return response_object, 201
@@ -135,6 +134,7 @@ class Datasets(Resource):
         response_object["message"] = f"Dataset {dataset.id} actualizado."
         return response_object, 200
     
+
     @datasets_namespace.response(200, "Dataset <dataset_id> eliminado.")
     @datasets_namespace.response(404, "El dataset <dataset_id> no existe.")
     @datasets_namespace.expect(parser)
@@ -150,6 +150,7 @@ class Datasets(Resource):
         response_object["message"] = f"El dataset {dataset.id} se ha borrado."
         return response_object, 200
     
+
 load_dataset_parser = datasets_namespace.parser()
 put_parser.add_argument("Authorization", location="headers")
 put_parser.add_argument("sample", location="json")
@@ -170,7 +171,7 @@ class DatasetUpload(Resource):
         file = args['file']
         file_info = store_file(file)
         response_object["file_info"] = file_info
-        response_object["message"] = f"El fichero se ha cargado."
+        response_object["message"] = "El fichero se ha cargado."
         return response_object, 200
     
 class DatasetLoad(Resource):
@@ -189,10 +190,10 @@ class DatasetLoad(Resource):
         dataset = get_dataset_by_id(dataset_id)
         if not dataset:
             datasets_namespace.abort(404, f"El dataset {dataset_id} no existe.")
-        
+
         if dataset.type == "Hugging face":
             load_dataset_hf(dataset_id, dataset.config, sample)
-        else:    
+        else:
             load_dataset_local(dataset_id, dataset.config, sample)
 
         response_object["message"] = f"Dataset {dataset.id} se ha cargado."
@@ -223,25 +224,25 @@ class DatasetProcess(Resource):
                 anger = result["Anger"].lower() == "true"
                 model = "OpenAI"
                 process_time = int(time.perf_counter() - time_start)
-                add_sentiment(review_id=review_id, 
-                            stars=int(stars), 
-                            sentiment=sentiment, 
-                            anger=bool(anger), 
-                            model=model, 
+                add_sentiment(review_id=review_id,
+                            stars=int(stars),
+                            sentiment=sentiment,
+                            anger=bool(anger),
+                            model=model,
                             correct=True,
                             process_time = process_time)
             except:
-                add_sentiment(review_id=review_id, 
+                add_sentiment(review_id=review_id,
                             correct=False,
                             model=model,
-                            source=json.dumps(result),                            
+                            source=json.dumps(result),
                             process_time = process_time)
 
         response_object["message"] = f"Dataset {dataset.id} se ha procesado correctamente."
         return response_object, 200
     
     def parse_stars(self, stars):
-        if type(stars) == int:
+        if isinstance(stars, int):
             return stars
         elif stars == 'Five':
             return 5
@@ -270,7 +271,7 @@ class DatasetStats(Resource):
         dataset_values = []
         positive = 0
         total = 0
-        anger = 0 
+        anger = 0
         for sentiment in sentiments:
             if sentiment.correct:
                 total = total + 1
@@ -310,6 +311,7 @@ class DatasetStats(Resource):
         response_object["values"] = dataset_values
         response_object["message"] = f"Estadísticas calculadas correctamente para el dataset {dataset.id}."
         return response_object, 200
+
 
 datasets_namespace.add_resource(DatasetList, "")
 datasets_namespace.add_resource(Datasets, "/<int:dataset_id>")

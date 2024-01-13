@@ -1,12 +1,11 @@
 import pandas as pd
 import logging
-import os
 import json
 from huggingface_hub import hf_hub_download
 from datasets import load_dataset as ld
 from datetime import datetime
 from app.api.services.datasets import get_dataset_by_id
-from app.api.services.reviews import get_review_by_dataset_id_and_review_id, add_review
+from app.api.services.reviews import add_review
 
 
 logging.basicConfig(level=logging.DEBUG,
@@ -32,7 +31,7 @@ def load_dataset(dataset_id, config, sample):
     correct_stars = 0
     if 'correct_stars' in configuration.keys():
         correct_stars=int(configuration["correct_stars"])
-    
+        
     date_format = ''
     if 'date_format' in configuration.keys():
         date_format=configuration["date_format"]

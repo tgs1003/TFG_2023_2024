@@ -1,7 +1,4 @@
-import pytest, os
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import create_engine
-from sqlalchemy_utils import database_exists, create_database
+import pytest
 from app import create_app, db
 from app.api.models.users import User
 from app.api.models.datasets import Dataset
@@ -27,8 +24,8 @@ def test_database():
 @pytest.fixture(scope="module")
 def add_user():
     def _add_user(username, email, password, rol="Gestor"):
-        user = User(name=username, 
-                    email=email, 
+        user = User(name=username,
+                    email=email,
                     password=password,
                     rol=rol)
         db.session.add(user)
@@ -41,8 +38,8 @@ def add_user():
 def add_dataset():
     def _add_dataset(name, type, 
                      config, owner):
-        dataset = Dataset(name=name, 
-                          type=type, 
+        dataset = Dataset(name=name,
+                          type=type,
                           config=config,
                           owner=owner,
                           status="Creado")
@@ -55,9 +52,9 @@ def add_dataset():
 @pytest.fixture(scope="module")
 def add_review():
     def _add_review(dataset_id, review_text, review_time, original_stars):
-        review = Review(dataset_id = dataset_id, 
-                        review_text = review_text, 
-                        review_time = review_time, 
+        review = Review(dataset_id = dataset_id,
+                        review_text = review_text,
+                        review_time = review_time,
                         original_stars=original_stars)
         db.session.add(review)
         db.session.commit()
@@ -66,14 +63,14 @@ def add_review():
 
 @pytest.fixture(scope="module")
 def add_sentiment():
-    def _add_sentiment(review_id, stars, 
-                       sentiment, anger, 
-                       source, model, 
-                        correct, 
+    def _add_sentiment(review_id, stars,
+                       sentiment, anger,
+                       source, model,
+                        correct,
                        process_time, tokens):
-        sentiment = Sentiment(review_id, stars, 
-                              sentiment, anger, 
-                              source, model, correct, 
+        sentiment = Sentiment(review_id, stars,
+                              sentiment, anger,
+                              source, model, correct,
                               process_time, tokens)
         db.session.add(sentiment)
         db.session.commit()

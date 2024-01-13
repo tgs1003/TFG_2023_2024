@@ -15,7 +15,7 @@ class Dataset(db.Model):
     date = db.Column(db.DateTime, server_default=func.now())
     owner = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False, default=1)
     reviews = db.relationship("Review", backref='dataset', passive_deletes=True)
-    
+
     def __init__(self, name="", type="", config="", status = "", owner = ""):
         self.name = name
         self.type = type

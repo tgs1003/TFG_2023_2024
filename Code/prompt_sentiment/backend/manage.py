@@ -6,10 +6,7 @@ python manage.py recrear # Borra todo y vuelve a crear la estructura de la base 
 python manage.py rellenar # Rellena la base de datos con la información necesaria para usarla
 '''
 import os
-import sys
-
 from flask.cli import FlaskGroup
-
 from app import create_app, db
 from app.api.models.users import User
 from app.api.models.datasets import Dataset

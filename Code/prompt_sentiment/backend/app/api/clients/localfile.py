@@ -1,10 +1,8 @@
 import pandas as pd
 import logging
-import os
 import json
-from datetime import datetime
 from app.api.services.datasets import get_dataset_by_id
-from app.api.services.reviews import get_review_by_dataset_id_and_review_id, add_review
+from app.api.services.reviews import add_review
 from app.api.services.files import get_file
 
 
@@ -36,7 +34,5 @@ def load_dataset(dataset_id, config, sample):
     df = df.sample(frac=(sample/100))
     df.reset_index(drop=True, inplace=True)
     for i in range(df.shape[0]):
-            add_review(dataset_id=dataset_id, 
-                    review_text=df.at[i, reviewColumn], 
-                    )
-
+        add_review(dataset_id=dataset_id, 
+        review_text=df.at[i, reviewColumn])

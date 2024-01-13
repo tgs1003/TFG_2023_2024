@@ -11,7 +11,6 @@ services:
     ports:
       - 5001:5000
     environment:
-      LLAMA_CPP_URL: http://llama_cpp:2600/v1
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       FLASK_ENV: "development"
       APP_SETTINGS: "app.config.DevelopmentConfig"
@@ -67,31 +66,6 @@ services:
     depends_on:
       - backend
       - frontend
-    networks:
-      - api_bridge
-
-llama_cpp:
-    container_name: 'sentiment_llama_cpp'
-    
-    build: 
-      context: ./worker_llamacpp
-      dockerfile: Dockerfile
-      command: python -m llama_cpp.server
-    
-    environment:
-      - HOST=0.0.0.0
-      - MODEL_PATH=TheBloke/CodeLlama-7B-Instruct-GGUF
-      - MODEL_BASE=codellama-7b-instruct.Q4_K_M.gguf
-      - MODEL_N_GPU_LAYERS=0
-      - MODEL_N_CTX=2000
-      - MODEL_N_BATCH=8
-
-    volumes:
-        - huggingface:/root/.cache/huggingface
-
-    ports:
-      - 2600:2600
-
     networks:
       - api_bridge
 

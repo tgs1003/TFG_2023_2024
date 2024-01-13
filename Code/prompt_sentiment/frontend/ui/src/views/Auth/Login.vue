@@ -19,13 +19,12 @@
                     justify="center"
                 >
                 <v-col
-                        cols="12"
-                        md="4"
-                        sm="8"
+                        cols="8"
+                        
                 >
                 <v-card>
                     <v-card-text>
-                        <h1>Bienvenidos a PromptSentiment</h1>
+                        <h1>Bienvenidos a Prompt Sentiment</h1>
                         <p>Una aplicación para análisis de sentimiento.</p>
                         Creada como trabajo de fin de grado del Grado de Ingeniería Informática de la Universidad de Burgos.
                     </v-card-text>

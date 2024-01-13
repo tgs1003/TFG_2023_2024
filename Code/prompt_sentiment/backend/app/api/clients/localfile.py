@@ -34,5 +34,5 @@ def load_dataset(dataset_id, config, sample):
     df = df.sample(frac=(sample/100))
     df.reset_index(drop=True, inplace=True)
     for i in range(df.shape[0]):
-        add_review(dataset_id=dataset_id, 
+        add_review(dataset_id=dataset_id,
         review_text=df.at[i, reviewColumn])

@@ -1,5 +1,5 @@
-import axiosInstance from "./api"
-import TokenService from "./token.service"
+import axiosInstance from "./api";
+import TokenService from "./token.service";
 
 const setup = ({commit}) =>{
     axiosInstance.interceptors.request.use(
@@ -8,7 +8,7 @@ const setup = ({commit}) =>{
             if(token){
                 config.headers['Authorization']= token;
             }
-            return config
+            return config;
         },
         (error) =>{
             return Promise.reject(error);
@@ -29,13 +29,12 @@ const setup = ({commit}) =>{
                             refresh_token : TokenService.getLocalRefreshToken(),
                         });
                         
-                        TokenService.setUser(rs.data)
+                        TokenService.setUser(rs.data);
                         return axiosInstance(originalConfig);
                     } catch(_error){
-                        commit('logout')
+                        commit('logout');
                         TokenService.removeUser();
-                        commit('auth_success', '', '')
-                        
+                        commit('auth_success', '', '');
                         return Promise.reject(err);
                     }
                 }

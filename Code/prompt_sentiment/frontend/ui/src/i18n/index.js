@@ -1,7 +1,7 @@
-import Vue from 'vue';
-import {I18n} from 'translated';
-import VueTranslated from 'vue-translated';
-import TokenService from '../services/token.service'
+import Vue from "vue";
+import {I18n} from "translated";
+import VueTranslated from "vue-translated";
+import TokenService from "../services/token.service"
 
 Vue.use(VueTranslated);
 

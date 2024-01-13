@@ -17,14 +17,19 @@ def split_dataset(path, folder):
     dataset = load_dataset(path)
     train_dataset = dataset["train"].to_iterable_dataset()
     df = pd.json_normalize(train_dataset)
-    df = df.filter(items=['product_id', 'text'])
-    products = df.filter(items=['product_id']).drop_duplicates()
+    df = df.filter(items=['product_id', 'text','product_title'])
+    products = df.filter(items=['product_id','product_title']).drop_duplicates()
     products.reset_index(drop=True, inplace=True)
     for i in range(products.shape[0]):
+        product_name = products.at[i, 'product_title']
         product_id = products.at[i, 'product_id']
-        product_df = df[df['product_id'] == product_id].filter(items=['text'])
-        product_df[df['product_id'] == product_id].to_json(folder + product_id + '.json', orient='records')
-
-
+        product_df = df[df['product_id'] == product_id]
+        records = product_df.shape[0]
+        if records > 9:
+            product_df[df['product_id'] == product_id].to_json(folder + str(records) + '_' + product_id + '.json', orient='records')
+            file1 = open(folder + str(records) + '_' + product_id + '.txt','w')
+            file1.write(product_name)
+            file1.close()
+    
 if __name__ == "__main__":
     split_dataset('mesmalif/amazon-shoe-reviews', '/tmp/promptsentiment/json/')

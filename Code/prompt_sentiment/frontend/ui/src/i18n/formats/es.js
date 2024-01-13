@@ -1,5 +1,5 @@
 export default {
-    number: {},
-    date: {},
-    time: {}
-  }
+  number: {},
+  date: {},
+  time: {}
+};

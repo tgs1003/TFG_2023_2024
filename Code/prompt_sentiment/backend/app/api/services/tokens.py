@@ -2,7 +2,6 @@ import datetime
 import jwt
 from flask import current_app
 from app.api.services.users import get_user_by_id
-from app.api.models.users import User
 import logging
 
 logging.basicConfig(level=logging.DEBUG,
@@ -43,7 +42,7 @@ def check_token(request, namespace):
     Comprueba si el token es válido y si el usuario está dado de alta en el sistema.
     '''
     if not current_app.config.get("USE_AUTHORIZATION"):
-         return
+        return
     access_token = request.headers.get("Authorization")
     if access_token:
         try:
@@ -52,11 +51,11 @@ def check_token(request, namespace):
             if not user:
                 namespace.abort(401, "El usuario no existe.")
         except jwt.ExpiredSignatureError:
-                namespace.abort(401,"Token caducado. Vuelva a identificarse.")
+            namespace.abort(401,"Token caducado. Vuelva a identificarse.")
         except jwt.InvalidTokenError:
-                namespace.abort(401,"Token no válido.")
+            namespace.abort(401,"Token no válido.")
     else:
-        namespace.abort(403,"Hace falta un token.") 
+        namespace.abort(403,"Hace falta un token.")
         
 def get_token_user(request, namespace, default=None):
     '''
@@ -71,9 +70,9 @@ def get_token_user(request, namespace, default=None):
                 namespace.abort(401, "El usuario no existe.")
             return user
         except jwt.ExpiredSignatureError:
-                namespace.abort(401,"Token caducado. Vuelva a identificarse.")
+            namespace.abort(401,"Token caducado. Vuelva a identificarse.")
         except jwt.InvalidTokenError:
-                namespace.abort(401,"Token no válido")
+            namespace.abort(401,"Token no válido")
     else:
         if not current_app.config.get("USE_AUTHORIZATION"):
          return default

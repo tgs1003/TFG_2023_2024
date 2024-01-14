@@ -8,13 +8,14 @@ import History from "../views/Sentiment/History";
 import Analysis from "../views/Sentiment/Analysis.vue";
 import store from "@/store";
 import api from "../services/api";
-Vue.use(VueRouter)
+
+Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/login",
     name: "Login",
-    component: Login
+    component: Login,
   },
   {
     path: "/admin-home",
@@ -22,7 +23,7 @@ const routes = [
     component: AdminHome,
     meta: {
       requiresAuth: true,
-      requiresAdmin: true
+      requiresAdmin: true,
     }
   },
   {
@@ -30,7 +31,7 @@ const routes = [
     name: "History",
     component: History,
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
     }
   },
   {
@@ -38,40 +39,39 @@ const routes = [
     name: "Analysis",
     component: Analysis,
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
     }
   },
   {
     path: "/registro",
     name: "Registro",
-    component: Registro
+    component: Registro,
   },
   {
     path: "/",
     name: "Inicio",
     component: Inicio,
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
     }
   }
-]
+];
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.state.token || localStorage.getItem('user') === 'null') {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (!store.state.token || localStorage.getItem("user") === "null") {
       next({
         path: "/login",
         params: { redirect: to.fullPath },
       })
     } else {
-      if (to.matched.some(record => record.meta.requiresAdmin)) {    
-        api.get("/auth/status").then((resp)=>
-        {
+      if (to.matched.some((record) => record.meta.requiresAdmin)) {    
+        api.get("/auth/status").then((resp)=>{
           var user = resp.data;
           if (user.rol != "Admin")
           {
@@ -83,16 +83,13 @@ router.beforeEach((to, from, next) => {
           else {
             next();
             }
-        }
-        )
+        })
       }
       else {
         next();
       }
-}}
-else{
+}} else{
   next();
 }
 })
-
-export default router
+export default router;

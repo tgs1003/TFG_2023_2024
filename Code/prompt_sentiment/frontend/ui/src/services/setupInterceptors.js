@@ -1,44 +1,46 @@
 import axiosInstance from "./api";
 import TokenService from "./token.service";
 
-const setup = ({commit}) =>{
+const setup = ({ commit }) => {
     axiosInstance.interceptors.request.use(
         (config) => {
             const token = TokenService.getLocalAccessToken();
-            if(token){
-                config.headers['Authorization']= token;
+            if (token) {
+                config.headers['Authorization'] = token;
             }
             return config;
         },
-        (error) =>{
+        (error) => {
             return Promise.reject(error);
         }
     );
     axiosInstance.interceptors.response.use(
-        (res)=>{
+        (res) => {
             return res;
         },
-        async (err) =>{
+        async (err) => {
             const originalConfig = err.config;
 
-            if(originalConfig.url !== "/auth/login" && err.response){
-                if(err.response.status === 401 && !originalConfig._retry){
+            if (originalConfig.url !== "/auth/login" && err.response) {
+                if (err.response.status === 401 && !originalConfig._retry) {
                     originalConfig.retry = true;
-                    try{
-                        const rs = await axiosInstance.post("/auth/refresh",{
-                            refresh_token : TokenService.getLocalRefreshToken(),
+                    try {
+                        const rs = await axiosInstance.post("/auth/refresh", {
+                            refresh_token: TokenService.getLocalRefreshToken(),
                         });
-                        
+
                         TokenService.setUser(rs.data);
                         return axiosInstance(originalConfig);
-                    } catch(_error){
+                    } catch (_error) {
                         commit('logout');
                         TokenService.removeUser();
                         commit('auth_success', '', '');
+                        // Using default browser targets
                         return Promise.reject(err);
                     }
                 }
             }
+            // Using default browser targets
             return Promise.reject(err);
         }
     );

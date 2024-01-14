@@ -28,7 +28,7 @@ def count_sentiments_by_dataset_id(dataset_id):
     query = query.filter(Review.dataset_id == dataset_id)
     query = query.with_entities(func.count())
     return query.scalar()
-    
+
 def get_sentiment_by_id(id):
     '''
     Devuelve un sentimiento concreto

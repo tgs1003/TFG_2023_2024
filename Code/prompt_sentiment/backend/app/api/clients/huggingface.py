@@ -31,7 +31,7 @@ def load_dataset(dataset_id, config, sample):
     correct_stars = 0
     if 'correct_stars' in configuration.keys():
         correct_stars=int(configuration["correct_stars"])
-        
+
     date_format = ''
     if 'date_format' in configuration.keys():
         date_format=configuration["date_format"]

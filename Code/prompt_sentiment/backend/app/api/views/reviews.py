@@ -123,7 +123,7 @@ class ReviewsListForProcess(Resource):
     def get(self, dataset_id):
         """Devuelve todas las reseñas."""
         check_token(request=request, namespace=reviews_namespace)
-        return get_reviews_by_dataset_id(datasetId=dataset_id), 200
+        return get_reviews_by_dataset_id(dataset_id=dataset_id), 200
 
    
     

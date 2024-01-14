@@ -1,5 +1,4 @@
 import datetime
-from app.api.models.datasets import Dataset
 
 def test_create_dataset(test_app, test_database, add_dataset, add_user):
     user1 = add_user("justatest1234", "test123@test123.com", "greaterthaneight", "Gestor")

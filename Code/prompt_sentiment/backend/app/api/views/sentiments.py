@@ -88,13 +88,13 @@ class SentimentList(Resource):
             response_object["message"] = "El sentimiento ya existe."
             return response_object, 400
         
-        sent = add_sentiment(review_id = review_id, stars = stars, 
-                      sentiment = sentiment, anger = anger,
-                        source=source, model=model, 
-                      correct=correct, process_time = process_time, tokens = tokens
-                      )
+        add_sentiment(review_id = review_id, stars = stars,
+                    sentiment = sentiment, anger = anger,
+                    source=source, model=model,
+                    correct=correct, process_time = process_time, tokens = tokens)
         response_object["message"] = f"Se ha añadido el sentimiento para la reseña {review_id}."
         return response_object, 201
+
 
 class Sentiments(Resource):
     @sentiments_namespace.marshal_with(sentiments)
@@ -141,6 +141,7 @@ class Sentiments(Resource):
         delete_sentiment(sentiment)
         response_object["message"] = f"El sentimiento {sentiment.id} se ha borrado."
         return response_object, 200
+
 
 #
 sentiments_review = sentiments_namespace.model(

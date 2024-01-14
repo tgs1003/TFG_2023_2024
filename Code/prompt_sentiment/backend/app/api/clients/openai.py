@@ -14,10 +14,9 @@ llm_model = "gpt-3.5-turbo"
 sentiment_schema = ResponseSchema(name="Sentiment",description="It's the sentiment of the review (positive or negative)")
 anger_schema = ResponseSchema(name="Anger", description="Is the reviewer expressing anger? (true or false)")
 stars_schema = ResponseSchema(name="Stars", description="Is a number between 1 and 5 indicating the rating of the review")
-response_schemas = [sentiment_schema, 
+response_schemas = [sentiment_schema,
                     anger_schema,
-                    stars_schema
-                    ]
+                    stars_schema]
 '''
 Plantilla para identificar los sentimientos de una reseña.
 Además intenta identificar otros elementos como el objeto de la reseña, el idioma y el fabricante.
@@ -42,5 +41,4 @@ class LangchainOpenAISentimentAnalyzer():
         prompt = prompt_template.format_messages(
         review = review, format_instructions=format_instructions)
         response = chat(prompt)
-        
         return output_parser.parse(response.content)

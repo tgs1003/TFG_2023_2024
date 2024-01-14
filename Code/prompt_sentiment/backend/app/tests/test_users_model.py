@@ -1,4 +1,3 @@
-from app.api.models.users import User
 from app.api.services.tokens import decode_token, encode_token
 
 

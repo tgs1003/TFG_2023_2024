@@ -30,6 +30,7 @@ def split_dataset(path, folder):
             file1 = open(folder + str(records) + '_' + product_id + '.txt','w')
             file1.write(product_name)
             file1.close()
-    
+
+
 if __name__ == "__main__":
     split_dataset('mesmalif/amazon-shoe-reviews', '/tmp/promptsentiment/json/')

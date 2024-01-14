@@ -3,7 +3,7 @@ var webpack = require('webpack');
 module.exports = {
     devServer:
     {
-        allowedHosts: ["promptsentiment.es"],
+    allowedHosts: ["promptsentiment.es"],
     },
     publicPath: '/',
     configureWebpack: {

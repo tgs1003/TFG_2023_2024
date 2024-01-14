@@ -12,7 +12,7 @@ class Review(db.Model):
     review_time = db.Column(db.DateTime)
     original_stars = db.Column(db.Integer)
     sentiment = db.relationship("Sentiment", back_populates="reviews", passive_deletes=True)
-    
+
     def __init__(self, dataset_id="", review_text="", review_time="", original_stars = ""):
         self.dataset_id = dataset_id
         self.review_text = review_text

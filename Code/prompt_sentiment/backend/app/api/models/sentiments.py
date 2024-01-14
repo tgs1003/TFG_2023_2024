@@ -20,7 +20,7 @@ class Sentiment(db.Model):
     tokens = db.Column(db.Integer)
     reviews = db.relationship("Review", back_populates="sentiment")
 
-    def __init__(self, review_id="", stars="", sentiment="", 
+    def __init__(self, review_id="", stars="", sentiment="",
                  anger = "", source="", model="",
                  correct = "", process_time = "", tokens = ""):
         self.review_id = review_id

@@ -55,7 +55,7 @@ def test_registro_usuario_json_no_valido(test_app, test_database, payload):
     assert "Input payload validation failed" in data["message"]
 
 
-def test_registro_usuario(test_app, test_database, add_user):
+def test_registro_usuario_valido(test_app, test_database, add_user):
     add_user("test3", "test3@test.com", "test")
     client = test_app.test_client()
     resp = client.post(

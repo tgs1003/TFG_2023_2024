@@ -52,7 +52,7 @@ export default new Vuex.Store({
             commit('auth_request')
             return api.post("/auth/register", user)
             .then((response)=> {
-                if (response.code == 200)
+                if (response.code === 200)
                     this.$router.push('/')
                 return response
             })

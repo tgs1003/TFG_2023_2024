@@ -52,8 +52,8 @@ def add_review(dataset_id, review_text, review_time=datetime.now(), original_sta
     Agrega una reseña
     '''
     review = Review(dataset_id = dataset_id,
-                    review_text = review_text, 
-                    review_time = review_time, 
+                    review_text = review_text,
+                    review_time = review_time,
                     original_stars = original_stars)
     db.session.add(review)
     db.session.commit()

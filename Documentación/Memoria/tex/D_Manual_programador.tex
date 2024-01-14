@@ -63,33 +63,34 @@ Para la instalación de docker sólo hay que instalar Docker-Desktop.
 El proyecto tiene 2 partes claramente diferenciadas: frontend y backend.
 Para la ejecución del backend tenemos que abrir una consola de comandos, movernos al directorio backend 
 y ejecutar:
-//Instalamos las referencias
-pip install -r requirements.txt
+\begin{verbatim}
+	pip install -r requirements.txt
+\end{verbatim}
 
 Creamos la base de datos (sólo en el caso de que no exista)
 \begin{verbatim}
-python manage.py crear
-python manage.py rellenar (en caso de que esté vacía)
-python manage.py run
+	python manage.py crear
+	python manage.py rellenar (en caso de que esté vacía)
+	python manage.py run
 \end{verbatim}
 
 Para el frontend, nos cambiamos la carpeta Frontend y ejecutamos:
 \begin{verbatim}
-npm install
-npm run serve
+	npm install
+	npm run serve
 \end{verbatim}
 
 \subsection {Ejecución en docker}
 Para la ejecución en docker sólo hay que ejecutar en el directorio raiz del código:
 \begin{verbatim}
-docker-compose up
+	docker-compose up
 \end{verbatim}
 
 \section{Pruebas del sistema}
 Para las pruebas del backend se ha utilizado la libreria pytest. 
 Para la ejecución de las pruebas unitarias del backend hay que ejecutar:
 \begin{verbatim}
-pytest
+	pytest
 \end{verbatim}
 
 \imagen{resultado_pytest}{Resultado pytest}

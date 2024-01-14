@@ -215,8 +215,66 @@ Después de evaluar los diferentes modelos LLM y en vista de los tiempos de resp
 de OpenAI para la aplicación final. Aunque se puede usar un modelo basado en LlamaCpp de forma opcional.
 
 \section{Diseño del prompt}
+Una vez elegido el modelo más adecuado para nuestras aplicación nos toca diseñar un ``prompt'' 
+que funcione correctamente para nuestro proposito.
+Una de las características que tiene que tener un ``prompt'' es que sea preciso.~\cite{white2023prompt}
+Tiene que especificar de forma precisa lo que esperas recibir.
+En nuestro caso tenemos que incluir unos delimitadores para que el modelo sea capaz de identificar 
+cuál es el texto al que nos referimos.
+También tenemos que especificar cuál tiene que ser el formato de salida y los posibles 
+valores que puede tener cada variable.
+\begin{verbatim}
+   template_string ="""Return a JSON with the following \
+                       information extracted from the review \
+                       below: \
+    {{ \
+        ""Sentiment"": ""(positive or negative)"",\
+        ""Stars"": ""Number of stars depending on the \
+                     sentiment of the Review"",\
+        ""Anger"": ""Is the user angry? (true or false)"", \
+    }} \
+   Review: ```{review}``` \
+   If the information isn't present, use ""unknown"" \
+   as the value. \
+   Remember to return only the JSON. 
+   """
+\end{verbatim}
+Por último hay que especificar qué hacer en el caso de que 
+no encuentre la información solicitada.
 
+Tal y como funcionan los ``LLMs'' la salida no es siempre correcta. 
+Entre los problemas que nos podemos encontrar tenemos:
+   Al ser modelos generativos, pueden devolver el texto de entrada y después seguir generando la respuesta.
+   Salida incorrecta, en nuestro caso un JSON mal formado, ya sea por comillas por defecto o exceso, valores incorrectos, etc.
+En ambos casos he intentado paliar esos errores en la medida de lo posible con código adicional.
 
+Hay que decir que los ``prompts'' están muy vinculados a cada tipo 
+modelo y no funcionan en cualquier modelo por igual.
+
+También la salida recibida no es siempre igual y por eso hay que hacer
+algunos ajustes para obtener el mejor resultado posible.
+Existe una librería llamada \href{https://python.langchain.com/docs/get_started/introduction}{langchain} que intenta facilitar este proceso.
+Para ello se definen una serie de ``ResponseSchemas'' para especificar cada variable de salida:
+\begin{verbatim}
+   sentiment_schema = ResponseSchema(name="Sentiment",
+   description="It's the sentiment of the review 
+   (positive or negative)") 
+\end{verbatim}
+De esta forma incluye la información de cada variable de salida al prompt y luego recupera su valor en la salida.
+Esta librería está en pleno desarrollo y en la pruebas realizadas no ha dado unos resultados satisfactorios.
+En este trabajo he preferido no utilizarla y controlar tanto el ``prompt'' como la salida con código específico, como hemos visto anteriormente.  
+Aunque creo que esta será la mejor forma de construir una aplicación para interaccionar con diferentes modelos.
+\newpage
 \section{Validación del sistema}
+Uno de los objetivos de este trabajo es el de comprobar si es factible usar esta aproximación 
+para extraer los sentimientos de las reseñas de usuarios de un determinado producto o servicio.
+Para comprobarlo necesitamos comprobar que los resultados se pueden considerar válidos.
+Para ello tenemos 2 posibles métodos, el primero consite en validarlo con personas y el segundo 
+con alguna herramienta similar que utilice otras técnicas.
 
+\begin{figure}[h]
+   \advance\leftskip2cm 
+   \includegraphics[scale=0.6]{Precisionrecall.png}
+   \caption{Precisión y recall}
+\end{figure}
 

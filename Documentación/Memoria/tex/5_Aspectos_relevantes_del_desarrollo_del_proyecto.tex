@@ -268,13 +268,45 @@ Aunque creo que esta será la mejor forma de construir una aplicación para inte
 \section{Validación del sistema}
 Uno de los objetivos de este trabajo es el de comprobar si es factible usar esta aproximación 
 para extraer los sentimientos de las reseñas de usuarios de un determinado producto o servicio.
-Para comprobarlo necesitamos comprobar que los resultados se pueden considerar válidos.
-Para ello tenemos 2 posibles métodos, el primero consite en validarlo con personas y el segundo 
-con alguna herramienta similar que utilice otras técnicas.
+Para comprobarlo necesitamos verficar que los resultados se pueden considerar válidos.
+En la carpeta collab se puede encontrar un Jupyter notebook con una comparación entre nuestro sistema 
+y \href{https://github.com/cjhutto/vaderSentiment}{VADER sentiment}
+
+Hemos seleccionado un dataset que contiene las valoraciones de los usuarios y hemos realizado 2 pruebas:
+Una con nuestro sistema y otra con vader.
+
+Los resultados son:
+
+\subsection{VADER}
 
 \begin{figure}[h]
    \advance\leftskip2cm 
-   \includegraphics[scale=0.6]{Precisionrecall.png}
+   \includegraphics[scale=0.6]{svg/vader_confusion.png}
    \caption{Precisión y recall}
 \end{figure}
+
+\begin{figure}[h]
+   \advance\leftskip2cm 
+   \includegraphics[scale=0.6]{vader_results.png}
+   \caption{Precisión y recall}
+\end{figure}
+\newpage
+\subsection{Prompt sentiment}
+
+\begin{figure}[h]
+   \advance\leftskip2cm 
+   \includegraphics[scale=0.6]{svg/prompt_sentiment_confusion.png}
+   \caption{Precisión y recall}
+\end{figure}
+
+
+
+\begin{figure}[h]
+   \advance\leftskip2cm 
+   \includegraphics[scale=0.6]{prompt_sentiment_results.png}
+   \caption{Precisión y recall}
+\end{figure}
+
+
+
 

@@ -261,10 +261,12 @@ Para ello se definen una serie de ``ResponseSchemas'' para especificar cada vari
    (positive or negative)") 
 \end{verbatim}
 De esta forma incluye la información de cada variable de salida al prompt y luego recupera su valor en la salida.
-Esta librería está en pleno desarrollo y en la pruebas realizadas no ha dado unos resultados satisfactorios.
-En este trabajo he preferido no utilizarla y controlar tanto el ``prompt'' como la salida con código específico, como hemos visto anteriormente.  
-Aunque creo que esta será la mejor forma de construir una aplicación para interaccionar con diferentes modelos.
-\newpage
+Esta librería está en pleno desarrollo y en la pruebas realizadas no ha dado unos resultados satisfactorios 
+con algunos de los modelos probados. Los mejores resultados han sido con OpenAI
+Aunque creo que esta será la mejor forma de construir una aplicación para interaccionar con diferentes modelos 
+cuando su desarrollo está más avanzado.
+
+
 \section{Validación del sistema}
 Uno de los objetivos de este trabajo es el de comprobar si es factible usar esta aproximación 
 para extraer los sentimientos de las reseñas de usuarios de un determinado producto o servicio.
@@ -275,38 +277,61 @@ y \href{https://github.com/cjhutto/vaderSentiment}{VADER sentiment}
 Hemos seleccionado un dataset que contiene las valoraciones de los usuarios y hemos realizado 2 pruebas:
 Una con nuestro sistema y otra con vader.
 
-Los resultados son:
+Los resultados han sido:
 
-\subsection{VADER}
+\subsection{VADER Sentiment}
+
+\begin{figure}[h]
+   \advance\leftskip0cm 
+   \includegraphics[scale=0.3]{svg/vader_confusion.png}
+   \caption{Matriz de confusión Vader sentiment}
+\end{figure}
+
+La matriz de confusión representa el número de elementos de cada clase.
+Como podemos ver hay 38 casos en los que el modelo ha identificado la 
+reseña como positiva cuando en realidad es negativa.
+Además hay 77 casos en los que ha identificado un sentimiento positivo 
+cuando en realidad es negativo.
 
 \begin{figure}[h]
    \advance\leftskip2cm 
-   \includegraphics[scale=0.6]{svg/vader_confusion.png}
-   \caption{Precisión y recall}
+   \includegraphics[scale=0.4]{vader_results.png}
+   \caption{Resultados Vader Sentiment}
 \end{figure}
+La precisión representa la proporción de reseñas correctamente identificadas
+con respecto al total. Dicho de otra forma el porcentaje de reseñas relevantes.
+Por otra parte, la exhaustividad lo que mide es la proporción de reseñas 
+identificadas con respecto al total de reseñas que se deberían haber 
+clasificado en ese grupo.
+Como vemos en los resultados, con Vader Sentiment el 81\% de las reseñas 
+identificadas como positivas, eran efectivamente positivas y se ha podido identificar 
+el 61\% del total de las reseñas positivas.
 
-\begin{figure}[h]
-   \advance\leftskip2cm 
-   \includegraphics[scale=0.6]{vader_results.png}
-   \caption{Precisión y recall}
-\end{figure}
 \newpage
 \subsection{Prompt sentiment}
 
 \begin{figure}[h]
    \advance\leftskip2cm 
-   \includegraphics[scale=0.6]{svg/prompt_sentiment_confusion.png}
-   \caption{Precisión y recall}
+   \includegraphics[scale=0.3]{svg/prompt_sentiment_confusion.png}
+   \caption{Matriz de confusión Prompt Sentiment}
 \end{figure}
-
+Con respecto a nuestro sistema ha identificado 29 reseñas como positivas 
+cuando en realidad son negativas y 7 que identificado como negativas 
+cuando en realidad son positivas.
 
 
 \begin{figure}[h]
    \advance\leftskip2cm 
-   \includegraphics[scale=0.6]{prompt_sentiment_results.png}
-   \caption{Precisión y recall}
+   \includegraphics[scale=0.4]{prompt_sentiment_results.png}
+   \caption{Resultados Prompt Sentiment}
 \end{figure}
+En relación a la precisión el 89\% de las reseñas identificadas como positivas eran, efectivamente positivas.
+y se ha logrado clasificar correctamente el 97\% de las reseñas positivas.
 
+En vista a estos resultados podemos afirmar que nuestro sistema funciona bastante 
+mejor que Vader Sentiment tanto en precisión como en exhaustividad. 
+Podemos afirmar que nuestro sistema es indestiguible de un humano clasificando 
+reseñas según el sentimiento.
 
 
 

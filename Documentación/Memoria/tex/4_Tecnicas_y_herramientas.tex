@@ -8,21 +8,26 @@ de cada una de ellas.
 
 \subsection{ORM~\cite{fowler2012patterns}}
 \label{ORM}
-Un ORM (Object-Relational Mapping) es una técnica de programación que se 
+Un ``\emph{ORM}'' (Object-Relational Mapping) es una técnica de programación que se 
 utiliza en el desarrollo de software para conectar objetos en un programa 
 con tablas en una base de datos relacional. \\
-Su propósito principal es permitir a los desarrolladores trabajar con datos de una base de datos relacional utilizando objetos y clases en lugar de escribir consultas SQL directamente. Un ORM mapea las estructuras de datos en una base de datos a objetos en un lenguaje de programación, lo que facilita la interacción con la base de datos y el manejo de datos de una manera más orientada a objetos.
+Su propósito principal es permitir a los desarrolladores trabajar con datos de una 
+base de datos relacional utilizando objetos y clases en lugar de escribir consultas SQL directamente. 
+Un ``\emph{ORM}'' mapea las estructuras de datos en una base de datos a objetos en un 
+lenguaje de programación, lo que facilita la interacción con la base de datos y el 
+manejo de datos de una manera más orientada a objetos.
 Las ventajas clave de usar un ``\emph{ORM}'' incluyen:
 \begin{itemize}
-    \item \textbf{Abstracción de la base de datos}: Oºculta los detalles de la base de datos subyacente, 
-    permitiendo a los desarrolladores interactuar con los datos en términos de objetos y clases en lugar de preocuparse por la sintaxis SQL específica de la base de datos.
-    \item \textbf{Productividad}: Reduce la cantidad de código SQL que los desarrolladores deben escribir, 
+    \item \textbf{Abstracción de la base de datos}: oculta los detalles de la base de datos subyacente, 
+    permitiendo a los desarrolladores interactuar con los datos en términos de objetos y clases 
+    en lugar de preocuparse por la sintaxis SQL específica de la base de datos.
+    \item \textbf{Productividad}: reduce la cantidad de código SQL que los desarrolladores deben escribir, 
     lo que ahorra tiempo y esfuerzo en el desarrollo de aplicaciones.
-    \item \textbf{Portabilidad}: Puede ser diseñado para ser independiente de la base de datos, 
+    \item \textbf{Portabilidad}: puede ser diseñado para ser independiente de la base de datos, 
     lo que facilita la migración de una base de datos a otra sin cambiar el código de la aplicación.
-    \item \textbf{Mantenibilidad}: Al trabajar con objetos y clases en lugar de consultas SQL directas, 
+    \item \textbf{Mantenibilidad}: al trabajar con objetos y clases en lugar de consultas SQL directas, 
     el código puede ser más fácil de mantener y entender.
-    \item \textbf{Seguridad}: Suelen ofrecer características de seguridad integradas, 
+    \item \textbf{Seguridad}: suelen ofrecer características de seguridad integradas, 
     como la prevención de inyecciones SQL, lo que reduce la vulnerabilidad de las aplicaciones a ataques. 
 \end{itemize}
 Ejemplos de ORMs populares incluyen Hibernate para Java, Entity Framework para .NET, 
@@ -37,26 +42,29 @@ Las siglas ``\emph{MVC}'' representa ``\emph{Model-View-Controller}'', y se divi
 que desempeñan roles específicos en la organización y estructura de una aplicación. 
 Estos son:
 \begin{itemize}
-    \item \textbf{Model (Modelo)}: El modelo representa la lógica empresarial y los datos subyacentes 
+    \item \textbf{Model (Modelo)}: el modelo representa la lógica empresarial y los datos subyacentes 
     de la aplicación.\\ En otras palabras, el modelo se encarga de manejar la manipulación y 
     el acceso a los datos, así como de realizar cálculos y procesos necesarios.\\ 
     El modelo no tiene conocimiento de la interfaz de usuario y no se preocupa por cómo se muestran 
     los datos.\\ Es independiente de la vista y el controlador.
-    \item \textbf{View (Vista)}: La vista se encarga de la presentación y la interfaz de usuario. \\
+    \item \textbf{View (Vista)}: la vista se encarga de la presentación y la interfaz de usuario. \\
     Su función principal es mostrar los datos al usuario de una manera comprensible y atractiva. \\
     La vista no realiza operaciones comerciales o de lógica, sino que simplemente muestra la 
     información proporcionada por el modelo. \\
     En sistemas web, esto a menudo se traduce en la generación de páginas HTML o 
     interfaces de usuario dinámicas.
-    item \textbf{Controller (Controlador)}: El controlador actúa como un intermediario entre el modelo y la vista. 
+    item \textbf{Controller (Controlador)}: el controlador actúa como un intermediario entre el modelo y la vista. 
 \end{itemize}
 
 Recibe las solicitudes del usuario a través de la vista, procesa esas solicitudes, 
 realiza las operaciones necesarias en el modelo y luego actualiza la vista para mostrar los resultados.\\
 El controlador maneja la lógica de interacción y toma decisiones sobre qué acción realizar 
 en función de la entrada del usuario.\\
-La arquitectura MVC promueve una clara separación de preocupaciones, lo que facilita la modularidad y la escalabilidad de las aplicaciones. Esto permite a los desarrolladores trabajar de manera más eficiente, ya que pueden centrarse en una capa (modelo, vista o controlador) sin preocuparse demasiado por las otras capas. Además, el MVC es ampliamente utilizado en marcos de desarrollo web como Ruby on Rails, Django (Python), Laravel (PHP), y ASP.NET MVC (CSharp), entre otros.
-En resumen, el patrón MVC es una forma efectiva de organizar y estructurar aplicaciones de software, lo que resulta en un código más claro, mantenible y flexible.
+La arquitectura MVC promueve la separación de intereses (``\emph{'separation of concerns'}), lo que facilita 
+la modularidad y la escalabilidad de las aplicaciones. Esto permite a los desarrolladores trabajar de manera 
+más eficiente, ya que pueden centrarse en una capa (modelo, vista o controlador) sin preocuparse 
+demasiado por las otras capas. Es una forma efectiva de organizar y estructurar aplicaciones de 
+software, lo que resulta en un código más claro, mantenible y flexible.
 
 \subsection{LLM~\cite{mirchandani2023large}}
 \label{LLM}
@@ -122,7 +130,7 @@ las funcionalidades esenciales pero permite agregar las bibliotecas necesarias s
 No impone estructuras rígidas ni componentes innecesarios pero incorpora funcionalidades 
 (como el motor de plantillas Jinja2 o el sistema de rutas) que hacen 
 más sencillo el desarrollo de aplicaciones. \\
-En este proyecto lo utilizamos para realizar un \href{https://aws.amazon.com/es/what-is/restful-api}{API RESTful}, que es un uso bastante común de este framework.
+En este proyecto lo utilizamos para realizar una \href{https://aws.amazon.com/es/what-is/restful-api}{API RESTful}, que es un uso bastante común de este ``\emph{framework}''.
 
 
 \subsection{SqlAlchemy~\cite{bayer2012sqlalchemy}}
@@ -163,7 +171,7 @@ Eso se logra gracias a la llamada ``\emph{cuantización}'' que reduce el tamaño
 Facebook para hacerlos ``manejables'' por equipos más modestos a nivel de hardware.
 
 \subsection{PostgreSql~\cite{juba2015learning}}
-PostgreSQL es un sistema de gestión de bases de datos relacional de código abierto. 
+``\emph{PostgreSQL}'' es un sistema de gestión de bases de datos relacional de código abierto. 
 Admite consultas complejas y procedimientos almacenados.\\
 Proporciona mecanismos para garantizar la integridad de los datos almacenados, 
 como restricciones de clave primaria y foránea, así como comprobaciones de restricciones.\\
@@ -178,7 +186,7 @@ Su licencia de código abierto permite su uso y distribución sin costos de lice
 lo que lo convierte en una opción atractiva para una amplia variedad de proyectos.
 
 \subsection{Docker~\cite{garzas2105docker}}
-Docker es una plataforma que permite empaquetar una aplicación y 
+``\emph{Docker}'' es una plataforma que permite empaquetar una aplicación y 
 todas sus dependencias en un contenedor.\\
 Este contenedor es como una unidad autónoma que puede ejecutarse de manera 
 consistente en cualquier entorno que admita Docker. 
@@ -203,22 +211,22 @@ Todos trabajan con la misma configuración, lo que reduce la posibilidad de erro
 causados por diferencias en los entornos.
 
 \subsection{ChatGPT~\cite{chatgpt1}}
-ChatGPT es un modelo de lenguaje desarrollado por OpenAI, 
+``\emph{ChatGPT}'' es un modelo de lenguaje desarrollado por OpenAI, 
 basado en la arquitectura GPT (Generative Pre-trained Transformer). 
 
 La arquitectura GPT es una red neuronal de tipo transformer que ha sido 
 preentrenada en grandes cantidades de datos textuales para aprender patrones y 
 estructuras del lenguaje.
 
-ChatGPT puede generar respuestas contextualmente relevantes en función de las 
+``\emph{ChatGPT}'' puede generar respuestas contextualmente relevantes en función de las 
 entradas que recibe. Puede ser utilizado para una variedad de aplicaciones, 
 desde responder preguntas y ayudar en la redacción de textos.
 
-Es importante tener en cuenta que ChatGPT no posee conocimiento del mundo 
+Es importante tener en cuenta que ``\emph{ChatGPT}'' no posee conocimiento del mundo 
 en tiempo real ni tiene la capacidad de razonamiento 
 ni comprensión como lo haría un ser humano.
 
-Durante la realización del trabajo fin de grado he usado chatgpt para obtener 
+Durante la realización del trabajo fin de grado he usado ``\emph{ChatGpt}'' para obtener 
 información y sugerencias siempre contrastándolas con otras fuentes para comprobar 
 su corrección.
 

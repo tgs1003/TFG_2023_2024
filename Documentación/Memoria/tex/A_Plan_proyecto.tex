@@ -7,8 +7,8 @@ del proyecto, dividida en viabilidad económica donde se hará una aproximación
 tener en cuenta la legislación que puede afectar al proyecto.
 
 \section{Planificación temporal}
-Antes de comenzar el proyecto se decidió utilizar metodología ágil para
-gestionarlo. Se han realizado sprints de dos semanas de duración.
+Antes de comenzar el proyecto se decidió utilizar una metodología ágil para
+gestionarlo. Se han planificado sprints de dos semanas de duración.
 Al final de cada sprint se ha hecho revisión para comprobar si se habían
 conseguido los objetivos marcados al inicio y plantear las tareas a
 realizar para el nuevo sprint.
@@ -17,28 +17,62 @@ tablero que provee Zube ha permitido que visualmente la organización
 del proyecto haya sido más sencilla. Desde github se han vinculado los ``commits'' 
 con cada tarea para hacer más fácil su seguimiento.
 
-\subsection{Sprint 0 - }
+\subsection{Sprint 0 - del 2 de Octubre de 2023 al 15 de Octubre de 2023}
+Este sprint 0 se ha dedicado a tareas de preparación.
+Se ha creado el repositorio en Github, un proyecto en Zube y se ha instalado 
+un entorno Latex para la documentación.
+Por otro lado me he dedicado a leer la documentación relacionada y 
+realizar los cursos recomendados.
 \imagen{tareas_sprint_0}{Tareas sprint 0}
 \imagen{burndown_sprint_0}{Burndown chart sprint 0}
-\subsection{Sprint 1 - }
+\subsection{Sprint 1 - del 16 de Octubre de 2023 al 29 de Octubre de 2023}
+En el sprint 1 he empezado a definir el catálogo de especificaciones y empezar a 
+pensar cómo implementar tanto el prototipo como la aplicación de usuario.
+También he buscado información sobre trabajos relacionados.
 \imagen{tareas_sprint_1}{Tareas sprint 1}
 \imagen{burndown_sprint_1}{Burndown chart sprint 1}
-\subsection{Sprint 2 - }
+\subsection{Sprint 2 - del 30 de Octubre de 2023 al 12 de Noviembre de 2023}
+En este segundo sprint por un lado he empezado a definir la arquitectura de la aplicación 
+y por otro he empezado con el prototipo en collab. Para ello primero he tenido que buscar 
+un dataset que nos valga y un modelo que se pueda usar en collab.
+Después de mucho buscar decidí usar un modelo llama (con llama.cpp) y un dataset de hugging face 
+para hacerlo más portable.
+Si la máquina asignada tiene tarjeta gráfica, se usará.
+
 \imagen{tareas_sprint_2}{Tareas sprint 2}
 \imagen{burndown_sprint_2}{Burndown chart sprint 2}
-\subsection{Sprint 3 - }
+\subsection{Sprint 3 - del 13 de Noviembre de 2023 al 26 de Noviembre de 2023}
+En este sprint empecé a definir los casos de uso, el interfaz de usuario y empezar a pensar 
+en el modelo de base de datos. En este momento decidí usar un ORM para hacer más flexible la 
+aplicación e independiente del SGBD. Así sería más fácil cambiar de SGBD en caso de encontrar 
+algún problema. En este momento también decidí empezar a usar postgres y docker por simplicidad.
+
 \imagen{tareas_sprint_3}{Tareas sprint 3}
 \imagen{burndown_sprint_3}{Burndown chart sprint 3}
-\subsection{Sprint 4 - }
+\subsection{Sprint 4 - del 27 de Noviembre de 2023 al 10 de Diciembre de 2023}
+En este sprint ya empecé más en serio con el desarrollo de la aplicación de usuario con
+la implementación de la pantalla de login, la pantalla de administración y la pantalla 
+de ejecución del proceso.
+Por otro lado también empecé a con la implentación de la base de datos, el cliente OpenAI y 
+la elección de un hosting.
 \imagen{tareas_sprint_4}{Tareas sprint 4}
 \imagen{burndown_sprint_4}{Burndown chart sprint 4}
-\subsection{Sprint 5 - }
+\subsection{Sprint 5 - del 11 de Diciembre de 2023 al 24 de Diciembre de 2023}
+En este sprint se empieza a probar la aplicación, se 
+resuelven los errores encontrados y 
+se empieza con la documentación técnica.
 \imagen{tareas_sprint_5}{Tareas sprint 5}
 \imagen{burndown_sprint_5}{Burndown chart sprint 5}
-\subsection{Sprint 6 - }
+\subsection{Sprint 6 - del 25 de Diciembre de 2023 al 7 de Enero de 2024}
+A raíz de una reunión con el tutor se propone un cambio en el enfoque de la aplicación y 
+se crea una nueva pantalla de análisis de reseñas.
+También se empieza con el estudio de viabilidad.
 \imagen{tareas_sprint_6}{Tareas sprint 6}
 \imagen{burndown_sprint_6}{Burndown chart sprint 6}
-\subsection{Sprint 7 - }
+\subsection{Sprint 7 - del 7 de Enero de 2024 al 21 de Enero de 2024}
+Se continua con las pruebas, y se corrige la memoria con las sugerencias de los tutores.
+Se avanza con la memoria y se implementa la traducción de la aplicación.
+Se configura Codacy para las pruebas de calidad del código.
 \imagen{tareas_sprint_7}{Tareas sprint 7}
 \imagen{burndown_sprint_7}{Burndown chart sprint 7}
 

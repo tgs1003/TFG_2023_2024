@@ -60,7 +60,7 @@ Para la instalación de docker sólo hay que instalar Docker-Desktop.
 
 \section{Compilación, instalación y ejecución del proyecto}
 \subsection {Ejecución local}
-El proyecto tiene 2 partes claramente diferenciadas: frontend y backend.
+El proyecto tiene 2 partes claramente diferenciadas: \emph{frontend} y \emph{backend}.
 Para la ejecución del backend tenemos que abrir una consola de comandos, movernos al directorio backend 
 y ejecutar:
 \begin{verbatim}
@@ -74,7 +74,7 @@ Creamos la base de datos (sólo en el caso de que no exista)
 	python manage.py run
 \end{verbatim}
 
-Para el frontend, nos cambiamos la carpeta Frontend y ejecutamos:
+Para el frontend, nos cambiamos la carpeta \emph{frontend} y ejecutamos:
 \begin{verbatim}
 	npm install
 	npm run serve
@@ -85,12 +85,149 @@ Para la ejecución en docker sólo hay que ejecutar en el directorio raiz del c�
 \begin{verbatim}
 	docker-compose up
 \end{verbatim}
-
+\newpage
 \section{Pruebas del sistema}
-Para las pruebas del backend se ha utilizado la libreria pytest. 
-Para la ejecución de las pruebas unitarias del backend hay que ejecutar:
+
+A partir del los casos de uso del anexo b, diseñamos unos casos de prueba para 
+validar la aplicación desde el punto de vista de un usuario.
+
+\subsection{Pruebas unitarias}
+Para las pruebas unitarias del backend se ha utilizado la libreria pytest.
+Se han realizado tanto pruebas de caja blanca como pruebas de caja negra.
+Las pruebas unitarias se encuentran en el directorio \emph{backend/app/test} del repositorio.
+Para la ejecución de las pruebas unitarias del \emph{backend} hay que ejecutar:
 \begin{verbatim}
 	pytest
 \end{verbatim}
-
+El resultado de las pruebas es:
 \imagen{resultado_pytest}{Resultado pytest}
+\newpage
+
+\subsection{Plan de pruebas}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CP-1}    & \textbf{Registro de usuarios}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF-1 \\
+		\textbf{Descripción}          & Un usuario con el rol de administrador podrá crear cuentas de usuario y asignarles un rol. \\
+		\textbf{Precondición}         & El usuario tiene que tener el rol de administrador \\
+		\textbf{Pasos}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario administrador accede a la interfaz de la aplicación.
+			\item Accede a la opción Crear usuarios
+			\item Introduce los datos del usuarios
+			\item Confirma los cambios.
+		\end{enumerate}\\
+		\textbf{Resultado}          & 
+		\begin{enumerate}
+			\item El usuario ya existe
+			\item Complejidad de la contraseña no válida
+			\item Datos incorrectos
+		\end{enumerate}\\
+		\bottomrule
+	\end{tabularx}
+	\caption{CP-1 Registro de usuarios.}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CP-2}    & \textbf{Registro de usuarios}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF-1 \\
+		\textbf{Descripción}          & Un usuario con el rol de administrador podrá crear cuentas de usuario y asignarles un rol. \\
+		\textbf{Precondición}         & El usuario tiene que tener el rol de administrador \\
+		\textbf{Pasos}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario administrador accede a la interfaz de la aplicación.
+			\item Accede a la opción Crear usuarios
+			\item Introduce los datos del usuarios
+			\item Confirma los cambios.
+		\end{enumerate}\\
+		\textbf{Resultado}          & 
+		\begin{enumerate}
+			\item El usuario ya existe
+			\item Complejidad de la contraseña no válida
+			\item Datos incorrectos
+		\end{enumerate}\\
+		\bottomrule
+	\end{tabularx}
+	\caption{CP-1 Registro de usuarios.}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CP-3}    & \textbf{Registro de usuarios}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF-1 \\
+		\textbf{Descripción}          & Un usuario con el rol de administrador podrá crear cuentas de usuario y asignarles un rol. \\
+		\textbf{Precondición}         & El usuario tiene que tener el rol de administrador \\
+		\textbf{Pasos}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario administrador accede a la interfaz de la aplicación.
+			\item Accede a la opción Crear usuarios
+			\item Introduce los datos del usuarios
+			\item Confirma los cambios.
+		\end{enumerate}\\
+		\textbf{Resultado}          & 
+		\begin{enumerate}
+			\item El usuario ya existe
+			\item Complejidad de la contraseña no válida
+			\item Datos incorrectos
+		\end{enumerate}\\
+		\bottomrule
+	\end{tabularx}
+	\caption{CP-1 Registro de usuarios.}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CP-3}    & \textbf{Registro de usuarios}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF-1 \\
+		\textbf{Descripción}          & Un usuario con el rol de administrador podrá crear cuentas de usuario y asignarles un rol. \\
+		\textbf{Precondición}         & El usuario tiene que tener el rol de administrador \\
+		\textbf{Pasos}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario administrador accede a la interfaz de la aplicación.
+			\item Accede a la opción Crear usuarios
+			\item Introduce los datos del usuarios
+			\item Confirma los cambios.
+		\end{enumerate}\\
+		\textbf{Resultado}          & 
+		\begin{enumerate}
+			\item El usuario ya existe
+			\item Complejidad de la contraseña no válida
+			\item Datos incorrectos
+		\end{enumerate}\\
+		\bottomrule
+	\end{tabularx}
+	\caption{CP-1 Registro de usuarios.}
+\end{table}
+
+\newpage
+

@@ -1,5 +1,9 @@
 <template>
     <div>
+        <v-toolbar>
+            <v-btn icon @click="$router.push('/')"> <v-icon>mdi-arrow-left</v-icon></v-btn>
+            <v-toolbar-title>{{$formatMessage('admin.title')}}</v-toolbar-title>
+        </v-toolbar>
         <v-data-table
                 :headers="headers"
                 :items="users"

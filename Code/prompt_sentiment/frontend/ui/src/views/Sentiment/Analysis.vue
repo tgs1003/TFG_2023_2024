@@ -2,7 +2,7 @@
     <div>
       <v-toolbar>
         <v-btn icon @click="$router.push('/')"> <v-icon>mdi-arrow-left</v-icon></v-btn>
-        <v-toolbar-title>{{$formatMessage('navbar.menu.home')}}</v-toolbar-title>
+        <v-toolbar-title>{{$formatMessage('analysis.title')}}</v-toolbar-title>
       </v-toolbar>
       
       <v-alert v-if="errorMessage != ''"
@@ -15,13 +15,6 @@
           {{ errorMessage }}
       </v-alert>
       <v-card>
-        <v-card-text>
-          <v-row align="center">
-            <v-col cols="4"></v-col>
-            <v-col class="text-h4" cols="6">{{ $formatMessage('analysis.title') }}</v-col>
-            <v-col cols="3"></v-col>
-          </v-row>
-          </v-card-text>
         
       <v-stepper
         v-model="e6"

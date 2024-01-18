@@ -5,6 +5,13 @@ module.exports = {
     {
     allowedHosts: ["promptsentiment.es"],
     },
+    pages:{
+    index: {
+        // entry for the page
+        entry: 'src/main.js',
+        title: 'Prompt sentiment',
+      },
+    },
     publicPath: '/',
     configureWebpack: {
         plugins: [

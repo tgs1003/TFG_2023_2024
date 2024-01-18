@@ -18,18 +18,20 @@
                     align="center"
                     justify="center"
                 >
+                <v-col cols = "2"><v-img :src="require('../../assets/logo_sentiment3_trans.png')" :width="160"></v-img></v-col>
                 <v-col
                         cols="8"
                         
                 >
                 <v-card>
                     <v-card-text>
-                        <h1>Bienvenidos a Prompt Sentiment</h1>
-                        <p>Una aplicación para análisis de sentimiento.</p>
-                        Creada como trabajo de fin de grado del Grado de Ingeniería Informática de la Universidad de Burgos.
+                        <h1>{{ $formatMessage('login.title') }}</h1>
+                        <p>{{ $formatMessage('login.subtitle') }}</p>
+                        {{ $formatMessage('login.desc') }}
                     </v-card-text>
                 </v-card>
                 </v-col>
+                <v-col cols="2"><v-select :label="$formatMessage('navbar.language')" @change="selectLang($event)" v-model="selectedLang" :items="langs"></v-select></v-col>
             </v-row>
             <v-row
                     align="center"
@@ -46,7 +48,7 @@
                                 dark
                                 flat
                         >
-                            <v-toolbar-title>Login</v-toolbar-title>
+                            <v-toolbar-title>{{ $formatMessage('login.dialog.title') }}</v-toolbar-title>
                             <v-spacer/>
 
                         </v-toolbar>
@@ -54,7 +56,7 @@
                             <v-form>
                                 <v-text-field
                                         v-model="email"
-                                        label="Email"
+                                        :label="$formatMessage('login.dialog.email')"
                                         name="email"
                                         prepend-icon="person"
                                         :error-messages="emailErrors"
@@ -65,7 +67,7 @@
                                 <v-text-field
                                         v-model="password"
                                         id="password"
-                                        label="Password"
+                                        :label="$formatMessage('login.dialog.password')"
                                         name="password"
                                         :error-messages="passwordErrors"
                                         required
@@ -75,21 +77,24 @@
                             </v-form>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn color="primary" @click="register">Registro</v-btn>
+                            <v-btn color="primary" @click="register">{{ $formatMessage('login.dialog.register') }}</v-btn>
                             <v-spacer/>
-                            <v-btn color="primary" @click="login">Login</v-btn>
+                            <v-btn color="primary" @click="login">{{ $formatMessage('login.dialog.login') }}</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>
             </v-row>
             
         </v-container>
+        
     </v-main>
+        
 </template>
 
 <script>
     import { validationMixin } from 'vuelidate'
     import { required, email } from 'vuelidate/lib/validators'
+    import TokenService from '../../services/token.service'
     export default {
         name: "Login",
         mixins: [validationMixin],
@@ -103,25 +108,32 @@
             return {
                 email: "",
                 password: "",
-                errorMessage: ""
+                errorMessage: "",
+                selectedLang: null,
+                langs: ['English','Español'],
             };
         },
         computed:{
             emailErrors () {
                 const errors = []
                 if (!this.$v.email.$dirty) return errors
-                !this.$v.email.email && errors.push('Must be valid e-mail')
-                !this.$v.email.required && errors.push('E-mail is required')
+                !this.$v.email.email && errors.push(this.$formatMessage('login.error.email.invalid'))
+                !this.$v.email.required && errors.push(this.$formatMessage('login.error.email.required'))
                 return errors
             },
             
             passwordErrors(){
                 const errors = []
                 if (!this.$v.password.$dirty) return errors
-                !this.$v.password.required && errors.push('Password is required')
+                !this.$v.password.required && errors.push(this.$formatMessage('login.error.password.required'))
                 return errors
-            
-            }
+            },
+        },
+        created() {
+                if(this.$root.$i18n.locale == 'en')
+                    this.selectedLang = 'English'
+                else
+                    this.selectedLang = 'Español'
         },
         methods:{
             login(){
@@ -135,7 +147,7 @@
                     .then(response=>{
                         if(response.status == 200)
                             this.$router.push('/')
-                        this.errorMessage = "Usuario o contraseña incorrectos."
+                        this.errorMessage = this.$formatMessage('login.error.password.incorrect');
                         }
                     )
                     .catch(err => {
@@ -146,6 +158,17 @@
             
             register(){
                 this.$router.push('/registro')
+            },
+            selectLang(event){
+                let locale = ''
+                if (event=='English'){
+                    locale = 'en'
+                }
+                else{
+                    locale = 'es'
+                }
+                TokenService.setlocale(locale)
+                location.reload()
             }
         }
     }

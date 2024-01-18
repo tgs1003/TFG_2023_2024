@@ -36,7 +36,7 @@
                             <v-form>
                                 <v-text-field
                                         v-model="name"
-                                        label="Nombre"
+                                        :label="$formatMessage('register.name')"
                                         name="name"
                                         autocomplete="off"
                                         required
@@ -48,7 +48,7 @@
                                 />
                                 <v-text-field
                                         v-model="email"
-                                        label="Email"
+                                        :label="$formatMessage('register.email')"
                                         name="email"
                                         autocomplete="off"
                                         required
@@ -62,7 +62,7 @@
                                 <v-text-field
                                         v-model="password"
                                         id="password"
-                                        label="Password"
+                                        :label="$formatMessage('register.password')"
                                         autocomplete="new-password"
                                         required
                                         :error-messages="passwordErrors"
@@ -73,9 +73,9 @@
                             </v-form>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn color="secondary" @click="cancel">Cancelar</v-btn>
+                            <v-btn color="secondary" @click="cancel">{{$formatMessage('register.cancel')}}</v-btn>
                             <v-spacer/>
-                            <v-btn color="primary" @click="register">Aceptar</v-btn>
+                            <v-btn color="primary" @click="register">{{$formatMessage('register.ok')}}</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>
@@ -113,20 +113,20 @@
             emailErrors () {
                 const errors = []
                 if (!this.$v.email.$dirty) return errors
-                !this.$v.email.email && errors.push('Must be valid e-mail')
-                !this.$v.email.required && errors.push('E-mail is required')
+                !this.$v.email.email && errors.push(this.$formatMessage('register.error.email.invalid'))
+                !this.$v.email.required && errors.push(this.$formatMessage('register.error.email.required'))
                 return errors
             },
             nameErrors(){
                 const errors = []
                 if (!this.$v.name.$dirty) return errors
-                !this.$v.name.required && errors.push('Name is required')
+                !this.$v.name.required && errors.push(this.$formatMessage('register.error.name.required'))
                 return errors
             },
             passwordErrors(){
                 const errors = []
                 if (!this.$v.password.$dirty) return errors
-                !this.$v.password.required && errors.push('La contraseña es obligatoria')
+                !this.$v.password.required && errors.push(this.$formatMessage('register.error.password.required'))
                 return errors
             
             }
@@ -144,7 +144,7 @@
                 .then(response=>{
                     if(response.status == 201)
                         this.$router.push('/')
-                    this.errorMessage = "El usuario ya existe."
+                    this.errorMessage = this.$formatMessage('register.error.user.exists')
                 })    
             },
             

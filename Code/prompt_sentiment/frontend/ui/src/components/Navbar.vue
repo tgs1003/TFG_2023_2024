@@ -3,7 +3,7 @@
         <v-app-bar :dark="this.$store.state.dark" app color="gray">
 
             <v-toolbar-title>
-                <v-img :src="require('../assets/logo_sentiment2_small.png')" :width="150"></v-img>
+                <v-img :src="require('../assets/logo_sentiment3_trans.png')" :width="160"></v-img>
             </v-toolbar-title>
             <v-app-bar-nav-icon  @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
             <v-spacer>

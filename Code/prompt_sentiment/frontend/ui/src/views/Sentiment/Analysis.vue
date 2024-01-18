@@ -1,7 +1,11 @@
 <template>
     <div>
-    <p>{{ $formatMessage('analysis.title') }}</p>
-    <v-alert v-if="errorMessage != ''"
+      <v-toolbar>
+        <v-btn icon @click="$router.push('/')"> <v-icon>mdi-arrow-left</v-icon></v-btn>
+        <v-toolbar-title>{{$formatMessage('navbar.menu.home')}}</v-toolbar-title>
+      </v-toolbar>
+      
+      <v-alert v-if="errorMessage != ''"
           color="yellow"
           variant="outlined"
         >
@@ -9,8 +13,17 @@
             Error
           </template>
           {{ errorMessage }}
-          </v-alert>
-    <v-stepper
+      </v-alert>
+      <v-card>
+        <v-card-text>
+          <v-row align="center">
+            <v-col cols="4"></v-col>
+            <v-col class="text-h4" cols="6">{{ $formatMessage('analysis.title') }}</v-col>
+            <v-col cols="3"></v-col>
+          </v-row>
+          </v-card-text>
+        
+      <v-stepper
         v-model="e6"
         vertical
       >
@@ -163,7 +176,7 @@
           </v-card>
           <v-btn
             color="primary"
-            @click="print"
+            @click="details"
           >
           {{ $formatMessage('analysis.process_result.save') }}
           </v-btn>
@@ -174,6 +187,7 @@
           </v-btn>
         </v-stepper-content>
       </v-stepper>
+    </v-card>
     </div>
     </template>
     
@@ -227,8 +241,8 @@
         },
         methods:
         {
-          print(){
-            window.print()
+          details(){
+            this.$router.push({name: 'Details', params:{dataset_id: this.datasetId}})
           },
           restart(){
             this.processResults = {}

@@ -28,7 +28,7 @@
                                 dark
                                 flat
                         >
-                            <v-toolbar-title>Registro</v-toolbar-title>
+                            <v-toolbar-title>{{$formatMessage('register.title')}}</v-toolbar-title>
                             <v-spacer/>
 
                         </v-toolbar>

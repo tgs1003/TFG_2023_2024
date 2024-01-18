@@ -5,7 +5,8 @@ import Registro from "../views/Auth/Registro";
 import Inicio from "../views/Inicio";
 import AdminHome from "../views/Admin/AdminHome";
 import History from "../views/Sentiment/History";
-import Analysis from "../views/Sentiment/Analysis.vue";
+import Analysis from "../views/Sentiment/Analysis";
+import Details from "../views/Sentiment/Details";
 import store from "@/store";
 import api from "../services/api";
 
@@ -16,6 +17,15 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/details",
+    name: "Details",
+    component: Details,
+    meta: {
+      requiresAuth: true,
+    },
+    props: true,
   },
   {
     path: "/admin-home",

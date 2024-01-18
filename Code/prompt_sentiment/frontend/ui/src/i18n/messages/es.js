@@ -1,4 +1,5 @@
 export default {
+  'register.title':'Registro',
   'register.name':'Nombre',
   'register.email': 'Correo',
   'register.password': 'Contraseña',

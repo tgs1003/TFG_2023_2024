@@ -4,6 +4,7 @@ from app.api.services.tokens import check_token
 from app.api.services.roles import user_has_rol
 from app.api.services.sentiments import(
     get_all_sentiments,
+    get_sentiments_by_dataset_id,
     get_sentiment_by_id,
     add_sentiment,
     update_sentiment,
@@ -148,16 +149,23 @@ sentiments_review = sentiments_namespace.model(
     "SentimentReview",
     {
         "dataset_id": fields.Integer,
-        "id": fields.Integer,
+        "review_id": fields.Integer,
         "stars": fields.Integer,
+        "anger": fields.Boolean,
         "sentiment": fields.String,
-        "original_stars": fields.Integer,
         "review_text": fields.String,
-        "model": fields.String,
-        "process_time": fields.Integer,
-        "tokens": fields.Integer,
+        
     },
 )
 
+class SentimentDatasetList(Resource):
+    @sentiments_namespace.marshal_with(sentiments_review, as_list=True)
+    @sentiments_namespace.expect(parser)
+    def get(self, dataset_id):
+        """Devuelve todos los sentimientos de un dataset."""
+        check_token(request, sentiments_namespace)
+        return get_sentiments_by_dataset_id(dataset_id = dataset_id), 200
+
 sentiments_namespace.add_resource(SentimentList, "")
+sentiments_namespace.add_resource(SentimentDatasetList, "/dataset/<int:dataset_id>")
 sentiments_namespace.add_resource(Sentiments, "/<int:sentiment_id>")

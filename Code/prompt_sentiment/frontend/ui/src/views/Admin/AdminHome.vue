@@ -181,7 +181,7 @@
                             class="mr-2"
                             small
                     >
-                        mdi-chartbox-outline
+                        mdi-chart-line
                     </v-icon>
                     
                     <v-icon
@@ -300,7 +300,6 @@
             clearInterval(this.timer)
         },
         methods: {
-
             initialize() {
                 api.get('/users').then((resp)=>{
                     this.users = resp.data
@@ -311,10 +310,8 @@
                 
             },
             viewResults(item) {
-                this.editedIndex = this.datasets.indexOf(item)
-                this.editedItem = Object.assign({}, item)
+                this.$router.push({name: 'Details', params:{dataset_id: item.id}})
             },
-
             editItem(item) {
                 this.editedIndex = this.users.indexOf(item)
                 this.editedItem = Object.assign({}, item)

@@ -7,6 +7,7 @@ import AdminHome from "../views/Admin/AdminHome";
 import History from "../views/Sentiment/History";
 import Analysis from "../views/Sentiment/Analysis";
 import Details from "../views/Sentiment/Details";
+import About from "../views/About";
 import store from "@/store";
 import api from "../services/api";
 
@@ -63,6 +64,20 @@ const routes = [
     component: Inicio,
     meta: {
       requiresAuth: true,
+    }
+  },
+  {
+    path: "/about",
+    name: "About",
+    component: About,
+    meta: {
+      requiresAuth: true,
+    }
+  },
+  {
+    path: "/http*",
+    beforeEnter: to => {
+      window.open(to.fullPath.substring(1), '_blank');
     }
   }
 ];

@@ -1,4 +1,7 @@
 export default {
+    'help.url':'https://tgs1003.gitbook.io/prompt_sentiment_en',
+    'help.title':'Help',
+    'about.title': 'About',
     'details.title':'Detailed report',
     'details.reviews.close':'Close',
     'details.view_reviews':'Show reviews',
@@ -29,7 +32,7 @@ export default {
     'login.error.email.required':'E-mail is required',
     'login.error.password.required':'Password is required',
     'login.error.password.incorrect' : 'Incorrect user or password.',
-    'home.analysis.title': 'Review analysis.',
+    'home.analysis.title': 'Sentiment analysis.',
     'home.analysis.desc': 'Select this option to analyse a review file.',
     'home.analysis.btn': 'Analyze reviews',
     'home.history.title': 'Review history.',

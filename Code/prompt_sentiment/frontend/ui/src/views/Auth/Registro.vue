@@ -16,6 +16,25 @@
             <v-row
                     align="center"
                     justify="center"
+                >
+                <v-col cols = "2"><v-img :src="require('../../assets/logo_sentiment3_trans.png')" :width="160"></v-img></v-col>
+                <v-col
+                        cols="8"
+                        
+                >
+                <v-card>
+                    <v-card-text>
+                        <h1>{{ $formatMessage('login.title') }}</h1>
+                        <p>{{ $formatMessage('login.subtitle') }}</p>
+                        {{ $formatMessage('login.desc') }}
+                    </v-card-text>
+                </v-card>
+                </v-col>
+                <v-col cols="2"><v-select :label="$formatMessage('navbar.language')" @change="selectLang($event)" v-model="selectedLang" :items="langs"></v-select></v-col>
+            </v-row>
+            <v-row
+                    align="center"
+                    justify="center"
             >
                 <v-col
                         cols="12"
@@ -87,6 +106,7 @@
 <script>
     import { validationMixin } from 'vuelidate'
     import { required, email, minLength } from 'vuelidate/lib/validators'
+    import TokenService from '../../services/token.service'
     export default {
         
         mixins: [validationMixin],
@@ -106,7 +126,9 @@
                     email:"text",
                     password: "text",
                 },
-                errorMessage: ""
+                errorMessage: "",
+                selectedLang: null,
+                langs: ['English','Español'],
             };
         },
         computed:{
@@ -131,6 +153,12 @@
             
             }
         },
+        created() {
+                if(this.$root.$i18n.locale == 'en')
+                    this.selectedLang = 'English'
+                else
+                    this.selectedLang = 'Español'
+        },
         methods:{
             register(){
                 this.errorMessage=""
@@ -150,6 +178,17 @@
             
             cancel(){
                 this.$router.push('/login')
+            },
+            selectLang(event){
+                let locale = ''
+                if (event=='English'){
+                    locale = 'en'
+                }
+                else{
+                    locale = 'es'
+                }
+                TokenService.setlocale(locale)
+                location.reload()
             }
         }
     }

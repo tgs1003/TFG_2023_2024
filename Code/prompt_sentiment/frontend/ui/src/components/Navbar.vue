@@ -83,15 +83,19 @@
                 this.selectedLang = 'English'
             else
                 this.selectedLang = 'Español'
+
             this.links.push({"icon": "dashboard", "text": this.$formatMessage('navbar.menu.home'), "route": "/"})
             api.get('/auth/status').then((resp)=>
             {
             var user = resp.data
             if (user.rol == 'Admin'){
-                this.links.push({"icon": "verified_user", "text": 
+                this.links.push({"icon": "shield", "text": 
                 this.$formatMessage('navbar.menu.admin'), "route": "/admin-home"})
                 }
+            this.links.push({"icon": "help_outline", "text": this.$formatMessage('help.title'), "route": this.$formatMessage('help.url')})
+            this.links.push({"icon": "info_outline", "text": this.$formatMessage('about.title'), "route": "/about"})
             })
+            
         },
         methods: {
             selectLang(event){

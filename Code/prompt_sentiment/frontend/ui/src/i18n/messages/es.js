@@ -1,4 +1,7 @@
 export default {
+  'help.url':'https://tgs1003.gitbook.io/prompt_sentiment_es',
+  'help.title':'Ayuda',
+  'about.title': 'Acerca de...',
   'details.title':'Informe detallado',
   'details.reviews.close':'Cerrar',
   'details.view_reviews' : 'Ver reseñas',

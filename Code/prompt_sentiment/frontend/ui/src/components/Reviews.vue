@@ -9,6 +9,18 @@
                 class="elevation-1"
                 sort-by="id"
             >
+            <template v-slot:item.review_text="{ item }">
+                <tr :title = "item.review_text"><td class="truncate" style="overflow:hidden;text-overflow:ellipsis;white-space: nowrap; max-width: 400px;">
+                    {{ item.review_text }}
+                </td></tr>
+            </template>
+            <template v-slot:item.stars="{ item }">
+                <v-rating
+                    :value="item.stars"
+                    readonly
+                >
+                </v-rating>
+            </template>
             </v-data-table>
         </v-card>
     </div>

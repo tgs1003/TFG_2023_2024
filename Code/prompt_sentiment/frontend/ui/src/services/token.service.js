@@ -1,40 +1,39 @@
-class TokenService{
-    getLocalRefreshToken(){
+class TokenService {
+    getLocalRefreshToken() {
         const user = JSON.parse(localStorage.getItem("user"));
         return user?.refresh_token;
     }
 
-    getLocalAccessToken(){
+    getLocalAccessToken() {
         const user = JSON.parse(localStorage.getItem("user"));
         return user?.access_token;
     }
 
-    getlocale()
-    {
-        if(localStorage.getItem('locale') == null)
-            localStorage.setItem('locale', 'en')
-        return localStorage.getItem('locale')
-    }
-    setlocale(locale)
-    {
-        localStorage.setItem('locale', locale)
+    getlocale() {
+        if (localStorage.getItem("locale") == null)
+            localStorage.setItem("locale", "en");
+        return localStorage.getItem("locale");
     }
 
-    updateLocalAccessToken(token){
-        let user = JSON.parse(localStorage.getItem('user'));
-        user.access_token = token['access_token']
-        user.refresh_token = token['refresh_token']
-        localStorage.setItem('user', JSON.stringify(token));
+    setlocale(locale) {
+        localStorage.setItem("locale", locale);
     }
 
-    getUser(){
+    updateLocalAccessToken(token) {
+        let user = JSON.parse(localStorage.getItem("user"));
+        user.access_token = token["access_token"];
+        user.refresh_token = token["refresh_token"];
+        localStorage.setItem("user", JSON.stringify(token));
+    }
+
+    getUser() {
         return JSON.parse(localStorage("user"));
     }
 
-    setUser(user){
+    setUser(user) {
         localStorage.setItem('user', JSON.stringify(user));
     }
-    removeUser(){
+    removeUser() {
         localStorage.removeItem('user');
     }
 }

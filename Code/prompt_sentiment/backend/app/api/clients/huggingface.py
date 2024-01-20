@@ -37,7 +37,6 @@ def load_dataset(dataset_id, config, sample):
         date_format=configuration["date_format"]
 
     review_text_fieldname = mapping['review_text']
-    
     dataset = ld(path)
     subset = dataset[subset_cfg].to_iterable_dataset()
     df = pd.json_normalize(subset)

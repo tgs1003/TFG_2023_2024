@@ -39,8 +39,8 @@ def create_db():
 
 @cli.command('crear_test')
 def create_test_db():
-    engine = create_engine(os.environ.get('DATABASE_URL'))
-    logging.debug(os.environ.get('DATABASE_URL'))
+    engine = create_engine(os.environ.get('TEST_DATABASE_URL'))
+    logging.debug(os.environ.get('TEST_DATABASE_URL'))
     if not database_exists(engine.url):
         create_database(engine.url)
         db.create_all()
@@ -87,6 +87,7 @@ def seed_db():
         }', status='Creado', owner = user.id))
 
         db.session.commit()
+
 
 if __name__ == '__main__':
     cli()

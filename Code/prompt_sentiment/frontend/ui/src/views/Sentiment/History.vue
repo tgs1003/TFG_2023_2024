@@ -9,7 +9,7 @@
           v-for="(dataset) in datasets"
           :key="dataset.id"
         >
-          <Stats :datasetId="dataset.id"></Stats>
+          <StatsReview :datasetId="dataset.id"></StatsReview>
         </v-carousel-item>
     </v-carousel>
   </div>
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Stats from '../../components/Stats.vue'
+import StatsReview from '../../components/StatsReview.vue'
 import api from '../../services/api'
 
 export default {
@@ -28,7 +28,7 @@ export default {
     ],
   }),
   components:{
-    Stats,
+    StatsReview,
   },
   created() {
     this.initialize()

@@ -14,7 +14,7 @@
         >
             <template v-slot:top>
                 <v-toolbar color="white" flat>
-                    <v-toolbar-title>Lista de usuarios</v-toolbar-title>
+                    <v-toolbar-title>{{ $formatMessage('admin.users.list') }}</v-toolbar-title>
                     <v-divider
                             class="mx-4"
                             inset
@@ -23,7 +23,7 @@
                     <v-spacer></v-spacer>
                     <v-dialog max-width="500px" v-model="dialog">
                         <template v-slot:activator="{ on }">
-                            <v-btn class="mb-2" color="primary" dark v-on="on">Crear usuario</v-btn>
+                            <v-btn class="mb-2" color="primary" dark v-on="on">{{$formatMessage('admin.users.create')}}</v-btn>
                         </template>
                         <v-card>
                             <v-card-title>
@@ -34,16 +34,16 @@
                                 <v-container>
                                     <v-row>
                                         <v-col cols="12" md="12" sm="12">
-                                            <v-text-field label="Username" v-model="editedItem.name"></v-text-field>
+                                            <v-text-field :label="$formatMessage('admin.users.username')" v-model="editedItem.name"></v-text-field>
                                         </v-col>
                                         <v-col cols="12" md="12" sm="12">
-                                            <v-text-field label="Email" v-model="editedItem.email"></v-text-field>
+                                            <v-text-field :label="$formatMessage('admin.users.email')" v-model="editedItem.email"></v-text-field>
                                         </v-col>
                                         <v-col cols="12" md="12" sm="12" v-if="editedIndex === -1">
-                                            <v-text-field type="password" label="Password" v-model="editedItem.password"></v-text-field>
+                                            <v-text-field type="password" :label="$formatMessage('admin.users.password')" v-model="editedItem.password"></v-text-field>
                                         </v-col>
                                         <v-col cols="12" md="12" sm="12">
-                                            <v-select label="Rol" v-model="editedItem.rol" :items="roles"></v-select>
+                                            <v-select :label="$formatMessage('admin.users.rol')" v-model="editedItem.rol" :items="roles"></v-select>
                                         </v-col>
                                     </v-row>
                                 </v-container>
@@ -51,8 +51,8 @@
 
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn @click="close" color="blue darken-1" text>Cancelar</v-btn>
-                                <v-btn @click="save" color="blue darken-1" text>Guardar</v-btn>
+                                <v-btn @click="close" color="blue darken-1" text>{{ $formatMessage('admin.users.cancel') }}</v-btn>
+                                <v-btn @click="save" color="blue darken-1" text>{{ $formatMessage('admin.users.save') }}</v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
@@ -73,7 +73,7 @@
                 </v-icon>
             </template>
             <template v-slot:no-data>
-                <v-btn @click="initialize" color="primary">Reset</v-btn>
+                <v-btn @click="initialize" color="primary">{{ $formatMessage('admin.users.reset') }}</v-btn>
             </template>
         </v-data-table>
     
@@ -87,7 +87,7 @@
             >
                 <template v-slot:top>
                     <v-toolbar color="white" flat>
-                        <v-toolbar-title>Lista de datasets</v-toolbar-title>
+                        <v-toolbar-title>{{ $formatMessage('admin.datasets.list') }}</v-toolbar-title>
                         <v-divider
                                 class="mx-4"
                                 inset
@@ -96,7 +96,7 @@
                         <v-spacer></v-spacer>
                         <v-dialog max-width="500px" v-model="dialog_dataset">
                             <template v-slot:activator="{ on }">
-                                <v-btn class="mb-2" color="primary" dark v-on="on">Crear dataset</v-btn>
+                                <v-btn class="mb-2" color="primary" dark v-on="on">{{$formatMessage('admin.datasets.create')}}</v-btn>
                             </template>
                             <v-card>
                                 <v-card-title>
@@ -107,13 +107,13 @@
                                     <v-container fluid>
                                         <v-row>
                                             <v-col cols="12" md="12" sm="12">
-                                                <v-text-field label="Nombre" v-model="editedItem.name"></v-text-field>
+                                                <v-text-field :label="$formatMessage('admin.dataset.name')" v-model="editedItem.name"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" md="12" sm="12">
-                                                <v-select label="Tipo" v-model="editedItem.type" :items="types"></v-select>
+                                                <v-select :label="$formatMessage('admin.dataset.type')" v-model="editedItem.type" :items="types"></v-select>
                                             </v-col>
                                             <v-col cols="12" md="12" sm="12">
-                                                <v-textarea label="Configuración" v-model="editedItem.config"></v-textarea>
+                                                <v-textarea :label="$formatMessage('admin.dataset.configuration')" v-model="editedItem.config"></v-textarea>
                                             </v-col>
                                         </v-row>
                                     </v-container>
@@ -121,15 +121,15 @@
 
                                 <v-card-actions>
                                     <v-spacer></v-spacer>
-                                    <v-btn @click="close_dataset" color="blue darken-1" text>Cancelar</v-btn>
-                                    <v-btn @click="save_dataset" color="blue darken-1" text>Guardar</v-btn>
+                                    <v-btn @click="close_dataset" color="blue darken-1" text>{{ $formatMessage('admin.users.cancel') }}</v-btn>
+                                    <v-btn @click="save_dataset" color="blue darken-1" text>{{ $formatMessage('admin.users.save') }}</v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
                         <v-dialog max-width="800px" v-model="dialog_dataset_load">
                             <v-card>
                                 <v-card-title>
-                                    <span class="headline">Cargar dataset</span>
+                                    <span class="headline">{{ $formatMessage('admin.dataset.load.title') }}</span>
                                 </v-card-title>
 
                                 <v-card-text>
@@ -140,7 +140,7 @@
                                                 
                                                 <v-slider 
                                                     class="align-down"
-                                                    label="Muestra a cargar (%):"
+                                                    :label="$formatMessage('admin.dataset.sample')"
                                                     :step="10"
                                                     v-model="sample" 
                                                     :max="100" 
@@ -158,29 +158,29 @@
 
                                 <v-card-actions>
                                     <v-spacer></v-spacer>
-                                    <v-btn @click="close_dataset_load" color="blue darken-1" text>Cancelar</v-btn>
-                                    <v-btn @click="load_dataset" color="blue darken-1" text>Cargar</v-btn>
+                                    <v-btn @click="close_dataset_load" color="blue darken-1" text>{{ $formatMessage('admin.users.cancel') }}</v-btn>
+                                    <v-btn @click="load_dataset" color="blue darken-1" text>{{ $formatMessage('admin.dataset.load.btn') }}</v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
                     </v-toolbar>
                 </template>
                 <template v-slot:item.actions="{ item }">
-                    <v-icon title="Cargar dataset" v-if="item.total == '0' && item.status != 'Cargando'"
+                    <v-icon :title="$formatMessage('admin.dataset.load.title')" v-if="item.total == '0' && item.status != 'Cargando'"
                             @click="loadDataset(item)"
                             class="mr-2"
                             small
                     >
                         mdi-upload
                     </v-icon>
-                    <v-icon title="Procesar dataset" v-if="item.total != '0' && item.processed == '0'"
+                    <v-icon :title="$formatMessage('admin.dataset.process')" v-if="item.total != '0' && item.processed == '0'"
                             @click="processDataset(item)"
                             class="mr-2"
                             small
                     >
                         mdi-lightbulb-outline
                     </v-icon>
-                    <v-icon title="Ver resultados" v-if="item.processed != '0'"
+                    <v-icon :title="$formatMessage('admin.dataset.viewresults')" v-if="item.processed != '0'"
                             @click="viewResults(item)"
                             class="mr-2"
                             small
@@ -203,7 +203,7 @@
                     
                 </template>
                 <template v-slot:no-data>
-                    <v-btn @click="initialize" color="primary">Reset</v-btn>
+                    <v-btn @click="initialize" color="primary">{{ $formatMessage('admin.users.reset') }}</v-btn>
                 </template>
             </v-data-table>
     </div>
@@ -227,29 +227,8 @@
             types:[
                 "Hugging face"
             ],
-            headers: [
-                {
-                    text: 'Nombre',
-                    align: 'start',
-                    sortable: false,
-                    value: 'name',
-                },
-                {text: 'Correo', value: 'email'},
-                {text: 'Rol', value: 'rol'},
-                {text: 'Acciones', value: 'actions', sortable: false},
-            ],
-            headers_datasets: [
-                {
-                    text: 'Nombre',
-                    align: 'start',
-                    sortable: false,
-                    value: 'name',
-                },
-                {text: 'Tipo', value: 'type'},
-                {text: 'Reseñas totales', value: 'total'},
-                {text: 'Reseñas procesadas', value: 'processed'},
-                {text: 'Acciones', value: 'actions', sortable: false},
-            ],
+            headers: [],
+            headers_datasets: [],
             users: [],
             datasets:[],
             sample:10,
@@ -277,10 +256,10 @@
 
         computed: {
             formTitle_dataset() {
-                return this.editedIndex === -1 ? 'Crear dataset' : 'Editar dataset'
+                return this.editedIndex === -1 ? this.$formatMessage('admin.datasets.create') : this.$formatMessage('admin.datasets.edit') 
             },
             formTitle() {
-                return this.editedIndex === -1 ? 'Nuevo usuario' : 'Editar usuario'
+                return this.editedIndex === -1 ? this.$formatMessage('admin.users.new') : this.$formatMessage('admin.users.edit') 
             },
         },
 
@@ -297,6 +276,27 @@
         },
 
         created() {
+            this.headers.push({
+                    text: this.$formatMessage('admin.users.name'),
+                    align: 'start',
+                    sortable: false,
+                    value: 'name',
+                },
+                {text: this.$formatMessage('admin.users.email'), value: 'email'},
+                {text: this.$formatMessage('admin.users.rol'), value: 'rol'},
+                {text: this.$formatMessage('admin.users.actions'), value: 'actions', sortable: false});
+                this.headers_datasets.push(
+                {
+                    text: this.$formatMessage('admin.datasets.name'),
+                    align: 'start',
+                    sortable: false,
+                    value: 'name',
+                },
+                {text: this.$formatMessage('admin.datasets.type'), value: 'type'},
+                {text: this.$formatMessage('admin.datasets.total_reviews'), value: 'total'},
+                {text: this.$formatMessage('admin.datasets.total_processed'), value: 'processed'},
+                {text: this.$formatMessage('admin.users.actions'), value: 'actions', sortable: false});
+            
             this.initialize()
             this.timer = setInterval(this.initialize, 10000);
         },
@@ -305,6 +305,7 @@
         },
         methods: {
             initialize() {
+                
                 api.get('/users').then((resp)=>{
                     this.users = resp.data
                 })
@@ -325,7 +326,7 @@
             deleteItem(item) {
                 var deletedIndex = this.users.indexOf(item)
                 deletedIndex = Object.assign({}, item)
-                confirm('¿Está seguro de que quiere borrar este usuario?') &&  
+                confirm(this.$formatMessage('admin.users.confirm.delete')) &&  
                 api.delete('/users/' + deletedIndex.id)
                     .then(resp => {
                         console.log(resp.data.message)
@@ -344,7 +345,7 @@
             deleteDataset(item) {
                 var deletedIndex = this.datasets.indexOf(item)
                 deletedIndex = Object.assign({}, item)
-                confirm('¿Está seguro de que quiere borrar este conjunto de datos?') &&  
+                confirm(this.$formatMessage('admin.datasets.confirm.delete')) &&  
                 api.delete('/datasets/' + deletedIndex.id)
                     .then(resp => {
                         console.log(resp.data.message)

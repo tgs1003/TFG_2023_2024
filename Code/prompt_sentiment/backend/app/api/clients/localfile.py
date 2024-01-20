@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.DEBUG,
 
 def load_dataset(dataset_id, config, sample):
     '''
-    Carga un dataset en la base de datos para ser procesado.
+    Carga un dataset desde un fichero en la base de datos para ser procesado.
     '''
     dataset1 = get_dataset_by_id(dataset_id)
     if dataset1 is None:

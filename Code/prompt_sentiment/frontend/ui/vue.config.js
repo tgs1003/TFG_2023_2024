@@ -1,42 +1,37 @@
-// vue.config.js
-var webpack = require('webpack');
+var webpack = require("webpack");
 module.exports = {
-    devServer:
-    {
-    allowedHosts: ["promptsentiment.es"],
+    devServer: { allowedHosts: ["promptsentiment.es"], },
+    pages: {
+        index: {
+            // entry for the page
+            entry: "src/main.js",
+            title: "Prompt sentiment",
+        },
     },
-    pages:{
-    index: {
-        // entry for the page
-        entry: 'src/main.js',
-        title: 'Prompt sentiment',
-      },
-    },
-    publicPath: '/',
+    publicPath: "/",
     configureWebpack: {
         plugins: [
             new webpack.LoaderOptionsPlugin({
-                // test: /\.xxx$/, // may apply this only for some modules
                 options: {
                     rules: [
                         {
                             test: /\.s(c|a)ss$/,
                             use: [
-                                'vue-style-loader',
-                                'css-loader',
+                                "vue-style-loader",
+                                "css-loader",
                                 {
-                                    loader: 'sass-loader',
+                                    loader: "sass-loader",
                                     // Requires sass-loader@^7.0.0
                                     options: {
-                                        implementation: require('sass'),
-                                        fiber: require('fibers'),
+                                        implementation: require("sass"),
+                                        fiber: require("fibers"),
                                         indentedSyntax: true // optional
                                     },
                                     // Requires sass-loader@^8.0.0
                                     options: {
-                                        implementation: require('sass'),
+                                        implementation: require("sass"),
                                         sassOptions: {
-                                            fiber: require('fibers'),
+                                            fiber: require("fibers"),
                                             indentedSyntax: true // optional
                                         },
                                     },
@@ -47,6 +42,5 @@ module.exports = {
                 },
             }),
         ],
-
     },
 };

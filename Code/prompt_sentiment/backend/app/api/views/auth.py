@@ -69,11 +69,9 @@ class Login(Resource):
         email = post_data.get("email")
         password = post_data.get("password")
         response_object = {}
-        
         user = get_user_by_email(email)
         if not user or not bcrypt.check_password_hash(user.password, password):
             auth_namespace.abort(404, "El usuario no existe.")
-
         access_token = encode_token(user.id, "access")
         refresh_token = encode_token(user.id, "refresh")
 
@@ -127,9 +125,10 @@ class Status(Resource):
     def get(self):
         return get_token_user(request=request, namespace=auth_namespace)
 
+
 '''
 Aquí se registran las urls del servicio
-'''        
+'''   
 auth_namespace.add_resource(Register, "/register")
 auth_namespace.add_resource(Login, "/login")
 auth_namespace.add_resource(Refresh, "/refresh")

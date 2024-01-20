@@ -6,7 +6,7 @@ def test_create_dataset(test_app, test_database, add_dataset, add_user):
     dataset_type ='Huggingface'
     dataset_config='test_config'
     dataset_owner = user1.id
-    dataset = add_dataset(name = dataset_name, type = dataset_type, 
+    dataset = add_dataset(name = dataset_name, type = dataset_type,
                           config = dataset_config, owner = dataset_owner)
     assert dataset.name == dataset_name
     assert dataset.type == dataset_type

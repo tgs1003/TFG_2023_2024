@@ -87,12 +87,10 @@ class DatasetList(Resource):
         name = data["name"]
         dataset_type = data["type"]
         config = data["config"]
-
         if user:
             owner = user.id
         else:
             owner = data["owner"]
-                
         response_object = {}
         
         dataset1 = add_dataset(name = name, type = dataset_type, config = config, owner = owner)

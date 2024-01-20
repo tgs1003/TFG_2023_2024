@@ -35,7 +35,7 @@ const routes = [
     meta: {
       requiresAuth: true,
       requiresAdmin: true,
-    }
+    },
   },
   {
     path: "/history",
@@ -43,7 +43,7 @@ const routes = [
     component: History,
     meta: {
       requiresAuth: true,
-    }
+    },
   },
   {
     path: "/analysis",
@@ -51,7 +51,7 @@ const routes = [
     component: Analysis,
     meta: {
       requiresAuth: true,
-    }
+    },
   },
   {
     path: "/registro",
@@ -64,7 +64,7 @@ const routes = [
     component: Inicio,
     meta: {
       requiresAuth: true,
-    }
+    },
   },
   {
     path: "/about",
@@ -72,12 +72,12 @@ const routes = [
     component: About,
     meta: {
       requiresAuth: true,
-    }
+    },
   },
   {
     path: "/http*",
-    beforeEnter: to => {
-      window.open(to.fullPath.substring(1), '_blank');
+    beforeEnter: (to) => {
+      window.open(to.fullPath.substring(1), "_blank");
     }
   }
 ];
@@ -93,28 +93,28 @@ router.beforeEach((to, from, next) => {
       next({
         path: "/login",
         params: { redirect: to.fullPath },
-      })
+      });
     } else {
-      if (to.matched.some((record) => record.meta.requiresAdmin)) {    
-        api.get("/auth/status").then((resp)=>{
+      if (to.matched.some((record) => record.meta.requiresAdmin)) {
+        api.get("/auth/status").then((resp) => {
           var user = resp.data;
-          if (user.rol != "Admin")
-          {
+          if (user.rol != "Admin") {
             next({
               path: "/",
               params: { redirect: to.fullPath },
-            })
+            });
           }
           else {
             next();
-            }
+          }
         })
       }
       else {
         next();
       }
-}} else{
+    }
+  } else {
     next();
-}
+  }
 })
 export default router;

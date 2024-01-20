@@ -3,8 +3,8 @@ from flask_restx import Resource, fields, Namespace
 from app.api.services.tokens import check_token
 from app.api.services.roles import user_has_rol
 from app.api.services.reviews import (
-    get_all_reviews, 
-    get_review_by_id, 
+    get_all_reviews,
+    get_review_by_id,
     add_review,
     update_review,
     delete_review,
@@ -47,7 +47,6 @@ class ReviewsList(Resource):
         check_token(request=request, namespace=reviews_namespace)
         return get_all_reviews(), 200
 
-    
     @reviews_namespace.response(201, "<review_id> was added!")
     @reviews_namespace.response(400, "La reseña está duplicada.")
     @reviews_namespace.expect(post_parser)
@@ -125,8 +124,7 @@ class ReviewsListForProcess(Resource):
         check_token(request=request, namespace=reviews_namespace)
         return get_reviews_by_dataset_id(dataset_id=dataset_id), 200
 
-   
-    
+
 reviews_namespace.add_resource(ReviewsList, "")
 reviews_namespace.add_resource(Reviews, "/<int:review_id>")
 reviews_namespace.add_resource(ReviewsListForProcess, "/process/<int:dataset_id>")

@@ -42,7 +42,7 @@ def load_dataset(dataset_id, config, sample):
     df = pd.json_normalize(subset)
     df = df.sample(frac=(sample/100))
     df.reset_index(drop=True, inplace=True)
-    
+
     if 'review_headline' in mapping.keys():
         review_headline_fieldname = mapping['review_headline']
         df['review'] = df[review_headline_fieldname] + ". " + df[review_text_fieldname]

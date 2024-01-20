@@ -54,7 +54,7 @@ def test_add_dataset_correcto(test_app, test_database, add_user):
     data = json.loads(resp.data.decode())
     assert resp.status_code == 201
     assert "Se ha añadido el dataset dataset_prueba2" in data["message"]
-    
+
 
 def test_add_dataset_no_existe(test_app):
     client = test_app.test_client()
@@ -62,7 +62,6 @@ def test_add_dataset_no_existe(test_app):
     data = json.loads(resp.data.decode())
     assert resp.status_code == 404
     assert "El dataset 999 no existe" in data["message"]
-
 
 def test_delete_dataset(test_app):
     client = test_app.test_client()

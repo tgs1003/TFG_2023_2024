@@ -11,9 +11,9 @@ def test_add_dataset(test_app, monkeypatch):
         d = AttrDict()
         d.update({"id": 1})
         return d
-    
+
     monkeypatch.setattr(app.api.views.datasets, "add_dataset", mock_add_dataset)
-    
+
     client = test_app.test_client()
     resp = client.post(
         "/datasets",
@@ -44,7 +44,7 @@ def test_get_dataset_no_existe(test_app, monkeypatch):
 def test_delete_dataset_incorrect_id(test_app, monkeypatch):
     def mock_get_dataset_by_id(dataset_id):
         return None
-    
+
     monkeypatch.setattr(app.api.views.datasets, "get_dataset_by_id", mock_get_dataset_by_id)
     client = test_app.test_client()
     resp = client.delete("/datasets/999")
@@ -70,7 +70,7 @@ def test_update_dataset_incorrect_request(test_app, dataset_id, payload, status_
     
     def mock_get_dataset_by_id(dataset_id):
         return None
-    
+
     monkeypatch.setattr(app.api.views.datasets, "get_dataset_by_id", mock_get_dataset_by_id)
     client = test_app.test_client()
     resp = client.put(f"/datasets/{dataset_id}", data=json.dumps(payload), content_type="application/json")

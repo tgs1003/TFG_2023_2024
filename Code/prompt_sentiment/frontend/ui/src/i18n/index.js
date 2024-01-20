@@ -9,4 +9,4 @@ const locale = TokenService.getlocale(); // replace this with `process.env.LOCAL
 const messages = require(`./messages/${locale}`).default;
 const formats = require(`./formats/${locale}`).default;
 
-export default new I18n({locale, messages, formats});
+export default new I18n({ locale, messages, formats });

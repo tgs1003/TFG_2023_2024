@@ -56,7 +56,7 @@ def check_token(request, namespace):
             namespace.abort(401,"Token no válido.")
     else:
         namespace.abort(403,"Hace falta un token.")
-        
+
 def get_token_user(request, namespace, default=None):
     '''
     Devuelve el usuario que está logado en el sistema (según la información del token)

@@ -2,7 +2,7 @@ from flask import request
 from flask_restx import Resource, fields, Namespace
 from app.api.services.tokens import check_token
 from app.api.services.roles import user_has_rol
-from app.api.services.sentiments import(
+from app.api.services.sentiments import (
     get_all_sentiments,
     get_sentiments_by_dataset_id,
     get_sentiment_by_id,
@@ -72,7 +72,7 @@ class SentimentList(Resource):
         data = post_parser.parse_args(request)
         if not user_has_rol(request, "Admin", sentiments_namespace):
             sentiments_namespace.abort(403, "El usuario no es administrador.")
-        
+
         review_id = data["review_id"]
         stars = data["stars"]
         sentiment = data["sentiment"]
@@ -88,7 +88,7 @@ class SentimentList(Resource):
         if sentiment_analysis:
             response_object["message"] = "El sentimiento ya existe."
             return response_object, 400
-        
+
         add_sentiment(review_id = review_id, stars = stars,
                     sentiment = sentiment, anger = anger,
                     source=source, model=model,
@@ -118,7 +118,6 @@ class Sentiments(Resource):
         data = put_parser.parse_args(request)
         if not user_has_rol(request, "Admin", sentiments_namespace):
             sentiments_namespace.abort(403, "El usuario no es administrador.")
-        
         correct = data["correct"]
         response_object = {}
         sentiment = get_sentiment_by_id(sentiment_id)
@@ -144,7 +143,6 @@ class Sentiments(Resource):
         return response_object, 200
 
 
-#
 sentiments_review = sentiments_namespace.model(
     "SentimentReview",
     {
@@ -154,7 +152,6 @@ sentiments_review = sentiments_namespace.model(
         "anger": fields.Boolean,
         "sentiment": fields.String,
         "review_text": fields.String,
-        
     },
 )
 
@@ -165,6 +162,7 @@ class SentimentDatasetList(Resource):
         """Devuelve todos los sentimientos de un dataset."""
         check_token(request, sentiments_namespace)
         return get_sentiments_by_dataset_id(dataset_id = dataset_id), 200
+
 
 sentiments_namespace.add_resource(SentimentList, "")
 sentiments_namespace.add_resource(SentimentDatasetList, "/dataset/<int:dataset_id>")

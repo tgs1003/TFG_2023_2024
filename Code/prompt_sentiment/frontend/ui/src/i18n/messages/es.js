@@ -113,5 +113,5 @@ export default {
   "stats.positive_vs_negative": "Reseñas positivas vs. negativas",
   "stats.review_number": "Número de reseñas",
   "stats.star": "estrella",
-  "stats.stars": "estrellas"
-}
+  "stats.stars": "estrellas",
+};

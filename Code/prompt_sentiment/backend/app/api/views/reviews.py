@@ -115,7 +115,7 @@ class Reviews(Resource):
         delete_review(review)
         response_object["message"] = f"La reseña {review.id} se ha borrado."
         return response_object, 200
-    
+
 class ReviewsListForProcess(Resource):
     @reviews_namespace.marshal_with(reviews, as_list=True)
     @reviews_namespace.expect(parser)

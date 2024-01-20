@@ -113,5 +113,5 @@ export default {
   "stats.positive_vs_negative": "Positive vs. Negative",
   "stats.review_number": "Review number",
   "stats.star": "star",
-  "stats.stars": "stars"
-}
+  "stats.stars": "stars",
+};

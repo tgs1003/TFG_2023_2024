@@ -6,7 +6,7 @@ const setup = ({ commit }) => {
         (config) => {
             const token = TokenService.getLocalAccessToken();
             if (token) {
-                config.headers['Authorization'] = token;
+                config.headers["Authorization"] = token;
             }
             return config;
         },

@@ -128,7 +128,7 @@ class Status(Resource):
 
 '''
 Aquí se registran las urls del servicio
-'''   
+'''
 auth_namespace.add_resource(Register, "/register")
 auth_namespace.add_resource(Login, "/login")
 auth_namespace.add_resource(Refresh, "/refresh")

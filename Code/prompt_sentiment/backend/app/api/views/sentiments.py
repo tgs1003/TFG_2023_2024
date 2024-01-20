@@ -63,7 +63,7 @@ class SentimentList(Resource):
         """Devuelve todos los sentimientos de las reseñas."""
         check_token(request, sentiments_namespace)
         return get_all_sentiments(), 200
-        
+
     @sentiments_namespace.response(201, "El sentimiento para la reseña <reviewId> se ha agregado.")
     @sentiments_namespace.response(400, "El sentimiento ya existe.")
     @sentiments_namespace.expect(post_parser)

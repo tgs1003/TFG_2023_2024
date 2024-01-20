@@ -78,8 +78,8 @@ const routes = [
     path: "/http*",
     beforeEnter: (to) => {
       window.open(to.fullPath.substring(1), "_blank");
-    }
-  }
+    },
+  },
 ];
 
 const router = new VueRouter({
@@ -107,7 +107,7 @@ router.beforeEach((to, from, next) => {
           else {
             next();
           }
-        })
+        });
       }
       else {
         next();

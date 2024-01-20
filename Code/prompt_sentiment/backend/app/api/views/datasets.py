@@ -92,7 +92,6 @@ class DatasetList(Resource):
         else:
             owner = data["owner"]
         response_object = {}
-        
         dataset1 = add_dataset(name = name, type = dataset_type, config = config, owner = owner)
         response_object["message"] = f"Se ha añadido el dataset {name}."
         response_object["dataset_id"] = dataset1.id

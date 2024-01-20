@@ -107,13 +107,13 @@
                                     <v-container fluid>
                                         <v-row>
                                             <v-col cols="12" md="12" sm="12">
-                                                <v-text-field :label="$formatMessage('admin.dataset.name')" v-model="editedItem.name"></v-text-field>
+                                                <v-text-field :label="$formatMessage('admin.datasets.name')" v-model="editedItem.name"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" md="12" sm="12">
-                                                <v-select :label="$formatMessage('admin.dataset.type')" v-model="editedItem.type" :items="types"></v-select>
+                                                <v-select :label="$formatMessage('admin.datasets.type')" v-model="editedItem.type" :items="types"></v-select>
                                             </v-col>
                                             <v-col cols="12" md="12" sm="12">
-                                                <v-textarea :label="$formatMessage('admin.dataset.configuration')" v-model="editedItem.config"></v-textarea>
+                                                <v-textarea :label="$formatMessage('admin.datasets.configuration')" v-model="editedItem.config"></v-textarea>
                                             </v-col>
                                         </v-row>
                                     </v-container>
@@ -129,7 +129,7 @@
                         <v-dialog max-width="800px" v-model="dialog_dataset_load">
                             <v-card>
                                 <v-card-title>
-                                    <span class="headline">{{ $formatMessage('admin.dataset.load.title') }}</span>
+                                    <span class="headline">{{ $formatMessage('admin.datasets.load.title') }}</span>
                                 </v-card-title>
 
                                 <v-card-text>
@@ -140,7 +140,7 @@
                                                 
                                                 <v-slider 
                                                     class="align-down"
-                                                    :label="$formatMessage('admin.dataset.sample')"
+                                                    :label="$formatMessage('admin.datasets.sample')"
                                                     :step="10"
                                                     v-model="sample" 
                                                     :max="100" 
@@ -159,28 +159,28 @@
                                 <v-card-actions>
                                     <v-spacer></v-spacer>
                                     <v-btn @click="close_dataset_load" color="blue darken-1" text>{{ $formatMessage('admin.users.cancel') }}</v-btn>
-                                    <v-btn @click="load_dataset" color="blue darken-1" text>{{ $formatMessage('admin.dataset.load.btn') }}</v-btn>
+                                    <v-btn @click="load_dataset" color="blue darken-1" text>{{ $formatMessage('admin.datasets.load.btn') }}</v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
                     </v-toolbar>
                 </template>
                 <template v-slot:item.actions="{ item }">
-                    <v-icon :title="$formatMessage('admin.dataset.load.title')" v-if="item.total == '0' && item.status != 'Cargando'"
+                    <v-icon :title="$formatMessage('admin.datasets.load.title')" v-if="item.total == '0' && item.status != 'Cargando'"
                             @click="loadDataset(item)"
                             class="mr-2"
                             small
                     >
                         mdi-upload
                     </v-icon>
-                    <v-icon :title="$formatMessage('admin.dataset.process')" v-if="item.total != '0' && item.processed == '0'"
+                    <v-icon :title="$formatMessage('admin.datasets.process')" v-if="item.total != '0' && item.processed == '0'"
                             @click="processDataset(item)"
                             class="mr-2"
                             small
                     >
                         mdi-lightbulb-outline
                     </v-icon>
-                    <v-icon :title="$formatMessage('admin.dataset.viewresults')" v-if="item.processed != '0'"
+                    <v-icon :title="$formatMessage('admin.datasets.viewresults')" v-if="item.processed != '0'"
                             @click="viewResults(item)"
                             class="mr-2"
                             small

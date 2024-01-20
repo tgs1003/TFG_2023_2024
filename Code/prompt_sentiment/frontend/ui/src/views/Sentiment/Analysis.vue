@@ -79,11 +79,11 @@
           >
           <v-container v-if="file_info != null">
             <v-row>
-              <v-col><span><strong>{{ $formatMessage('analysis.file.config.filename') }}</strong>{{ file_info.file_name }}</span></v-col>
-              <v-col><span><strong>{{ $formatMessage('analysis.file.config.review_number') }}</strong>{{ file_info.row_count }} </span></v-col>
+              <v-col><span><strong>{{ $formatMessage('analysis.file.config.filename') }}</strong> {{ file_info.file_name }}</span></v-col>
+              <v-col><span><strong>{{ $formatMessage('analysis.file.config.review_number') }}</strong> {{ file_info.row_count }} </span></v-col>
             </v-row>
             <v-row>
-              <v-col><span><strong>{{ $formatMessage('analysis.file.config.format') }}</strong>{{ file_info.file_format }}</span></v-col><v-col></v-col>
+              <v-col><span><strong>{{ $formatMessage('analysis.file.config.format') }}</strong> {{ file_info.file_format }}</span></v-col><v-col></v-col>
             </v-row>
             <v-row>
               <v-col>
@@ -151,15 +151,12 @@
                   class="mx-auto"
                   outlined
                 >
-                  <v-card-text>
-                    <p><strong>{{ $formatMessage('analysis.process_result.total') }}</strong>: {{ stats.total }}</p>
-                    <p><strong>{{ $formatMessage('analysis.process_result.positive') }}</strong>: {{stats.positive}}</p>
-                    <p><strong>{{ $formatMessage('analysis.process_result.anger') }}</strong>: {{stats.anger}}</p>
-                    <p><strong>{{ $formatMessage('analysis.process_result.mean') }}</strong>: {{ stats.mean }}</p>
-                    <p><strong>{{ $formatMessage('analysis.process_result.median') }}</strong>: {{ stats.median }}</p>
-                    <p><strong>{{ $formatMessage('analysis.process_result.mode') }}</strong>: {{ stats.mode }}</p>
-                    <p><strong>{{ $formatMessage('analysis.process_result.variance') }}</strong>: {{ stats.variance }}</p>
-                  </v-card-text>
+                <v-card-text>
+                  <p><strong>{{ $formatMessage('analysis.process_result.total') }}</strong>: {{ stats.total }}</p>
+                  <p><strong>{{ $formatMessage('analysis.process_result.positive') }}</strong>: {{stats.positive}}, <strong>{{ $formatMessage('analysis.process_result.anger') }}</strong>: {{stats.anger}}</p>
+                  <p><strong>{{ $formatMessage('analysis.process_result.mean') }}</strong>: {{ stats.mean }}, <strong>{{ $formatMessage('analysis.process_result.variance') }}</strong>: {{ stats.variance }}</p>
+                  <p><strong>{{ $formatMessage('analysis.process_result.median') }}</strong>: {{ stats.median }}, <strong>{{ $formatMessage('analysis.process_result.mode') }}</strong>: {{ stats.mode }}</p>
+                </v-card-text>
                 </v-card>
               </v-col>
               <v-col><BarChart :values = "processResults" />
@@ -171,7 +168,7 @@
             color="primary"
             @click="details"
           >
-          {{ $formatMessage('analysis.process_result.save') }}
+          {{ $formatMessage('analysis.process_result.details') }}
           </v-btn>
           <v-btn text
           @click="restart"
@@ -288,6 +285,7 @@
                               })
                               .catch(error => {
                                 this.errorMessage=error;
+                                this.overlay = false
                                 console.log({ error });
                               });
                             }

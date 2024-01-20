@@ -27,9 +27,9 @@ def load_dataset(dataset_id, config, sample):
     separator = configuration["separator"]
     reviewColumn = configuration["reviewColumn"]
     buffer = get_file(fileId)
-    if fileFormat == "json":
+    if fileFormat == "JSON":
         df = pd.read_json(buffer)
-    elif fileFormat == "csv":
+    elif fileFormat == "CSV":
         df = pd.read_csv(buffer, sep = separator)
     df = df.sample(frac=(sample/100))
     df.reset_index(drop=True, inplace=True)

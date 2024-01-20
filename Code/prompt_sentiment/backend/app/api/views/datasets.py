@@ -63,7 +63,6 @@ class UserDatasetList(Resource):
         return all_datsets, 200
 
 
-
 class DatasetList(Resource):
     @datasets_namespace.marshal_with(datasets_get, as_list=True)
     @datasets_namespace.expect(parser)

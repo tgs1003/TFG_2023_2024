@@ -38,7 +38,7 @@ def get_file_info(file_path):
     header = []
     row_count = 0
     if file_type=="application/json":
-        file_format = "json"
+        file_format = "JSON"
         with open(file_path) as file:
             jsfile = json.load(file)
             for key in jsfile[0].keys():
@@ -48,15 +48,15 @@ def get_file_info(file_path):
         with open(file_path) as file:
             first_line = file.readline().strip()
             if first_line.__contains__('\t'):
-                file_format = "tsv"
+                file_format = "TSV"
                 separator = '\t'
                 header = first_line.split(separator)
             elif first_line.__contains__(','):
-                file_format = "csv"
+                file_format = "CSV"
                 separator = ','
                 header = first_line.split(separator)
             elif first_line.__contains__(';'):
-                file_format = "csv"
+                file_format = "CSV"
                 separator = ';'
                 header = first_line.split(separator)
             row_count = len(file.readlines())

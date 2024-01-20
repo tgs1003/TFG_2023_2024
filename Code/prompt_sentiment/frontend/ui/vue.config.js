@@ -1,6 +1,6 @@
 var webpack = require("webpack");
 module.exports = {
-    devServer: { allowedHosts: ["promptsentiment.es"], },
+    devServer: { allowedHosts: ["promptsentiment.es"] },
     pages: {
         index: {
             // entry for the page

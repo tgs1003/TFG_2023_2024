@@ -16,7 +16,7 @@ def get_sentiments_by_dataset_id(dataset_id):
     '''
     query = db.session.query(Sentiment)
     query = query.join(Review, Review.id == Sentiment.review_id)
-    query = query.filter(Review.dataset_id == dataset_id)
+    query = query.filter(Review.dataset_id == dataset_id, Sentiment.correct)
     query = query.with_entities(Review.dataset_id, Review.review_text,
                                 Sentiment.review_id, Sentiment.stars,
                                 Sentiment.anger, Sentiment.sentiment, Sentiment.correct, Sentiment.tokens)

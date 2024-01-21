@@ -14,61 +14,61 @@ state: {
 },
 mutations: {
     auth_request(state) {
-        state.status = "loading"
+        state.status = "loading";
     },
     auth_success(state, token, user) {
-        state.status = "success"
-        state.token = token
-        state.user = user
+        state.status = "success";
+        state.token = token;
+        state.user = user;
     },
     auth_error(state) {
-        state.status = "error"
+        state.status = "error";
     },
     logout(state) {
-        state.status = ""
-        state.token = ""
+        state.status = "";
+        state.token = "";
     },
 },
 actions: {
     login({commit}, user) {
-        commit("auth_request")
+        commit("auth_request");
         return api.post("/auth/login", user)
         .then((response)=> {
             if(response.data.access_token){
-                TokenService.setUser(response.data)
-                commit("auth_success", response.data.access_token, user.email)
+                TokenService.setUser(response.data);
+                commit("auth_success", response.data.access_token, user.email);
             }
-            return response
+            return response;
         })
         .catch(err => {
                 
-            TokenService.removeUser()
-            console.info(err)
-            return err
+            TokenService.removeUser();
+            console.info(err);
+            return err;
         });
     },
     register({commit},user)
     {
-        commit("auth_request")
+        commit("auth_request");
         return api.post("/auth/register", user)
                 .then((response)=> {
                 if (response.code === 200)
                     this.$router.push("/")
-                return response
+                    return response;
                 })
                 .catch(err => {
-                    TokenService.removeUser()
-                    console.info(err)
-                    return err
+                    TokenService.removeUser();
+                    console.info(err);
+                    return err;
                 });
 
     },
     logout({ commit }) {
     return new Promise((resolve) => {
-        commit("logout")
+        commit("logout");
         TokenService.removeUser();
         commit("auth_success", "", "")
-        resolve()
+        resolve();
         })
         },
     },

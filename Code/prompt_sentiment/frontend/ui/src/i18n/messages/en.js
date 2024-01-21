@@ -32,7 +32,7 @@ export default {
   "about.author": "Author:",
   "about.tutors": "Tutors:",
   "about.other": "Other:",
-  "about.infrastucture": "Infrastructure",
+  "about.infrastructure": "Infrastructure",
   "about.repository": "View repository",
   "about.app": "Developed during year 2024 as final degree project in ",
   "details.title": "Detailed report",

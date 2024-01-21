@@ -32,7 +32,8 @@ export default new Vuex.Store({
     actions: {
         login({ commit }, user) {
             commit("auth_request");
-            return api.post("/auth/login", user)
+            return api
+                .post("/auth/login", user)
                 .then((response) => {
                     if (response.data.access_token) {
                         TokenService.setUser(response.data);
@@ -40,8 +41,7 @@ export default new Vuex.Store({
                     }
                     return response;
                 })
-                .catch(err => {
-
+                .catch((err) => {
                     TokenService.removeUser();
                     console.info(err);
                     return err;
@@ -49,13 +49,14 @@ export default new Vuex.Store({
         },
         register({ commit }, user) {
             commit("auth_request");
-            return api.post("/auth/register", user)
+            return api
+                .post("/auth/register", user)
                 .then((response) => {
                     if (response.code === 200)
                         this.$router.push("/")
                     return response;
                 })
-                .catch(err => {
+                .catch((err) => {
                     TokenService.removeUser();
                     console.info(err);
                     return err;
@@ -66,13 +67,13 @@ export default new Vuex.Store({
             return new Promise((resolve) => {
                 commit("logout");
                 TokenService.removeUser();
-                commit("auth_success", "", "")
+                commit("auth_success", "", "");
                 resolve();
             })
         },
     },
     getters: {
-        isLoggedIn: state => !!state.token,
-        authStatus: state => state.status,
+        isLoggedIn: (state) => !!state.token,
+        authStatus: (state) => state.status,
     },
 })

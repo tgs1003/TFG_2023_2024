@@ -16,6 +16,7 @@
     "fibers": "4.0.2",
     "lodash": "^4.17.21",
     "print-js": "^1.6.0",
+    "vue-pdf-app": "2.1.0",
     "regenerator-runtime": "^0.14.0",
     "translated": "^0.3.0",
     "vue": "2.7.16",

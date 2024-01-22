@@ -8,6 +8,7 @@ import History from "../views/Sentiment/History";
 import Analysis from "../views/Sentiment/Analysis";
 import Details from "../views/Sentiment/Details";
 import About from "../views/About";
+import Help from "../views/Help";
 import store from "@/store";
 import api from "../services/api";
 
@@ -70,6 +71,14 @@ const routes = [
     path: "/about",
     name: "About",
     component: About,
+    meta: {
+      requiresAuth: true,
+    },
+  },
+  {
+    path: "/help",
+    name: "Help",
+    component: Help,
     meta: {
       requiresAuth: true,
     },

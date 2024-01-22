@@ -92,7 +92,7 @@
                 this.links.push({"icon": "shield", "text": 
                 this.$formatMessage('navbar.menu.admin'), "route": "/admin-home"})
                 }
-            this.links.push({"icon": "help_outline", "text": this.$formatMessage('help.title'), "route": this.$formatMessage('help.url')})
+            this.links.push({"icon": "help_outline", "text": this.$formatMessage('help.title'), "route": "/help"})
             this.links.push({"icon": "info_outline", "text": this.$formatMessage('about.title'), "route": "/about"})
             })
             

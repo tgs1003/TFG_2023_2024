@@ -1,4 +1,0 @@
-# Introducción
-
-## Introducción al proyecto
-

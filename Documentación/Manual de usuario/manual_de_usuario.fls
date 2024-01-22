@@ -1,0 +1,874 @@
+PWD /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario
+INPUT /usr/local/texlive/2023/texmf.cnf
+INPUT /usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.tex
+OUTPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.log
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/ol-softwaremanual.cls
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/ol-softwaremanual.cls
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/ol-softwaremanual.cls
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/ol-softwaremanual.cls
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/ol-softwaremanual.cls
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/ol-softwaremanual.cls
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/ol-softwaremanual.cls
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/ol-softwaremanual.cls
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/ol-softwaremanual.cls
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/ol-softwaremanual.cls
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/ol-softwaremanual.cls
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/preprint/fullpage.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/preprint/fullpage.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/preprint/fullpage.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/preprint/fullpage.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/preprint/fullpage.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/preprint/fullpage.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/preprint/fullpage.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/preprint/fullpage.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/preprint/fullpage.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/preprint/fullpage.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/preprint/fullpage.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/parskip/parskip.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/parskip/parskip.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/parskip/parskip.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/parskip/parskip.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/parskip/parskip.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/parskip/parskip.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/parskip/parskip.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/parskip/parskip.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/parskip/parskip.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/parskip/parskip.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/parskip/parskip.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/inputenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifxetex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifxetex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifxetex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifxetex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifxetex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifxetex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifxetex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifxetex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifxetex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifxetex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifxetex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifluatex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifluatex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifluatex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifluatex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifluatex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifluatex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifluatex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifluatex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifluatex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifluatex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifluatex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/textcomp.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/textcomp.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/textcomp.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/textcomp.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/textcomp.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/textcomp.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/textcomp.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/textcomp.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/textcomp.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/textcomp.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/textcomp.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/mweights/mweights.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto-mono.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto-mono.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto-mono.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto-mono.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto-mono.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto-mono.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto-mono.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto-mono.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto-mono.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto-mono.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/roboto-mono.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifxetex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifluatex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/textcomp.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/T1Roboto-LF.fd
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/T1Roboto-LF.fd
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/T1Roboto-LF.fd
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/T1Roboto-LF.fd
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Regular-lf-t1.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/mweights/mweights.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/sfmath/sfmath.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/sfmath/sfmath.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/sfmath/sfmath.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/sfmath/sfmath.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/sfmath/sfmath.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/sfmath/sfmath.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/sfmath/sfmath.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/sfmath/sfmath.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/sfmath/sfmath.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/sfmath/sfmath.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/sfmath/sfmath.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/size12.clo
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/size12.clo
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/size12.clo
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/size12.clo
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Regular-lf-t1.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype-pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hyperref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hycolor/hycolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/auxhook/auxhook.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/nameref.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/refcount/refcount.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/pd1enc.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/puenc.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bitset/bitset.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/intcalc/intcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/atbegshi/atbegshi.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hpdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hpdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hpdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hpdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/atveryend/atveryend.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/atveryend/atveryend.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/atveryend/atveryend.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/atveryend/atveryend.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/atveryend/atveryend.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/atveryend/atveryend.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/atveryend/atveryend.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/atveryend/atveryend.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/atveryend/atveryend.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/atveryend/atveryend.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/geometry/geometry.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/ifvtex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/txtbabel.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel-spanish/spanish.ldf
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel-spanish/spanish.ldf
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel-spanish/spanish.ldf
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel-spanish/spanish.ldf
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/locale/es/babel-spanish.tex
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/locale/es/babel-spanish.tex
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/locale/es/babel-spanish.tex
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/locale/es/babel-spanish.tex
+INPUT /usr/local/texlive/2023/texmf-dist/tex/generic/babel/locale/es/babel-es.ini
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/xcolor/xcolor.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.aux
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.aux
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.aux
+OUTPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.aux
+INPUT /usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+INPUT /usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+INPUT /usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+INPUT /usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/graphics/color.sty
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
+OUTPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.pdf
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
+OUTPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//logo.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//logo.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//logo.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//logo.png
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Regular-lf-t1.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Bold-lf-t1.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Regular-lf-t1.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/google/roboto/Roboto-Bold-lf-t1.vf
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Bold-lf-t1--base.tfm
+INPUT /usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/roboto/rbto_b5rac7.enc
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/google/roboto/Roboto-Regular-lf-t1.vf
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Regular-lf-t1--base.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/google/roboto/Roboto-Regular-lf-t1.vf
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Regular-lf-t1--base.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Bold-lf-t1.tfm
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.toc
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.toc
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.toc
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Bold-lf-t1.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/OT1Roboto-LF.fd
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/OT1Roboto-LF.fd
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/OT1Roboto-LF.fd
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/OT1Roboto-LF.fd
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Regular-lf-ot1.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Regular-lf-ot1.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Regular-lf-ot1.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Italic-lf-ot1.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Italic-lf-ot1.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Italic-lf-ot1.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmss12.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
+OUTPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.toc
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/google/roboto/Roboto-Bold-lf-t1.vf
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Bold-lf-t1--base.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/google/roboto/Roboto-Bold-lf-t1.vf
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Bold-lf-t1--base.tfm
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/registro.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/registro.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/registro.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/registro.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/registro_error.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/registro_error.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/registro_error.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/registro_error.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/login.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/login.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/login.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/login.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/login_error1.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/login_error1.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/login_error1.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/login_error1.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/login_error2.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/login_error2.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/login_error2.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/login_error2.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/inicio.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/inicio.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/inicio.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/inicio.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/language1.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/language1.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/language1.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/language1.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/menu.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/menu.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/menu.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/menu.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso1.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso1.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso1.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso1.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso2.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso2.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso2.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso2.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso2bis.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso2bis.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso2bis.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso2bis.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso3.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso3.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso3.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/analisis_paso3.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/informe_detallado.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/informe_detallado.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/informe_detallado.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/informe_detallado.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/informe_detallado_resenas.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/informe_detallado_resenas.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/informe_detallado_resenas.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/informe_detallado_resenas.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/historico.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/historico.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/historico.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/historico.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/historico_resenas.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/historico_resenas.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/historico_resenas.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/historico_resenas.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/admin.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/admin.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/admin.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/admin.png
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Regular-lf-t1.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Bold-lf-t1.tfm
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/nuevo_usuario.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/nuevo_usuario.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/nuevo_usuario.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/nuevo_usuario.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/borrar_usuario.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/borrar_usuario.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/borrar_usuario.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/borrar_usuario.png
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/google/roboto/Roboto-Bold-lf-t1.vf
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Bold-lf-t1--base.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/T1RobotoMono-TLF.fd
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/T1RobotoMono-TLF.fd
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/T1RobotoMono-TLF.fd
+INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/roboto/T1RobotoMono-TLF.fd
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/RobotoMono-Regular-tlf-t1.tfm
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//upload.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//upload.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//upload.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//upload.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/cargar_dataset.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/cargar_dataset.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/cargar_dataset.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/cargar_dataset.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//process.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//process.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//process.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//process.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//chart.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//chart.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//chart.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//chart.png
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/google/roboto/RobotoMono-Regular-tlf-t1.vf
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/RobotoMono-Regular-tlf-t1--base.tfm
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/roboto/rbto_e24joy.enc
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/informe_detallado.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/informe_detallado.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/informe_detallado.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/about.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/about.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/about.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/about.png
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.aux
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
+INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/google/roboto/Roboto-Bold.pfb
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/google/roboto/Roboto-Regular.pfb
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/google/roboto/RobotoMono-Regular.pfb

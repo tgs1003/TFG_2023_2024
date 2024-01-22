@@ -1,0 +1,12 @@
+\babel@toc {spanish}{}\relax 
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Introducción}{2}{section.1}%
+\contentsline {section}{\numberline {2}Registro}{3}{section.2}%
+\contentsline {section}{\numberline {3}Login}{4}{section.3}%
+\contentsline {section}{\numberline {4}Inicio}{5}{section.4}%
+\contentsline {section}{\numberline {5}Análisis de reseñas}{6}{section.5}%
+\contentsline {section}{\numberline {6}Histórico de reseñas}{8}{section.6}%
+\contentsline {section}{\numberline {7}Administración}{9}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Usuarios}{9}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Conjuntos de datos}{10}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Información}{12}{section.8}%

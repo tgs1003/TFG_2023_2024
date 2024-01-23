@@ -99,7 +99,7 @@ Para la ejecución de las pruebas unitarias del \emph{backend} hay que ejecutar:
 \begin{verbatim}
 	pytest
 \end{verbatim}
-El resultado de las pruebas es:
+El resultado de las pruebas unitarias es:
 \imagen{resultado_pytest}{Resultado pytest}
 \newpage
 
@@ -114,22 +114,27 @@ El resultado de las pruebas es:
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
 		\textbf{Requisitos asociados} & RF-1 \\
-		\textbf{Descripción}          & Un usuario con el rol de administrador podrá crear cuentas de usuario y asignarles un rol. \\
-		\textbf{Precondición}         & El usuario tiene que tener el rol de administrador \\
+		\textbf{Descripción}          & Un usuario podrá crearse una cuenta en la aplicación.\\
+		\textbf{Precondiciones}         &  
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item No existe un usuario con la misma cuenta de correo.
+			\item El formato de correo es correcto.
+			\item La contraseña es válida.
+		\end{enumerate}\\
 		\textbf{Pasos}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item El usuario administrador accede a la interfaz de la aplicación.
-			\item Accede a la opción Crear usuarios
-			\item Introduce los datos del usuarios
+			\item El usuario accede a la interfaz de la aplicación.
+			\item Accede a la opción Registrar
+			\item Introduce los datos del usuario
 			\item Confirma los cambios.
 		\end{enumerate}\\
 		\textbf{Resultado}          & 
 		\begin{enumerate}
-			\item El usuario ya existe
-			\item Complejidad de la contraseña no válida
-			\item Datos incorrectos
+			\item Usuario creado correctamente.
 		\end{enumerate}\\
 		\bottomrule
 	\end{tabularx}
@@ -140,62 +145,370 @@ El resultado de las pruebas es:
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CP-2}    & \textbf{Registro de usuarios}\\
+		\textbf{CP-2}    & \textbf{Registro de usuarios incorrecto: el usuario ya existe}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
 		\textbf{Requisitos asociados} & RF-1 \\
-		\textbf{Descripción}          & Un usuario con el rol de administrador podrá crear cuentas de usuario y asignarles un rol. \\
-		\textbf{Precondición}         & El usuario tiene que tener el rol de administrador \\
+		\textbf{Descripción}          & Un usuario no puede crearse una cuenta con email existente.\\
+		\textbf{Precondiciones}       &  
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Existe un usuario con la misma cuenta de correo.
+			\item El formato de correo es correcto.
+			\item La contraseña es válida.
+		\end{enumerate}\\
 		\textbf{Pasos}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
-			\item El usuario administrador accede a la interfaz de la aplicación.
-			\item Accede a la opción Crear usuarios
-			\item Introduce los datos del usuarios
+			\item El usuario accede a la interfaz de la aplicación.
+			\item Accede a la opción Registrar
+			\item Introduce los datos del usuario
 			\item Confirma los cambios.
 		\end{enumerate}\\
 		\textbf{Resultado}          & 
 		\begin{enumerate}
-			\item El usuario ya existe
-			\item Complejidad de la contraseña no válida
-			\item Datos incorrectos
+			\item Usuario no creado.
+			\item La aplicación devuelve un error: el usuario ya existe.
 		\end{enumerate}\\
 		\bottomrule
 	\end{tabularx}
-	\caption{CP-1 Registro de usuarios.}
+	\caption{CP-2 Registro de usuarios incorrecto.}
 \end{table}
 
 \begin{table}[p]
 	\centering
 	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
 		\toprule
-		\textbf{CP-3}    & \textbf{Registro de usuarios}\\
+		\textbf{CP-3}    & \textbf{Registro de usuarios: email incorrecto}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF-1 \\
+		\textbf{Descripción}          & El email tiene que tener un formato correcto\\
+		\textbf{Precondiciones}       &  
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item No existe un usuario con la misma cuenta de correo.
+			\item El formato de correo es incorrecto.
+			\item La contraseña es válida.
+		\end{enumerate}\\
+		\textbf{Pasos}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario accede a la interfaz de la aplicación.
+			\item Accede a la opción Registrar.
+			\item Introduce los datos del usuario.
+			\item Confirma los cambios.
+		\end{enumerate}\\
+		\textbf{Resultado}          & 
+		\begin{enumerate}
+			\item Usuario no creado.
+			\item La aplicación devuelve un error: el formato de correo no es correcto.
+		\end{enumerate}\\
+		\bottomrule
+	\end{tabularx}
+	\caption{CP-3 Registro de usuarios: email incorrecto.}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CP-4}    & \textbf{Registro de usuarios: contaseña no válida}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF-1 \\
+		\textbf{Descripción}          & La contraseña tiene que ser válida.\\
+		\textbf{Precondiciones}       &  
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item No existe un usuario con la misma cuenta de correo.
+			\item El formato de correo es correcto.
+			\item La contraseña no es válida.
+		\end{enumerate}\\
+		\textbf{Pasos}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario accede a la interfaz de la aplicación.
+			\item Accede a la opción Registrar.
+			\item Introduce los datos del usuario.
+			\item Confirma los cambios.
+		\end{enumerate}\\
+		\textbf{Resultado}          & 
+		\begin{enumerate}
+			\item Usuario no creado.
+			\item La aplicación devuelve un error: la contaseña no es válida.
+		\end{enumerate}\\
+		\bottomrule
+	\end{tabularx}
+	\caption{CP-4 Registro de usuarios:contraseña no es válida.}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CP-5}    & \textbf{Registro de usuarios (administrador).}\\
 		\toprule
 		\textbf{Versión}              & 1.0    \\
 		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
 		\textbf{Requisitos asociados} & RF-1 \\
 		\textbf{Descripción}          & Un usuario con el rol de administrador podrá crear cuentas de usuario y asignarles un rol. \\
-		\textbf{Precondición}         & El usuario tiene que tener el rol de administrador \\
+		\textbf{Precondiciones}         & 
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario creador tiene que tener el rol de administrador.
+			\item No existe un usuario con la misma cuenta de correo.
+			\item El formato de correo es correcto.
+			\item La contraseña es válida.
+		\end{enumerate}\\
 		\textbf{Pasos}             &
 		\begin{enumerate}
 			\def\labelenumi{\arabic{enumi}.}
 			\tightlist
 			\item El usuario administrador accede a la interfaz de la aplicación.
-			\item Accede a la opción Crear usuarios
-			\item Introduce los datos del usuarios
+			\item Accede a la opción Crear usuarios.
+			\item Introduce los datos del usuarios.
 			\item Confirma los cambios.
 		\end{enumerate}\\
 		\textbf{Resultado}          & 
 		\begin{enumerate}
-			\item El usuario ya existe
-			\item Complejidad de la contraseña no válida
-			\item Datos incorrectos
+			\item Usuario creado correctamente.
 		\end{enumerate}\\
 		\bottomrule
 	\end{tabularx}
-	\caption{CP-1 Registro de usuarios.}
+	\caption{CP-5 Registro de usuarios(administrador).}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CP-6}    & \textbf{Registro de usuarios (administrador): usuario ya existe}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF-1 \\
+		\textbf{Descripción}          & Un usuario con el rol de administrador no puede crear un usuario duplicado. \\
+		\textbf{Precondiciones}         & 
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario creador tiene que tener el rol de administrador.
+			\item Existe un usuario con la misma cuenta de correo.
+			\item El formato de correo es correcto.
+			\item La contraseña es válida.
+		\end{enumerate}\\
+		\textbf{Pasos}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario administrador accede a la interfaz de la aplicación.
+			\item Accede a la opción Crear usuarios.
+			\item Introduce los datos del usuarios.
+			\item Confirma los cambios.
+		\end{enumerate}\\
+		\textbf{Resultado}          & 
+		\begin{enumerate}
+			\item Usuario no creado.
+			\item La aplicación muestra el mensaje: el usuario ya existe.
+		\end{enumerate}\\
+		\bottomrule
+	\end{tabularx}
+	\caption{CP-6 Registro de usuarios (administrador): usuario ya existe.}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CP-7}    & \textbf{Registro de usuarios (administrador):correo incorrecto}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF-1 \\
+		\textbf{Descripción}          & Un usuario con el rol de administrador no puede crear un usuario con un correo con formato incorrecto. \\
+		\textbf{Precondiciones}         & 
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario creador tiene que tener el rol de administrador.
+			\item No existe un usuario con la misma cuenta de correo.
+			\item El formato de correo es incorrecto.
+			\item La contraseña es válida.
+		\end{enumerate}\\
+		\textbf{Pasos}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario administrador accede a la interfaz de la aplicación.
+			\item Accede a la opción Crear usuarios.
+			\item Introduce los datos del usuarios.
+			\item Confirma los cambios.
+		\end{enumerate}\\
+		\textbf{Resultado}          & 
+		\begin{enumerate}
+			\item Usuario no creado
+			\item La aplicación muestra el mensaje: el correo electrónico no tiene el formato correcto.
+		\end{enumerate}\\
+		\bottomrule
+	\end{tabularx}
+	\caption{CP-7 Registro de usuarios (administrador): correo incorrecto.}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CP-8}    & \textbf{Registro de usuarios (administrador): contraseña no válida}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF-1 \\
+		\textbf{Descripción}          & Un usuario con el rol de administrador no podrá crear cuentas de usuario con una contraseña no válida. \\
+		\textbf{Precondiciones}         & 
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario creador tiene que tener el rol de administrador.
+			\item No existe un usuario con la misma cuenta de correo.
+			\item El formato de correo es correcto.
+			\item La contraseña no es válida.
+		\end{enumerate}\\
+		\textbf{Pasos}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario administrador accede a la interfaz de la aplicación.
+			\item Accede a la opción Crear usuarios.
+			\item Introduce los datos del usuarios.
+			\item Confirma los cambios.
+		\end{enumerate}\\
+		\textbf{Resultado}          & 
+		\begin{enumerate}
+			\item Usuario no creado.
+			\item La aplicación muestra el mensaje: contraseña no válida.
+		\end{enumerate}\\
+		\bottomrule
+	\end{tabularx}
+	\caption{CP-8 Registro de usuarios.}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CP-9}    & \textbf{Login de usuarios}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF-1 \\
+		\textbf{Descripción}          & Un usuario podrá logarse en la aplicación. \\
+		\textbf{Precondición}         & 
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Usuario no logado.
+			\item El usuario existe.
+			\item La contraseña es válida.
+		\end{enumerate}\\
+		\textbf{Pasos}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario accede a la interfaz de la aplicación.
+			\item Introduce los datos de usuario.
+			\item Confirma los datos.
+		\end{enumerate}\\
+		\textbf{Resultado}          & 
+		\begin{enumerate}
+			\item Usuario logado correctamente.
+		\end{enumerate}\\
+		\bottomrule
+	\end{tabularx}
+	\caption{CP-9 Login de usuarios.}
+\end{table}
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CP-10}    & \textbf{Login de usuario: usuario no existe}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF-1 \\
+		\textbf{Descripción}          & Un usuario no podrá logarse en la aplicación. \\
+		\textbf{Precondición}         & 
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Usuario no logado.
+			\item El usuario no existe.
+			\item La contraseña es indiferente.
+		\end{enumerate}\\
+		\textbf{Pasos}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario accede a la interfaz de la aplicación.
+			\item Introduce los datos de usuario.
+			\item Confirma los datos.
+		\end{enumerate}\\
+		\textbf{Resultado}          & 
+		\begin{enumerate}
+			\item Usuario no logado.
+			\item La aplicación muestra el error: el usuario no existe.
+		\end{enumerate}\\
+		\bottomrule
+	\end{tabularx}
+	\caption{CP-10 Login de usuario: usuario no existe.}
+\end{table}
+
+
+\begin{table}[p]
+	\centering
+	\begin{tabularx}{\linewidth}{ p{0.21\columnwidth} p{0.71\columnwidth} }
+		\toprule
+		\textbf{CP-11}    & \textbf{Login de usuario: contraseña incorrecta.}\\
+		\toprule
+		\textbf{Versión}              & 1.0    \\
+		\textbf{Autor}                & Teodoro Ricardo García Sánchez \\
+		\textbf{Requisitos asociados} & RF-1 \\
+		\textbf{Descripción}          & Un usuario no podrá logarse en la aplicación. \\
+		\textbf{Precondición}         & 
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item Usuario no logado.
+			\item El usuario existe.
+			\item La contraseña es incorrecta.
+		\end{enumerate}\\
+		\textbf{Pasos}             &
+		\begin{enumerate}
+			\def\labelenumi{\arabic{enumi}.}
+			\tightlist
+			\item El usuario accede a la interfaz de la aplicación.
+			\item Introduce los datos de usuario.
+			\item Confirma los datos.
+		\end{enumerate}\\
+		\textbf{Resultado}          & 
+		\begin{enumerate}
+			\item Usuario no logado.
+			\item La aplicación muestra el error: contraseña incorrecta.
+		\end{enumerate}\\
+		\bottomrule
+	\end{tabularx}
+	\caption{CP-11 Login de usuario: contraseña incorrecta.}
 \end{table}
 
 \begin{table}[p]

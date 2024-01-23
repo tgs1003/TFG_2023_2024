@@ -2,7 +2,7 @@
     <div>
     <v-toolbar>
         <v-btn icon @click="$router.push('/')"> <v-icon>mdi-arrow-left</v-icon></v-btn>
-        <v-toolbar-title>{{$formatMessage("about.title")}}</v-toolbar-title>
+        <v-toolbar-title id="about_title">{{$formatMessage("about.title")}}</v-toolbar-title>
       </v-toolbar>
       <p></p>
       

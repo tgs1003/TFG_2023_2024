@@ -8,6 +8,7 @@
           >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
+              id="details_btn"
               color="primary"
               dark
               v-bind="attrs"
@@ -19,7 +20,7 @@
           </template>
 
           <v-card>
-            <v-card-title class="text-h5 grey lighten-2">
+            <v-card-title class="text-h5 grey lighten-2" id="reviews_title">
               {{ $formatMessage('details.reviews_title') }}
             </v-card-title>
             <v-card-text>
@@ -29,6 +30,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn
+                id="close_btn"
                 color="primary"
                 text
                 @click="dialog = false"

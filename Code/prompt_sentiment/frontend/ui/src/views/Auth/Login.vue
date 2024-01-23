@@ -25,13 +25,13 @@
                 >
                 <v-card>
                     <v-card-text>
-                        <h1>{{ $formatMessage('login.title') }}</h1>
-                        <p>{{ $formatMessage('login.subtitle') }}</p>
+                        <h1 id="login_title">{{ $formatMessage('login.title') }}</h1>
+                        <p id="login_subtitle">{{ $formatMessage('login.subtitle') }}</p>
                         {{ $formatMessage('login.desc') }}
                     </v-card-text>
                 </v-card>
                 </v-col>
-                <v-col cols="2"><v-select :label="$formatMessage('navbar.language')" @change="selectLang($event)" v-model="selectedLang" :items="langs"></v-select></v-col>
+                <v-col cols="2"><v-select id="language_select" :label="$formatMessage('navbar.language')" @change="selectLang($event)" v-model="selectedLang" :items="langs"></v-select></v-col>
             </v-row>
             <v-row
                     align="center"
@@ -48,13 +48,14 @@
                                 dark
                                 flat
                         >
-                            <v-toolbar-title>{{ $formatMessage('login.dialog.title') }}</v-toolbar-title>
+                            <v-toolbar-title id="dialog_title">{{ $formatMessage('login.dialog.title') }}</v-toolbar-title>
                             <v-spacer/>
 
                         </v-toolbar>
                         <v-card-text>
                             <v-form>
                                 <v-text-field
+                                        id="email_field"
                                         v-model="email"
                                         :label="$formatMessage('login.dialog.email')"
                                         name="email"
@@ -66,7 +67,7 @@
 
                                 <v-text-field
                                         v-model="password"
-                                        id="password"
+                                        id="password_field"
                                         :label="$formatMessage('login.dialog.password')"
                                         name="password"
                                         :error-messages="passwordErrors"
@@ -77,9 +78,9 @@
                             </v-form>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn color="primary" @click="register">{{ $formatMessage('login.dialog.register') }}</v-btn>
+                            <v-btn color="primary" id="register_btn" @click="register">{{ $formatMessage('login.dialog.register') }}</v-btn>
                             <v-spacer/>
-                            <v-btn color="primary" @click="login">{{ $formatMessage('login.dialog.login') }}</v-btn>
+                            <v-btn color="primary" id="login_btn" @click="login">{{ $formatMessage('login.dialog.login') }}</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>

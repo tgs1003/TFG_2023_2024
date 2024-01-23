@@ -30,7 +30,7 @@
                     </v-card-text>
                 </v-card>
                 </v-col>
-                <v-col cols="2"><v-select :label="$formatMessage('navbar.language')" @change="selectLang($event)" v-model="selectedLang" :items="langs"></v-select></v-col>
+                <v-col cols="2"><v-select id="language_select" :label="$formatMessage('navbar.language')" @change="selectLang($event)" v-model="selectedLang" :items="langs"></v-select></v-col>
             </v-row>
             <v-row
                     align="center"
@@ -47,13 +47,14 @@
                                 dark
                                 flat
                         >
-                            <v-toolbar-title>{{$formatMessage('register.title')}}</v-toolbar-title>
+                            <v-toolbar-title id="dialog_title">{{$formatMessage('register.title')}}</v-toolbar-title>
                             <v-spacer/>
 
                         </v-toolbar>
                         <v-card-text>
                             <v-form>
                                 <v-text-field
+                                        id="name_field"
                                         v-model="name"
                                         :label="$formatMessage('register.name')"
                                         name="name"
@@ -66,6 +67,7 @@
                                         
                                 />
                                 <v-text-field
+                                        id="email_field"
                                         v-model="email"
                                         :label="$formatMessage('register.email')"
                                         name="email"
@@ -80,7 +82,7 @@
 
                                 <v-text-field
                                         v-model="password"
-                                        id="password"
+                                        id="password_field"
                                         :label="$formatMessage('register.password')"
                                         autocomplete="new-password"
                                         required
@@ -92,9 +94,9 @@
                             </v-form>
                         </v-card-text>
                         <v-card-actions>
-                            <v-btn color="secondary" @click="cancel">{{$formatMessage('register.cancel')}}</v-btn>
+                            <v-btn color="secondary" id="cancel_btn" @click="cancel">{{$formatMessage('register.cancel')}}</v-btn>
                             <v-spacer/>
-                            <v-btn color="primary" @click="register">{{$formatMessage('register.ok')}}</v-btn>
+                            <v-btn color="primary" id="register_btn" @click="register">{{$formatMessage('register.ok')}}</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>

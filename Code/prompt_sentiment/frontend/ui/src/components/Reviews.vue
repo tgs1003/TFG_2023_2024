@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-card>
-            <v-card-title> </v-card-title>
+            <v-card-title id="details_reviews_title">this.$formatMessage('details.reviews_title)</v-card-title>
             <v-data-table
                 :items-per-page="5"
                 :headers="headers"

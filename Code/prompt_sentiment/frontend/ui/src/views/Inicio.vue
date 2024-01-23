@@ -11,7 +11,7 @@
             
           >
             <v-card-title class="text-h5">
-              {{ $formatMessage('home.analysis.title') }}
+              <span id="home_analysis_title" >{{ $formatMessage('home.analysis.title') }}</span>
             </v-card-title>
 
             <v-card-subtitle>{{ $formatMessage('home.analysis.desc') }}</v-card-subtitle>

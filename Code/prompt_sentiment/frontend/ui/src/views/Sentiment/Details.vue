@@ -1,8 +1,8 @@
 <template>
     <div>
         <v-toolbar>
-        <v-btn icon @click="$router.push('/')"> <v-icon>mdi-arrow-left</v-icon></v-btn>
-        <v-toolbar-title>{{$formatMessage('details.title')}}</v-toolbar-title>
+        <v-btn id="back_btn" icon @click="$router.push('/')"> <v-icon>mdi-arrow-left</v-icon></v-btn>
+        <v-toolbar-title id="details_title" >{{$formatMessage('details.title')}}</v-toolbar-title>
         </v-toolbar>   
         <StatsReview :dataset-id="this.dataset_id"></StatsReview>
     </div>

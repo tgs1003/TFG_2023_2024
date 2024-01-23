@@ -1,53 +1,51 @@
 \apendice{Anexo de sostenibilización curricular}
 
 \section{Introducción}
-Este anexo incluirá una reflexión personal del alumnado sobre los aspectos de la sostenibilidad 
-que se abordan en el trabajo.
-Se pueden incluir tantas subsecciones como sean necesarias con la intención de explicar 
-las competencias de sostenibilidad adquiridas durante el alumnado y aplicadas al Trabajo de Fin de Grado.
+Durante la realización de este trabajo he tenido presente la importancia 
+que tiene que un desarrollo sea sostenible.
 
-Más información en el documento de la CRUE 
-\url{https://www.crue.org/wp-content/uploads/2020/02/Directrices_Sosteniblidad_Crue2012.pdf}.
-Este anexo tendrá una extensión comprendida entre 600 y 800 palabras.
+Para hacer la aplicación he seguido una serie de técnicas reconocidas de forma 
+general como buenas prácticas y que implican un enfoque orientado a la sostenibilidad.
+Entre otras he seguido las siguientes pautas:
+\begin{itemize}
+    \item Uso herramientas de código abierto: Al usar herramientas de código abierto no solo 
+          ahorramos el coste de las licencias sino que contribuimos a su desarrollo como herramientas universales. 
+    \item Uso de patrones de desarrollo: los patrones de desarrollo son soluciones simples 
+          a problemas complejos. Haciendo uso de éstas conseguimos reducir 
+          la complejidad del desarrollo y lo hace más sostenible y 
+          accesible al resto de la comunidad de desarrolladores. 
+    \item Código autocomentado: código fácil de leer y entender para facilitar el 
+            apredidaje de futuros desarrolladores y su mantenimiento.
+    \item Código libre y disponible en Github: haciendo el código abierto a todo el mundo facilitamos 
+            el desarrollo de futuros proyectos reduciendo su coste y complejidad (en muchos casos). 
+    \item Uso de marcos de desarrollo de uso generalizado: usar marcos de desarrollo de uso común hace 
+            que nuestra aplicación sea más mantenible y extensible para otros desarrolladores.
+    \item Gestión de proyectos ágil: al seguir una metodología ágil se consigue reducir la complejidad del 
+        proyecto y adaptarse mejor a los cambios. Si en medio de un sprint surgía algún impedimento 
+        podía cambiar su planificación sin tener efecto en la velocidad del equipo. 
+    \item Principios KISS: los principos KISS se basan en mantener los desarrollos simples y 
+        no hacer desarrollos que no sean necesarios.
+    \item Enfoque Devops: al hacer el despliegue de la aplicación por configuración y hacerse desde el 
+        primer momento éste presenta menos problemas al final del proyecto y la aplicación está publicada 
+        desde el primer momento. Esto también está en consonancia con los principios de la gestión ágil. 
+    \item Escalabilidad: al usar docker y ngix la aplicación está preparada para la escalabilidad desde el primer momento.
+    \item Interfaz en múltiples idiomas: el tener una interfaz preparada para varios idiomas hace que sea más 
+        accesible a un grupo más amplio de usuarios.
+\end{itemize}
 
-La sostenibilidad de un proyecto de software como el mencionado dependerá de varios factores, 
-y es crucial considerar tanto los aspectos económicos como los sociales y ambientales. 
-Aquí hay algunas reflexiones sobre la sostenibilidad del proyecto:
+Desde el punto de vista de costes de producción, debido a los bajos 
+requisitos que tiene para poder funcionar en un entorno de producción, 
+se puede alojar en multitud de servidores en función de su utilización.
 
-Económica:
-Modelo de Negocio Sostenible: Un modelo de negocio sólido y sostenible es esencial. 
-Evalúa la capacidad del proyecto para generar ingresos de manera constante 
-y asegúrate de que el modelo de monetización elegido sea viable a largo plazo.
-Gestión de Costos: Controlar eficientemente los costos de desarrollo, 
-mantenimiento y operación es clave para la sostenibilidad económica. 
-Considera la posibilidad de utilizar servicios en la nube de manera eficiente 
-y evalúa constantemente la rentabilidad de las herramientas y tecnologías utilizadas.
-Social:
-Impacto Positivo: Evalúa cómo el proyecto puede tener un impacto positivo en la sociedad. 
-Por ejemplo, si el software ayuda a las empresas a comprender y mejorar la satisfacción del cliente, 
-esto podría contribuir a un impacto social positivo.
-Accesibilidad: Asegúrate de que el software sea accesible para la mayor cantidad de personas posible. 
-Considera aspectos como la usabilidad, la inclusión de personas con discapacidades 
-y la disponibilidad en diferentes idiomas.
-Ética en la Inteligencia Artificial: 
-Si el proyecto utiliza inteligencia artificial (como OpenAI), 
-es crucial considerar aspectos éticos. 
-Asegúrate de que el uso de IA sea transparente, justo y ético, y evita sesgos o discriminación.
-Ambiental:
-Eficiencia Energética: Evalúa la eficiencia energética del software y las tecnologías utilizadas. 
-La sostenibilidad ambiental implica minimizar el consumo de recursos, incluida la energía.
-Impacto del Desarrollo: Considera el impacto ambiental durante el desarrollo del software. 
-Esto podría incluir prácticas de desarrollo sostenibles, 
-como la reducción de residuos de código o la eficiencia en el uso de recursos de desarrollo.
-Comunidad y Colaboración:
-Involucramiento de la Comunidad: Fomenta la participación y retroalimentación de la comunidad. 
-Una comunidad activa puede contribuir al éxito continuo del proyecto 
-y proporcionar ideas valiosas para mejoras sostenibles.
-Colaboración Abierta: Considera la posibilidad de colaborar con otros 
-proyectos de código abierto y contribuir al ecosistema más amplio. 
-La colaboración puede generar sinergias y mejorar la sostenibilidad a largo plazo.
-En resumen, para lograr la sostenibilidad de un proyecto de software, 
-es necesario equilibrar aspectos económicos, sociales y ambientales. 
-La transparencia, la ética y la consideración de los impactos a largo plazo 
-son esenciales para construir y mantener un proyecto que beneficie tanto 
-a los usuarios como al entorno en el que se desarrolla.
+Al estar configurada para funcionar en docker puede funcionar en multitud de entornos y configuraciones.
+Es fácil de escalar y se puede configurar en modo pago por uso (en muchos alojamientos).
+De esta forma el retorno de la inversión será muy rápido.
+
+Como hemos visto en la sección de Viabilidad económica el único gasto fijo es el alojamiento (5€ al mes).
+Los gastos variables son el uso de OpenAI que depende exclusivamente del uso.
+
+Desde un punto de vista social tener una herramienta que ayude a las empresas a identificar los 
+puntos de mejora de un producto o servicio es bueno para todos. 
+Por un lado los la empresa mejora sus resultados al poder identificar los puntos de mejora demandados.
+Y por otro el cliente se siente escuchado y recibe un mejor servicio.
+

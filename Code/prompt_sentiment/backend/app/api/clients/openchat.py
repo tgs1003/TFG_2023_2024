@@ -48,7 +48,10 @@ Remember to return only the json. \
         if type(response) == list:
              return self.parse_response(response[0])
         if isinstance(response, six.string_types):
-            return json.loads(self.clean_response(response))
+            try:
+                return json.loads(self.clean_response(response))
+            except:
+                return None
 
     def clean_response(self, response):
         response = '\n'.join(response.split('\n')[1:])

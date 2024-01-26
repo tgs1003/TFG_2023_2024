@@ -44,7 +44,7 @@
           Backend:
         </div>
       <v-list-item-title class="text-h7 mb-1">
-          <a href="https://www.python.org" target="_blank">Python</a>, <a href="https://flask.palletsprojects.com/" target="_blank">Flask</a>, <a href="https://github.com/python-restx/flask-restx" target="_blank">Flask-restx</a>, <a href="https://pytest.org" target="_blank">pytest</a>, <a href="https://www.sqlalchemy.org/" target="_blank">SqlAlchemy</a>, <a href="https://www.postgresql.org/" target="_blank">PostgreSql</a>, <a href="https://www.openai.com" target="_blank">OpenAI</a>
+          <a href="https://www.python.org" target="_blank">Python</a>, <a href="https://flask.palletsprojects.com/" target="_blank">Flask</a>, <a href="https://github.com/python-restx/flask-restx" target="_blank">Flask-restx</a>, <a href="https://pytest.org" target="_blank">pytest</a>, <a href="https://www.sqlalchemy.org/" target="_blank">SQLAlchemy</a>, <a href="https://www.postgresql.org/" target="_blank">PostgreSQL</a>, <a href="https://www.openai.com" target="_blank">OpenAI</a>
         </v-list-item-title>
       </v-list-item-content>
       </v-list-item>
@@ -55,7 +55,7 @@
           Frontend:
         </div>
       <v-list-item-title class="text-h7 mb-1">
-          <a href="https://nodejs.org" target="_blank">Node.js</a>, <a href="https:vuejs.org" target="_blank">Vue.js</a>, <a href="http://v2.vuetifyjs.com" target="_blank">Vuetify</a>, <a href="https://www.chartjs.org">Chart.js</a>, <a href="https://kazupon.github.io/vue-i18n/">Vue-i18n</a>
+          <a href="https://nodejs.org" target="_blank">Node.js</a>, <a href="https://vuejs.org" target="_blank">Vue.js</a>, <a href="http://v2.vuetifyjs.com" target="_blank">VuetifyJS</a>, <a href="https://www.chartjs.org">Chart.js</a>, <a href="https://kazupon.github.io/vue-i18n/">Vue-i18n</a>
         </v-list-item-title>
       </v-list-item-content>
       </v-list-item>

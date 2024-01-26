@@ -11,6 +11,9 @@ services:
     ports:
       - 5001:5000
     environment:
+      HUGGINGFACE_API_URL: ${HUGGINGFACE_API_URL}
+      HUGGINGFACE_API_KEY: ${HUGGINGFACE_API_KEY}
+      LLM_API: ${LLM_API}
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       FLASK_ENV: "development"
       APP_SETTINGS: "app.config.DevelopmentConfig"

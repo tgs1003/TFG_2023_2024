@@ -1,4 +1,4 @@
-import logging, json, time, werkzeug, statistics
+import logging, json, time, werkzeug, statistics, os
 from flask import request
 from flask_restx import Resource, fields, Namespace
 from app.api.services.datasets import get_all_datasets, get_all_user_datasets,\
@@ -11,6 +11,7 @@ from app.api.services.files import store_file
 from app.api.clients.localfile import load_dataset as load_dataset_local
 from app.api.clients.huggingface import load_dataset as load_dataset_hf
 from app.api.clients.openai import LangchainOpenAISentimentAnalyzer
+from app.api.clients.openchat import OpenChatSentimentAnalyzer
 
 logging.basicConfig(level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -206,7 +207,11 @@ class DatasetProcess(Resource):
         if not dataset:
             datasets_namespace.abort(404, f"El dataset {dataset_id} no existe.")
         response_object = {}
-        openai = LangchainOpenAISentimentAnalyzer()
+        model = os.getenv('LLM_API')
+        if model == 'OpenChat':
+            llm_api = OpenChatSentimentAnalyzer()
+        else:
+            llm_api = LangchainOpenAISentimentAnalyzer()
         reviews = get_reviews_by_dataset_id(dataset_id)
         for review_data in reviews:
             time_start = time.perf_counter()
@@ -218,7 +223,7 @@ class DatasetProcess(Resource):
                 stars = self.parse_stars(result["Stars"])
                 sentiment = result["Sentiment"]
                 anger = result["Anger"].lower() == "true"
-                model = "OpenAI"
+                
                 process_time = int(time.perf_counter() - time_start)
                 add_sentiment(review_id=review_id,
                             stars=int(stars),

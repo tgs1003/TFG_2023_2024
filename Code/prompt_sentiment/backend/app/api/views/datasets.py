@@ -215,7 +215,7 @@ class DatasetProcess(Resource):
         reviews = get_reviews_by_dataset_id(dataset_id)
         for review_data in reviews:
             time_start = time.perf_counter()
-            result = openai.get_sentiment(review_data.review_text)
+            result = llm_api.get_sentiment(review_data.review_text)
             logging.debug(review_data)
             logging.debug(result)
             review_id = review_data.id

@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-card>
-            <v-card-title id="details_reviews_title">this.$formatMessage('details.reviews_title)</v-card-title>
+            <v-card-title id="details_reviews_title">{{ $formatMessage("details.reviews_title") }}</v-card-title>
             <v-data-table
                 :items-per-page="5"
                 :headers="headers"
@@ -52,10 +52,10 @@ export default {
     },
     methods: {
         initialize(){
-            this.headers.push({text: this.$formatMessage('details.id_review'), align: 'start', sortable: false, value: 'review_id'},
-                 {text: this.$formatMessage('details.review_text'), value: 'review_text'},
-                 {text: this.$formatMessage('details.rating'), value: 'stars'})
-            api.get('/sentiments/dataset/' + this.datasetId).then((resp)=>{    
+            this.headers.push({text: this.$formatMessage("details.id_review"), align: "start", sortable: false, value: "review_id"},
+                 {text: this.$formatMessage("details.review_text"), value: "review_text"},
+                 {text: this.$formatMessage("details.rating"), value: "stars"})
+            api.get("/sentiments/dataset/" + this.datasetId).then((resp)=>{    
                 this.reviews = resp.data
                 })
         }

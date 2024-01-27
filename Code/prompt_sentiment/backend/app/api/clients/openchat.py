@@ -32,11 +32,11 @@ review_text + \
 If the information is not present, use "unknown" as the value. \
 Remember to return only the json. \
 '
-        response = requests.post(HUGGINGFACE_API_URL, headers=headers, json={"inputs": prompt_template})
+        response = requests.post(HUGGINGFACE_API_URL, headers=headers, json={"inputs": prompt_template}, timeout=5)
         return self.parse_response(response.json())
 
     def parse_response(self, response):
-        if type(response) == dict:
+        if isinstance(response, dict):
             if response.keys().__contains__("generated_text"):
                 return self.parse_response(response["generated_text"])
             if response.keys().__contains__("choices"):
@@ -45,12 +45,12 @@ Remember to return only the json. \
                 return self.parse_response(response["text"])
             else:
                 return response
-        if type(response) == list:
-             return self.parse_response(response[0])
+        if isinstance(response, list):
+            return self.parse_response(response[0])
         if isinstance(response, six.string_types):
             try:
                 return json.loads(self.clean_response(response))
-            except:
+            except Exception:
                 return None
 
     def clean_response(self, response):

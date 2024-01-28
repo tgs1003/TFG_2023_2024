@@ -1,5 +1,7 @@
 ## Descripción
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/09a1b47ff1de492ab808b7a3899b5a75)](https://app.codacy.com/gh/tgs1003/TFG_2023_2024?utm_source=github.com&utm_medium=referral&utm_content=tgs1003/TFG_2023_2024&utm_campaign=Badge_Grade)
+
 Las reseñas de los usuarios en portales de recomendación (e.g., TripAdvisor) y tiendas de comercio electrónico (e.g., Amazon) son una fuente de información muy importante para su funcionamiento. Estas reseñas ofrecen una valiosa información sobre la percepción de los usuarios respecto a productos y servicios. 
 Sin embargo, diseñar sistemas capaces de analizar de forma automática y con precisión estas reseñas no ha sido tarea sencilla, al menos hasta ahora con el lanzamiento de modelos grandes de lenguaje (LLM) que soportan a ChatGPT, Bard o Llama. 
 Por ello, proponemos el desarrollo de aplicación que utilice LLM para el análisis, clasificación y calificación de reseñas de usuarios.

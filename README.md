@@ -1,35 +1,75 @@
-## Descripción
+## TFG - Prompt sentiment
+![Prompt sentiment](https://github.com/tgs1003/TFG_2023_2024/blob/main/Documentaci%C3%B3n/Manual%20de%20usuario/img/Logo2.png?raw=true)
 
-Las reseñas de los usuarios en portales de recomendación (e.g., TripAdvisor) y tiendas de comercio electrónico (e.g., Amazon) son una fuente de información muy importante para su funcionamiento. Estas reseñas ofrecen una valiosa información sobre la percepción de los usuarios respecto a productos y servicios. 
-Sin embargo, diseñar sistemas capaces de analizar de forma automática y con precisión estas reseñas no ha sido tarea sencilla, al menos hasta ahora con el lanzamiento de modelos grandes de lenguaje (LLM) que soportan a ChatGPT, Bard o Llama. 
-Por ello, proponemos el desarrollo de aplicación que utilice LLM para el análisis, clasificación y calificación de reseñas de usuarios.
-La idea es aprovechar el conocimiento de estos modelos preentrenados para sin necesidad de nuevos entrenamientos y mediante el adecuado diseño de “prompts” (definiendo las tareas, entradas y salidas de la respuesta a una instrucción) 
-se pueda diseñar e implementar de forma ágil una solución a este problema. 
-Objetivos:
-Desarrollar una “prompt-based” IA que pueda analizar y comprender las reseñas de los usuarios en portales de recomendación y tiendas de comercio electrónico.
+## Autor
+- Teodoro Ricardo García Sánchez
 
-Identificar y categorizar los aspectos específicos del producto o servicio sobre los que los usuarios opinan. 
+## Tutores
+- Virginia Ahedo García
+- Jose Ignacio Santos Martín
 
-Relacionar las opiniones y emociones expresadas en las reseñas con las calificaciones otorgadas. 
+### Resumen
+Las reseñas ofrecen una valiosa información sobre la percepción de los usuarios respecto a productos y servicios. 
 
-Implementar técnicas de ""prompt engineering"" que permitan un desarrollo e implementación rápida y de poco código.
+Por ello, se ha desarrollado una aplicación que utiliza un **LLM** (mediante *prompts*) para el análisis, clasificación y calificación de reseñas de usuarios.
 
-## Trabajos teóricos relacionados
+Utilizamos el conocimiento de estos modelos preentrenados para diseñar e implementar de forma ágil una solución a este problema.
 
-https://arxiv.org/abs/2302.11382
+### Página web
 
-https://arxiv.org/abs/2309.03613
+https://promptsentiment.es
 
-## Trabajos prácticos relacionados
+### Videos
+#### Presentación
 
-https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/
+#### Demostración
 
-https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/
 
-https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/
+### Instalación con docker
 
-## Asignaturas recomendadas
+#### Instalar Docker Desktop
 
-Gestión de la Información
+https://docs.docker.com/engine/install/
 
-Sistemas Inteligentes
+#### Clonar repositorio:
+
+`git clone https://github.com/tgs1003/TFG_2023_2024.git
+`
+
+#### Cambiar al directorio donde está el código:
+`Code/prompt_sentiment`
+
+
+#### Modificar el fichero docker-compose.yml para incluir la API key (`OPENAI_API_KEY`) de OpenAI.
+
+https://platform.openai.com/api-keys
+
+#### Alternativamente se puede configurar para usar la api de hugging face (`HUGGINGFACE_API_KEY`):
+
+https://huggingface.co/settings/tokens
+
+En este caso, hay que cambiar el valor de LLM_API a OpenChat.
+
+#### Ejecutar
+```
+docker-compose up
+```
+
+Para acceder a la aplicación, abrir desde cualquier explorador:
+```
+http://localhost:8080
+```
+El administrador por defecto es:
+```
+Usuario: admin@promptsentiment.es
+
+Contraseña: ubu_1234
+```
+
+### Calidad de código
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/e78f97bd472241a79ef97cae0de00de7)](https://app.codacy.com/gh/tgs1003/TFG_2023_2024/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+### Gestión del proyecto
+
+https://zube.io/tgs1003/tfg_2023_2024
+
+

@@ -862,13 +862,17 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/roboto/rbto_e24joy.enc
 INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/informe_detallado.png
 INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/informe_detallado.png
 INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/informe_detallado.png
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Italic-lf-t1.tfm
 INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/about.png
 INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/about.png
 INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/about.png
 INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/./img//es/about.png
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/vf/google/roboto/Roboto-Italic-lf-t1.vf
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/google/roboto/Roboto-Italic-lf-t1--base.tfm
 INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.aux
 INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
 INPUT /Users/ricardogarcia/Documents/GitHub/TFG_2023_2024/Documentación/Manual de usuario/manual_de_usuario.out
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/google/roboto/Roboto-Bold.pfb
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/google/roboto/Roboto-Italic.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/google/roboto/Roboto-Regular.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/google/roboto/RobotoMono-Regular.pfb

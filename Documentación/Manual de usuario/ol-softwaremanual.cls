@@ -19,7 +19,7 @@
 
 % extra front matter commands
 \DeclareRobustCommand*{\softwarelogo}[1]{\gdef\@logocmd{#1}}
-\DeclareRobustCommand*{\version}[1]{\gdef\@ver{Version #1}}
+\DeclareRobustCommand*{\version}[1]{\gdef\@ver{Versión #1}}
 
 % default values
 \gdef\@logocmd{\@latex@warning{No logo command specified for title page. Ignoring.}}

@@ -14,12 +14,11 @@ En este trabajo vamos a evaluar la utilización del ``\emph{Prompt Engineering}'
 asociado a un modelo grande de lenguaje (LLM) para ese análisis de sentimiento.
 Evaluaremos su viabilidad y sus resultados. 
 
-Usaremos dos medidas para evaluar el modelo, 
-por un lado la precisión (número de elementos entre el número total) 
-y la exhaustividad (``\emph{recall}'') que mide la cantidad de elementos 
-que ha sido capaz de identificar 
-(se calcula dividiendo el número de aciertos entre el número 
-total que hemos clasificado de esa forma).
+Utilizaremos un dataset etiquetado de opiniones de clientes de Amazon para evaluar 
+el rendimiento del modelo. En particular, usaremos 2 medidas, por un lado la precisión 
+que mide el ratio de verdaderos positivos entre todos los que se han clasificado como tal.
+y la exhaustividad (``\emph{recall}'') que mide la relación entre los verdaderos positivos y 
+todos los positivos.
 
 Se considera un modelo equiparable a un humano si consigue un 65 por ciento de aciertos.~\cite[p.~4]{Saif2013}
 \newpage

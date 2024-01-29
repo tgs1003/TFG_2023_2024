@@ -11,6 +11,11 @@ services:
     ports:
       - 5001:5000
     environment:
+      # Se puede cambiar la url del modelo a otro de hugging face
+      HUGGINGFACE_API_URL: https://api-inference.huggingface.co/models/openchat/openchat-3.5-0106
+      HUGGINGFACE_API_KEY: configurar_api_key
+      LLM_API: OpenAI # también se puede configurar OpenChat
+      OPENAI_API_KEY: configurar_api_key
       FLASK_ENV: "development"
       APP_SETTINGS: "app.config.DevelopmentConfig"
       DATABASE_URL: "postgresql://postgres:postgres@db:5432/users_dev"

@@ -1,12 +1,14 @@
 ## TFG - Prompt sentiment
 ![Prompt sentiment](https://github.com/tgs1003/TFG_2023_2024/blob/main/Documentaci%C3%B3n/Manual%20de%20usuario/img/Logo2.png?raw=true)
 
+Aplicación desarrollada como trabajo de fin de grado del Grado de Ingeriería Informática(Online) en la Universidad de Burgos.
+
 ## Autor
 - Teodoro Ricardo García Sánchez
 
 ## Tutores
-- Virginia Ahedo García
-- Jose Ignacio Santos Martín
+- Dra. Virginia Ahedo García
+- Dr. Jose Ignacio Santos Martín
 
 ### Resumen
 Las reseñas ofrecen una valiosa información sobre la percepción de los usuarios respecto a productos y servicios. 

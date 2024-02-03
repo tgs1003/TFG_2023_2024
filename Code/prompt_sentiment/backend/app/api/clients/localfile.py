@@ -1,5 +1,5 @@
 import pandas as pd
-import StringIO
+from io import StringIO
 import logging
 import json
 from app.api.services.datasets import get_dataset_by_id

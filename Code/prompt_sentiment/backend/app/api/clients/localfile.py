@@ -1,4 +1,5 @@
 import pandas as pd
+import StringIO
 import logging
 import json
 from app.api.services.datasets import get_dataset_by_id
@@ -26,7 +27,7 @@ def load_dataset(dataset_id, config, sample):
     fileFormat = configuration["fileFormat"]
     separator = configuration["separator"]
     reviewColumn = configuration["reviewColumn"]
-    buffer = get_file(fileId)
+    buffer = StringIO(get_file(fileId))
     if fileFormat == "JSON":
         df = pd.read_json(buffer)
     elif fileFormat == "CSV":

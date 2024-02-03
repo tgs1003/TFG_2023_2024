@@ -33,6 +33,7 @@ def get_file_info(file_path):
     '''
     result = {}
     file_type = magic.from_file(file_path, mime=True)
+    print(file_type)
     file_format = "unknown"
     separator = ""
     header = []
@@ -44,11 +45,11 @@ def get_file_info(file_path):
             for key in jsfile[0].keys():
                 header.append(key)
             row_count = len(jsfile)
-    elif file_type== "text/plain":
+    elif file_type== "application/csv":
         with open(file_path) as file:
             first_line = file.readline().strip()
             if first_line.__contains__('\t'):
-                file_format = "TSV"
+                file_format = "CSV"
                 separator = '\t'
                 header = first_line.split(separator)
             elif first_line.__contains__(','):

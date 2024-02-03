@@ -38,14 +38,14 @@ def get_file_info(file_path):
     separator = ""
     header = []
     row_count = 0
-    if file_type=="application/json":
+    if file_type =="application/json":
         file_format = "JSON"
         with open(file_path) as file:
             jsfile = json.load(file)
             for key in jsfile[0].keys():
                 header.append(key)
             row_count = len(jsfile)
-    elif file_type== "application/csv":
+    elif file_type == "application/csv" or file_type == "text/csv":
         with open(file_path) as file:
             first_line = file.readline().strip()
             if first_line.__contains__('\t'):
@@ -66,3 +66,5 @@ def get_file_info(file_path):
     result["header"] = header
     result["row_count"] = row_count
     return result
+
+print(get_file_info("AviatorSunGlasses.csv"))

@@ -67,4 +67,3 @@ def get_file_info(file_path):
     result["row_count"] = row_count
     return result
 
-print(get_file_info("AviatorSunGlasses.csv"))

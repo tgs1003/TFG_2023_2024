@@ -1,5 +1,4 @@
 import pandas as pd
-import json
 import os
 def convert(filename):
     # Reading JSON data from a file
@@ -11,7 +10,7 @@ def convert(filename):
 
     # Writing DataFrame to a CSV file
     df.to_csv(filename + ".csv", index=False)
-    
+
 
 files = [f for f in os.listdir() if not os.path.isdir(f) and f.endswith('json')]
 for file in files:

@@ -1,7 +1,7 @@
 ## TFG - Prompt sentiment
 ![Prompt sentiment](https://github.com/tgs1003/TFG_2023_2024/blob/main/Documentaci%C3%B3n/Manual%20de%20usuario/img/Logo2.png?raw=true)
 
-Aplicación desarrollada como trabajo de fin de grado del Grado de Ingeriería Informática(Online) en la Universidad de Burgos.
+Aplicación desarrollada como trabajo de fin de grado del Grado de Ingeniería Informática(Online) en la Universidad de Burgos.
 
 ## Autor
 - Teodoro Ricardo García Sánchez
@@ -23,9 +23,9 @@ https://promptsentiment.es
 
 ### Videos
 #### Presentación
-
+https://youtu.be/ivx6fetdauI
 #### Demostración
-
+https://youtu.be/wq_QYDx2-30
 
 ### Instalación con docker
 

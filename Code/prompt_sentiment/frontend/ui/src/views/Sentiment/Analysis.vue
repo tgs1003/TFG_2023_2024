@@ -88,10 +88,13 @@
             <v-row>
               <v-col>
               <v-select 
+                    name="datasetColumn"
                     v-model="selectedColumn"
                     v-show="file_info != null" 
                     :label="$formatMessage('analysis.file.config.field')"
                     :items="file_info.header"
+                    :error-messages="comlumnErrors"
+                    required
                     >    
               </v-select>
             </v-col>
@@ -224,6 +227,12 @@
                 !this.$v.datasetFile.required && errors.push(this.$formatMessage("analysis.dataset.file_required"))
                 return errors
             },
+            columnErrors(){
+              const errors = []
+                if (!this.$v.datasetColumn.$dirty) return errors
+                !this.$v.datasetColumn.required && errors.push(this.$formatMessage("analysis.dataset.file_required"))
+                return errors
+            },
         },
         components:{
           BarChart,
@@ -249,6 +258,9 @@
             this.stats = null
           },
           processFile(){
+            this.$v.datasetColumn.$touch();
+            if (this.$v.datasetColumn.$invalid)
+                return;
             //Guardamos el dataset
             api.post("/datasets", {"name": this.datasetName, 
                                   "type":this.file_info.file_format, 
@@ -317,7 +329,11 @@
           },
           submitFiles() {
             this.errorMessage = ''
-            this.$v.$touch()
+            this.$v.datasetFile.$touch();
+            this.$v.datasetName.$touch();
+            if (this.$v.datasetFile.$invalid || 
+                this.$v.datasetName.$invalid)
+                return;
             if (this.datasetFile) {
               
                 let formData = new FormData();

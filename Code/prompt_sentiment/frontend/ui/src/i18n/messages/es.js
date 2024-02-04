@@ -102,6 +102,7 @@ export default {
   "analysis.process_result.reviews_number": "Número de reseñas",
   "analysis.dataset.name_required": "El nombre del dataset es obligatorio",
   "analysis.dataset.file_required": "El fichero de reseñas es obligatorio",
+  "analysis.dataset.column_required": "El nombre de la columna es obligatorio",
   "analysis.process.stats": "Calculando estadísticas...",
   "analysis.file.unknown.format": "Formato desconocido",
   "analysis.file.none": "No hay ficheros.",

@@ -102,6 +102,7 @@ export default {
   "analysis.process_result.reviews_number": "Review number",
   "analysis.dataset.name_required": "Dataset name is required",
   "analysis.dataset.file_required": "Reviews file is required",
+  "analysis.dataset.column_required": "Dataset column is required",
   "analysis.process.stats": "Calculating stats...",
   "analysis.file.unknown.format": "Unknown format",
   "analysis.file.none": "There are no files.",

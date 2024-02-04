@@ -195,7 +195,8 @@
         mixins: [validationMixin],
         validations: {
         datasetName: {required},
-        datasetFile: {required}
+        datasetFile: {required},
+        selectedColumn: {required}
         },
         data () {
           return {
@@ -229,8 +230,8 @@
             },
             columnErrors(){
               const errors = []
-                if (!this.$v.datasetColumn.$dirty) return errors
-                !this.$v.datasetColumn.required && errors.push(this.$formatMessage("analysis.dataset.file_required"))
+                if (!this.$v.selectedColumn.$dirty) return errors
+                !this.$v.selectedColumn.required && errors.push(this.$formatMessage("analysis.dataset.column_required"))
                 return errors
             },
         },

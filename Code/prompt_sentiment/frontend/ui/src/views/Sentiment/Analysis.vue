@@ -93,7 +93,7 @@
                     v-show="file_info != null" 
                     :label="$formatMessage('analysis.file.config.field')"
                     :items="file_info.header"
-                    :error-messages="comlumnErrors"
+                    :error-messages="columnErrors"
                     required
                     >    
               </v-select>
@@ -259,8 +259,8 @@
             this.stats = null
           },
           processFile(){
-            this.$v.datasetColumn.$touch();
-            if (this.$v.datasetColumn.$invalid)
+            this.$v.selectedColumn.$touch();
+            if (this.$v.selectedColumn.$invalid)
                 return;
             //Guardamos el dataset
             api.post("/datasets", {"name": this.datasetName, 

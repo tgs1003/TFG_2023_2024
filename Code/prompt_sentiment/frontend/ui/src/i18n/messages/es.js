@@ -56,6 +56,7 @@ export default {
   "register.error.email.required": "El correo es obligatorio.",
   "register.error.name.required": "El nombre es obligatorio.",
   "register.error.password.required": "La contraseña es obligatoria.",
+  "register.error.password.invalid": "La contraseña no es válida",
   "register.error.user.exists": "El usuario ya existe.",
   "login.title": "Bienvenidos a Prompt Sentiment",
   "login.subtitle": "Una aplicación para análisis de sentimiento.",

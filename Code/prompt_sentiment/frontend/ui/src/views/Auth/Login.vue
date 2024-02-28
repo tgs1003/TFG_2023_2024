@@ -131,10 +131,11 @@
             },
         },
         created() {
-                if(this.$root.$i18n.locale == 'en')
-                    this.selectedLang = 'English'
-                else
-                    this.selectedLang = 'Español'
+            this.$store.dispatch('logout');
+            if(this.$root.$i18n.locale == 'en')
+                this.selectedLang = 'English'
+            else
+                this.selectedLang = 'Español'
         },
         methods:{
             login(){

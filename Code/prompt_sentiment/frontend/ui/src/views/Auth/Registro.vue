@@ -151,11 +151,13 @@
                 const errors = []
                 if (!this.$v.password.$dirty) return errors
                 !this.$v.password.required && errors.push(this.$formatMessage('register.error.password.required'))
+                !this.$v.password.minLength && errors.push(this.$formatMessage('register.error.password.invalid'))
                 return errors
             
             }
         },
         created() {
+                this.$store.dispatch('logout');
                 if(this.$root.$i18n.locale == 'en')
                     this.selectedLang = 'English'
                 else

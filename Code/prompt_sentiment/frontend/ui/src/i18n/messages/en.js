@@ -56,6 +56,7 @@ export default {
   "register.error.email.required": "E-mail is required",
   "register.error.name.required": "Name is required",
   "register.error.password.required": "Password is required",
+  "register.error.password.invalid": "Password is invalid",
   "register.error.user.exists": "User already exists.",
   "login.title": "Welcome to Prompt Sentiment",
   "login.subtitle": "A sentiment analysis application.",

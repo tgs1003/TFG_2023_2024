@@ -60,11 +60,11 @@ export default {
       processResults:{},
       labels:[],    
       chartData: {
-          labels: ['Positivas', 'Negativas'],
+          labels: [],
           datasets: [
             {
               backgroundColor: ['#41B883', '#E46651'],
-              data: [40, 20]
+              data: []
             }
           ]
         },

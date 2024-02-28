@@ -5,7 +5,7 @@ services:
   backend:
     container_name: 'sentiment_backend'
     build:
-      context: ./servicios/backend
+      context: ./backend
       dockerfile: Dockerfile
     entrypoint: ['/usr/src/app/entrypoint.sh']
     ports:
@@ -15,7 +15,7 @@ services:
       HUGGINGFACE_API_URL: https://api-inference.huggingface.co/models/openchat/openchat-3.5-0106
       HUGGINGFACE_API_KEY: configurar_api_key
       LLM_API: OpenAI # también se puede configurar OpenChat
-      OPENAI_API_KEY: configurar_api_key
+      OPENAI_API_KEY: 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
       FLASK_ENV: "development"
       APP_SETTINGS: "app.config.DevelopmentConfig"
       DATABASE_URL: "postgresql://postgres:postgres@db:5432/users_dev"
@@ -44,7 +44,7 @@ services:
   frontend:
     container_name: 'sentiment_frontend'
     build:
-      context: ./servicios/frontend
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
       - 3007:8080
@@ -60,7 +60,7 @@ services:
   nginx:
     container_name: 'sentiment_nginx'
     build:
-      context: ./servicios/nginx
+      context: ./nginx
       dockerfile: Dockerfile
     restart: always
     ports:
